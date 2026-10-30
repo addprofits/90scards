@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- card -->
+  <rect x="9" y="7" width="22" height="31" rx="2.6"/>
+  <rect x="12" y="10" width="16" height="25" rx="1.2" stroke-width=".8" opacity=".45"/>
+  <!-- ball breaking the card edge -->
+  <circle cx="31" cy="31" r="9" fill="#09090a"/>
+  <circle cx="31" cy="31" r="9"/>
+  <path d="M22 31h18M31 22v18" stroke-width="1"/>
+  <path d="M24.6 24.6c3.2 3.6 3.2 9.2 0 12.8M37.4 24.6c-3.2 3.6-3.2 9.2 0 12.8" stroke-width="1"/>
+</svg>

@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>90scards.net</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2210%22%20fill%3D%22%2309090a%22/%3E%0A%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ededee%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%3E%3Crect%20x%3D%229%22%20y%3D%227%22%20width%3D%2222%22%20height%3D%2231%22%20rx%3D%222.6%22/%3E%0A%20%20%3Crect%20x%3D%2212%22%20y%3D%2210%22%20width%3D%2216%22%20height%3D%2225%22%20rx%3D%221.2%22%20stroke-width%3D%22.8%22%20opacity%3D%22.45%22/%3E%0A%20%20%3Ccircle%20cx%3D%2231%22%20cy%3D%2231%22%20r%3D%229%22%20fill%3D%22%2309090a%22/%3E%0A%20%20%3Ccircle%20cx%3D%2231%22%20cy%3D%2231%22%20r%3D%229%22/%3E%0A%20%20%3Cpath%20d%3D%22M22%2031h18M31%2022v18%22%20stroke-width%3D%221%22/%3E%0A%20%20%3Cpath%20d%3D%22M24.6%2024.6c3.2%203.6%203.2%209.2%200%2012.8M37.4%2024.6c-3.2%203.6-3.2%209.2%200%2012.8%22%20stroke-width%3D%221%22/%3E%0A%0A%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#09090a; --bg2:#0f0f11; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.16);
+  --ink:#ededee; --ink2:#a1a1a6; --ink3:#5f5f66; --accent:#cfd8e3; --up:#8fd1a8; --down:#e39a9a;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.mono{font-family:"JetBrains Mono",monospace;font-weight:300;letter-spacing:.02em}
+.wrap{max-width:1320px;margin:0 auto;padding:0 40px}
+@media(max-width:700px){.wrap{padding:0 20px}}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(9,9,10,.72);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:300;letter-spacing:.32em;text-transform:uppercase;font-size:12px}
+.brand b{font-weight:500}
+nav{display:flex;gap:32px}
+nav a{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);position:relative;padding:6px 0;transition:color .3s}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+nav a:hover,nav a.on{color:var(--ink)}
+nav a.on::after{transform:scaleX(1)}
+@media(max-width:700px){header .wrap{height:auto;flex-direction:column;align-items:flex-start;gap:6px;padding-top:14px;padding-bottom:8px}nav{gap:18px;overflow-x:auto;max-width:100%}nav a{font-size:10px;letter-spacing:.12em}.brand{font-size:10px;letter-spacing:.24em}.detail .stage{top:120px}}
+.tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);border:1px solid var(--line);padding:4px 8px;border-radius:99px}
+
+
+.brand{display:flex;align-items:center;gap:12px;letter-spacing:normal;text-transform:none}
+.logo-mark{width:30px;height:30px;color:var(--ink);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .7s var(--ease)}
+.brand:hover .logo-mark{transform:rotate(-6deg)}
+.brand .wm{font-size:14px;font-weight:300;letter-spacing:.06em}
+.brand .wm b{font-weight:500}
+.brand .wm i{font-style:normal;color:var(--ink3)}
+/* views */
+main{min-height:calc(100vh - 64px)}
+.view{animation:viewIn .7s var(--ease) both}
+@keyframes viewIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3)}
+h1.hero{font-weight:200;font-size:clamp(48px,9vw,132px);letter-spacing:-.04em;line-height:.95;margin:20px 0 28px}
+h1.hero span{display:inline-block;animation:rise 1.1s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(40%)}to{opacity:1;transform:none}}
+h2.title{font-weight:200;font-size:clamp(36px,5vw,64px);letter-spacing:-.03em;line-height:1;margin:16px 0 12px}
+.lede{color:var(--ink2);max-width:560px;line-height:1.7;font-size:15px}
+.rule{height:1px;background:var(--line);transform-origin:left;animation:draw 1.2s var(--ease) both}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+section.top{padding:88px 0 48px}
+.stats{display:flex;gap:56px;margin-top:40px;flex-wrap:wrap}
+.stat .n{font-size:28px;font-weight:200;letter-spacing:-.02em}
+.stat .l{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-top:6px}
+
+/* controls */
+.controls{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--line);border-radius:99px;color:var(--ink2);transition:all .35s var(--ease)}
+.chip:hover{border-color:var(--line2);color:var(--ink)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.search{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:inherit;font-size:13px;padding:8px 0;width:220px;outline:none;transition:border-color .3s}
+.search:focus{border-color:var(--ink2)}
+.search::placeholder{color:var(--ink3)}
+select.search{width:auto;cursor:pointer}
+select.search option{background:var(--bg2)}
+
+/* gallery */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:56px 36px;padding:48px 0 120px}
+.tile{display:block;opacity:0;transform:translateY(24px);animation:tileIn .9s var(--ease) forwards}
+@keyframes tileIn{to{opacity:1;transform:none}}
+.tile .meta{margin-top:18px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.tile .who{font-size:15px;font-weight:300}
+.tile .set{font-size:12px;color:var(--ink3);margin-top:4px}
+.tile .px{font-size:12px;color:var(--ink2);white-space:nowrap}
+.tile .chg{font-size:11px}
+.up{color:var(--up)}.down{color:var(--down)}
+
+/* card face */
+.stage{perspective:900px}
+.cface{position:relative;aspect-ratio:2.5/3.5;border-radius:10px;border:1px solid var(--line2);overflow:hidden;
+  background:linear-gradient(160deg,#17171a,#0c0c0e);transform-style:preserve-3d;
+  transition:transform .6s var(--ease),box-shadow .6s var(--ease);will-change:transform;
+  --mx:50%;--my:50%;--rx:0deg;--ry:0deg;transform:rotateX(var(--rx)) rotateY(var(--ry))}
+.stage:hover .cface{box-shadow:0 30px 60px -20px rgba(0,0,0,.8);transition:transform .12s linear,box-shadow .6s var(--ease)}
+.cface::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;mix-blend-mode:screen}
+.cface::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s;
+  background:radial-gradient(circle at var(--mx) var(--my),rgba(255,255,255,.18),transparent 45%)}
+.stage:hover .cface::after{opacity:1}
+.cface[data-f=chrome]::before{background:linear-gradient(115deg,transparent 20%,rgba(200,210,225,.10) 40%,transparent 55%,rgba(200,210,225,.07) 75%,transparent)}
+.cface[data-f=refractor]::before{background:conic-gradient(from calc(var(--ry)*6) at 60% 40%,rgba(255,120,160,.12),rgba(120,200,255,.12),rgba(160,255,190,.10),rgba(255,230,140,.10),rgba(255,120,160,.12));opacity:.9}
+.cface[data-f=green]::before{background:radial-gradient(circle at 30% 20%,rgba(70,200,130,.22),transparent 60%),linear-gradient(160deg,transparent 40%,rgba(70,200,130,.10))}
+.cface[data-f=red]::before{background:radial-gradient(circle at 70% 25%,rgba(230,70,90,.22),transparent 60%),linear-gradient(200deg,transparent 40%,rgba(230,70,90,.10))}
+.cface[data-f=gold]::before{background:radial-gradient(circle at 40% 15%,rgba(230,190,110,.20),transparent 60%),linear-gradient(160deg,transparent 45%,rgba(230,190,110,.09))}
+.cface .in{position:absolute;inset:9px;border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column;justify-content:space-between;padding:7% 8%}
+.cface .tr{display:flex;justify-content:space-between;font-size:clamp(8px,.9vw,10px);color:var(--ink2);letter-spacing:.14em;text-transform:uppercase}
+.cface .nm{font-weight:200;line-height:.92;letter-spacing:-.03em;font-size:clamp(22px,3vw,38px)}
+.cface .nm small{display:block;font-size:.38em;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);margin-bottom:.6em;font-weight:300}
+.cface .bt{font-size:clamp(8px,.9vw,10px);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);display:flex;justify-content:space-between;align-items:end;gap:6px}
+.cface .sn{border:1px solid var(--line2);border-radius:99px;padding:3px 7px;color:var(--ink)}
+.cface.big .nm{font-size:clamp(34px,4.6vw,58px)}
+.cface.big .tr,.cface.big .bt{font-size:11px}
+.sportline{position:absolute;left:9px;right:9px;top:50%;height:1px;background:linear-gradient(90deg,transparent,var(--line2),transparent);opacity:.5}
+
+/* detail */
+.back{display:inline-flex;gap:10px;align-items:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin:40px 0 0;transition:color .3s}
+.back:hover{color:var(--ink)}
+.detail{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:80px;padding:40px 0 60px;align-items:start}
+@media(max-width:900px){.detail{grid-template-columns:1fr;gap:40px}.detail .stage{max-width:340px}}
+.detail .stage{position:sticky;top:104px}
+.kv{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:32px 0}
+@media(max-width:700px){.kv{grid-template-columns:repeat(2,1fr)}.kv>div:nth-child(odd){padding-left:0}.kv>div:nth-child(even){border-right:0}.kv>div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.kv>div{padding:20px 0;border-right:1px solid var(--line);padding-left:20px}
+.kv>div:first-child{padding-left:0}
+.kv>div:last-child{border-right:0}
+.kv .l{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.kv .v{font-size:22px;font-weight:200;margin-top:8px}
+.prose{color:var(--ink2);line-height:1.8;font-size:14px;max-width:620px}
+.sec{margin-top:64px}
+.sec h3{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--ink2);display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:4px}
+.tab{font-size:10px;letter-spacing:.14em;padding:6px 10px;border-radius:99px;color:var(--ink3);transition:all .3s}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);background:rgba(255,255,255,.07)}
+
+/* chart */
+.chart{position:relative;margin-top:24px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .ln{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .ln.draw{animation:dash 1.6s var(--ease) both}
+@keyframes dash{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+.chart .area{fill:url(#fade);opacity:0;animation:fadein 1.2s .5s var(--ease) forwards}
+@keyframes fadein{to{opacity:1}}
+.chart .grid line{stroke:var(--line);stroke-width:1}
+.chart .ax{fill:var(--ink3);font-size:10px;font-family:"JetBrains Mono",monospace}
+.chart .xh{stroke:var(--line2);stroke-width:1;opacity:0}
+.chart .dot{fill:var(--bg);stroke:var(--accent);stroke-width:1.5;opacity:0}
+.chart.hov .xh,.chart.hov .dot{opacity:1}
+.tip{position:absolute;pointer-events:none;background:rgba(15,15,17,.92);border:1px solid var(--line2);border-radius:6px;padding:8px 10px;font-size:11px;white-space:nowrap;opacity:0;transform:translate(-50%,-110%);transition:opacity .2s}
+.tip .t{color:var(--ink3);font-size:10px;letter-spacing:.1em}
+.tip .v{font-size:13px;margin-top:2px}
+.chart.hov .tip{opacity:1}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-weight:400;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid var(--line)}
+td{padding:14px 12px 14px 0;border-bottom:1px solid var(--line);color:var(--ink2)}
+td.r,th.r{text-align:right}
+tr.row{transition:background .3s}
+tr.row:hover{background:rgba(255,255,255,.025)}
+tr.link{cursor:pointer}
+td .who{color:var(--ink)}
+.bar{height:2px;background:var(--line);position:relative;min-width:80px}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:2px;transform-origin:left;animation:draw 1.2s var(--ease) both}
+.tablewrap{overflow-x:auto}
+
+/* list layouts */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.mini{display:flex;gap:16px;align-items:center}
+.mini .cface{width:44px;border-radius:4px}
+.mini .cface .in{display:none}
+.foot{border-top:1px solid var(--line);padding:32px 0 48px;margin-top:40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--ink3);letter-spacing:.06em}
+.empty{padding:80px 0;text-align:center;color:var(--ink3);font-size:13px}
+
+/* sets */
+.years{display:flex;gap:44px;margin:36px 0 8px;flex-wrap:wrap}
+.yr{font-weight:200;font-size:clamp(34px,5vw,60px);letter-spacing:-.03em;color:var(--ink3);position:relative;padding-bottom:10px;transition:color .4s var(--ease)}
+.yr:hover{color:var(--ink2)}
+.yr.on{color:var(--ink)}
+.yr::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.yr.on::after{transform:scaleX(1)}
+.yr small{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-top:6px;font-weight:300}
+.sgroup{margin-top:48px}
+.sgroup>h3{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--ink2);padding-bottom:14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0;margin-top:24px;padding:1px 0 0 1px}
+.scard{background:var(--bg);border:1px solid var(--line);margin:-1px 0 0 -1px;padding:26px 24px 22px;display:flex;flex-direction:column;gap:18px;min-height:210px;position:relative;overflow:hidden;opacity:0;animation:tileIn .8s var(--ease) forwards;transition:background .4s var(--ease)}
+.scard::before{content:"";position:absolute;left:0;top:0;height:1px;width:100%;background:linear-gradient(90deg,transparent,var(--ink2),transparent);transform:translateX(-100%);transition:transform .9s var(--ease)}
+.scard:hover{background:var(--bg2)}
+.scard:hover::before{transform:translateX(100%)}
+.scard .m{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);display:flex;justify-content:space-between}
+.scard .n{font-size:28px;font-weight:200;letter-spacing:-.02em;line-height:1.05}
+.scard .f{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--line);padding-top:14px}
+.scard .f .l{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+.scard .f .v{font-size:13px;margin-top:4px;color:var(--ink2)}
+.scard .arrow{position:absolute;right:22px;top:24px;color:var(--ink3);transition:transform .5s var(--ease),color .3s}
+.scard:hover .arrow{transform:translateX(4px);color:var(--ink)}
+.av{display:inline-flex;gap:4px}
+.av span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:3px 7px;border-radius:99px;border:1px solid var(--line);color:var(--ink3)}
+.av span.h{border-color:rgba(207,216,227,.35);color:var(--accent)}
+.av span.r{border-color:rgba(200,180,140,.35);color:#d9c9a3}
+.av span.u{border-style:dashed}
+.odds{font-family:"JetBrains Mono",monospace;font-weight:300;color:var(--ink);white-space:nowrap}
+.odds em{font-style:normal;color:var(--ink3);font-size:10px;margin-left:4px}
+.rare{width:90px;height:2px;background:var(--line);position:relative}
+.rare i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);transform-origin:left;animation:draw 1s var(--ease) both}
+td .nt{display:block;font-size:11px;color:var(--ink3);margin-top:3px}
+.typ{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.filters{display:flex;gap:28px;flex-wrap:wrap;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.filters .lab{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-right:8px}
+.fg{display:flex;align-items:center;gap:4px}
+.src{font-size:11px;color:var(--ink3);margin-top:28px;letter-spacing:.04em}
+.src a{border-bottom:1px solid var(--line2);transition:color .3s}
+.src a:hover{color:var(--ink)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:var(--ink3);margin-top:16px;align-items:center}
+.cfg{font-size:13px;color:var(--ink2);margin-top:10px}
+.strip{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+/* timeline */
+.tl-landing{padding-top:110px!important}
+.tl-chosen{padding-top:64px!important}
+.tl-yr{display:inline-block;animation:rise .9s var(--ease) both}
+.tl-shell{position:relative;margin:56px 0 8px}
+.tl-landing~.tl-shell,.tl-shell:not(.compact){margin:72px 0 40px}
+.tl{overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;cursor:grab;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.tl::-webkit-scrollbar{display:none}
+.tl.drag{cursor:grabbing;scroll-snap-type:none}
+.tl.drag .tl-item{pointer-events:none}
+.tl-track{position:relative;display:flex;padding:0 calc(50vw - 120px);width:max-content}
+.tl-line{position:absolute;left:0;right:0;top:22px;height:1px;background:var(--line2);transform-origin:left;animation:draw 1.6s var(--ease) both}
+.tl-item{position:relative;width:240px;flex:none;display:flex;flex-direction:column;align-items:flex-start;padding:0 0 0 0;scroll-snap-align:center;opacity:0;animation:tileIn .9s var(--ease) forwards;user-select:none}
+.tl-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--ink2);background:var(--bg);margin:18px 0 26px -4px;transition:transform .5s var(--ease),background .4s,border-color .4s}
+.tl-num{font-weight:200;font-size:clamp(56px,8vw,104px);letter-spacing:-.045em;line-height:.9;color:var(--ink3);transition:color .5s var(--ease),transform .6s var(--ease);transform-origin:left bottom}
+.tl-meta{margin-top:14px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);transition:color .4s}
+.tl-item:hover .tl-num{color:var(--ink2)}
+.tl-item:hover .tl-dot{transform:scale(1.5);border-color:var(--ink)}
+.tl-item.on .tl-num{color:var(--ink)}
+.tl-item.on .tl-dot{background:var(--ink);border-color:var(--ink);transform:scale(1.5)}
+.tl-item.on .tl-meta{color:var(--ink2)}
+.tl-item.empty .tl-num{color:#2c2c31}
+.tl-item.empty:hover .tl-num{color:var(--ink3)}
+.tl-item.empty .tl-dot{border-color:var(--ink3);border-style:dashed}
+.compact .tl-item{width:170px}
+.compact .tl-num{font-size:clamp(34px,4vw,52px)}
+.compact .tl-dot{margin-bottom:16px}
+.compact .tl-track{padding:0 calc(50vw - 85px)}
+.tl-nav{position:absolute;top:6px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);color:var(--ink2);background:rgba(9,9,10,.8);transition:opacity .3s,border-color .3s,color .3s}
+.tl-nav:hover{border-color:var(--ink);color:var(--ink)}
+.tl-nav.prev{left:max(20px,calc(50vw - 640px))}.tl-nav.next{right:max(20px,calc(50vw - 640px))}
+.tl-nav.off{opacity:0;pointer-events:none}
+.tl-reveal{animation:viewIn .8s .15s var(--ease) both}
+@media(max-width:700px){.tl-item{width:180px}.tl-track{padding:0 calc(50vw - 90px)}.compact .tl-item{width:130px}.compact .tl-track{padding:0 calc(50vw - 65px)}.tl-nav{display:none}}
+
+/* box previews */
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:48px 36px;margin-top:32px}
+.bcard{display:block;opacity:0;animation:tileIn .9s var(--ease) forwards}
+.bstage{aspect-ratio:13/10;border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;
+  background:radial-gradient(ellipse at 50% 85%,rgba(255,255,255,.04),transparent 60%);transition:border-color .5s var(--ease),background .5s}
+.bstage::after{content:"";position:absolute;left:18%;right:18%;bottom:12%;height:10px;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(8px);transition:transform .6s var(--ease),opacity .6s}
+.bstage svg,.bstage img{width:78%;height:auto;position:relative;z-index:1;transition:transform .7s var(--ease)}
+.bstage img{width:84%;height:80%;object-fit:contain;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55));border-radius:3px}
+.bcard:hover .bstage{border-color:var(--line2)}
+.bcard:hover .bstage svg,.bcard:hover .bstage img{transform:translateY(-8px) rotate(-1.5deg)}
+.bcard:hover .bstage::after{transform:scaleX(.85);opacity:.6}
+.bx-top{fill:#141417;stroke:var(--line2);stroke-width:1}
+.bx-side{fill:#0b0b0d;stroke:var(--line2);stroke-width:1}
+.bx-front{stroke:rgba(255,255,255,.22);stroke-width:1}
+.bx-flap{stroke:var(--line);stroke-width:1}
+.bx-name{fill:var(--ink);font-family:Inter,sans-serif;font-weight:300;letter-spacing:-.01em}
+.bx-sub{fill:var(--ink3);font-family:Inter,sans-serif;font-size:7px;letter-spacing:.18em;text-transform:uppercase}
+.bmeta{margin-top:16px}
+.bname{font-size:16px;font-weight:300}
+.bsub{font-size:11px;color:var(--ink3);margin-top:4px;letter-spacing:.06em}
+
+/* gallery set page */
+.ghero{display:grid;grid-template-columns:minmax(260px,460px) 1fr;gap:72px;align-items:center;padding:40px 0 24px}
+@media(max-width:900px){.ghero{grid-template-columns:1fr;gap:28px}}
+.ghero .boxshot{position:relative;animation:viewIn 1s var(--ease) both}
+.ghero .boxshot img{width:100%;display:block;border-radius:4px;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.ghero .boxshot::after{content:"";position:absolute;left:10%;right:10%;bottom:-18px;height:14px;border-radius:50%;background:rgba(0,0,0,.7);filter:blur(10px);z-index:-1}
+.wall{position:relative;margin:56px 0 0;padding:72px 0 40px;border-top:1px solid var(--line);
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,255,255,.035),transparent 70%)}
+.wall-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:56px}
+.wall-head h3{font-weight:200;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.02em}
+.wall-head .eyebrow{margin-bottom:10px}
+.exhibits{display:grid;grid-template-columns:repeat(3,1fr);gap:88px 64px}
+@media(max-width:1000px){.exhibits{grid-template-columns:repeat(2,1fr);gap:64px 36px}}
+@media(max-width:560px){.exhibits{grid-template-columns:1fr}}
+.exhibit{cursor:pointer;opacity:0;animation:tileIn 1s var(--ease) forwards;outline:none}
+.spot{position:relative;padding:34px 0 0}
+.spot::before{content:"";position:absolute;left:50%;top:-70px;width:130%;height:150%;transform:translateX(-50%);pointer-events:none;
+  background:radial-gradient(ellipse 42% 48% at 50% 38%,rgba(255,250,235,.075),transparent 72%);opacity:.7;transition:opacity .6s var(--ease)}
+.exhibit:hover .spot::before,.exhibit:focus-visible .spot::before{opacity:1}
+.frame{position:relative;margin:0 auto;width:78%;padding:14px;background:linear-gradient(145deg,#1d1d21,#0e0e10);
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 26px 50px -18px rgba(0,0,0,.85),inset 0 0 0 1px rgba(0,0,0,.6);
+  transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.exhibit:hover .frame,.exhibit:focus-visible .frame{transform:translateY(-8px);box-shadow:0 40px 70px -20px rgba(0,0,0,.9),inset 0 0 0 1px rgba(0,0,0,.6)}
+.mat{background:#d9d6cf0d;padding:12%;border:1px solid rgba(255,255,255,.05)}
+.art{aspect-ratio:2.5/3.5;position:relative;overflow:hidden;background:#0b0b0d;border:1px solid rgba(255,255,255,.08)}
+.art img{width:100%;height:100%;object-fit:cover;display:block}
+.art.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 1px,transparent 1px 9px),#0b0b0d}
+.art.empty .ph1{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3)}
+.art.empty .ph2{font-weight:200;font-size:15px;color:var(--ink2);text-align:center;padding:0 10%;line-height:1.25}
+.placard{width:78%;margin:30px auto 0;border-left:1px solid var(--line2);padding-left:16px}
+.placard .no{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink3);letter-spacing:.12em}
+.placard .tt{font-size:17px;font-weight:300;margin-top:6px}
+.placard .by{font-size:12px;color:var(--ink2);margin-top:4px}
+.placard .od{font-size:11px;color:var(--ink3);margin-top:10px;font-family:"JetBrains Mono",monospace}
+.absent{margin-top:72px;font-size:12px;color:var(--ink3);text-align:center;letter-spacing:.04em}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(5,5,6,.94);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.lb.on{opacity:1;pointer-events:auto}
+.lb-in{display:grid;grid-template-columns:auto 300px;gap:64px;align-items:center;max-width:1100px;padding:40px;transform:scale(.97);transition:transform .6s var(--ease)}
+.lb.on .lb-in{transform:none}
+.lb .frame{width:min(380px,42vw);margin:0}
+.lb .exhibit-big .art{width:100%}
+.lb-pl .no{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.14em}
+.lb-pl h4{font-weight:200;font-size:36px;letter-spacing:-.02em;line-height:1.05;margin:12px 0 10px}
+.lb-pl .by{color:var(--ink2);font-size:14px}
+.lb-pl .rule{margin:24px 0}
+.lb-pl dl{display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:13px}
+.lb-pl dt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);padding-top:3px}
+.lb-pl dd{color:var(--ink)}
+.lb-x,.lb-nav{position:absolute;color:var(--ink2);border:1px solid var(--line2);border-radius:50%;width:42px;height:42px;transition:color .3s,border-color .3s}
+.lb-x:hover,.lb-nav:hover{color:var(--ink);border-color:var(--ink)}
+.lb-x{top:24px;right:24px}.lb-nav.p{left:24px;top:50%}.lb-nav.n{right:24px;top:50%}
+.lb-count{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3)}
+@media(max-width:800px){.lb-in{grid-template-columns:1fr;gap:28px;padding:70px 24px}.lb .frame{width:min(300px,70vw);margin:0 auto}.lb-nav{top:auto;bottom:20px}}
+
+.spot{aspect-ratio:9/10;display:flex;align-items:center;justify-content:center;padding:0}
+.frame{margin:0}
+.frame.land{width:94%}
+.art.land{aspect-ratio:1000/724;background:transparent;border-color:transparent}
+.art img{transition:opacity .42s var(--ease),transform .6s var(--ease),filter .42s var(--ease);user-select:none}
+.art.land img{object-fit:contain}
+.art.out img{opacity:0;transform:scale(.965);filter:blur(4px)}
+.gswap{transition:opacity .38s var(--ease)}.gswap.out,.by.out{opacity:0}
+.placard .by,.placard .tt,.placard .od{transition:opacity .38s var(--ease)}.placard .out{opacity:0}
+.gtoggle{display:flex;gap:28px}
+.gt{position:relative;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);padding:8px 0;transition:color .4s}
+.gt:hover{color:var(--ink2)}.gt.on{color:var(--ink)}
+.gt::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line2)}
+.gbar{position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;z-index:1}
+.flipper{cursor:pointer;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.flipper.turn{transform:perspective(1200px) rotateY(90deg)}
+.flipper.instant{transition:none}
+.lb .frame.land{width:min(560px,50vw)}
+.flipbtn{display:block;margin:22px auto 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);transition:color .3s}
+.flipbtn:hover{color:var(--ink)}
+.lbp{display:flex;gap:4px;margin-top:16px}
+@media (prefers-reduced-motion:reduce){.art.out img{opacity:1;filter:none;transform:none}}
+
+/* showcase stepper */
+.steps{display:flex;gap:10px;align-items:center;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);margin-bottom:40px;flex-wrap:wrap}
+.steps button{font-size:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ink2);transition:color .3s}
+.steps button:hover{color:var(--ink)}
+.steps .cur{color:var(--ink)}
+.steps .sep{opacity:.5}
+.choices{display:grid;gap:48px 40px}
+.choices.c4{grid-template-columns:repeat(4,1fr)}
+.choices.c3{grid-template-columns:repeat(3,1fr);max-width:1040px;margin:0 auto}
+#scwall{scroll-margin-top:72px}
+@media(max-width:1000px){.choices.c4{grid-template-columns:repeat(2,1fr)}.choices.c3{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.choices{grid-template-columns:repeat(3,1fr)!important}}
+@media(max-width:620px){.choices{grid-template-columns:1fr 1fr!important;max-width:none!important}.choices.c4,.choices.c3{grid-template-columns:1fr 1fr;gap:36px 18px}}
+.choice{cursor:pointer;opacity:0;animation:tileIn .9s var(--ease) forwards;text-align:left;display:block;width:100%}
+.choice .spot{aspect-ratio:5/6}
+.choice .frame{width:84%}
+.choice:hover .frame,.choice:focus-visible .frame{transform:translateY(-8px)}
+.choice:hover .spot::before{opacity:1}
+.choice .cl{margin-top:22px;text-align:center}
+.choice .cl .big{font-weight:200;font-size:clamp(26px,2.6vw,36px);letter-spacing:-.02em;transition:color .4s}
+.choice .cl .sm{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-top:8px}
+.choice .cl .num{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink2);margin-top:6px;min-height:14px}
+.stage-in{animation:viewIn .7s var(--ease) both}
+.feature{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:80px;align-items:center}
+@media(max-width:860px){.feature{grid-template-columns:1fr;gap:36px}}
+.feature .spot{aspect-ratio:4/5}
+.feature .frame{width:88%}
+.feature .frame.land{width:100%}
+.art img[src*="fi97-"][src*="-emb-"],.art img[src*="ho97-"][src*="-hs-"],.art img[src*="ho97-"][src*="-ff"],.art img[src*="ex97-"][src*="-sd-"],.art img[src*="ex97-"][src*="-jb-"],.art img[src*="ex97-"][src*="-gd-"],.art img[src*="sp97-"][src*="-ca-"],.art img[src*="sp97-"][src*="-gt-"],.art img[src*="-superstar-"],.art img[src*="-sp-plus-"],.art img[src*="-sp-supreme-"]{object-fit:contain}
+.choice .frame.land{width:100%}
+.feature .frame.flipper{cursor:pointer}
+.feat-pl .no{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.14em}
+.feat-pl h4{font-weight:200;font-size:clamp(32px,4vw,52px);letter-spacing:-.03em;line-height:1;margin:14px 0 12px}
+.feat-pl .by{color:var(--ink2);font-size:15px;transition:opacity .38s var(--ease)}
+.feat-pl .by.out{opacity:0}
+.feat-pl dl{display:grid;grid-template-columns:auto 1fr;gap:12px 24px;font-size:13px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.feat-pl dt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);padding-top:3px}
+.feat-pl .gtoggle{margin-top:26px}
+.feat-pl .alts{display:flex;gap:6px;flex-wrap:wrap;margin-top:32px}
+.exhibit.gone{display:none}
+.exhibit.leaving,.exhibit.arriving{opacity:0!important;transform:translateY(16px)!important;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.exhibit{transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.fullcl{margin-top:96px}
+.fullcl>h3{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--ink2);padding-bottom:14px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.tile{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a href="#gallery" class="brand" aria-label="90scards.net home"><svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="9" y="7" width="22" height="31" rx="2.6"/>
+  <rect x="12" y="10" width="16" height="25" rx="1.2" stroke-width=".8" opacity=".45"/>
+  <circle cx="31" cy="31" r="9" fill="var(--bg)"/>
+  <circle cx="31" cy="31" r="9"/>
+  <path d="M22 31h18M31 22v18" stroke-width="1"/>
+  <path d="M24.6 24.6c3.2 3.6 3.2 9.2 0 12.8M37.4 24.6c-3.2 3.6-3.2 9.2 0 12.8" stroke-width="1"/>
+</svg>
+<span class="wm">90s<b>cards</b><i>.net</i></span></a>
+  <nav>
+    <a href="#gallery" data-nav="gallery">Gallery</a>
+    <a href="#sets" data-nav="sets">Sets</a>
+    <a href="#market" data-nav="market">Market</a>
+    <a href="#serials" data-nav="serials">Serials</a>
+    <a href="#graded" data-nav="graded">Graded</a>
+  </nav>
+</div></header>
+<main id="app"></main>
+
+<script>
+/* Sets & inserts — compiled from TCDb (tcdb.com) insert pages, Baseballcardpedia insertion-ratio tables,
+   and Cardboard Connection. Row format:
+   name | type (i=insert, p=parallel, a=autograph, x=redemption/promo) | series (1,2,B=both,-=single) |
+   availability (B=hobby & retail, H=hobby only, R=retail only, ?=unstated) | hobby odds | retail odds | numbered | cards | note
+   Empty odds = not found in sources. */
+const TCDB="https://www.tcdb.com/", BCP="https://baseballcardpedia.com/index.php/";
+const SETS_RAW=[
+/* ===================== BASKETBALL ===================== */
+{id:"bk96-ultra",box:"img/boxes/bk96-ultra.webp",tiers:{interval:9000,prefix:"ul96",intro:"Jordan #16 · Bryant #52 rookie",imgs:["ul96-kb-ar-reg-b", "ul96-kb-ar-reg-f", "ul96-kb-base-gm-b", "ul96-kb-base-gm-f", "ul96-kb-base-pm-b", "ul96-kb-base-pm-f", "ul96-kb-base-reg-b", "ul96-kb-base-reg-f", "ul96-kb-ff-reg-b", "ul96-kb-ff-reg-f", "ul96-kb-rs-reg-b", "ul96-kb-rs-reg-f", "ul96-mj-base-gm-b", "ul96-mj-base-gm-f", "ul96-mj-base-pm-b", "ul96-mj-base-pm-f", "ul96-mj-base-reg-b", "ul96-mj-base-reg-f", "ul96-mj-bg-reg-b", "ul96-mj-bg-reg-f", "ul96-mj-cm-reg-b", "ul96-mj-cm-reg-f", "ul96-mj-fct-gold-b", "ul96-mj-fct-gold-f", "ul96-mj-fct-reg-b", "ul96-mj-fct-reg-f", "ul96-mj-gt-reg-b", "ul96-mj-gt-reg-f", "ul96-mj-sk-plus-b", "ul96-mj-sk-plus-f", "ul96-mj-sk-reg-b", "ul96-mj-sk-reg-f", "ul96-mj-sr-reg-b", "ul96-mj-sr-reg-f", "ul96-mj-ud-reg-b", "ul96-mj-ud-reg-f"],land:["ul96-mj-sk-reg-b","ul96-mj-sk-plus-b"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "base", "t": "Base", "sub": "Base · Gold · Platinum", "desc": "Jordan #16, Bryant #52 rookie (both Series 1). Medallion backs carry a G- or P- prefix on the card number.", "versions": [{"k": "reg", "t": "Base", "sub": "Standard issue", "odds": "—", "nums": {"mj": "#16", "kb": "#52 Rookie"}}, {"k": "gm", "t": "Gold Medallion", "sub": "Gold foil name · G- prefix", "odds": "1:12 Series 1", "nums": {"mj": "#G-16", "kb": "#G-52 Rookie"}}, {"k": "pm", "t": "Platinum Medallion", "sub": "Silver-etched foil name · P- prefix", "odds": "1:180 Series 1 · stated run under 200", "nums": {"mj": "#P-16", "kb": "#P-52 Rookie"}}]}, {"k": "bg", "t": "Board Game", "sub": "Series 2", "desc": "", "versions": [{"k": "reg", "t": "Board Game", "sub": "Series 2", "odds": "1:9 Series 2", "nums": {"mj": "#7 of 20", "kb": null}}]}, {"k": "cm", "t": "Court Masters", "sub": "Plastic stock · Series 1 retail", "desc": "", "versions": [{"k": "reg", "t": "Court Masters", "sub": "Plastic stock · Series 1 retail", "odds": "1:180 Series 1 retail", "nums": {"mj": "All-NBA 1st Team", "kb": null}}]}, {"k": "fct", "t": "Full Court Trap", "sub": "Regular · Gold", "desc": "Series 1 insert honoring the 1995-96 All-Defensive First Team.", "versions": [{"k": "reg", "t": "Full Court Trap", "sub": "Standard issue", "odds": "1:15 Series 1", "nums": {"mj": "#1 of 10", "kb": null}}, {"k": "gold", "t": "Full Court Trap Gold", "sub": "Embossed gold version", "odds": "1:180 Series 1", "nums": {"mj": "#1 of 10", "kb": null}}]}, {"k": "gt", "t": "Give and Take", "sub": "Series 2 retail", "desc": "", "versions": [{"k": "reg", "t": "Give and Take", "sub": "Series 2 retail", "odds": "1:18 Series 2 retail", "nums": {"mj": "#5 of 10", "kb": null}}]}, {"k": "sk", "t": "Scoring Kings", "sub": "Regular · Plus", "desc": "Series 2 hobby insert. Plus versions add a foil-etched background and \"PLUS\" on the back.", "versions": [{"k": "reg", "t": "Scoring Kings", "sub": "Standard issue", "odds": "1:24 Series 2 hobby", "nums": {"mj": "#4 of 29", "kb": null}}, {"k": "plus", "t": "Scoring Kings Plus", "sub": "Foil-etched background", "odds": "1:96 Series 2 hobby", "nums": {"mj": "#4 of 29", "kb": null}}]}, {"k": "sr", "t": "Starring Role", "sub": "Series 2", "desc": "", "versions": [{"k": "reg", "t": "Starring Role", "sub": "Series 2", "odds": "1:288 Series 2", "nums": {"mj": "#4 of 10", "kb": null}}]}, {"k": "ud", "t": "Ultra Decade", "sub": "Retro 1986 design · Series 1", "desc": "", "versions": [{"k": "reg", "t": "Ultra Decade", "sub": "Retro 1986 design · Series 1", "odds": "1:100 Series 1", "nums": {"mj": "#U4", "kb": null}}]}, {"k": "ar", "t": "All-Rookie", "sub": "Series 2", "desc": "", "versions": [{"k": "reg", "t": "All-Rookie", "sub": "Series 2", "odds": "1:4 Series 2", "nums": {"mj": null, "kb": "#3 of 15"}}]}, {"k": "ff", "t": "Fresh Faces", "sub": "Die-cut jersey · Series 1", "desc": "", "versions": [{"k": "reg", "t": "Fresh Faces", "sub": "Die-cut jersey · Series 1", "odds": "1:72 Series 1", "nums": {"mj": null, "kb": "#3"}}]}, {"k": "rs", "t": "Rising Stars", "sub": "Canvas-texture front · Series 1 hobby", "desc": "", "versions": [{"k": "reg", "t": "Rising Stars", "sub": "Canvas-texture front · Series 1 hobby", "odds": "1:180 Series 1 hobby", "nums": {"mj": null, "kb": "#2 of 10"}}]}]},
+  sport:"Basketball",year:1996,season:"1996-97",mfr:"Fleer",name:"Ultra",series:2,
+ cfg:"Series 2 retail: 18 packs × 8 cards",note:"Kobe, Iverson and Ray Allen rookies are Series 1 only. Gold Medallion and Platinum Medallion parallels are unnumbered; Platinum has a stated run under 200 (S1) / 250 (S2).",
+ src:TCDB+"Inserts.cfm/sid/2581/1996-97-Ultra",rows:`
+All-Rookie|i|2|B|1:4||||
+Board Game|i|2|B|1:9||||
+Court Masters|i|1|R||1:180|||Plastic stock
+Fresh Faces|i|1|B|1:72||||Die cut
+Full Court Trap|i|1|B|1:15||||
+Full Court Trap Gold|i|1|B|1:180||||Embossed
+Give and Take|i|2|R||1:18|||
+Rising Stars|i|1|H|1:180||||
+Rookie Flashback|i|1|B|1:45||||
+Scoring Kings|i|2|H|1:24||||
+Scoring Kings Plus|i|2|H|1:96||||Foil-etched background
+Starring Role|i|2|B|1:288||||
+Ultra Decade|i|B|B|1:100||20||#U1-10 in Series 1, #U11-20 in Series 2
+Gold Medallion|p|B|B|1:12 (S1) · 1/pack (S2)||||
+Platinum Medallion|p|B|B|1:180 (S1) · 1:100 (S2)||||Stated print run <200 (S1), <250 (S2)`},
+
+{id:"bk96-metal",box:"img/boxes/bk96-metal.webp",tiers:{interval:9000,prefix:"me96",intro:"Jordan #11 · Bryant #181 rookie",imgs:["me96-kb-base-pm-b", "me96-kb-base-pm-f", "me96-kb-base-reg-b", "me96-kb-base-reg-f", "me96-kb-cm-reg-b", "me96-kb-cm-reg-f", "me96-kb-me-reg-b", "me96-kb-me-reg-f", "me96-kb-sub-ff-b", "me96-kb-sub-ff-f", "me96-mj-base-reg-b", "me96-mj-base-reg-f", "me96-mj-md-reg-b", "me96-mj-md-reg-f", "me96-mj-mm-reg-b", "me96-mj-mm-reg-f", "me96-mj-mo-reg-b", "me96-mj-mo-reg-f", "me96-mj-nr-reg-b", "me96-mj-nr-reg-f", "me96-mj-pp-reg-b", "me96-mj-pp-reg-f", "me96-mj-ss-reg-b", "me96-mj-ss-reg-f", "me96-mj-sub-mz-b", "me96-mj-sub-mz-f", "me96-mj-sub-sh-b", "me96-mj-sub-sh-f"],land:["me96-mj-pp-reg-f","me96-mj-pp-reg-b"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "base", "t": "Base", "sub": "Base · Precious Metal", "desc": "Jordan #11 (Series 1), Bryant #181 rookie (Series 2). Precious Metal is the all-silver hobby parallel.", "versions": [{"k": "reg", "t": "Base", "sub": "Etched metal front", "odds": "—", "nums": {"mj": "#11", "kb": "#181 Rookie"}}, {"k": "pm", "t": "Precious Metal", "sub": "All-silver front · hobby", "odds": "1:36 Series 2 hobby", "nums": {"mj": null, "kb": "#181 Rookie"}}]}, {"k": "sub", "t": "Subsets", "sub": "Metalized · Metal Shredders · Fresh Foundation", "desc": "Short subsets inside the base checklist.", "versions": [{"k": "mz", "t": "Metalized", "sub": "Series 1 subset", "odds": "Base subset", "nums": {"mj": "#128", "kb": null}}, {"k": "sh", "t": "Metal Shredders", "sub": "Series 2 subset", "odds": "Base subset", "nums": {"mj": "#241", "kb": null}}, {"k": "ff", "t": "Fresh Foundation", "sub": "Series 1 rookie subset", "odds": "Base subset", "nums": {"mj": null, "kb": "#137 Rookie"}}]}, {"k": "mm", "t": "Maximum Metal", "sub": "Series 1 hobby", "desc": "", "versions": [{"k": "reg", "t": "Maximum Metal", "sub": "Series 1 hobby", "odds": "1:180 Series 1 hobby", "nums": {"mj": "#4 of 10", "kb": null}}]}, {"k": "md", "t": "Metal Decade", "sub": "Retro 1986 design · Series 1", "desc": "", "versions": [{"k": "reg", "t": "Metal Decade", "sub": "Retro 1986 design · Series 1", "odds": "1:100 Series 1", "nums": {"mj": "#M4", "kb": null}}]}, {"k": "mo", "t": "Molten Metal", "sub": "Series 2 hobby", "desc": "", "versions": [{"k": "reg", "t": "Molten Metal", "sub": "Series 2 hobby", "odds": "1:72 Series 2 hobby", "nums": {"mj": "#18 of 30", "kb": null}}]}, {"k": "nr", "t": "Net-Rageous", "sub": "Die-cut · Series 2", "desc": "", "versions": [{"k": "reg", "t": "Net-Rageous", "sub": "Die-cut · Series 2", "odds": "1:288 Series 2", "nums": {"mj": "#5 of 10", "kb": null}}]}, {"k": "pp", "t": "Platinum Portraits", "sub": "Horizontal · Series 2", "desc": "", "versions": [{"k": "reg", "t": "Platinum Portraits", "sub": "Horizontal · Series 2", "odds": "1:96 Series 2", "nums": {"mj": "#5 of 10", "kb": null}}]}, {"k": "ss", "t": "Steel Slammin'", "sub": "Series 1", "desc": "", "versions": [{"k": "reg", "t": "Steel Slammin'", "sub": "Series 1", "odds": "1:72 Series 1", "nums": {"mj": "#6 of 10", "kb": null}}]}, {"k": "cm", "t": "Cyber-Metal", "sub": "Series 2", "desc": "", "versions": [{"k": "reg", "t": "Cyber-Metal", "sub": "Series 2", "odds": "1:6 Series 2", "nums": {"mj": null, "kb": "#5 of 20"}}]}, {"k": "me", "t": "Metal Edge", "sub": "Series 1", "desc": "", "versions": [{"k": "reg", "t": "Metal Edge", "sub": "Series 1", "odds": "1:36 Series 1", "nums": {"mj": null, "kb": "#15 of 15"}}]}]},
+  sport:"Basketball",year:1996,season:"1996-97",mfr:"Fleer",name:"Metal",series:2,
+ cfg:"8-card packs, $2.49 SRP",note:"Maximum Metal and Molten Metal switch between hobby and retail by series, so check which series a card came from.",
+ src:TCDB+"Inserts.cfm/sid/2503/1996-97-Metal",rows:`
+Cyber-Metal|i|2|B|1:6||||
+Freshly Forged|i|2|B|1:24||||
+Maximum Metal (#1-10)|i|1|H|1:180||||Numbered "of 10"
+Maximum Metal (#11-20)|i|2|R||1:120|||Numbered "of 20"
+Metal Decade|i|1|B|1:100||||
+Metal Edge|i|1|B|1:36||||
+Molten Metal (#1-10)|i|1|R||1:180|||Numbered "of 10"
+Molten Metal (#11-30)|i|2|H|1:72||||Numbered "of 30"
+Net-Rageous|i|2|B|1:288||||Die cut
+Platinum Portraits|i|2|B|1:96||||
+Power Tools|i|1|B|1:18||||
+Steel Slammin'|i|1|B|1:72||||
+Minted Metal Highland Mint Redemption|x|2|H|1:720||||Redeemable for Hill / Stackhouse Highland Mint cards
+Precious Metal|p|2|H|1:36||||All-silver fronts`},
+
+{id:"bk96-skybox-premium",box:"img/boxes/bk96-skybox-premium.webp",tiers:{interval:9000,prefix:"sp96",intro:"Jordan #16 · Bryant #55 rookie",imgs:["sp96-kb-base-reg-b", "sp96-kb-base-reg-f", "sp96-kb-base-sr-b", "sp96-kb-base-sr-f", "sp96-kb-ne-reg-b", "sp96-kb-ne-reg-f", "sp96-mj-base-reg-b", "sp96-mj-base-reg-f", "sp96-mj-base-sr-b", "sp96-mj-base-sr-f", "sp96-mj-gt-reg-b", "sp96-mj-gt-reg-f", "sp96-mj-ltl-reg-b", "sp96-mj-ltl-reg-f", "sp96-mj-ns-reg-b", "sp96-mj-ns-reg-f", "sp96-mj-tl-reg-b", "sp96-mj-tl-reg-f", "sp96-mj-tt-reg-b", "sp96-mj-tt-reg-f"],land:["sp96-mj-ltl-reg-f"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "base", "t": "Base", "sub": "Base · Star Rubies", "desc": "Jordan #16, Bryant #55 rookie. Star Rubies, the very first Star Rubies parallel, swap the gold foil for red.", "versions": [{"k": "reg", "t": "Base", "sub": "Gold foil", "odds": "—", "nums": {"mj": "#16", "kb": "#55 Rookie"}}, {"k": "sr", "t": "Star Rubies", "sub": "Red foil parallel · hobby only", "odds": "Hobby only", "nums": {"mj": "#16", "kb": "#55 Rookie"}, "backNote": "Jordan's Star Rubies back is shown with the regular base back, which looks the same."}]}, {"k": "gt", "t": "Golden Touch", "sub": "Die-cut · Series 2", "desc": "", "versions": [{"k": "reg", "t": "Golden Touch", "sub": "Die-cut · Series 2", "odds": "1:240 Series 2", "nums": {"mj": "#5 of 10", "kb": null}}]}, {"k": "ltl", "t": "Larger Than Life", "sub": "Horizontal · Series 1", "desc": "", "versions": [{"k": "reg", "t": "Larger Than Life", "sub": "Horizontal · Series 1", "odds": "1:180 hobby (Series 1)", "nums": {"mj": "Series 1 insert", "kb": null}}]}, {"k": "ns", "t": "NetSets", "sub": "Series 2 · hobby", "desc": "", "versions": [{"k": "reg", "t": "NetSets", "sub": "Series 2 · hobby", "odds": "1:48 hobby (Series 2)", "nums": {"mj": "#8 of 20", "kb": null}}]}, {"k": "tl", "t": "Thunder & Lightning", "sub": "Sleeve + card combo · Series 2", "desc": "", "versions": [{"k": "reg", "t": "Thunder & Lightning", "sub": "Sleeve + card combo · Series 2", "odds": "1:144 Series 2", "nums": {"mj": "#1 of 10", "kb": null}}]}, {"k": "tt", "t": "Triple Threats", "sub": "Short-printed #TT10–12 · Series 1", "desc": "", "versions": [{"k": "reg", "t": "Triple Threats", "sub": "Short-printed #TT10–12 · Series 1", "odds": "1:240 Series 1", "nums": {"mj": "#TT11", "kb": null}}]}, {"k": "ne", "t": "New Editions", "sub": "Die-cut rookie insert · Series 2 retail", "desc": "", "versions": [{"k": "reg", "t": "New Editions", "sub": "Die-cut rookie insert · Series 2 retail", "odds": "1:36 retail (Series 2)", "nums": {"mj": null, "kb": "#3 of 10"}}]}]},
+  sport:"Basketball",year:1996,season:"1996-97",mfr:"SkyBox",name:"SkyBox Premium",series:2,
+ cfg:"Series 1 #1-131 · Series 2 #132-281",note:"Debut year of Autographics, the on-card auto program shared across E-X2000, Hoops, Premium and Z-Force. Star Rubies made their debut here as a hobby-only parallel.",
+ src:TCDB+"Inserts.cfm/sid/2516/1996-97-SkyBox-Premium---Intimidators",rows:`
+Autographics (black ink)|a|B|B|1:72||||Shared checklist across four SkyBox products
+Autographics (blue ink)|a|B|B|within 1:72||100||Reported print run of 100
+Close-Ups|i|B|B|1:24||||
+Golden Touch|i|2|B|1:240||||Die cut
+Intimidators|i|2|B|1:8||||
+Larger Than Life|i|1|H|1:180||||
+NetSets|i|2|H|1:48||||
+New Editions|i|2|R||1:36|||Die cut
+Star Rubies|p|B|H|||||First Star Rubies parallel · red foil
+Thunder and Lightning|i|2|B|1:144||10||Sleeve and card combination
+Triple Threats|i|1|B|1:1||9||#TT1–TT9 about one per pack
+Triple Threats (#TT10–12)|i|1|B|1:240||3||Short prints, incl. Jordan
+Triple Threats Rubies|p|1|H|1 per box||9||
+Emerald Autographs Redemption|x|2|H|1:20 boxes||||Redeemable for upgraded autograph`},
+
+{id:"bk96-flair-showcase",box:"img/boxes/bk96-flair-showcase.webp",tiers:{interval:9000,prefix:"fs96",step1:"Choose a row",intro:"Jordan #23 · Bryant #31 rookie",imgs:["fs96-kb-c96-reg-b", "fs96-kb-c96-reg-f", "fs96-kb-r0-base-b", "fs96-kb-r0-base-f", "fs96-kb-r0-lc-b", "fs96-kb-r0-lc-f", "fs96-kb-r1-base-b", "fs96-kb-r1-base-f", "fs96-kb-r1-lc-b", "fs96-kb-r1-lc-f", "fs96-kb-r2-base-b", "fs96-kb-r2-base-f", "fs96-kb-r2-lc-b", "fs96-kb-r2-lc-f", "fs96-mj-hs-reg-b", "fs96-mj-hs-reg-f", "fs96-mj-r0-base-b", "fs96-mj-r0-base-f", "fs96-mj-r0-lc-b", "fs96-mj-r0-lc-f", "fs96-mj-r1-base-b", "fs96-mj-r1-base-f", "fs96-mj-r1-lc-b", "fs96-mj-r1-lc-f", "fs96-mj-r2-base-b", "fs96-mj-r2-base-f", "fs96-mj-r2-lc-b", "fs96-mj-r2-lc-f"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "r2", "t": "Row 2 · Style", "sub": "The most common row", "desc": "Row 2 (Style). Jordan is a Showtime card here, Bryant a Showpiece.", "versions": [{"k": "base", "t": "Base", "sub": "Gold foil front", "odds": "Jordan Showtime 1:1 · Bryant Showpiece 1:2", "nums": {"mj": "#23", "kb": "#31 Rookie"}}, {"k": "lc", "t": "Legacy Collection", "sub": "Blue foil front · black-and-white back", "odds": "1:30 (any row) · #'d /150", "nums": {"mj": "#23", "kb": "#31 Rookie"}, "serial": {"mj": "059/150", "kb": "040/150"}}]}, {"k": "r1", "t": "Row 1 · Grace", "sub": "The middle row", "desc": "Row 1 (Grace). Jordan is a Show Stopper here, Bryant a Showtime.", "versions": [{"k": "base", "t": "Base", "sub": "Gold foil front", "odds": "Jordan Show Stopper 1:2.5 · Bryant Showtime 1:2", "nums": {"mj": "#23", "kb": "#31 Rookie"}}, {"k": "lc", "t": "Legacy Collection", "sub": "Blue foil front · black-and-white back", "odds": "1:30 (any row) · #'d /150", "nums": {"mj": "#23", "kb": "#31 Rookie"}, "serial": {"mj": "025/150", "kb": "056/150"}}]}, {"k": "r0", "t": "Row 0 · Showcase", "sub": "The rarest row", "desc": "Row 0 (Showcase), the toughest row. Jordan is a Showpiece here (1:24), Bryant a Show Stopper (1:10).", "versions": [{"k": "base", "t": "Base", "sub": "Gold foil front", "odds": "Jordan Showpiece 1:24 · Bryant Show Stopper 1:10", "nums": {"mj": "#23", "kb": "#31 Rookie"}}, {"k": "lc", "t": "Legacy Collection", "sub": "Blue foil front · black-and-white back", "odds": "1:30 (any row) · #'d /150", "nums": {"mj": "#23", "kb": "#31 Rookie"}, "serial": {"mj": "026/150", "kb": "075/150"}}]}, {"k": "hs", "t": "Hot Shots", "sub": "Die-cut insert", "desc": "", "versions": [{"k": "reg", "t": "Hot Shots", "sub": "Die-cut flaming basketball", "odds": "1:90", "nums": {"mj": "#1 of 20", "kb": null}}]}, {"k": "c96", "t": "Class of '96", "sub": "Rookie insert", "desc": "", "versions": [{"k": "reg", "t": "Class of '96", "sub": "Rookie insert", "odds": "1:5", "nums": {"mj": null, "kb": "#4 of 20"}}]}]},
+  sport:"Basketball",year:1996,season:"1996-97",mfr:"Fleer",name:"Flair Showcase",series:1,
+ cfg:"Single series · 90 players × 3 rows (270 cards) · 24 packs of 5",note:"Each player appears in Row 2 (Style), Row 1 (Grace) and Row 0 (Showcase). Pack odds depend on which tier (Showtime / Showpiece / Showstopper) the player sits in.",
+ src:TCDB+"ViewSet.cfm/sid/2477/1996-97-Flair-Showcase",rows:`
+Row 0 Showcase #1-30|p|-|B|1:24||30||
+Row 0 Showcase #31-60|p|-|B|1:10||30||
+Row 0 Showcase #61-90|p|-|B|1:5||30||
+Legacy Collection Row 2|p|-|B|1:30 (any row)||90|150|Serial numbered
+Legacy Collection Row 1|p|-|B|1:30 (any row)||90|150|Serial numbered
+Legacy Collection Row 0|p|-|B|1:30 (any row)||90|150|Serial numbered
+Hot Shots|i|-|B|1:90||20||Die-cut flaming basketball
+Class of '96|i|-|B|1:5||20||Rookie insert`},
+
+{id:"bk96-ex2000",box:"img/boxes/bk96-ex2000.webp",tiers:{interval:9000,prefix:"ex96",intro:"Jordan #9 · Bryant #30 rookie",imgs:["ex96-kb-base-cred-b", "ex96-kb-base-cred-f", "ex96-kb-base-reg-b", "ex96-kb-base-reg-f", "ex96-kb-sd-reg-b", "ex96-kb-sd-reg-f", "ex96-mj-base-cred-b", "ex96-mj-base-cred-f", "ex96-mj-base-reg-b", "ex96-mj-base-reg-f", "ex96-mj-cut-reg-b", "ex96-mj-cut-reg-f", "ex96-mj-net-reg-b", "ex96-mj-net-reg-f"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "base", "t": "Base", "sub": "Base · Credentials", "desc": "Acetate cards with a clear cloud window. Jordan #9, Bryant #30 rookie.", "versions": [{"k": "reg", "t": "Base", "sub": "Acetate · copper foil frame", "odds": "—", "nums": {"mj": "#9", "kb": "#30 Rookie"}}, {"k": "cred", "t": "Credentials", "sub": "Silver etched frame · serial-numbered on back", "odds": "#'d /499", "nums": {"mj": "#9", "kb": "#30 Rookie"}, "serial": {"mj": "496/499", "kb": "045/499"}}]}, {"k": "cut", "t": "A Cut Above", "sub": "Die-cut buzz saw", "desc": "", "versions": [{"k": "reg", "t": "A Cut Above", "sub": "Die-cut buzz saw", "odds": "1:288", "nums": {"mj": "#5 of 10", "kb": null}}]}, {"k": "net", "t": "Net Assets", "sub": "Die-cut net", "desc": "", "versions": [{"k": "reg", "t": "Net Assets", "sub": "Die-cut net", "odds": "1:20", "nums": {"mj": "#8 of 20", "kb": null}}]}, {"k": "sd", "t": "Star Date 2000", "sub": "Rookie-class insert", "desc": "", "versions": [{"k": "reg", "t": "Star Date 2000", "sub": "Rookie-class insert", "odds": "1:9", "nums": {"mj": null, "kb": "#3 of 15"}}]}]},
+  sport:"Basketball",year:1996,season:"1996-97",mfr:"SkyBox",name:"E-X2000",series:1,
+ cfg:"Hobby: 24 packs × 2 cards",note:"Acetate base cards with a clear cloud window, notoriously condition-sensitive. Credentials is the only base parallel.",
+ src:"https://www.cardboardconnection.com/1996-97-skybox-e-x2000-basketball-cards",rows:`
+Star Date 2000|i|-|B|1:9||15||Rookie class incl. Kobe
+Net Assets|i|-|B|1:20||20||Die-cut net
+A Cut Above|i|-|B|1:288||10||Die-cut buzz saw
+Autographics|a|-|B|1:72||||Shared checklist
+Credentials|p|-|B|||80|499|Silver etched frame
+Grant Hill Emerald Auto Ball Redemption|x|-|B|1:500||1||`},
+
+{id:"bk96-finest",box:"img/boxes/bk96-finest.webp",tiers:{interval:9000,prefix:"fi96",step1:"Choose a tier",intro:"Base and Refractors, with and without the protector",imgs:["fi96-kb-bz-base-b", "fi96-kb-bz-base-f", "fi96-kb-bz-off-b", "fi96-kb-bz-off-f", "fi96-kb-bz-on-b", "fi96-kb-bz-on-f", "fi96-kb-gd-base-b", "fi96-kb-gd-base-f", "fi96-kb-gd-off-b", "fi96-kb-gd-off-f", "fi96-kb-gd-on-b", "fi96-kb-gd-on-f", "fi96-mj-bz-base-b", "fi96-mj-bz-base-f", "fi96-mj-bz-off-b", "fi96-mj-bz-off-f", "fi96-mj-bz-on-b", "fi96-mj-bz-on-f", "fi96-mj-gd-base-b", "fi96-mj-gd-base-f", "fi96-mj-gd-off-b", "fi96-mj-gd-off-f", "fi96-mj-gd-on-b", "fi96-mj-gd-on-f", "fi96-mj-sv-base-b", "fi96-mj-sv-base-f", "fi96-mj-sv-off-b", "fi96-mj-sv-off-f", "fi96-mj-sv-on-b", "fi96-mj-sv-on-f"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "bz", "t": "Bronze", "sub": "Common tier", "desc": "Common tier. Jordan #50 Sterling (Series 1), Bryant #74 Apprentices rookie (Series 1).", "versions": [{"k": "base", "t": "Base", "sub": "Bronze trim · non-refractor", "odds": "6 per pack", "nums": {"mj": "#50 Sterling", "kb": "#74 Apprentices · Rookie"}}, {"k": "on", "t": "Refractor · coated", "sub": "Peel-off \"Topps Finest Protector\" film still on", "odds": "1:12", "nums": {"mj": "#50 Sterling", "kb": "#74 Apprentices · Rookie"}, "backNote": "\"Refractor\" is printed under the number box on the back."}, {"k": "off", "t": "Refractor · uncoated", "sub": "Protector peeled off", "odds": "1:12", "nums": {"mj": "#50 Sterling", "kb": "#74 Apprentices · Rookie"}, "backNote": "Same card with the protector film removed."}]}, {"k": "sv", "t": "Silver", "sub": "Uncommon tier", "desc": "Uncommon tier. Jordan #127 Maestros (Series 1). Bryant has no Silver card.", "versions": [{"k": "base", "t": "Base", "sub": "Silver trim · non-refractor", "odds": "1:4", "nums": {"mj": "#127 Maestros", "kb": null}}, {"k": "on", "t": "Refractor · coated", "sub": "Peel-off \"Topps Finest Protector\" film still on", "odds": "1:48", "nums": {"mj": "#127 Maestros", "kb": null}, "backNote": "\"Refractor\" is printed under the number box on the back."}, {"k": "off", "t": "Refractor · uncoated", "sub": "Protector peeled off", "odds": "1:48", "nums": {"mj": "#127 Maestros", "kb": null}, "backNote": "Same card with the protector film removed."}]}, {"k": "gd", "t": "Gold", "sub": "Rare tier", "desc": "Rare tier. Jordan #291 Foundations and Bryant #269 Heirs, both Series 2. Gold Refractors use a tiled, pixel-style refractor pattern.", "versions": [{"k": "base", "t": "Base", "sub": "Gold trim · non-refractor", "odds": "1:24", "nums": {"mj": "#291 Foundations", "kb": "#269 Heirs"}}, {"k": "on", "t": "Refractor · coated", "sub": "Peel-off \"Topps Finest Protector\" film still on", "odds": "1:288", "nums": {"mj": "#291 Foundations", "kb": "#269 Heirs"}, "backNote": "\"Refractor\" is printed under the number box on the back."}, {"k": "off", "t": "Refractor · uncoated", "sub": "Protector peeled off", "odds": "1:288", "nums": {"mj": "#291 Foundations", "kb": "#269 Heirs"}, "backNote": "Same card with the protector film removed."}]}]},
+  sport:"Basketball",year:1996,season:"1996-97",mfr:"Topps",name:"Finest",series:2,
+ cfg:"291 cards · two series · 24 packs of 6",note:"Three-tier chromium set: Bronze (common), Silver (uncommon) and Gold (rare), each built from themed subsets such as Sterling, Apprentices, Maestros, Foundations and Heirs. Every card shipped under a peel-off protector film.",
+ src:"https://www.cardboardconnection.com/1996-97-topps-finest-basketball-cards",rows:`
+Bronze (Common)|p|B|B|6:1||220||Base tier · bronze trim
+Silver (Uncommon)|p|B|B|1:4||||Silver trim
+Gold (Rare)|p|B|B|1:24||||Gold trim
+Bronze Refractor|p|B|B|1:12||||
+Silver Refractor|p|B|B|1:48||||
+Gold Refractor|p|B|B|1:288||||Tiled refractor pattern`},
+
+{id:"bk96-z-force",box:"img/boxes/bk96-z-force.webp",tiers:{interval:9000,prefix:"zf96",intro:"Jordan #11 · Bryant #142 rookie",imgs:["zf96-kb-base-reg-b", "zf96-kb-base-reg-f", "zf96-kb-zb-reg-b", "zf96-kb-zb-reg-f", "zf96-kb-zb-zp-b", "zf96-kb-zb-zp-f", "zf96-mj-base-reg-b", "zf96-mj-base-reg-f", "zf96-mj-bmoc-reg-b", "zf96-mj-bmoc-reg-f", "zf96-mj-bmoc-zp-b", "zf96-mj-bmoc-zp-f", "zf96-mj-sc-reg-b", "zf96-mj-sc-reg-f", "zf96-mj-vx-reg-b", "zf96-mj-vx-reg-f", "zf96-mj-zup-reg-b", "zf96-mj-zup-reg-f"],land:["zf96-mj-vx-reg-b"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "base", "t": "Base", "sub": "Standard issue", "desc": "", "versions": [{"k": "reg", "t": "Base", "sub": "Standard issue", "odds": "—", "nums": {"mj": "#11", "kb": "#142 Rookie"}}]}, {"k": "zup", "t": "Zupermen", "sub": "Series 2 subset", "desc": "", "versions": [{"k": "reg", "t": "Zupermen", "sub": "Series 2 subset (#169–198)", "odds": "Base subset", "nums": {"mj": "#179", "kb": null}}]}, {"k": "bmoc", "t": "Big Men on Court", "sub": "Die-cut · Series 2", "desc": "Die-cut bubble letters. The Z-Peat parallel swaps the bright colors for dark tones and gold foil.", "versions": [{"k": "reg", "t": "Big Men on Court", "sub": "Die-cut bubble letters", "odds": "1:240 Series 2", "nums": {"mj": "#4 of 10", "kb": null}}, {"k": "zp", "t": "Z-Peat", "sub": "Gold foil parallel", "odds": "1:1,120 Series 2", "nums": {"mj": "#4 of 10", "kb": null}}]}, {"k": "sc", "t": "Slam Cam", "sub": "Series 1", "desc": "", "versions": [{"k": "reg", "t": "Slam Cam", "sub": "Series 1", "odds": "1:240 Series 1", "nums": {"mj": "#SC5", "kb": null}}]}, {"k": "vx", "t": "Vortex", "sub": "Series 1 retail · horizontal back", "desc": "", "versions": [{"k": "reg", "t": "Vortex", "sub": "Series 1 retail · horizontal back", "odds": "1:36 Series 1 retail", "nums": {"mj": "#V5", "kb": null}}]}, {"k": "zb", "t": "Zebut", "sub": "Rookie insert · Series 2 hobby", "desc": "Rookie-class insert. The Z-Peat parallel has a bright gold-foil front.", "versions": [{"k": "reg", "t": "Zebut", "sub": "Standard issue", "odds": "1:24 Series 2 hobby", "nums": {"mj": null, "kb": "#3 of 20"}}, {"k": "zp", "t": "Z-Peat Zebut", "sub": "Gold foil parallel", "odds": "About 1:240 Series 2", "nums": {"mj": null, "kb": "#3 of 20"}}]}]},
+  sport:"Basketball",year:1996,season:"1996-97",mfr:"SkyBox",name:"Z-Force",series:2,
+ cfg:"200 cards · two series of 100",note:"Z-Force's debut year: loud, colorful designs and Z-themed inserts. All the official rookies, including Kobe Bryant, are in Series 2.",
+ src:"https://www.cardboardconnection.com/1996-skybox-force-basketball-cards",rows:`
+Z-Cling|p|1|B|1:1||100||Series 1 base parallel, blank backs
+Big Men on Court|i|2|B|1:240||10||Die cut
+Big Men on Court Z-Peat|p|2|B|1:1,120||10||Gold foil
+Grant Hill Total Z|i|2|B|1:900||1||
+Little Big Men|i|2|R||1:36|10||
+Slam Cam|i|1|B|1:240||9||
+Swat Team|i|1|H|1:72||9||
+Vortex|i|1|R||1:36|15||
+Zebut|i|2|H|1:24||20||Rookie insert
+Zebut Z-Peat|p|2|B|1:240||20||Gold foil
+Zensations|i|2|B|1:6||20||
+Autographics|a|B|B|1:72||||Shared checklist across SkyBox products`},
+
+{id:"bk97-fleer",box:"img/boxes/bk97-fleer.webp",gallery:{interval:9000,prefix:"fl97",imgs:["fl97-kb-hf-b", "fl97-kb-hf-f", "fl97-kb-ss-b", "fl97-kb-ss-f", "fl97-kb-ts-b", "fl97-kb-ts-f", "fl97-mj-gb-b", "fl97-mj-gb-f", "fl97-mj-hf-b", "fl97-mj-hf-f", "fl97-mj-ss-b", "fl97-mj-ss-f", "fl97-mj-ts-b", "fl97-mj-ts-f"],absent:"",heading:"across the chase inserts",
+  players:[
+   {key:"mj",name:"Michael Jordan",short:"Jordan",nums:{ss:"#9 SS",hf:"#9 HFSS",gb:"#1 (with Dennis Rodman)",ts:"#7 TS"},serial:{}},
+   {key:"kb",name:"Kobe Bryant",short:"Bryant",nums:{ss:"#4 SS",hf:"#4 HFSS",gb:null,ts:"#2 TS"},serial:{}}],
+  items:[
+   {k:"ss",t:"Soaring Stars",odds:"1:2 Series 2",meta:"20-card insert"},
+   {k:"hf",t:"High Flying Soaring Stars",odds:"1:24 Series 2",meta:"20-card insert · premium version of Soaring Stars"},
+   {k:"gb",t:"Game Breakers",odds:"1:288 Series 1",meta:"12-card insert · two players per card"},
+   {k:"ts",t:"Thrill Seekers",odds:"1:288 Series 2",meta:"10-card insert"}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"Fleer",name:"Fleer",series:2,
+ cfg:"350 cards · Series 1 & 2",note:"Million Dollar Moments: one per pack, and finding all 50 won $1,000,000. #46-50 were extremely short printed.",
+ src:TCDB+"Inserts.cfm/sid/2627/1997-98-Fleer",rows:`
+Key Ingredient|i|1|B|1:2||||
+Key Ingredient Gold|i|1|B|1:18||||
+Rookie Rewind|i|1|B|1:4||||
+Flair Hardwood Leaders|i|1|B|1:6||||
+Decade of Excellence|i|1|B|1:36||||
+Decade of Excellence Rare Traditions|i|1|B|1:360||||Holofoil banners, "Rare Traditions" on back
+Franchise Futures|i|1|B|1:36||||
+Game Breakers|i|1|B|1:288||||
+Soaring Stars|i|2|B|1:2||||
+Goudey Greats|i|2|B|1:4||||
+Rookie Sensations|i|2|B|1:8||||
+Total "O"|i|2|B|1:18||||
+Tower of Power|i|2|B|1:18||||
+High Flying Soaring Stars|i|2|B|1:24||||
+Zone|i|2|H|1:36||||
+Thrill Seekers|i|2|B|1:288||||
+Million Dollar Moments|i|B|B|1/pack||50||#46-50 extremely short printed
+Diamond Ink (1, 5, 10, 25 pt)|x|B|B|||||500 points of one player = signed mini ball
+Traditions Crystal|p|B|H|1:2||||Silver foil, glossy UV coating
+Traditions Tiffany|p|B|B|1:20||||Blue holofoil, glossy UV coating`},
+
+{id:"bk97-ultra",box:"img/boxes/bk97-ultra.webp",tiers:{interval:9000,prefix:"ul97",imgs:["ul97-kb-cm-base-b", "ul97-kb-cm-base-f", "ul97-kb-md-gold-b", "ul97-kb-md-gold-f", "ul97-kb-md-platinum-b", "ul97-kb-md-platinum-f", "ul97-kb-sp-base-b", "ul97-kb-sp-base-f", "ul97-kb-sp-plus-b", "ul97-kb-sp-plus-f", "ul97-kb-sp-supreme-b", "ul97-kb-sp-supreme-f", "ul97-kb-ub-allstar-b", "ul97-kb-ub-allstar-f", "ul97-kb-ub-starter-b", "ul97-kb-ub-starter-f", "ul97-kb-ub-superstar-b", "ul97-kb-ub-superstar-f", "ul97-kb-us-gold-b", "ul97-kb-us-gold-f", "ul97-kb-us-silver-b", "ul97-kb-us-silver-f", "ul97-mj-cm-base-b", "ul97-mj-cm-base-f", "ul97-mj-md-gold-b", "ul97-mj-md-gold-f", "ul97-mj-md-masterpiece-b", "ul97-mj-md-masterpiece-f", "ul97-mj-md-platinum-b", "ul97-mj-md-platinum-f", "ul97-mj-sp-base-b", "ul97-mj-sp-base-f", "ul97-mj-sp-plus-b", "ul97-mj-sp-plus-f", "ul97-mj-sp-supreme-b", "ul97-mj-sp-supreme-f", "ul97-mj-ub-allstar-b", "ul97-mj-ub-allstar-f", "ul97-mj-ub-starter-b", "ul97-mj-ub-starter-f", "ul97-mj-ub-superstar-b", "ul97-mj-ub-superstar-f", "ul97-mj-us-gold-b", "ul97-mj-us-gold-f", "ul97-mj-us-silver-b", "ul97-mj-us-silver-f"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[
+   {k:"sp",t:"Star Power",sub:"Three tiers",desc:"Click the base version to reveal its Plus and Supreme upgrades.",versions:[
+     {k:"base",t:"Star Power",sub:"Base tier",odds:"1:4 Series 2",nums:{mj:"#1 SP",kb:"#3 SP"}},
+     {k:"plus",t:"Star Power Plus",sub:"Die cut",odds:"1:36 Series 2",nums:{mj:"#1 SPP",kb:"#3 SPP"}},
+     {k:"supreme",t:"Star Power Supreme",sub:"Die cut",odds:"1:288 Series 2",nums:{mj:"#1 SPS",kb:"#3 SPS"}}]},
+   {k:"us",t:"Ultra Stars",sub:"Silver & Gold",desc:"Silver and Gold share the same 1:144 slot; Gold is about 10% of the print run.",versions:[
+     {k:"silver",t:"Ultra Stars",sub:"Silver foil · 90% of run",odds:"1:144 Series 1 (shared)",nums:{mj:"#1 US",kb:"#3 US"}},
+     {k:"gold",t:"Ultra Stars Gold",sub:"Gold foil · 10% of run",backNote:"Back shown is the standard Ultra Stars back",odds:"1:144 Series 1 (shared)",nums:{mj:"#1 US",kb:"#3 US"}}]},
+   {k:"cm",t:"Court Masters",sub:"Single version",desc:"",versions:[
+     {k:"base",t:"Court Masters",sub:"",odds:"1:144 Series 2",nums:{mj:"#1 CM",kb:"#3 CM"}}]},
+   {k:"ub",t:"Ultrabilities",sub:"Three tiers",desc:"Starter, All-Star and Superstar: the same 20 players at rising scarcity.",versions:[
+     {k:"starter",t:"Ultrabilities Starter",sub:"Base tier",odds:"1:4 Series 1",nums:{mj:"#1 S",kb:"#3 S"}},
+     {k:"allstar",t:"Ultrabilities All-Star",sub:"Middle tier",odds:"1:36 Series 1",nums:{mj:"#1 AS",kb:"#3 AS"}},
+     {k:"superstar",t:"Ultrabilities Superstar",sub:"Die cut",odds:"1:288 Series 1",nums:{mj:"#1 SS",kb:"#3 SS"}}]},
+   {k:"md",t:"Medallion",sub:"Base-set parallels",desc:"Hobby-only parallels of the base card: Jordan #23, Bryant #1.",versions:[
+     {k:"gold",t:"Gold Medallion",sub:"One per hobby pack",odds:"1 per hobby pack",nums:{mj:"#23G",kb:"#1G"}},
+     {k:"platinum",t:"Platinum Medallion",sub:"Serial numbered to 100",odds:"Serial /100",nums:{mj:"#23P",kb:"#1P"}},
+     {k:"masterpiece",t:"Masterpiece",sub:"One of one",odds:"Serial 1/1",nums:{mj:"#23P",kb:"#1P"}}]}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"Fleer",name:"Ultra",series:2,
+ cfg:"275 cards · Series 1 #1-150 · Series 2 #151-275",note:"Rookies (#124-148) fall 1:4 Series 1 packs; '98 Greats (#249-273) 1:4 Series 2 packs. Star Power and Ultrabilities each come in three tiers.",
+ src:TCDB+"Inserts.cfm/sid/2715/1997-98-Ultra",rows:`
+Big Shots|i|1|B|1:4||15||
+Ultrabilities Starter|i|1|B|1:4||||
+Inside/Outside|i|1|B|1:6||||
+Jam City|i|1|B|1:8||18||
+Quick Picks|i|1|B|1:8||||
+Heir to the Throne|i|1|B|1:16||||
+Ultrabilities All-Star|i|1|B|1:36||||
+Ultra Stars|i|1|B|1:144||||Silver foil (90% of run)
+Ultra Stars Gold|i|1|B|1:144 (shared)||||Gold foil (10% of run)
+Ultrabilities Superstar|i|1|B|1:288||20||Die cut
+All-Rookie|i|2|B|1:4||||
+Star Power|i|2|B|1:4||20||
+Sweet Deal|i|2|B|1:6||||
+Neat Feats|i|2|B|1:8||||
+Rim Rockers|i|2|B|1:8||12||Die cut
+View to a Thrill|i|2|B|1:18||||
+Star Power Plus|i|2|B|1:36||20||Die cut
+Court Masters|i|2|B|1:144||20||
+Star Power Supreme|i|2|B|1:288||20||Die cut
+Gold Medallion|p|B|H|1/pack||||"G" suffix
+Platinum Medallion|p|B|H||||100|"P" suffix
+Masterpiece|p|B|H||||1|1 of 1, purple foil`},
+
+{id:"bk97-flair-showcase",box:"img/boxes/bk97-flair-showcase.webp",showcase:{interval:9000,imgs:["fs97-kb-r0-base-b", "fs97-kb-r0-base-f", "fs97-kb-r0-lc-b", "fs97-kb-r0-lc-f", "fs97-kb-r0-mp-b", "fs97-kb-r0-mp-f", "fs97-kb-r1-base-b", "fs97-kb-r1-base-f", "fs97-kb-r1-lc-b", "fs97-kb-r1-lc-f", "fs97-kb-r1-mp-b", "fs97-kb-r1-mp-f", "fs97-kb-r2-base-b", "fs97-kb-r2-base-f", "fs97-kb-r2-lc-b", "fs97-kb-r2-lc-f", "fs97-kb-r3-base-b", "fs97-kb-r3-base-f", "fs97-kb-r3-lc-b", "fs97-kb-r3-lc-f", "fs97-kb-r3-mp-b", "fs97-kb-r3-mp-f", "fs97-mj-r0-base-b", "fs97-mj-r0-base-f", "fs97-mj-r0-lc-b", "fs97-mj-r0-lc-f", "fs97-mj-r1-base-b", "fs97-mj-r1-base-f", "fs97-mj-r1-lc-b", "fs97-mj-r1-lc-f", "fs97-mj-r2-base-b", "fs97-mj-r2-base-f", "fs97-mj-r2-lc-b", "fs97-mj-r2-lc-f", "fs97-mj-r3-base-b", "fs97-mj-r3-base-f", "fs97-sq-r2-mp-b", "fs97-sq-r2-mp-f"],land:["fs97-kb-r0-base-b", "fs97-kb-r0-base-f", "fs97-kb-r0-lc-b", "fs97-kb-r0-lc-f", "fs97-kb-r0-mp-b", "fs97-kb-r0-mp-f", "fs97-mj-r0-base-b", "fs97-mj-r0-base-f", "fs97-mj-r0-lc-b", "fs97-mj-r0-lc-f"],prev:{"fs97-row0": "fs97-mj-r0-base-f", "fs97-r0-base": "fs97-mj-r0-base-f", "fs97-r0-lc": "fs97-mj-r0-lc-f", "fs97-r0-mp": "fs97-kb-r0-mp-f", "fs97-row1": "fs97-mj-r1-base-f", "fs97-r1-base": "fs97-mj-r1-base-f", "fs97-r1-lc": "fs97-mj-r1-lc-f", "fs97-r1-mp": "fs97-kb-r1-mp-f", "fs97-row2": "fs97-mj-r2-base-f", "fs97-r2-base": "fs97-mj-r2-base-f", "fs97-r2-lc": "fs97-mj-r2-lc-f", "fs97-r2-mp": "fs97-sq-r2-mp-f", "fs97-row3": "fs97-mj-r3-base-f", "fs97-r3-base": "fs97-mj-r3-base-f", "fs97-r3-lc": "fs97-kb-r3-lc-f", "fs97-r3-mp": "fs97-kb-r3-mp-f"},
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan",num:"#1"},{key:"kb",name:"Kobe Bryant",short:"Bryant",num:"#18"},{key:"sq",name:"Shaquille O'Neal",short:"O'Neal",num:"#7",fallback:true}],
+  rows:[
+   {r:0,sub:"The rarest row",desc:"Serial numbered in four tiers by checklist position: /250, /500, /1,000 and /2,000.",baseNum:"/250"},
+   {r:1,sub:"Parallel row",desc:"A full 80-card parallel of the base design.",baseNum:""},
+   {r:2,sub:"Parallel row",desc:"A full 80-card parallel of the base design.",baseNum:""},
+   {r:3,sub:"Base row",desc:"The base set itself, and the most common row.",baseNum:""}],
+  versions:[
+   {k:"base",t:"Base",sub:"The standard card for this row"},
+   {k:"lc",t:"Legacy Collection",sub:"Serial numbered to 100",num:"/100"},
+   {k:"mp",t:"Masterpiece",sub:"One of one",num:"1/1"}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"Fleer",name:"Flair Showcase",series:1,
+ cfg:"80 players × 4 rows · 5-card packs, $4.99",note:"Every player appears in Rows 3, 2, 1 and 0. Row 0 is serial numbered in four tiers, from /250 for the top 20 players to /2,000 for the last 20.",
+ src:TCDB+"Inserts.cfm/sid/2626/1997-98-Flair-Showcase",rows:`
+Row 2|p|-|B|||80||
+Row 1|p|-|B|||80||
+Row 0 (#1-20)|p|-|B|||20|250|
+Row 0 (#21-40)|p|-|B|||20|500|
+Row 0 (#41-60)|p|-|B|||20|1000|
+Row 0 (#61-80)|p|-|B|||20|2000|
+Legacy Collection (Rows 0-3)|p|-|B|||80|100|Each row numbered to 100
+Masterpiece Legacy Collection (Rows 0-3)|p|-|B|||80|1|1 of 1 per row
+Wave of the Future|i|-|B|1:20||12||First liquid-filled basketball cards`},
+
+{id:"bk97-metal-universe",box:"img/boxes/bk97-metal-universe.webp",gallery:{interval:9000,prefix:"mu97",allImgs:true,absent:"Neither player appears in Silver Slam, Gold Universe or the Reebok cards.",
+  players:[
+   {key:"mj",name:"Michael Jordan",short:"Jordan",nums:{base:"#23",pm:"#1 PM",ti:"#1 T",pp:"#1 PP",pmr:"#23",pme:"#23"},serial:{pmr:"095/100",pme:"001/100"}},
+   {key:"kb",name:"Kobe Bryant",short:"Bryant",nums:{base:"#81",pm:"#3 PM",ti:"#3 T",pp:"#3 PP",pmr:"#81",pme:"#81"},serial:{pmr:"066/100",pme:"010/100"}}],
+  items:[
+   {k:"base",t:"Base",odds:"Base set",meta:"125-card set · foil comic-art background"},
+   {k:"pm",t:"Planet Metal",odds:"1:24 hobby · 1:38 retail",meta:"15-card insert · horizontal back",backLand:true},
+   {k:"ti",t:"Titanium",odds:"1:72 hobby only",meta:"20-card insert · die-cut oval",land:true},
+   {k:"pp",t:"Platinum Portraits",odds:"1:288 hobby · 1:460 retail",meta:"15-card insert · perforated portrait"},
+   {k:"pmr",t:"Precious Metal Gems Red",odds:"Serial #011–100",meta:"90 copies per player"},
+   {k:"pme",t:"Precious Metal Gems Emerald",odds:"Serial #001–010",meta:"10 copies per player"}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"SkyBox",name:"Metal Universe",series:1,
+ cfg:"125 cards · Hobby 24 packs × 8 cards · released Nov 5, 1997",note:"Debut of Precious Metal Gems: 100 copies per player, #1-10 green (Emerald) and #11-100 red. Edge-to-edge foil chips easily.",
+ src:TCDB+"Inserts.cfm/sid/2654/1997-98-Metal-Universe",rows:`
+Reebok (Bronze/Silver/Gold)|i|-|B|1/pack||15||Partial parallel of Reebok-signed players
+Silver Slam|i|-|B|1:6|1:10|20||
+Planet Metal|i|-|B|1:24|1:38|15||
+Titanium|i|-|H|1:72||20||Die cut
+Gold Universe|i|-|R||1:192|10||
+Platinum Portraits|i|-|B|1:288|1:460|15||
+Autographics|a|-|B|1:96|1:154|||Shared checklist
+Precious Metal Gems Emerald|p|-|?|||123|10|#001-010 of 100
+Precious Metal Gems Red|p|-|?|||123|90|#011-100 of 100`},
+
+{id:"bk97-metal-universe-championship",gallery:{interval:9000,prefix:"mc97",imgs:["mc97-kb-cg-b", "mc97-kb-cg-f", "mc97-kb-hw-b", "mc97-kb-hw-f", "mc97-kb-pmg-b", "mc97-kb-pmg-f", "mc97-mj-cg-b", "mc97-mj-cg-f", "mc97-mj-hw-b", "mc97-mj-hw-f", "mc97-mj-pmg-b", "mc97-mj-pmg-f"],absent:"",heading:"across the chase inserts",
+  players:[
+   {key:"mj",name:"Michael Jordan",short:"Jordan",nums:{cg:"#1 CG",hw:"#5 H",pmg:"#23"},serial:{pmg:"12/50"}},
+   {key:"kb",name:"Kobe Bryant",short:"Bryant",nums:{cg:"#3 CG",hw:"#7 H",pmg:"#86"},serial:{pmg:"015/50"}}],
+  items:[
+   {k:"cg",t:"Championship Galaxy",odds:"1:192",meta:"15-card insert · horizontal back",backLand:true},
+   {k:"hw",t:"Hardware",odds:"1:360 · about 1 per 15 boxes",meta:"15-card insert"},
+   {k:"pmg",t:"Precious Metal Gems",odds:"Serial /50",meta:"Parallel of the base card · horizontal back",backLand:true}]},box:"img/boxes/bk97-metal-universe-championship.webp",sport:"Basketball",year:1997,season:"1997-98",mfr:"SkyBox",name:"Metal Universe Championship",series:1,
+ cfg:"100 cards · single series",note:"A late-season follow-up to Metal Universe with its own Precious Metal Gems parallel. Hardware works out to about one per 15 boxes.",
+ src:TCDB+"Inserts.cfm/sid/2661/1997-98-Metal-Universe-Championship",rows:`
+All Millenium|i|-|B|1:6||||
+Future Champions|i|-|B|1:18||||
+Trophy Case|i|-|B|1:96||||
+Championship Galaxy|i|-|B|1:192||15||
+Hardware|i|-|B|1:360||15||About 1 in 15 boxes
+Precious Metal Gems|p|-|?||||50|Serial numbered to 50`},
+
+{id:"bk97-skybox-premium",box:"img/boxes/bk97-skybox-premium.webp",gallery:{interval:9000,prefix:"sp97",imgs:["sp97-kb-ca-b", "sp97-kb-ca-f", "sp97-kb-gt-b", "sp97-kb-gt-f", "sp97-kb-pp-b", "sp97-kb-pp-f", "sp97-kb-sr-b", "sp97-kb-sr-f", "sp97-kb-srts-b", "sp97-kb-srts-f", "sp97-kb-ss-b", "sp97-kb-ss-f", "sp97-kb-tl-b", "sp97-kb-tl-f", "sp97-mj-ca-b", "sp97-mj-ca-f", "sp97-mj-gt-b", "sp97-mj-gt-f", "sp97-mj-pp-b", "sp97-mj-pp-f", "sp97-mj-sr-b", "sp97-mj-sr-f", "sp97-mj-srts-b", "sp97-mj-srts-f", "sp97-mj-ss-b", "sp97-mj-ss-f", "sp97-mj-tl-b", "sp97-mj-tl-f"],absent:"",heading:"across the chase inserts",
+  players:[
+   {key:"mj",name:"Michael Jordan",short:"Jordan",nums:{ca:"#3 CA",pp:"#1 PP",tl:"#5 TL",gt:"#1 GT",ss:"#1 SS",sr:"#29 SR",srts:"#235 TS"},serial:{}},
+   {key:"kb",name:"Kobe Bryant",short:"Bryant",nums:{ca:"#2 CA",pp:"#3 PP",tl:"#7 TL",gt:"#3 GT",ss:"#3 SS",sr:"#23 SR",srts:"#226 TS"},serial:{}}],
+  items:[
+   {k:"ca",t:"Competitive Advantage",odds:"1:96 Series 2",meta:"15-card insert"},
+   {k:"pp",t:"Premium Player",odds:"1:192 Series 1",meta:"15-card insert"},
+   {k:"tl",t:"Thunder & Lightning",odds:"1:192 Series 2",meta:"15-card insert"},
+   {k:"gt",t:"Golden Touch",odds:"1:360 Series 2",meta:"15-card insert"},
+   {k:"ss",t:"Silky Smooth",odds:"1:360 Series 1",meta:"10-card insert"},
+   {k:"sr",t:"Star Rubies",odds:"Serial /50 · hobby only",meta:"Parallel of the base card · \"SR\" suffix"},
+   {k:"srts",t:"Star Rubies · Team SkyBox",odds:"Serial /50 · hobby only · Series 2",meta:"Parallel of the Team SkyBox subset (#224–248)"}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"SkyBox",name:"SkyBox Premium",series:2,
+ cfg:"250 cards · 24 packs × 8 cards · Series 1 #1-125 · Series 2 #126-250",note:"Star Rubies parallel covers #1-123, hobby only, numbered to 50.",
+ src:TCDB+"Inserts.cfm/sid/2664/1997-98-SkyBox-Premium",rows:`
+Reebok (Bronze/Silver/Gold)|i|1|B|1/pack||||
+Next Game|i|1|B|1:6||15||
+Rock n' Fire|i|1|B|1:18||10||
+And One|i|1|B|1:96||10||Inside / Sealed versions
+Premium Players|i|1|B|1:192||15||
+Silky Smooth|i|1|B|1:360||10||
+Star Search|i|2|B|1:6||||
+Jam Pack|i|2|B|1:18||15||
+Competitive Advantage|i|2|B|1:96||15||
+Thunder & Lightning|i|2|B|1:192||15||
+Golden Touch|i|2|B|1:360||15||
+Autographics|a|B|B|1:72||||Shared checklist
+Autographics Century Marks|a|B|B||||100|Hand numbered
+Autographics Redemption|x|B|B|||||
+Star Rubies|p|B|H|||123|50|"SR" suffix`},
+
+{id:"bk97-ex2001",gallery:{interval:9000,prefix:"ex97",imgs:["ex97-kb-base-b", "ex97-kb-base-f", "ex97-kb-ecf-b", "ex97-kb-ecf-f", "ex97-kb-ecn-b", "ex97-kb-ecn-f", "ex97-kb-gd-b", "ex97-kb-gd-f", "ex97-kb-jb-b", "ex97-kb-jb-f", "ex97-kb-sd-b", "ex97-kb-sd-f", "ex97-mj-base-b", "ex97-mj-base-f", "ex97-mj-ecf-b", "ex97-mj-ecf-f", "ex97-mj-ecn-b", "ex97-mj-ecn-f", "ex97-mj-gd-b", "ex97-mj-gd-f", "ex97-mj-jb-b", "ex97-mj-jb-f"],absent:"",heading:"across the set",
+  players:[
+   {key:"mj",name:"Michael Jordan",short:"Jordan",nums:{base:"#9",sd:null,gd:"#9 GD",jb:"#6 JB",ecn:"#9",ecf:"#9"},serial:{ecn:"01/09",ecf:"17/72"},
+    over:{ecn:{odds:"Serial /9 · numbered to his card number"},ecf:{odds:"Serial /72 · counts down from 80"}}},
+   {key:"kb",name:"Kobe Bryant",short:"Bryant",nums:{base:"#8",sd:"#3 SD",gd:"#4 GD",jb:"#12 JB",ecn:"#8",ecf:"#8"},serial:{ecn:"06/08",ecf:"72/73"},
+    over:{ecn:{odds:"Serial /8 · numbered to his card number"},ecf:{odds:"Serial /73 · counts down from 80"}}}],
+  items:[
+   {k:"base",t:"Base",odds:"82-card set",meta:"Acetate base card"},
+   {k:"sd",t:"Star Date 2001",odds:"1:12",meta:"15-card insert · die cut · young players only"},
+   {k:"gd",t:"Gravity Denied",odds:"1:24",meta:"20-card insert · die cut · horizontal",land:true},
+   {k:"jb",t:"Jambalaya",odds:"1:720",meta:"15-card insert · die-cut oval"},
+   {k:"ecf",t:"Essential Credentials Future",odds:"",meta:"Parallel of the base card"},
+   {k:"ecn",t:"Essential Credentials Now",odds:"",meta:"Parallel of the base card"}]},box:"img/boxes/bk97-ex2001.webp",sport:"Basketball",year:1997,season:"1997-98",mfr:"SkyBox",name:"E-X2001",series:1,
+ cfg:"82 cards · single series",note:"Essential Credentials Now is numbered upward 1 to 80 by checklist number; Future counts down from 80 to 1, so each player's print run is different.",
+ src:TCDB+"Inserts.cfm/sid/2621/1997-98-E-X2001",rows:`
+Star Date 2001|i|-|B|1:12||15||Die cut
+Gravity Denied|i|-|B|1:24||20||Die cut
+Jambalaya|i|-|B|1:720||15||Die cut
+Essential Credentials Now|p|-|B|||80|1–80|#'d to checklist number
+Essential Credentials Future|p|-|B|||80|80–1|#'d in reverse
+Autographics|a|-|?|||||Shared checklist`},
+
+{id:"bk97-z-force",gallery:{interval:9000,prefix:"zf97",imgs:["zf97-kb-bmoc-b", "zf97-kb-bmoc-f", "zf97-kb-boss-b", "zf97-kb-boss-f", "zf97-kb-rave-b", "zf97-kb-rave-f", "zf97-kb-ravez-b", "zf97-kb-ravez-f", "zf97-kb-sboss-b", "zf97-kb-sboss-f", "zf97-kb-sc-b", "zf97-kb-sc-f", "zf97-kb-srave-b", "zf97-kb-srave-f", "zf97-kb-x1-b", "zf97-kb-x1-f", "zf97-kb-x2-b", "zf97-kb-x2-f", "zf97-mj-bmoc-b", "zf97-mj-bmoc-f", "zf97-mj-boss-b", "zf97-mj-boss-f", "zf97-mj-rave-b", "zf97-mj-rave-f", "zf97-mj-ravez-b", "zf97-mj-ravez-f", "zf97-mj-sboss-b", "zf97-mj-sboss-f", "zf97-mj-sc-b", "zf97-mj-sc-f", "zf97-mj-srave-b", "zf97-mj-srave-f", "zf97-mj-x1-b", "zf97-mj-x1-f", "zf97-mj-x2-b", "zf97-mj-x2-f"],absent:"",heading:"across the chase inserts",
+  players:[
+   {key:"mj",name:"Michael Jordan",short:"Jordan",nums:{boss:"#10 B",sboss:"#10 SB",x1:"#6 QS",sc:"#5 SC",x2:"#6 RR",bmoc:"#9 BMOC",rave:"#23",ravez:"#190",srave:"#190"},
+    serial:{rave:"239/399",ravez:"050/399",srave:"031/50"},
+    over:{x1:{t:"Quick Strike",odds:"1:96 Series 2",meta:"12-card insert"},x2:{t:"Rave Reviews",odds:"1:288 Series 1",meta:"12-card insert"}}},
+   {key:"kb",name:"Kobe Bryant",short:"Bryant",nums:{boss:"#3 B",sboss:"#3 SB",x1:"#2 SG",sc:"#1 SC",x2:"#1 TI",bmoc:"#2 BMOC",rave:"#88",ravez:"#195",srave:"#195"},
+    serial:{rave:"303/399",ravez:"375/399",srave:"010/50"},
+    over:{x1:{t:"Star Gazing",odds:"1:18 Series 2 · retail only",meta:"15-card insert"},x2:{t:"Total Impact",odds:"1:48 Series 1",meta:"12-card insert"}}}],
+  items:[
+   {k:"boss",t:"Boss",odds:"1:6 Series 1",meta:"20-card insert"},
+   {k:"sboss",t:"Super Boss",odds:"1:36 Series 1",meta:"Embossed parallel of Boss"},
+   {k:"x1",t:"Quick Strike / Star Gazing",odds:"",meta:""},
+   {k:"sc",t:"Slam Cam",odds:"1:36 Series 2",meta:"12-card insert · horizontal",land:true},
+   {k:"x2",t:"Rave Reviews / Total Impact",odds:"",meta:""},
+   {k:"bmoc",t:"Big Men on Court",odds:"1:288 Series 2",meta:"15-card insert · lenticular"},
+   {k:"rave",t:"Rave",odds:"Serial /399 · hobby only",meta:"Parallel of the base card"},
+   {k:"ravez",t:"Rave · Zupermen",odds:"Serial /399 · hobby only · Series 2",meta:"Parallel of the Zupermen subset"},
+   {k:"srave",t:"Super Rave · Zupermen",odds:"Serial /50 · hobby only · Series 2",meta:"Parallel of the Zupermen subset"}]},box:"img/boxes/bk97-z-force.webp",sport:"Basketball",year:1997,season:"1997-98",mfr:"SkyBox",name:"Z-Force",series:2,
+ cfg:"210 cards · 36 packs × 8 cards · Series 1 #1-110 · Series 2 #111-210",note:"Rave (/399) runs across both series; Super Rave (/50) is Series 2 only. The set has two #172s because #143 was misnumbered.",
+ src:TCDB+"Inserts.cfm/sid/2675/1997-98-SkyBox-Z-Force",rows:`
+Boss|i|1|B|1:6||||
+Limited Access|i|1|R||1:18|||
+Fast Track|i|1|B|1:24||||
+Super Boss|i|1|B|1:36||||Embossed Boss parallel
+Total Impact|i|1|B|1:48||||
+Rave Reviews|i|1|B|1:288||||
+Zensations|i|2|B|1:6||||Die cut
+Star Gazing|i|2|R||1:18|||
+Zebut|i|2|B|1:24||||Die cut
+Slam Cam|i|2|B|1:36||||
+Quick Strike|i|2|B|1:96||||
+Big Men on Court|i|2|B|1:288||||
+Autographics|a|B|B|1:120||||Shared checklist
+Autographics Century Marks|a|B|B||||100|Hand numbered
+Autographics Redemptions|x|2|B|||||7-card set redeemable for full Autographics set
+Rave|p|B|H||||399|
+Super Rave|p|2|H||||50|#111-208 only`},
+
+{id:"bk97-hoops",gallery:{interval:9000,prefix:"ho97",imgs:["ho97-kb-ff-b", "ho97-kb-ff-f", "ho97-kb-ffu-b", "ho97-kb-ffu-f", "ho97-kb-hv-b", "ho97-kb-hv-f", "ho97-kb-hv5-b", "ho97-kb-hv5-f", "ho97-mj-ff-b", "ho97-mj-ff-f", "ho97-mj-ffu-b", "ho97-mj-ffu-f", "ho97-mj-hs-b", "ho97-mj-hs-f", "ho97-mj-hv-b", "ho97-mj-hv-f", "ho97-mj-hv5-b", "ho97-mj-hv5-f"],absent:"",heading:"across the chase inserts",
+  players:[
+   {key:"mj",name:"Michael Jordan",short:"Jordan",nums:{ff:"#4 FFC",ffu:"#4 FFC",hv:"#14 HV",hv5:"#14 HV",hs:"#1"},serial:{hv5:"271/500"}},
+   {key:"kb",name:"Kobe Bryant",short:"Bryant",nums:{ff:"#9 FFC",ffu:"#9 FFC",hv:"#1 HV",hv5:"#1 HV",hs:null},serial:{hv5:"134/500"}}],
+  items:[
+   {k:"ff",t:"Frequent Flyer Club",odds:"1:36 Series 1 · hobby only",meta:"20-card insert · die cut · horizontal",land:true},
+   {k:"hv",t:"High Voltage",odds:"1:36 Series 2 · hobby only",meta:"20-card insert"},
+   {k:"hs",t:"HOOPerstars",odds:"1:288 Series 1",meta:"10-card insert · die cut"},
+   {k:"ffu",t:"Frequent Flyer Club · First Class Upgrade",odds:"1:360 Series 1 · hobby only",meta:"Die cut with gold-foil \"UPGRADE\"",land:true},
+   {k:"hv5",t:"High Voltage · 500 Volts",odds:"Serial /500 · Series 2 · hobby only",meta:"Parallel of High Voltage"}]},box:"img/boxes/bk97-hoops.webp",sport:"Basketball",year:1997,season:"1997-98",mfr:"SkyBox",name:"Hoops",series:2,
+ cfg:"330 cards · Series 1 #1-165 · Series 2 #166-330",note:"",
+ src:TCDB+"Inserts.cfm/sid/2642/1997-98-Hoops",rows:`
+Talkin' Hoops|i|1|B|1/pack||30||
+Chill with Hill|i|1|B|1:10||10||
+Dish n Swish|i|1|R||1:18|10||
+Frequent Flyer Club|i|1|H|1:36||20||Die cut
+Rookie Headliners|i|1|B|1:48||10||
+HOOPerstars|i|1|B|1:288||10||Die cut
+Frequent Flyer Club First Class Upgrade|i|1|H|1:360||20||Die cut, gold foil "UPGRADE"
+Great Shots! 5x7|i|2|B|1/pack||30||Unfolds to 5" × 7"
+Chairman of the Boards|i|2|B|1:9||10||
+Rock the House|i|2|B|1:18||10||
+High Voltage|i|2|H|1:36||20||
+Top of the World|i|2|B|1:48||15||
+9-1-1|i|2|B|1:288||10||
+High Voltage 500 Volts|i|2|H|||20|500|
+Autographics|a|B|?|||||Shared checklist`},
+
+
+{id:"bk97-finest",box:"img/boxes/bk97-finest.webp",tiers:{interval:9000,prefix:"fi97",step1:"Choose a tier",imgs:["fi97-kb-bz-off-b", "fi97-kb-bz-off-f", "fi97-kb-bz-on-b", "fi97-kb-bz-on-f", "fi97-kb-gd-emb-b", "fi97-kb-gd-emb-f", "fi97-kb-gd-off-b", "fi97-kb-gd-off-f", "fi97-kb-gd-on-b", "fi97-kb-gd-on-f", "fi97-kb-sv-emb-b", "fi97-kb-sv-emb-f", "fi97-kb-sv-off-b", "fi97-kb-sv-off-f", "fi97-kb-sv-on-b", "fi97-kb-sv-on-f", "fi97-mj-bz-finoff-b", "fi97-mj-bz-finoff-f", "fi97-mj-bz-finon-b", "fi97-mj-bz-finon-f", "fi97-mj-bz-off-b", "fi97-mj-bz-off-f", "fi97-mj-bz-on-b", "fi97-mj-bz-on-f", "fi97-mj-gd-emb-b", "fi97-mj-gd-emb-f", "fi97-mj-gd-off-b", "fi97-mj-gd-off-f", "fi97-mj-gd-on-b", "fi97-mj-gd-on-f", "fi97-mj-sv-emb-b", "fi97-mj-sv-emb-f", "fi97-mj-sv-off-b", "fi97-mj-sv-off-f", "fi97-mj-sv-on-b", "fi97-mj-sv-on-f"],intro:"Every card here is a Refractor",
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[
+   {k:"bz",t:"Bronze",sub:"Common tier",desc:"Common Refractors, 1:12 packs. No embossed version exists at this tier.",versions:[
+     {k:"on",t:"Refractor · protector on",sub:"With the peel-off protector coating",odds:"1:12 Series 2",nums:{mj:"#271 Showstoppers",kb:"#262 Showstoppers"}},
+     {k:"off",t:"Refractor · protector off",sub:"Coating peeled",odds:"1:12 Series 2",nums:{mj:"#271 Showstoppers",kb:"#262 Showstoppers"}},
+     {k:"finon",t:"Finishers Refractor · protector on",sub:"Series 1 · with coating",odds:"1:12 Series 1",nums:{mj:"#39 Finishers",kb:null}},
+     {k:"finoff",t:"Finishers Refractor · protector off",sub:"Series 1 · coating peeled",odds:"1:12 Series 1",nums:{mj:"#39 Finishers",kb:null}}]},
+   {k:"sv",t:"Silver",sub:"Uncommon tier",desc:"Uncommon Refractors /1090 and Embossed Refractors /263.",versions:[
+     {k:"on",t:"Refractor · protector on",sub:"With the peel-off protector coating",odds:"1:48 · serial /1090",nums:{mj:"#287 Creators",kb:"#137 Catalysts"},serial:{mj:"0009/1090",kb:"1048/1090"}},
+     {k:"off",t:"Refractor · protector off",sub:"Coating peeled",odds:"1:48 · serial /1090",nums:{mj:"#287 Creators",kb:"#137 Catalysts"},serial:{mj:"0009/1090",kb:"1048/1090"}},
+     {k:"emb",t:"Embossed Refractor",sub:"Raised player photo",odds:"1:192 · serial /263",nums:{mj:"#287 Creators",kb:"#137 Catalysts"},serial:{mj:"191/263",kb:"193/263"}}]},
+   {k:"gd",t:"Gold",sub:"Rare tier",desc:"Rare Refractors /289 and die-cut Embossed Refractors /74.",versions:[
+     {k:"on",t:"Refractor · protector on",sub:"With the peel-off protector coating",odds:"1:288 · serial /289",nums:{mj:"#154 Masters",kb:"#323 Creators"},serial:{mj:"064/289",kb:"211/289"}},
+     {k:"off",t:"Refractor · protector off",sub:"Coating peeled",odds:"1:288 · serial /289",nums:{mj:"#154 Masters",kb:"#323 Creators"},serial:{mj:"064/289",kb:"211/289"}},
+     {k:"emb",t:"Embossed Refractor",sub:"Embossed · die cut",odds:"1:1,152 · serial /74",nums:{mj:"#154 Masters",kb:"#323 Creators"},serial:{mj:"034/074",kb:"52/74"}}]}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"Topps",name:"Finest",series:2,
+ cfg:"326 cards · Series 1 #1-173 · Series 2 #174-326",note:"No separate insert sets. The chase is built into the base set: Common (bronze), Uncommon (silver) and Rare (gold) tiers, each with Refractor, Embossed and Embossed Refractor versions. Rare embossed cards are also die cut.",
+ src:TCDB+"Inserts.cfm/sid/2624/1997-98-Finest",rows:`
+Common (bronze)|i|B|B|Base||220||#1-120, #174-273
+Uncommon (silver)|i|B|B|1:4||66||#121-153, #274-306
+Rare (gold)|i|B|B|1:24||40||#154-173, #307-326
+Common Refractor|p|B|B|1:12||220||
+Uncommon Embossed|p|B|B|1:16||66||Raised player photo
+Uncommon Refractor|p|B|B|1:48||66|1090|
+Rare Embossed|p|B|B|1:96||40||Raised photo · die cut
+Uncommon Embossed Refractor|p|B|B|1:192||66|263|
+Rare Refractor|p|B|B|1:288||40|289|
+Rare Embossed Refractor|p|B|B|1:1152||40|74|Die cut`},
+
+{id:"bk97-bowmans-best",box:"img/boxes/bk97-bowmans-best.webp",tiers:{interval:9000,prefix:"bb97",intro:"Refractor and Atomic Refractor versions",imgs:["bb97-kb-base-atom-b", "bb97-kb-base-atom-f", "bb97-kb-base-ref-b", "bb97-kb-base-ref-f", "bb97-kb-tech-atom-b", "bb97-kb-tech-atom-f", "bb97-kb-tech-ref-b", "bb97-kb-tech-ref-f", "bb97-mj-base-atom-b", "bb97-mj-base-atom-f", "bb97-mj-base-ref-b", "bb97-mj-base-ref-f", "bb97-mj-bp-atom-b", "bb97-mj-bp-atom-f", "bb97-mj-bp-ref-b", "bb97-mj-bp-ref-f", "bb97-mj-tech-atom-b", "bb97-mj-tech-atom-f", "bb97-mj-tech-ref-b", "bb97-mj-tech-ref-f"],land:["bb97-mj-base-atom-b", "bb97-mj-bp-atom-b", "bb97-mj-bp-ref-b", "bb97-mj-base-ref-b", "bb97-kb-base-atom-b", "bb97-kb-base-ref-b"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[
+   {k:"base",t:"Base",sub:"Refractor & Atomic",desc:"Base-card parallels: Jordan #60, Bryant #88. Horizontal backs.",versions:[
+     {k:"ref",t:"Refractor",sub:"Rainbow refractor finish",odds:"1:12 hobby · 1:20 retail",nums:{mj:"#60",kb:"#88"}},
+     {k:"atom",t:"Atomic Refractor",sub:"Checkerboard atomic finish",odds:"1:24 hobby · 1:40 retail",nums:{mj:"#60",kb:"#88"}}]},
+   {k:"bp",t:"Best Performance",sub:"Jordan only",desc:"#96 from the 10-card Best Performance subset of the base set. Bryant is not in the subset.",versions:[
+     {k:"ref",t:"Refractor",sub:"Rainbow refractor finish",odds:"1:12 hobby · 1:20 retail",nums:{mj:"#96",kb:null}},
+     {k:"atom",t:"Atomic Refractor",sub:"Checkerboard atomic finish",odds:"1:24 hobby · 1:40 retail",nums:{mj:"#96",kb:null}}]},
+   {k:"tech",t:"Techniques",sub:"Refractor & Atomic",desc:"Best Techniques insert: Jordan is Best Scorer (T2), Bryant is Best Dunker (T4).",versions:[
+     {k:"ref",t:"Refractor",sub:"Rainbow refractor finish",odds:"—",nums:{mj:"#T2 Best Scorer",kb:"#T4 Best Dunker"}},
+     {k:"atom",t:"Atomic Refractor",sub:"Checkerboard atomic finish",odds:"—",nums:{mj:"#T2 Best Scorer",kb:"#T4 Best Dunker"}}]}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"Topps",name:"Bowman's Best",series:1,
+ cfg:"125 cards · 6-card packs · $3.99 SRP",note:"125-card chromium set: 90 veterans, 25 rookies and the 10-card Best Performance subset. Every base card comes as a Refractor and an Atomic Refractor.",
+ src:"https://www.radicards.com/basketball/1997-98-bowmans-best-basketball-cards/",rows:`
+Refractor|p|-|B|1:12|1:20|125||
+Atomic Refractor|p|-|B|1:24|1:40|125||
+Best Techniques|i|-|?|||10||Refractor and Atomic versions
+Best Cuts|i|-|?|||||Refractor and Atomic versions
+Best Picks|i|-|?|||||Rookie insert · Refractor and Atomic versions
+Mirror Image|i|-|?|||||Four players per card · Refractor and Atomic versions
+Autographs|a|-|?|1:373||||
+Autograph Refractors|a|-|?|1:987||||
+Autograph Atomic Refractors|a|-|?|1:5,961||||`},
+
+{id:"bk97-stadium-club",box:"img/boxes/bk97-stadium-club.webp",tiers:{interval:9000,prefix:"sc97",intro:"Base, inserts and their parallels",imgs:["sc97-kb-base-mo-b", "sc97-kb-base-mo-f", "sc97-kb-base-ooak-b", "sc97-kb-base-ooak-f", "sc97-kb-base-reg-b", "sc97-kb-base-reg-f", "sc97-kb-hs-mo-b", "sc97-kb-hs-mo-f", "sc97-kb-hs-reg-b", "sc97-kb-hs-reg-f", "sc97-kb-rc-mo-b", "sc97-kb-rc-mo-f", "sc97-kb-rc-reg-b", "sc97-kb-rc-reg-f", "sc97-mj-base-mo-b", "sc97-mj-base-mo-f", "sc97-mj-base-ooak-b", "sc97-mj-base-ooak-f", "sc97-mj-base-reg-b", "sc97-mj-base-reg-f", "sc97-mj-hh-mo-b", "sc97-mj-hh-mo-f", "sc97-mj-hh-reg-b", "sc97-mj-hh-reg-f", "sc97-mj-hs-mo-b", "sc97-mj-hs-mo-f", "sc97-mj-hs-reg-b", "sc97-mj-hs-reg-f", "sc97-mj-nc-mo-b", "sc97-mj-nc-mo-f", "sc97-mj-nc-reg-b", "sc97-mj-nc-reg-f", "sc97-mj-rc-mo-b", "sc97-mj-rc-mo-f", "sc97-mj-rc-reg-b", "sc97-mj-rc-reg-f", "sc97-mj-t1-ill-b", "sc97-mj-t1-ill-f", "sc97-mj-t1-lum-b", "sc97-mj-t1-lum-f", "sc97-mj-t1-mo-b", "sc97-mj-t1-mo-f", "sc97-mj-t9-ill-b", "sc97-mj-t9-ill-f", "sc97-mj-t9-lsc-b", "sc97-mj-t9-lsc-f", "sc97-mj-t9-lum-b", "sc97-mj-t9-lum-f", "sc97-mj-t9-mo-b", "sc97-mj-t9-mo-f"],land:["sc97-mj-nc-reg-b", "sc97-mj-nc-mo-b"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "base", "t": "Base", "sub": "Base · Members Only · One of a Kind", "desc": "Jordan #118 (Series 1), Bryant #146 (Series 2). A 200-copy First Day Issue parallel also exists (1:24 retail).", "versions": [{"k": "reg", "t": "Base", "sub": "Standard issue", "odds": "—", "nums": {"mj": "#118", "kb": "#146"}}, {"k": "mo", "t": "Members Only", "sub": "Diagonal \"Members Only\" pattern on back", "odds": "Mail-in factory set", "nums": {"mj": "#118", "kb": "#146"}, "backNote": "Members Only parallel: from the mail-in factory set for Stadium Club members. \"MEMBERS ONLY\" is printed in a diagonal pattern across the back."}, {"k": "ooak", "t": "One of a Kind", "sub": "Holographic foil · serial-numbered on back", "odds": "1:86 hobby (Series 1) · 1:69 hobby (Series 2) · #'d /150", "nums": {"mj": "#118", "kb": "#146"}, "serial": {"mj": "050/150", "kb": "118/150"}}]}, {"k": "hh", "t": "Hardcourt Heroics", "sub": "Series 1 insert", "desc": "Series 1 insert. The back is headed \"Hometown Heroism\". Jordan only here.", "versions": [{"k": "reg", "t": "Hardcourt Heroics", "sub": "Standard issue", "odds": "1:12 Series 1 packs", "nums": {"mj": "#H1", "kb": null}}, {"k": "mo", "t": "Members Only", "sub": "Diagonal \"Members Only\" pattern on back", "odds": "Mail-in factory set", "nums": {"mj": "#H1", "kb": null}, "backNote": "Members Only parallel: from the mail-in factory set for Stadium Club members. \"MEMBERS ONLY\" is printed in a diagonal pattern across the back."}]}, {"k": "hs", "t": "Hoop Screams", "sub": "Series 1 insert", "desc": "Series 1 insert with an etched-style back.", "versions": [{"k": "reg", "t": "Hoop Screams", "sub": "Standard issue", "odds": "1:12 Series 1 packs", "nums": {"mj": "#HS10", "kb": "#HS9"}}, {"k": "mo", "t": "Members Only", "sub": "Diagonal \"Members Only\" pattern on back", "odds": "Mail-in factory set", "nums": {"mj": "#HS10", "kb": "#HS9"}, "backNote": "Members Only parallel: from the mail-in factory set for Stadium Club members. \"MEMBERS ONLY\" is printed in a diagonal pattern across the back."}]}, {"k": "nc", "t": "Never Compromise", "sub": "Series 2 insert", "desc": "Series 2 insert with a horizontal back. Jordan only here.", "versions": [{"k": "reg", "t": "Never Compromise", "sub": "Standard issue", "odds": "1:36 Series 2 packs", "nums": {"mj": "#NC1", "kb": null}}, {"k": "mo", "t": "Members Only", "sub": "Diagonal \"Members Only\" pattern on back", "odds": "Mail-in factory set", "nums": {"mj": "#NC1", "kb": null}, "backNote": "Members Only parallel: from the mail-in factory set for Stadium Club members. \"MEMBERS ONLY\" is printed in a diagonal pattern across the back."}]}, {"k": "rc", "t": "Royal Court", "sub": "Series 2 insert", "desc": "Series 2 insert. Jordan is \"King of Kings\", Bryant \"King of the Sky\".", "versions": [{"k": "reg", "t": "Royal Court", "sub": "Standard issue", "odds": "1:12 Series 2 packs", "nums": {"mj": "#RC6 King of Kings", "kb": "#RC4 King of the Sky"}}, {"k": "mo", "t": "Members Only", "sub": "Diagonal \"Members Only\" pattern on back", "odds": "Mail-in factory set", "nums": {"mj": "#RC6 King of Kings", "kb": "#RC4 King of the Sky"}, "backNote": "Members Only parallel: from the mail-in factory set for Stadium Club members. \"MEMBERS ONLY\" is printed in a diagonal pattern across the back."}]}, {"k": "t1", "t": "Triumvirate · Bulls", "sub": "T1B · Series 1 retail", "desc": "Die-cut. Jordan's T1B joins Pippen (T1A) and Rodman (T1C) to form one Bulls image. Retail only. No Luminescent scan yet.", "versions": [{"k": "lum", "t": "Luminous", "sub": "Dark chrome finish", "odds": "1:48 Series 1 retail", "nums": {"mj": "#T1B", "kb": null}}, {"k": "ill", "t": "Illuminator", "sub": "Acetate · bright refractor finish", "odds": "1:384 Series 1 retail", "nums": {"mj": "#T1B", "kb": null}}, {"k": "mo", "t": "Members Only", "sub": "Diagonal \"Members Only\" pattern on back", "odds": "Mail-in factory set", "nums": {"mj": "#T1B", "kb": null}, "backNote": "Members Only parallel: from the mail-in factory set for Stadium Club members. \"MEMBERS ONLY\" is printed in a diagonal pattern across the back. The back shown here is a clean scan without the pattern."}]}, {"k": "t9", "t": "Triumvirate · East Guards", "sub": "T9B · Series 2 retail", "desc": "Die-cut. Jordan's T9B joins Tim Hardaway (T9A) and Anfernee Hardaway (T9C) as the East's top-scoring guards. Retail only.", "versions": [{"k": "lum", "t": "Luminous", "sub": "Dark chrome finish", "odds": "1:48 Series 2 retail", "nums": {"mj": "#T9B", "kb": null}}, {"k": "lsc", "t": "Luminescent", "sub": "Bright chrome refractor finish", "odds": "1:192 Series 2 retail", "nums": {"mj": "#T9B", "kb": null}, "backNote": "Luminous and Luminescent backs look the same; one back scan is used for both."}, {"k": "ill", "t": "Illuminator", "sub": "Acetate · bright refractor finish", "odds": "1:384 Series 2 retail", "nums": {"mj": "#T9B", "kb": null}}, {"k": "mo", "t": "Members Only", "sub": "Diagonal \"Members Only\" pattern on back", "odds": "Mail-in factory set", "nums": {"mj": "#T9B", "kb": null}, "backNote": "Members Only parallel: from the mail-in factory set for Stadium Club members. \"MEMBERS ONLY\" is printed in a diagonal pattern across the back. The front shown is the Luminous scan."}]}]},
+  sport:"Basketball",year:1997,season:"1997-98",mfr:"Topps",name:"Stadium Club",series:2,
+ cfg:"240 cards · two series of 120",note:"Topps' premium brand: full-bleed photography on thick stock, released in two 120-card series. Parallels include a 200-copy First Day Issue, One of a Kind numbered to 150, and Members Only cards from the club's mail-in factory set.",
+ src:"https://www.tcdb.com/Inserts.cfm/sid/2692/1997-98-StadiumClub",rows:`
+First Day Issue|p|-|R||1:24|240|200|Gold-foil "First Day Issue" on front
+One of a Kind|p|-|H|1:86 / 1:69||240|150|Series 1 / Series 2 hobby odds
+Members Only|p|-|?|||240||Mail-in factory set · "Members Only" pattern on back
+Hardcourt Heroics|i|1|B|1:12|1:12|||
+Hoop Screams|i|1|B|1:12|1:12|||
+Hardwood Hopefuls|i|1|B|1:36|1:36|||
+Never Compromise|i|2|B|1:36|1:36|||
+Royal Court|i|2|B|1:12|1:12|||
+Bowman's Best Preview|i|-|B|1:24|1:24|||
+Triumvirate Luminous|i|-|R||1:48|48||Die-cut · T1A–T8C Series 1, T9A–T16C Series 2
+Triumvirate Luminescent|p|-|R||1:192|48||Bright chrome refractor
+Triumvirate Illuminator|p|-|R||1:384|48||Acetate refractor
+Co-Signers|a|-|?|||||Dual autographs`},
+{id:"bk98-skybox-premium",sport:"Basketball",year:1998,season:"1998-99",mfr:"SkyBox",name:"SkyBox Premium",series:2,
+ cfg:"Series 1 & 2",note:"Home of Intimidation Nation and That's Jam, two of the most chased late-'90s inserts. Star Rubies is numbered /50 (#1-225) and /25 (rookies #226-265).",
+ src:TCDB+"Inserts.cfm/sid/2778/1998-99-SkyBox-Premium",rows:`
+Smooth|i|1|B|1:6||15||
+Just Cookin'|i|1|B|1:12||||
+Soul of the Game|i|1|B|1:18||||
+Net Set|i|1|B|1:36||||
+3D|i|1|B|1:96||||
+Intimidation Nation|i|1|B|1:360||10||≈1:3,600 per specific card
+B.P.O.|i|2|B|1:6||15||
+Mod Squad|i|2|B|1:18||||
+Fresh Faces|i|2|B|1:36||||
+That's Jam|i|2|B|1:96||||
+Slam Funk|i|2|B|1:360||||
+Autographics|a|B|B|1:68 (S1) · 1:24 (S2)||||Black ink, shared checklist
+Autographics Blue|a|B|B||||50|Hand numbered
+Star Rubies|p|B|B|||265|50 / 25|/50 veterans, /25 rookies`},
+
+{id:"bk98-ultra",sport:"Basketball",year:1998,season:"1998-99",mfr:"Fleer",name:"Ultra",series:1,
+ cfg:"24 packs × 10 cards · rookies 1:4",note:"Lockout-year single series. All three parallels are hobby only. Some insert odds not yet verified.",
+ src:TCDB+"Inserts.cfm/sid/2791/1998-99-Ultra",rows:`
+NBAttitude|i|-|B|1:6||||
+World Premiere|i|-|B|||||
+Give and Take|i|-|B|||||
+Leading Performers|i|-|B|||||
+Exclamation Points|i|-|B|||||
+Gold Medallion|p|-|H|1/pack (vets) · 1:35 (rookies)||||
+Platinum Medallion|p|-|H||||99 / 66|/99 veterans, /66 rookies
+Masterpiece|p|-|H||||1|1 of 1`},
+
+{id:"bk98-metal-universe",sport:"Basketball",year:1998,season:"1998-99",mfr:"SkyBox",name:"Metal Universe",series:1,
+ cfg:"Single series, 125 cards",note:"Insert names verified; pack odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/2773/1998-99-Metal-Universe",rows:`
+Neophytes|i|-|?|||||
+Big Ups|i|-|?|||||
+Planet Metal|i|-|?|||||
+Linchpins|i|-|?|||||
+Precious Metal Gems|p|-|?|||||
+Gem Masters|p|-|?|||||
+Autographics|a|-|?|||||Shared checklist`},
+
+{id:"bk98-ex-century",sport:"Basketball",year:1998,season:"1998-99",mfr:"SkyBox",name:"E-X Century",series:1,
+ cfg:"Hobby: 18 packs × 3 cards",note:"Insert names verified; pack odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/2775/1998-99-SkyBox-E-X-Century",rows:`
+Generation E-X|i|-|?|||||
+Dunk'N Go-Nuts|i|-|?|||||
+Authen-Kicks|i|-|?|||||Shoe material
+Essential Credentials Now|p|-|?||||varies|
+Essential Credentials Future|p|-|?||||varies|
+Autographics|a|-|?|||||Shared checklist`},
+
+{id:"bk98-flair-showcase",sport:"Basketball",year:1998,season:"1998-99",mfr:"Fleer",name:"Flair Showcase",series:1,
+ cfg:"Single series, 90 players",note:"Insert names verified; most pack odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/2763/1998-99-Flair-Showcase",rows:`
+Class of '98|i|-|?|||||
+takeit2.net|i|-|?|||15|1000|Serial numbered
+Legacy Collection (Rows 1-3)|p|-|?|||||
+Masterpiece Legacy Collection|p|-|?||||1|1 of 1`},
+
+{id:"bk98-fleer-tradition",sport:"Basketball",year:1998,season:"1998-99",mfr:"Fleer",name:"Fleer Tradition",series:1,
+ cfg:"Series 1 only",note:"Fleer's flagship was renamed Tradition this year. The lockout cancelled Series 2, so this is the first flagship Fleer basketball set with no rookie cards. Odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/2765/1998-99-Fleer-Tradition",rows:`
+Electrifying|i|1|?|||||
+Great Expectations|i|1|?|||||
+Playmakers Theatre|i|1|?|||||
+Rookie Rewind|i|1|?|||||
+Timeless Memories|i|1|?|||||
+Classic '61|p|1|?|||||
+Lucky 13 Redemption|x|1|?|||||`},
+
+{id:"bk99-flair-showcase",sport:"Basketball",year:1999,season:"1999-00",mfr:"Fleer",name:"Flair Showcase",series:1,
+ cfg:"Single series, 130 cards",note:"",
+ src:TCDB+"Inserts.cfm/sid/2824/1999-00-Flair-Showcase",rows:`
+Next|i|-|B|1:3||||
+Ball of Fame|i|-|B|1:5||||
+ConVINCEing|i|-|B|1:10||||Vince Carter
+Guaranteed Fresh|i|-|B|1:10||||
+Elevators|i|-|B|1:20||||
+License to Skill|i|-|B|1:20||||
+Fresh Ink|a|-|B|1:39||||
+Feel the Game|i|-|B|1:120||||Game-used
+Rookie Showcase|i|-|B||||500|
+Legacy Collection|p|-|B|||||
+Masterpiece|p|-|B||||1|1 of 1`},
+
+/* ===================== FOOTBALL ===================== */
+{id:"fb96-skybox-premium",sport:"Football",year:1996,season:"1996",mfr:"SkyBox",name:"SkyBox Premium",series:1,
+ cfg:"Single series",note:"Rubies parallel (#1-228) came one per hobby box.",
+ src:TCDB+"Inserts.cfm/sid/3816/1996-SkyBoxPremium-Rubies",rows:`
+Inside the Numbers|i|-|R||1/pack (marked)|||Specially-marked retail packs
+SkyBox V|i|-|B|1:18||||
+Close-Ups|i|-|R||1:30|||
+The Next Big Thing|i|-|B|1:40||||
+Thunder and Lightning|i|-|B|1:72||||Sleeve + card combo
+Prime-Time Rookies|i|-|H|1:96||||
+Brett Favre MVP Chromium|i|-|B|1:144||1||Die cut
+Brett Favre MVP Leather|i|-|B|1:144||1||
+Brett Favre MVP Lenticular Redemption|x|-|B|1:240||||
+Autographs|a|-|B|1:900||||
+Rubies|p|-|H|1/box||228||Red foil`},
+
+{id:"fb96-metal",sport:"Football",year:1996,season:"1996",mfr:"Fleer",name:"Metal",series:1,
+ cfg:"Single series, 150 cards",note:"",
+ src:TCDB+"Inserts.cfm/sid/3716/1996-Fleer-Metal",rows:`
+Goldfingers|i|-|B|1:8||||
+Goldflingers|i|-|B|1:12||||
+Platinum Portraits|i|-|B|1:50||||First 10 cards; others via wrapper redemption
+Freshly Forged|i|-|B|1:80||||
+Molten Metal|i|-|B|1:120||||
+Precious Metal|p|-|B|1/box||||`},
+
+{id:"fb97-fleer",sport:"Football",year:1997,season:"1997",mfr:"Fleer",name:"Fleer",series:1,
+ cfg:"450 cards",note:"",
+ src:TCDB+"Inserts.cfm/sid/3961/1997-Fleer",rows:`
+Million Dollar Moments|i|-|B|1/pack||||Shared with Ultra
+Game Breakers|i|-|R||1:2|20||
+Rookie Sensations|i|-|B|1:4||||
+Prospects '97|i|-|B|1:6||||
+Game Breakers Supreme|i|-|B|1:18||||Embossed
+Decade of Excellence|i|-|H|1:36||||
+Fleer All-Pro|i|-|R||1:36|||
+Thrill Seekers|i|-|B|1:288||12||
+Decade of Excellence Rare Traditions|i|-|H|1:360||||Silver foil
+Traditions Crystal|p|-|H|1:2||||
+Traditions Tiffany|p|-|H|1:20||||`},
+
+{id:"fb97-ultra",sport:"Football",year:1997,season:"1997",mfr:"Fleer",name:"Ultra",series:2,
+ cfg:"Series 1 & 2",note:"",
+ src:TCDB+"Inserts.cfm/sid/4163/",rows:`
+Rookies|i|1|B|1:4||||
+Talent Show|i|1|B|1:4||||
+Blitzkrieg|i|1|B|1:6||||
+Play of the Game|i|1|B|1:8||||
+Sunday School|i|1|B|1:8||||
+Rookies Gold Embossed|i|1|B|1:18||||
+Blitzkrieg Die Cut|i|1|B|1:36||||
+Starring Role|i|1|B|1:288||||
+First Rounders|i|2|B|1:4||||
+Rising Stars|i|2|B|1:4||||
+Specialists|i|2|B|1:6||||Die cut
+Comeback Kids|i|2|B|1:8||||Die cut
+The Main Event|i|2|B|1:8||||
+All-Rookie Team|i|2|B|1:18||||
+Specialists Ultra|i|2|B|1:36||||
+Ultra Stars|i|2|B|1:288||||
+Gold Medallion|p|B|H|1/pack||||
+Platinum Medallion|p|B|H|1:100||||Print run under 150`},
+
+{id:"fb97-skybox-premium",sport:"Football",year:1997,season:"1997",mfr:"SkyBox",name:"SkyBox Premium",series:1,
+ cfg:"Single series",note:"Collecting S-K-Y-B-O-X redemption letters earned the full Autographics set. \"Y\" was the rarest.",
+ src:TCDB+"Inserts.cfm/sid/4103/1997-SkyBoxPremium",rows:`
+Reebok|i|-|B|1/pack||||Bronze, Silver, Gold, Red, Green
+Inside the Numbers|i|-|R||1/pack (marked)|||
+Close Up|i|-|B|1:18||||
+PrimeTime Rookies|i|-|B|1:96||||
+Premium Players|i|-|B|1:192||||
+Larger Than Life|i|-|B|1:360||||
+Autographics|a|-|B|1:72||||Shared checklist
+Autographics Century Mark|a|-|B||||100|Hand numbered
+Autographics Redemption Letters|x|-|B|||||S-K-Y-B-O-X`},
+
+{id:"fb97-ex2000",sport:"Football",year:1997,season:"1997",mfr:"SkyBox",name:"E-X2000",series:1,
+ cfg:"60 cards",note:"",
+ src:TCDB+"Inserts.cfm/sid/4106/1997-SkyBox-E-X2000",rows:`
+Star Date 2000|i|-|B|1:9||||
+Fleet of Foot|i|-|B|1:20||||Die cut
+A Cut Above|i|-|B|1:288||||Die cut
+Autographics|a|-|B|1:60||||Shared checklist
+Autographics Century Mark|a|-|B||||100|`},
+
+{id:"fb97-flair-showcase",sport:"Football",year:1997,season:"1997",mfr:"Fleer",name:"Flair Showcase",series:1,
+ cfg:"Rows 2, 1, 0",note:"Row 2 (Style) base: #1-40 3:2 packs, #41-80 2:3, #81-120 one per pack. Insert odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/3955/1997-FlairShowcase",rows:`
+Hot Hands|i|-|?|||||
+Row 1 (Grace)|p|-|?|||||
+Row 0 (Showcase)|p|-|?|||||
+Legacy Collection (Rows 0-2)|p|-|?|||||
+Masterpiece Legacy Collection|p|-|?||||1|1 of 1`},
+
+{id:"fb98-skybox-premium",sport:"Football",year:1998,season:"1998",mfr:"SkyBox",name:"SkyBox Premium",series:1,
+ cfg:"Single series · rookies #211-250 1:4",note:"",
+ src:TCDB+"Inserts.cfm/sid/4252",rows:`
+D'stroyers|i|-|B|1:6||||
+Soul of the Game|i|-|B|1:18||||Die cut
+Rap Show|i|-|B|1:36||||
+Prime Time Rookies|i|-|B|1:96||||
+Intimidation Nation|i|-|B|1:360||||
+Autographics|a|-|H|1:68||||Shared checklist
+Autographics Blue Ink|a|-|B|1:68|||50|Hand numbered
+Autographics Redemption|x|-|R||1:68|||
+Star Rubies|p|-|B|||250|50 / 35|/50 veterans, /35 rookies
+Fleet Farm|p|-|R||1/pack|||Fleet Farm retail only`},
+
+{id:"fb98-metal-universe",sport:"Football",year:1998,season:"1998",mfr:"SkyBox",name:"Metal Universe",series:1,
+ cfg:"200 cards",note:"Odds as reported from Beckett and dealer listings on TCDb.",
+ src:TCDB+"ViewSet.cfm/sid/4219/1998-Metal-Universe",rows:`
+Planet Football|i|-|B|1:8||||
+Quasars|i|-|B|1:20||||
+Titanium|i|-|B|1:96||||
+E-X2001 Previews|i|-|B|1:144||||
+Decided Edge|i|-|B|1:288||||
+Precious Metal Gems|p|-|?|||||
+Precious Metal Gems Masters|p|-|?|||||
+Autographics|a|-|?|||||Shared checklist`},
+
+{id:"fb98-ex2001",sport:"Football",year:1998,season:"1998",mfr:"SkyBox",name:"E-X2001",series:1,
+ cfg:"60 cards",note:"Some insert odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/4206/1998-SkyBox-E-X2001",rows:`
+Star Date 2001|i|-|B|1:12||15||Peyton Manning, Randy Moss
+Helmet Heroes|i|-|?|||||
+Destination Honolulu|i|-|?|||||
+Essential Credentials Now|p|-|?||||varies|
+Essential Credentials Future|p|-|?||||varies|`},
+
+{id:"fb99-skybox-premium",sport:"Football",year:1999,season:"1999",mfr:"SkyBox",name:"SkyBox Premium",series:1,
+ cfg:"Single series",note:"Rookies #211-250 come in a portrait base and a short-printed action variation. Most insert odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/4335/1999-SkyBox-Premium",rows:`
+2000 Men|i|-|?|||||
+Deja Vu|i|-|?|||||
+Deja Vu Die Cut|i|-|?|||||
+Genuine Coverage|i|-|?|||||
+Autographics|a|-|B|1:68|1:90|||Shared with Dominion, E-X Century, Metal Universe
+Autographics Red Foil|a|-|?|||||`},
+
+{id:"fb99-ex-century",sport:"Football",year:1999,season:"1999",mfr:"SkyBox",name:"E-X Century",series:1,
+ cfg:"90 cards · rookies #61-90 1:4",note:"Insert odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/4290/1999-SkyBox-E-X-Century",rows:`
+Bright Lights|i|-|?|||||
+Bright Lights Orange|i|-|?|||||
+E-Xtraordinary|i|-|?|||||
+Authen-Kicks|i|-|?|||||Shoe material
+Essential Credentials Now|p|-|?||||varies|
+Essential Credentials Future|p|-|?||||varies|`},
+
+{id:"fb99-metal-universe",sport:"Football",year:1999,season:"1999",mfr:"SkyBox",name:"Metal Universe",series:1,
+ cfg:"250 cards",note:"Insert odds not yet sourced.",
+ src:TCDB+"ViewSet.cfm/sid/4305/1999-SkyBoxMetalUniverse",rows:`
+Planet Metal|i|-|?|||||
+Quasars|i|-|?|||||
+Quasars Prisms|i|-|?|||||
+Starchild|i|-|?|||||
+Linchpins|i|-|?|||||
+Precious Metal Gems|p|-|?|||||
+Precious Metal Gems Masters|p|-|?|||||`},
+
+{id:"fb99-molten-metal",sport:"Football",year:1999,season:"1999",mfr:"SkyBox",name:"Molten Metal",series:1,
+ cfg:"",note:"Partial list.",
+ src:TCDB+"Checklist.cfm/sid/35424/1999-SkyBox-Molten-Metal---Patchworks",rows:`
+Patchworks|i|-|B|1:360||19||Game-worn jersey`},
+
+/* ===================== BASEBALL ===================== */
+{id:"bb96-fleer",sport:"Baseball",year:1996,season:"1996",mfr:"Fleer",name:"Fleer",series:1,
+ cfg:"36 packs × 11 cards · $1.49",note:"Tiffany parallel of all 600 cards, one per pack.",src:BCP+"1996_Fleer",rows:`
+Tiffany|p|-|B|1/pack||600||
+Postseason Glory|i|-|B|1:5||5||
+Prospects|i|-|B|1:6||10||
+Checklists|i|-|B|1:6||10||
+Smoke 'n Heat|i|-|B|1:9||10||
+Lumber Company|i|-|R||1:9|12||
+Team Leaders|i|-|H|1:9||28||
+Golden Memories|i|-|B|1:10||10||
+Rookie Sensations|i|-|B|1:11||15||
+Road Warriors|i|-|B|1:13||10||
+Tomorrow's Legends|i|-|B|1:13||10||
+Zone|i|-|B|1:90||10||`},
+
+{id:"bb96-ultra",sport:"Baseball",year:1996,season:"1996",mfr:"Fleer",name:"Ultra",series:2,
+ cfg:"Hobby 24 × 12 ($2.99) · Retail 36 × 8 ($1.99) · Jumbo 15 cards",note:"Nearly every insert has a Gold Medallion version at 10× the base insert odds.",src:BCP+"1996_Ultra",rows:`
+Gold Medallion|p|B|B|1/pack||600||
+Fresh Foundations|i|1|B|1:3||10||Gold Medallion 1:30
+Golden Prospects|i|B|H|1:5 (S1) · 1:72 (S2)||25||Gold Medallion 1:50 / 1:720
+RBI Kings|i|1|R||1:5|10||Gold Medallion 1:50 retail
+Prime Leather|i|1|B|1:8||18||Gold Medallion 1:80
+Season Crowns|i|1|B|1:10||10||Gold Medallion 1:100
+Power Plus|i|1|B|1:10||12||Gold Medallion 1:100
+Diamond Producers|i|1|B|1:20||12||Gold Medallion 1:200
+Home Run Kings|i|1|B|1:75||12||Gold Medallion 1:750
+On-Base Leaders|i|2|B|1:4||10||Gold Medallion 1:40
+Rising Stars|i|2|B|1:4||10||Gold Medallion 1:40
+Rawhide|i|2|B|1:8||10||Gold Medallion 1:80
+Respect|i|2|B|1:18||10||Gold Medallion 1:180
+Call to the Hall|i|2|B|1:24||10||Gold Medallion 1:240
+Thunderclap|i|2|R||1:72|20||Gold Medallion 1:720 retail
+Hitting Machines|i|2|B|1:288||10||Gold Medallion 1:2,880`},
+
+{id:"bb96-flair",sport:"Baseball",year:1996,season:"1996",mfr:"Fleer",name:"Flair",series:1,
+ cfg:"Hobby 24 × 7 ($4.99) · Retail 36 packs",note:"Every base card exists in gold and silver versions.",src:BCP+"1996_Flair",rows:`
+Powerline|i|-|?|1:6||10||
+Diamond Cuts|i|-|?|1:20||12||
+Wave of the Future|i|-|?|1:72||20||
+Hot Gloves|i|-|?|1:90||10||`},
+
+{id:"bb96-metal-universe",sport:"Baseball",year:1996,season:"1996",mfr:"Fleer",name:"Metal Universe",series:1,
+ cfg:"Hobby 24 × 8 · Retail jumbo 36 × 6",note:"",src:BCP+"1996_Metal_Universe",rows:`
+Platinum Edition|p|-|B|1/pack||250||
+Platinum Portraits|i|-|B|1:4||10||
+Heavy Metal|i|-|B|1:8||10||
+Mining for Gold|i|-|R||1:12|12||
+Mother Lode|i|-|H|1:12||12||
+Titanium|i|-|B|1:24||10||`},
+
+{id:"bb96-circa",sport:"Baseball",year:1996,season:"1996",mfr:"SkyBox",name:"Circa",series:1,
+ cfg:"Hobby only · 24 × 8 · $1.99",note:"",src:BCP+"1996_Circa",rows:`
+Boss|i|-|H|1:6||50||
+Access|i|-|H|1:12||30||
+Rave|p|-|H|1:60||200|150|`},
+
+{id:"bb96-emotion-xl",sport:"Baseball",year:1996,season:"1996",mfr:"SkyBox",name:"Emotion-XL",series:1,
+ cfg:"Hobby 36 × 7 ($4.99) · Retail Blasters 9 × 7",note:"",src:BCP+"1996_Emotion_XL",rows:`
+D-Fense|i|-|B|1:4||10||
+N-Tense|i|-|B|1:12||10||
+Legion of Boom|i|-|H|1:36||12||
+Rare Breed|i|-|B|1:100||10||`},
+
+{id:"bb97-fleer",sport:"Baseball",year:1997,season:"1997",mfr:"Fleer",name:"Fleer",series:2,
+ cfg:"36 packs × 10-11 cards · $1.49",note:"",src:BCP+"1997_Fleer",rows:`
+Tiffany|p|B|B|1:20||761||
+Rookie Sensations|i|1|B|1:6||20||
+Golden Memories|i|1|B|1:16||10||
+Lumber Company|i|1|R||1:18|18||
+Team Leaders|i|1|B|1:20||28||Die cut
+Zone|i|1|H|1:80||20||
+Night and Day|i|1|B|1:240||10||
+Million Dollar Moments|i|2|B|1/pack||50||
+Headliners|i|2|B|1:2||20||
+New Horizons|i|2|B|1:4||15||
+Goudey Greats|i|2|B|1:8||15||
+Soaring Stars|i|2|B|1:12||12||Glowing version later in run
+Bleacher Blasters|i|2|R||1:36|10||
+Decade of Excellence|i|2|H|1:36||12||
+Diamond Tribute|i|2|B|1:288||12||
+Decade of Excellence Rare Traditions|i|2|H|1:360||12||
+Goudey Greats Foil|i|2|H|1:800||15||
+Andruw Jones Circa Autograph|a|2|B|||1|200|Exchange`},
+
+{id:"bb97-ultra",sport:"Baseball",year:1997,season:"1997",mfr:"Fleer",name:"Ultra",series:2,
+ cfg:"Hobby 24 × 10 ($2.99) · Retail 18 × 6 ($1.99)",note:"Series 2 retail packs exclude 103 hobby-only base cards.",src:BCP+"1997_Ultra",rows:`
+Gold Medallion|p|B|B|1/pack||553||
+Platinum Medallion|p|B|H|1:100||553||Run under 200 (S1), under 150 (S2)
+Double Trouble|i|1|B|1:4||20||
+Rookie Reflections|i|1|B|1:4||10||
+Power Plus (S1)|i|1|B|1:8||10||
+Season Crowns|i|1|B|1:8||10||
+RBI Kings|i|1|B|1:18||10||
+Home Run Kings|i|1|H|1:36||12||
+Baseball Rules|i|1|R||1:36|10||
+Fielder's Choice|i|1|B|1:144||18||
+Diamond Producers|i|1|B|1:288||12||
+Top 30|i|2|R||1/pack|30||
+Golden Prospects|i|2|H|1:4||10||
+Leather Shop|i|2|H|1:6||16||
+Fame Game|i|2|H|1:8||18||
+Thunderclap|i|2|H|1:18||10||
+Top 30 Gold Medallion|i|2|R||1:18|30||
+Power Plus (S2)|i|2|H|1:24||10||
+Hitting Machines|i|2|H|1:36||18||
+Starring Role|i|2|H|1:288||12||
+Emerald Autographstix|a|2|H|||6|25|`},
+
+{id:"bb97-flair-showcase",sport:"Baseball",year:1997,season:"1997",mfr:"Fleer",name:"Flair Showcase",series:1,
+ cfg:"Hobby only · 24 × 5 · $4.99",note:"",src:BCP+"1997_Flair_Showcase",rows:`
+Million Dollar Moments|i|-|H|1/pack||45||
+Wave of the Future|i|-|H|1:4||27||
+Diamond Cuts|i|-|H|1:20||20||
+Legacy Collection|p|-|H|1:30||540|100|
+Hot Gloves|i|-|H|1:90||15||
+Masterpiece|p|-|H|1:3,000||540|1|1 of 1
+A-Rod Emerald Exchange|a|-|H|1:64,800||1|25|`},
+
+{id:"bb97-metal-universe",sport:"Baseball",year:1997,season:"1997",mfr:"SkyBox",name:"Metal Universe",series:1,
+ cfg:"Hobby 24 × 8 ($2.49) · Retail 18 × 8",note:"No parallels this year. PMGs came to baseball in 1998.",src:BCP+"1997_Metal_Universe",rows:`
+Mining for Gold|i|-|B|1:9||10||
+Magnetic Field|i|-|B|1:12||10||
+Titanium|i|-|R||1:24|10||
+Platinum Portraits|i|-|B|1:36||10||
+Blast Furnace|i|-|H|1:48||12||
+Mother Lode|i|-|B|1:288||12||
+Emerald Autographs|a|-|H|1:480||6||`},
+
+{id:"bb97-circa",sport:"Baseball",year:1997,season:"1997",mfr:"SkyBox",name:"Circa",series:1,
+ cfg:"Hobby 36 × 8 ($1.49) · Retail 18 × 9 ($1.99)",note:"",src:BCP+"1997_Circa",rows:`
+Boss|i|-|B|1:6||20||
+Limited Access|i|-|R||1:18|15||
+Fast Track|i|-|B|1:24||10||
+Rave|p|-|H|1:30||400|150|
+Super Boss|i|-|B|1:36||20||
+Icons|i|-|B|1:36||10||
+Rave Reviews|i|-|B|1:288||12||
+Emerald Autograph Redemption|x|-|H|1:1,000||6||`},
+
+{id:"bb97-ex2000",sport:"Baseball",year:1997,season:"1997",mfr:"SkyBox",name:"E-X2000",series:1,
+ cfg:"Hobby only · 24 × 2 · $4.99",note:"First year of Essential Credentials, which ran in every E-X release through 2004.",src:BCP+"1997_E-X2000",rows:`
+Star Date 2000|i|-|H|1:9||15||
+Hall or Nothing|i|-|H|1:20||20||Die cut
+A Cut Above|i|-|H|1:288||10||Die cut
+Emerald Autograph Redemption|x|-|H|1:500||6||
+Credentials|p|-|H|||100|299|
+Essential Credentials|p|-|H|||100|99|`},
+
+{id:"bb98-fleer-tradition",sport:"Baseball",year:1998,season:"1998",mfr:"Fleer",name:"Fleer Tradition",series:2,
+ cfg:"36 packs × 12 cards · $1.49",note:"",src:BCP+"1998_Fleer_Tradition",rows:`
+Vintage '63|i|B|H|1/pack||128||
+Classic '63|p|B|H|||128|63|
+Diamond Ink|x|B|B|1/pack||10||Points cards
+Tale of the Tape|i|1|B|1:4||20||
+Golden Memories|i|1|B|1:6||20||
+Diamond Standouts|i|1|B|1:12||20||
+Rookie Sensations|i|1|B|1:18||20||
+The Power Game|i|1|B|1:36||20||
+Lumber Company|i|1|R||1:36|15||
+Decade of Excellence|i|1|H|1:72||12||
+Zone|i|1|B|1:288||15||
+Decade of Excellence Rare Traditions|i|1|H|1:720||12||
+Unforgettable Moments|i|2|B|1:4||25||
+Promising Forecast|i|2|B|1:12||20||
+In The Clutch|i|2|B|1:20||15||
+Mickey Mantle Monumental Moments|i|2|B|1:68||10||
+Mickey Mantle Monumental Moments Gold|i|2|?|||10|51|
+Diamond Tribute|i|2|B|1:300||10||`},
+
+{id:"bb98-ultra",sport:"Baseball",year:1998,season:"1998",mfr:"Fleer",name:"Ultra",series:2,
+ cfg:"Hobby 24 × 10 ($2.59) · Retail 20 × 7 ($2.39)",note:"Series 2 inserts fall at different hobby and retail rates.",src:BCP+"1998_Ultra",rows:`
+Gold Medallion|p|B|B|1/pack||501||
+Platinum Medallion|p|B|H|||498|100 / 98|
+Masterpiece|p|B|H|||501|1|1 of 1
+Million Dollar Moments|i|1|B|1/pack||50||
+Big Shots|i|1|B|1:4||15||
+Double Trouble|i|1|B|1:4||20||
+Back to the Future|i|1|B|1:6||15||
+Artistic Talents|i|1|B|1:8||18||
+Kid Gloves|i|1|B|1:8||12||
+Fall Classics|i|1|B|1:18||18||
+Power Plus|i|1|B|1:36||10||
+Prime Leather|i|1|B|1:144||18||
+Diamond Producers|i|1|B|1:288||15||
+Top 30|i|2|R||1/pack|30||
+Pizzazz|i|2|B|1:4|1:6|25||
+Notables|i|2|B|1:4|1:6|20||
+Rocket to Stardom|i|2|B|1:15|1:30|15||
+Millennium Men|i|2|H|1:35||15||
+Win Now|i|2|B|1:72|1:104|20||
+Ticket Studs|i|2|B|1:144|1:206|15||
+Diamond Immortals|i|2|B|1:288|1:412|15||`},
+
+{id:"bb98-flair-showcase",sport:"Baseball",year:1998,season:"1998",mfr:"Fleer",name:"Flair Showcase",series:1,
+ cfg:"24 packs × 5 cards + 1 Diamond Ink · $4.99",note:"",src:BCP+"1998_Flair_Showcase",rows:`
+Diamond Ink|x|-|?|1/pack||10||Points cards
+Wave of the Future|i|-|?|1:20||12||
+Perfect 10|i|-|?|||10|10|
+Legacy Collection|p|-|?|||480|100|
+Masterpiece|p|-|?|||480|1|1 of 1`},
+
+{id:"bb98-metal-universe",sport:"Baseball",year:1998,season:"1998",mfr:"SkyBox",name:"Metal Universe",series:1,
+ cfg:"Hobby 24 × 8 · Retail 18 × 8",note:"Precious Metal Gems debut in baseball, numbered to 50.",src:BCP+"1998_Metal_Universe",rows:`
+Universal Language|i|-|B|1:6||20||
+Diamond Heroes|i|-|B|1:18||6||
+Titanium|i|-|B|1:96||15||
+All-Galactic Team|i|-|B|1:192||18||
+Platinum Portraits|i|-|B|1:360||12||
+Precious Metal Gems|p|-|H|||220|50|`},
+
+{id:"bb98-circa-thunder",sport:"Baseball",year:1998,season:"1998",mfr:"SkyBox",name:"Circa Thunder",series:1,
+ cfg:"36 packs × 8 cards · $1.59",note:"",src:BCP+"1998_Circa_Thunder",rows:`
+Boss|i|-|B|1:6||20||
+Limited Access|i|-|R||1:18|15||
+Fast Track|i|-|B|1:24||10||
+Rave|p|-|H|1:36||296|150|
+Quick Strike|i|-|B|1:36||12||
+Thunder Boomers|i|-|B|1:96||12||
+Super Rave|p|-|H|1:216||296|25|
+Rave Reviews|i|-|B|1:288||15||`},
+
+{id:"bb98-ex2001",sport:"Baseball",year:1998,season:"1998",mfr:"SkyBox",name:"E-X2001",series:1,
+ cfg:"Hobby only · 24 × 2 · $3.99",note:"",src:BCP+"1998_E-X_2001",rows:`
+Star Date 2001|i|-|H|1:12||15||
+Cheap Seat Treats|i|-|H|1:24||20||
+Signature 2001|a|-|H|1:60||17||
+Destination Cooperstown|i|-|H|1:720||15||About one per five cases
+Essential Credentials Now|p|-|H|||100|varies|
+Essential Credentials Future|p|-|H|||100|varies|`},
+
+{id:"bb99-fleer-tradition",sport:"Baseball",year:1999,season:"1999",mfr:"Fleer",name:"Fleer Tradition",series:1,
+ cfg:"Hobby 36 × 10 · Retail 20 × 10 ($1.99)",note:"",src:BCP+"1999_Fleer_Tradition",rows:`
+Vintage '61|i|-|H|1/pack||50||
+Warning Track|p|-|R||1/pack|600||
+Starting Nine|p|-|H|||600|9|
+Rookie Flashback|i|-|B|1:6||15||
+Going Yard|i|-|B|1:18||15||
+Stan Musial Monumental Moments|i|-|B|1:36||10||
+Golden Memories|i|-|B|1:54||15||
+Diamond Magic|i|-|B|1:96||15||
+Date With Destiny|i|-|B|||10|100|
+Stan Musial Monumental Moments Autographs|a|-|B|||10|50|`},
+
+{id:"bb99-ultra",sport:"Baseball",year:1999,season:"1999",mfr:"Fleer",name:"Ultra",series:1,
+ cfg:"Hobby 24 × 10 · $2.69",note:"",src:BCP+"1999_Ultra",rows:`
+Gold Medallion|p|-|H|1/pack||215||Season Crowns 1:80, Prospects 1:40
+Platinum Medallion|p|-|H|||215|99|Season Crowns /50, Prospects /65
+Masterpiece|p|-|H|||250|1|1 of 1
+RBI Kings|i|-|R||1/pack|30||
+The Book On|i|-|B|1:6||20||
+World Premiere|i|-|B|1:18||15||
+Thunderclap|i|-|B|1:36||15||
+Damage Inc.|i|-|B|1:72||15||
+Diamond Producers|i|-|B|1:288||10||`},
+
+{id:"bb99-flair-showcase",sport:"Baseball",year:1999,season:"1999",mfr:"Fleer",name:"Flair Showcase",series:1,
+ cfg:"",note:"Pack odds not published on source; serial numbering verified.",src:BCP+"1999_Flair_Showcase",rows:`
+Wave of the Future|i|-|?|||15|1000|
+Measure of Greatness|i|-|?|||15|500|
+Legacy Collection|p|-|?|||432|99|
+Masterpiece|p|-|?|||432|1|1 of 1`},
+
+{id:"bb99-metal-universe",sport:"Baseball",year:1999,season:"1999",mfr:"SkyBox",name:"Metal Universe",series:1,
+ cfg:"Hobby 24 × 8 ($2.69) · Retail 20 × 8",note:"",src:BCP+"1999_Metal_Universe",rows:`
+Neophytes|i|-|B|1:6||15||
+Boyz with the Wood|i|-|B|1:18||15||
+Planet Metal|i|-|B|1:36||15||
+Diamond Soul|i|-|B|1:72||15||
+Linchpins|i|-|B|1:360||10||
+Precious Metal Gems|p|-|H|||300|50|
+Gem Masters|p|-|?|||300|1|1 of 1
+J.D. Drew Autograph|a|-|?|||1|35|`},
+
+{id:"bb99-skybox-premium",sport:"Baseball",year:1999,season:"1999",mfr:"SkyBox",name:"SkyBox Premium",series:1,
+ cfg:"Hobby 24 × 8 ($2.69) · Retail 20 × 6 · Blaster 9 × 8",note:"",src:BCP+"1999_Skybox_Premium",rows:`
+Live Bats|i|-|B|1:7||15||
+Action|p|-|B|1:8||50||
+Soul of the Game|i|-|B|1:14||15||
+Diamond Debuts|i|-|B|1:49||15||
+Autographics|a|-|B|1:68||52||
+Show Business|i|-|B|1:70||15||
+Intimidation Nation|i|-|?|||15|99|
+Autographics Blue Ink|a|-|?|||52|50|
+Star Rubies|p|-|?|||300|50|
+Star Rubies Action|p|-|?|||50|15|`},
+
+{id:"bb99-thunder",sport:"Baseball",year:1999,season:"1999",mfr:"SkyBox",name:"Thunder",series:1,
+ cfg:"36 packs × 8 cards · $1.59",note:"",src:BCP+"1999_Skybox_Thunder",rows:`
+Rant|p|-|R||1:2|300||
+Unleashed|i|-|B|1:6||15||
+www.batterz.com|i|-|B|1:18||10||
+In Depth|i|-|B|1:24||10||
+Hip-No-Tized|i|-|B|1:36||15||
+Turbo-Charged|i|-|B|1:72||10||
+Dial 1|i|-|B|1:300||10||
+Rave|p|-|H|||300|150|
+Super Rave|p|-|H|||300|25|`},
+
+{id:"bb99-molten-metal",sport:"Baseball",year:1999,season:"1999",mfr:"SkyBox",name:"Molten Metal",series:1,
+ cfg:"Hobby only · 24 × 6 · $4.99",note:"",src:BCP+"1999_Skybox_Molten_Metal",rows:`
+Xplosion|i|-|H|1:2||150||
+Heavy Metal Fusion|i|-|H|1:12||30||
+Supernatural Fusion|i|-|H|1:24||20||
+Fusion Sterling|p|-|H|||50|500|
+Fusion Titanium|p|-|H|||50|50|`},
+
+{id:"bb99-ex-century",sport:"Baseball",year:1999,season:"1999",mfr:"SkyBox",name:"E-X Century",series:1,
+ cfg:"Hobby only · 18 × 3 · $5.99",note:"",src:BCP+"1999_E-X_Century",rows:`
+E-X Quisite|i|-|H|1:18||15||
+Favorites for Fenway '99|i|-|H|1:36||20||
+Milestones of the Century|i|-|H|||10|varies|
+Authen-Kicks|i|-|H|||10|varies|Shoe material
+Essential Credentials Now|p|-|H|||120|varies|
+Essential Credentials Future|p|-|H|||120|varies|`},
+
+{id:"bb99-brilliants",sport:"Baseball",year:1999,season:"1999",mfr:"Fleer",name:"Fleer Brilliants",series:1,
+ cfg:"Hobby only · 24 × 5 · $4.99",note:"",src:BCP+"1999_Fleer_Brilliants",rows:`
+Blue|p|-|H|1:3 (vets) · 1:6 (rookies)||175||
+Illuminators|i|-|H|1:10||15||
+Shining Stars|i|-|H|1:20||15||
+Shining Stars Pulsar|i|-|H|1:400||15||
+Gold|p|-|H|||175|99|
+24-Karat Gold|p|-|H|||175|24|`},
+
+{id:"bb99-mystique",sport:"Baseball",year:1999,season:"1999",mfr:"Fleer",name:"Fleer Mystique",series:1,
+ cfg:"Hobby only · 24 × 4 (3 + 1 covered) · $4.99",note:"Every pack has one \"covered\" card hidden under a peel-off cover.",src:BCP+"1999_Fleer_Mystique",rows:`
+Gold|p|-|H|1:8||100||
+Fresh Ink|a|-|H|1:48||26||
+Prospects|i|-|H|covered card||50|2999|
+Super Stars|i|-|H|covered card||10|2500|
+Prophetic|i|-|H|covered card||10|1999|
+Destiny|i|-|H|covered card||10|999|
+Established|i|-|H|covered card||10|100|
+Masterpiece|p|-|H|||160|1|1 of 1`}
+];
+
+</script>
+<script>
+/* ---------- sample data ---------- */
+const CARDS = [
+ // Basketball
+ {id:"kobe-topps-chrome",sport:"Basketball",year:"1996-97",set:"Topps Chrome",player:"Kobe Bryant",num:"#138",variant:"Rookie",f:"chrome",p:{raw:420,psa9:1150,psa10:6400},
+  note:"The defining modern-era Kobe rookie. Chrome stock made centering and surface condition hard to keep perfect, which is why gem-mint copies carry such a premium over nines."},
+ {id:"kobe-topps-chrome-ref",sport:"Basketball",year:"1996-97",set:"Topps Chrome",player:"Kobe Bryant",num:"#138",variant:"Refractor",f:"refractor",p:{raw:5800,psa9:15500,psa10:92000},
+  note:"The refractor parallel of the Topps Chrome rookie, seeded at a fraction of the base rate. Among the most liquid high-end basketball cards of the decade."},
+ {id:"jordan-pmg-green",sport:"Basketball",year:"1997-98",set:"Metal Universe",player:"Michael Jordan",num:"#23",variant:"Precious Metal Gems · Green",f:"green",serial:10,p:{raw:900000,psa9:1350000,psa10:2400000},
+  note:"Green Precious Metal Gems were numbered to just ten. Few '90s inserts are as tightly tracked; every copy's sale history is a public event."},
+ {id:"jordan-pmg-red",sport:"Basketball",year:"1997-98",set:"Metal Universe",player:"Michael Jordan",num:"#23",variant:"Precious Metal Gems · Red",f:"red",serial:90,p:{raw:160000,psa9:240000,psa10:520000},
+  note:"The red PMG run, numbered to 90. The fragile mirrored foil makes high grades rare even within such a small print run."},
+ {id:"jordan-star-rubies",sport:"Basketball",year:"1997-98",set:"SkyBox Premium",player:"Michael Jordan",num:"#29",variant:"Star Rubies",f:"red",serial:50,p:{raw:95000,psa9:150000,psa10:380000},
+  note:"SkyBox's parallel answer to the PMG, numbered to 50 with a ruby foil finish."},
+ {id:"jordan-finest-ref",sport:"Basketball",year:"1993-94",set:"Finest",player:"Michael Jordan",num:"#1",variant:"Refractor",f:"refractor",p:{raw:6200,psa9:11800,psa10:48000},
+  note:"An early refractor from the set that brought the technology into basketball. Prone to clouding and chipping, so clean copies stand out."},
+ {id:"kobe-flair-legacy",sport:"Basketball",year:"1996-97",set:"Flair Showcase",player:"Kobe Bryant",num:"#31",variant:"Legacy Collection",f:"gold",serial:150,p:{raw:14000,psa9:24000,psa10:61000},
+  note:"Legacy Collection parallels were serial-numbered to 150, an early example of serialized rookie parallels."},
+ {id:"iverson-topps-chrome",sport:"Basketball",year:"1996-97",set:"Topps Chrome",player:"Allen Iverson",num:"#171",variant:"Rookie",f:"chrome",p:{raw:140,psa9:330,psa10:1900},
+  note:"The No. 1 pick of a famous draft class, on the same chrome stock as the Kobe rookie."},
+ {id:"shaq-upper-deck",sport:"Basketball",year:"1992-93",set:"Upper Deck",player:"Shaquille O'Neal",num:"#1",variant:"Rookie",f:"base",p:{raw:15,psa9:60,psa10:420},
+  note:"Mass-produced and widely graded, this is the classic accessible '90s rookie for a generational center."},
+ {id:"carter-topps-chrome-ref",sport:"Basketball",year:"1998-99",set:"Topps Chrome",player:"Vince Carter",num:"#199",variant:"Refractor",f:"refractor",p:{raw:260,psa9:620,psa10:3100},
+  note:"A late-decade refractor rookie for one of the most electric scorers of the era."},
+ // Football
+ {id:"manning-spa",sport:"Football",year:"1998",set:"SP Authentic",player:"Peyton Manning",num:"#14",variant:"Rookie",f:"gold",serial:2000,p:{raw:2600,psa9:4400,psa10:21000},
+  note:"Serial-numbered to 2,000, this is the premium Manning rookie from his debut year."},
+ {id:"manning-contenders",sport:"Football",year:"1998",set:"Playoff Contenders",player:"Peyton Manning",num:"#87",variant:"Rookie Ticket Auto",f:"base",p:{raw:3400,psa9:5600,psa10:16500},
+  note:"An on-card autographed rookie ticket. The design became a template for rookie autographs that followed."},
+ {id:"moss-bowman-chrome-ref",sport:"Football",year:"1998",set:"Bowman Chrome",player:"Randy Moss",num:"#203",variant:"Refractor",f:"refractor",p:{raw:240,psa9:520,psa10:2800},
+  note:"A refractor rookie for a receiver whose debut season reset expectations at the position."},
+ {id:"emmitt-score-supp",sport:"Football",year:"1990",set:"Score Supplemental",player:"Emmitt Smith",num:"#101T",variant:"Rookie",f:"base",p:{raw:25,psa9:85,psa10:750},
+  note:"Issued as a traded/supplemental set, it's the most collected rookie of the NFL's career rushing leader."},
+ {id:"favre-stadium-club",sport:"Football",year:"1991",set:"Stadium Club",player:"Brett Favre",num:"#94",variant:"Rookie",f:"base",p:{raw:30,psa9:110,psa10:1200},
+  note:"Full-bleed photography made Stadium Club stand out; dark borders make it unforgiving on edges."},
+ {id:"lewis-topps-chrome",sport:"Football",year:"1996",set:"Topps Chrome",player:"Ray Lewis",num:"#160",variant:"Rookie",f:"chrome",p:{raw:60,psa9:150,psa10:900},
+  note:"A chrome rookie for a defensive standard-setter of the decade."},
+ // Baseball
+ {id:"jeter-sp",sport:"Baseball",year:"1993",set:"SP",player:"Derek Jeter",num:"#279",variant:"Foil Rookie",f:"chrome",p:{raw:600,psa9:2200,psa10:42000},
+  note:"Infamous for its chipping foil front, it ranks among the hardest '90s cards to find in gem mint. The grade gap here is the widest in the gallery."},
+ {id:"arod-sp",sport:"Baseball",year:"1994",set:"SP",player:"Alex Rodriguez",num:"#15",variant:"Foil Rookie",f:"chrome",p:{raw:120,psa9:380,psa10:4600},
+  note:"Another SP foil rookie with similar condition problems to the Jeter, one year later."},
+ {id:"rivera-bowman",sport:"Baseball",year:"1992",set:"Bowman",player:"Mariano Rivera",num:"#302",variant:"Rookie",f:"base",p:{raw:70,psa9:190,psa10:1500},
+  note:"The rookie card of the game's most celebrated closer, from a Bowman set full of prospect cards."},
+ {id:"griffey-finest-ref",sport:"Baseball",year:"1993",set:"Finest",player:"Ken Griffey Jr.",num:"#110",variant:"Refractor",f:"refractor",p:{raw:2600,psa9:5200,psa10:24000},
+  note:"From the set that introduced the refractor. Short-printed and easily damaged, so it rarely surfaces in top condition."},
+ {id:"thomas-leaf",sport:"Baseball",year:"1990",set:"Leaf",player:"Frank Thomas",num:"#300",variant:"Rookie",f:"base",p:{raw:35,psa9:90,psa10:650},
+  note:"Leaf's premium 1990 relaunch made this the standout early-decade baseball rookie."},
+ {id:"chipper-bowman",sport:"Baseball",year:"1991",set:"Bowman",player:"Chipper Jones",num:"#569",variant:"Rookie",f:"base",p:{raw:8,psa9:30,psa10:180},
+  note:"An affordable entry to '90s rookies, for a lifelong one-franchise Hall of Famer."}
+];
+
+/* ---------- deterministic generators ---------- */
+function rng(seed){let h=2166136261;for(const c of seed)h=Math.imul(h^c.charCodeAt(0),16777619);return()=>{h^=h<<13;h^=h>>>17;h^=h<<5;return((h>>>0)%100000)/100000}}
+const MONTHS=24, NOW=new Date(2026,9,1);
+const monthLabel=i=>{const d=new Date(NOW.getFullYear(),NOW.getMonth()-(MONTHS-1-i),1);return d.toLocaleString("en-US",{month:"short"})+" "+String(d.getFullYear()).slice(2)};
+const TIERS=[["raw","Raw"],["psa9","PSA 9"],["psa10","PSA 10"]];
+CARDS.forEach(c=>{
+  const r=rng(c.id);
+  const drift=(r()-.4)*.5; // overall 2-year move
+  c.hist={};
+  TIERS.forEach(([k])=>{
+    const end=c.p[k]; const start=end/(1+drift+(r()-.5)*.2); let s=[];
+    for(let i=0;i<MONTHS;i++){const t=i/(MONTHS-1);const base=start+(end-start)*t;s.push(base*(1+(r()-.5)*.16*(1-t*.6)))}
+    s[MONTHS-1]=end; c.hist[k]=s.map(v=>Math.round(v));
+  });
+  const h=c.hist.psa9; c.chg=(h[MONTHS-1]-h[MONTHS-13])/h[MONTHS-13];
+  // pop report
+  const scarce=c.serial?Math.min(c.serial,40)/40:(c.p.raw<200?1:c.p.raw<2000?.45:.12);
+  const total=c.serial?Math.round(c.serial*(.6+r()*.25)):Math.round((2000+r()*14000)*scarce*(c.f==="chrome"&&c.sport==="Baseball"?.6:1));
+  const gemRate=(c.f==="base"?.18:c.f==="chrome"?.05:.08)*(.7+r()*.6);
+  const psa=Math.round(total*.72), bgs=Math.round(total*.2), sgc=total-psa-bgs;
+  const mk=(tot,ks,rates)=>{const a=ks.map((k,i)=>[k,i<3?Math.round(tot*rates[i]):0]);a[3][1]=Math.max(0,tot-a[0][1]-a[1][1]-a[2][1]);return a};
+  c.pop={
+    psa:mk(psa,["10","9","8","≤7"],[gemRate,.42,.24]),
+    bgs:mk(bgs,["10","9.5","9","≤8.5"],[gemRate*.08,gemRate*1.6,.4]),
+    sgc:mk(sgc,["10","9.5","9","≤8.5"],[gemRate*.9,.15,.35])
+  };
+  if(!c.serial&&c.pop.psa[0][1]<1){c.pop.psa[0][1]=1;c.pop.psa[3][1]=Math.max(0,c.pop.psa[3][1]-1)}
+  c.popTotal=total;
+  // recent sales
+  const venues=["Auction","Marketplace","Private sale","Auction","Marketplace"];
+  c.sales=[];
+  for(let i=0;i<8;i++){const tk=TIERS[Math.floor(r()*3)];const day=new Date(2026,9,27-Math.floor(i*9+r()*8));
+    c.sales.push({date:day,grade:tk[1],price:Math.round(c.hist[tk[0]][MONTHS-1]*(.88+r()*.24)),venue:venues[Math.floor(r()*venues.length)]})}
+  // serial copies
+  if(c.serial){
+    const n=Math.min(c.serial,c.serial>500?14:Math.max(6,Math.round(c.serial*.45)));
+    const used=new Set(); c.copies=[];
+    const grades=["PSA 10","PSA 9","PSA 8","BGS 9.5","BGS 9","SGC 9","Raw"];
+    for(let i=0;i<n;i++){let sn;do{sn=1+Math.floor(r()*c.serial)}while(used.has(sn));used.add(sn);
+      const g=grades[Math.floor(r()*grades.length)];
+      const mult={"PSA 10":c.p.psa10/c.p.psa9,"BGS 9.5":1.4,"PSA 9":1,"BGS 9":.9,"SGC 9":.85,"PSA 8":.7,"Raw":c.p.raw/c.p.psa9}[g];
+      const seen=r()<.78;
+      c.copies.push({sn,g,status:seen?(r()<.6?"Sold":"Listed"):"Unaccounted",
+        date:seen?new Date(2019,0,1+Math.floor(r()*2850)):null,
+        price:seen?Math.round(c.p.psa9*mult*(.75+r()*.4)):null})}
+    c.copies.sort((a,b)=>a.sn-b.sn);
+  }
+});
+CARDS.forEach(c=>{if(c.sales)c.sales=c.sales.filter(s=>s.date<=new Date(2026,9,29))});
+
+/* ---------- helpers ---------- */
+const $=(s,el=document)=>el.querySelector(s);
+const money=v=>v==null?"—":v>=1e6?"$"+(v/1e6).toFixed(2)+"M":v>=1e4?"$"+Math.round(v/1e3)+"K":"$"+v.toLocaleString("en-US");
+const moneyFull=v=>"$"+Math.round(v).toLocaleString("en-US");
+const pct=v=>(v>=0?"+":"")+(v*100).toFixed(1)+"%";
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const byId=id=>CARDS.find(c=>c.id===id);
+const fmtDate=d=>d?d.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"—";
+
+function face(c,big){
+  const [first,...rest]=c.player.split(" ");
+  return `<div class="cface ${big?"big":""}" data-f="${c.f}">
+    <div class="in">
+      <div class="tr mono"><span>${esc(c.year)}</span><span>${esc(c.sport)}</span></div>
+      <div class="nm"><small>${esc(first)}</small>${esc(rest.join(" ")||first)}</div>
+      <div class="bt mono"><span>${esc(c.set)}<br>${esc(c.num)}</span>${c.serial?`<span class="sn">/${c.serial}</span>`:""}</div>
+    </div></div>`;
+}
+function bindTilt(root){
+  root.querySelectorAll(".stage").forEach(st=>{
+    const cf=st.querySelector(".cface"); const k=st.dataset.k?+st.dataset.k:10;
+    st.addEventListener("pointermove",e=>{const b=cf.getBoundingClientRect();const x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;
+      cf.style.setProperty("--mx",x*100+"%");cf.style.setProperty("--my",y*100+"%");
+      cf.style.setProperty("--ry",((x-.5)*k)+"deg");cf.style.setProperty("--rx",((.5-y)*k)+"deg")});
+    st.addEventListener("pointerleave",()=>{cf.style.setProperty("--rx","0deg");cf.style.setProperty("--ry","0deg")});
+  });
+}
+
+/* ---------- chart ---------- */
+function lineChart(el,series,labels,W=760){
+  const H=260,P={l:8,r:64,t:16,b:28};
+  const min=Math.min(...series)*.92,max=Math.max(...series)*1.04;
+  const x=i=>P.l+i*(W-P.l-P.r)/(series.length-1), y=v=>P.t+(1-(v-min)/(max-min))*(H-P.t-P.b);
+  const d=series.map((v,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(v).toFixed(1)).join(" ");
+  const ticks=[0,1,2,3].map(i=>min+(max-min)*i/3);
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Price history">
+    <defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfd8e3" stop-opacity=".12"/><stop offset="1" stop-color="#cfd8e3" stop-opacity="0"/></linearGradient></defs>
+    <g class="grid">${ticks.map(t=>`<line x1="${P.l}" x2="${W-P.r}" y1="${y(t)}" y2="${y(t)}"/>`).join("")}</g>
+    ${ticks.map(t=>`<text class="ax" x="${W-P.r+10}" y="${y(t)+3}">${money(Math.round(t))}</text>`).join("")}
+    ${labels.map((l,i)=>i%6===0||i===labels.length-1?`<text class="ax" x="${x(i)}" y="${H-6}" text-anchor="${i===labels.length-1?"end":"start"}">${l}</text>`:"").join("")}
+    <path class="area" d="${d} L${x(series.length-1)} ${H-P.b} L${x(0)} ${H-P.b} Z"/>
+    <path class="ln draw" d="${d}"/>
+    <line class="xh" y1="${P.t}" y2="${H-P.b}"/><circle class="dot" r="4"/>
+    <rect x="0" y="0" width="${W-P.r}" height="${H}" fill="transparent" class="hit"/>
+  </svg><div class="tip"><div class="t mono"></div><div class="v"></div></div>`;
+  const path=el.querySelector(".ln.draw"),len=path.getTotalLength();
+  path.style.strokeDasharray=len;path.style.setProperty("--len",len);
+  const svg=el.querySelector("svg"),xh=el.querySelector(".xh"),dot=el.querySelector(".dot"),tip=el.querySelector(".tip");
+  svg.addEventListener("pointermove",e=>{const b=svg.getBoundingClientRect();const sx=(e.clientX-b.left)*W/b.width;
+    let i=Math.round((sx-P.l)/((W-P.l-P.r)/(series.length-1)));i=Math.max(0,Math.min(series.length-1,i));
+    xh.setAttribute("x1",x(i));xh.setAttribute("x2",x(i));dot.setAttribute("cx",x(i));dot.setAttribute("cy",y(series[i]));
+    tip.style.left=(x(i)*b.width/W)+"px";tip.style.top=(y(series[i])*b.height/H)+"px";
+    tip.querySelector(".t").textContent=labels[i];tip.querySelector(".v").textContent=moneyFull(series[i]);el.classList.add("hov")});
+  svg.addEventListener("pointerleave",()=>el.classList.remove("hov"));
+}
+
+/* ---------- views ---------- */
+const state={sport:"All",q:"",sort:"featured"};
+function viewGallery(){
+  const totalPop=CARDS.reduce((a,c)=>a+c.popTotal,0), serials=CARDS.filter(c=>c.serial).length;
+  return `<div class="view"><div class="wrap">
+    <section class="top">
+      <div class="eyebrow">Basketball · Football · Baseball — 1990–1999</div>
+      <h1 class="hero"><span>Cards</span> <span style="animation-delay:.08s">of</span> <span style="animation-delay:.16s">the</span> <span style="animation-delay:.24s;color:var(--ink2)">90's</span></h1>
+      <div class="rule"></div>
+      <p class="lede" style="margin-top:28px">A quiet archive of the decade that gave us refractors, foil, and the first serial numbers. Each card has its own page, its own price history, and its own population report.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">${CARDS.length}</div><div class="l">Cards</div></div>
+        <div class="stat"><div class="n">${serials}</div><div class="l">Serialized</div></div>
+        <div class="stat"><div class="n">${totalPop.toLocaleString()}</div><div class="l">Graded copies</div></div>
+        <div class="stat"><div class="n">${CARDS.reduce((a,c)=>a+(c.copies?c.copies.length:0),0)}</div><div class="l">Tracked serials</div></div>
+      </div>
+    </section>
+    <div class="controls">
+      <div class="chips">${["All","Basketball","Football","Baseball"].map(s=>`<button class="chip ${state.sport===s?"on":""}" data-sport="${s}">${s}</button>`).join("")}</div>
+      <div style="display:flex;gap:24px;align-items:center">
+        <select class="search" id="sort" aria-label="Sort">
+          ${[["featured","Featured"],["year","Year"],["value","Value (PSA 9)"],["chg","12-mo change"]].map(([v,l])=>`<option value="${v}" ${state.sort===v?"selected":""}>${l}</option>`).join("")}
+        </select>
+        <input class="search" id="q" placeholder="Search player or set" value="${esc(state.q)}">
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>${footer()}</div>`;
+}
+function renderGrid(){
+  const q=state.q.toLowerCase();
+  let list=CARDS.filter(c=>(state.sport==="All"||c.sport===state.sport)&&(!q||(c.player+" "+c.set+" "+c.year+" "+c.variant).toLowerCase().includes(q)));
+  if(state.sort==="year")list=[...list].sort((a,b)=>a.year.localeCompare(b.year));
+  if(state.sort==="value")list=[...list].sort((a,b)=>b.p.psa9-a.p.psa9);
+  if(state.sort==="chg")list=[...list].sort((a,b)=>b.chg-a.chg);
+  const g=$("#grid");
+  g.innerHTML=list.length?list.map((c,i)=>`<a class="tile" href="#card-${c.id}" style="animation-delay:${Math.min(i,12)*55}ms">
+      <div class="stage">${face(c)}</div>
+      <div class="meta"><div><div class="who">${esc(c.player)}</div><div class="set">${esc(c.year)} ${esc(c.set)} · ${esc(c.variant)}</div></div>
+      <div style="text-align:right"><div class="px mono">${money(c.p.psa9)}</div><div class="chg mono ${c.chg>=0?"up":"down"}">${pct(c.chg)}</div></div></div>
+    </a>`).join(""):`<div class="empty" style="grid-column:1/-1">No cards match.</div>`;
+  bindTilt(g);
+}
+function bindGallery(){
+  renderGrid();
+  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{state.sport=b.dataset.sport;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===b));renderGrid()});
+  $("#q").oninput=e=>{state.q=e.target.value;renderGrid()};
+  $("#sort").onchange=e=>{state.sort=e.target.value;renderGrid()};
+}
+
+function viewCard(c){
+  const labels=[...Array(MONTHS)].map((_,i)=>monthLabel(i));
+  const popRows=["psa","bgs","sgc"].map(k=>{const o=c.pop[k];const tot=o.reduce((a,b)=>a+b[1],0);
+    return o.map(([g,n],j)=>`<tr class="row"><td>${j===0?`<span class="who">${k.toUpperCase()}</span>`:""}</td><td class="mono">${g}</td><td><div class="bar"><i style="width:${tot?n/tot*100:0}%"></i></div></td><td class="r mono">${n.toLocaleString()}</td></tr>`).join("")}).join("");
+  return `<div class="view"><div class="wrap">
+    <a class="back" href="#gallery">← Gallery</a>
+    <div class="detail">
+      <div class="stage" data-k="16">${face(c,true)}</div>
+      <div>
+        <div class="eyebrow">${esc(c.sport)} · ${esc(c.year)} · ${esc(c.num)}</div>
+        <h2 class="title">${esc(c.player)}</h2>
+        <div style="color:var(--ink2);font-size:15px">${esc(c.set)} — ${esc(c.variant)}${c.serial?` <span class="tag" style="margin-left:8px">Numbered /${c.serial}</span>`:""}</div>
+        <div class="kv">
+          <div><div class="l">Raw</div><div class="v">${money(c.p.raw)}</div></div>
+          <div><div class="l">PSA 9</div><div class="v">${money(c.p.psa9)}</div></div>
+          <div><div class="l">PSA 10</div><div class="v">${money(c.p.psa10)}</div></div>
+          <div><div class="l">12 mo · PSA 9</div><div class="v ${c.chg>=0?"up":"down"}">${pct(c.chg)}</div></div>
+        </div>
+        <p class="prose">${esc(c.note)}</p>
+
+        <div class="sec"><h3><span>Price history · 24 months</span><span class="tabs">${TIERS.map(([k,l],i)=>`<button class="tab ${i===1?"on":""}" data-t="${k}">${l}</button>`).join("")}</span></h3>
+          <div class="chart" id="chart"></div></div>
+
+        <div class="sec"><h3><span>Recent sales</span><span class="mono" style="color:var(--ink3)">${c.sales.length}</span></h3>
+          <div class="tablewrap"><table><thead><tr><th>Date</th><th>Grade</th><th>Venue</th><th class="r">Price</th></tr></thead><tbody>
+          ${c.sales.map(s=>`<tr class="row"><td class="mono">${fmtDate(s.date)}</td><td>${s.grade}</td><td>${s.venue}</td><td class="r mono" style="color:var(--ink)">${moneyFull(s.price)}</td></tr>`).join("")}
+          </tbody></table></div></div>
+
+        <div class="sec"><h3><span>Population report</span><span class="mono" style="color:var(--ink3)">${c.popTotal.toLocaleString()} graded</span></h3>
+          <div class="tablewrap"><table><thead><tr><th style="width:80px">Grader</th><th style="width:80px">Grade</th><th>Share</th><th class="r">Pop</th></tr></thead><tbody>${popRows}</tbody></table></div></div>
+
+        ${c.copies?`<div class="sec"><h3><span>Serial registry</span><span class="mono" style="color:var(--ink3)">${c.copies.length} of ${c.serial} tracked</span></h3>${copiesTable(c.copies,c.serial)}</div>`:""}
+      </div>
+    </div>
+  </div>${footer()}</div>`;
+}
+function copiesTable(copies,of,withCard){
+  return `<div class="tablewrap"><table><thead><tr>${withCard?"<th>Card</th>":""}<th>Serial</th><th>Grade</th><th>Status</th><th>Last seen</th><th class="r">Last price</th></tr></thead><tbody>
+    ${copies.map(x=>`<tr class="row ${withCard?"link":""}" ${withCard?`data-go="card-${x.card.id}"`:""}>${withCard?`<td><span class="who">${esc(x.card.player)}</span><br><span style="font-size:11px;color:var(--ink3)">${esc(x.card.year)} ${esc(x.card.set)} · ${esc(x.card.variant)}</span></td>`:""}
+      <td class="mono" style="color:var(--ink)">${String(x.sn).padStart(String(of||x.card.serial).length,"0")}/${of||x.card.serial}</td><td>${x.g}</td>
+      <td><span class="tag" style="${x.status==="Unaccounted"?"":"color:var(--ink2)"}">${x.status}</span></td>
+      <td class="mono">${fmtDate(x.date)}</td><td class="r mono" style="color:var(--ink)">${x.price?moneyFull(x.price):"—"}</td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+function bindCard(c){
+  bindTilt(document);
+  const labels=[...Array(MONTHS)].map((_,i)=>monthLabel(i));
+  const draw=k=>lineChart($("#chart"),c.hist[k],labels);
+  draw("psa9");
+  document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===t));draw(t.dataset.t)});
+}
+
+function viewMarket(){
+  const idx=[...Array(MONTHS)].map((_,i)=>CARDS.reduce((a,c)=>a+c.hist.psa9[i]/c.hist.psa9[0],0)/CARDS.length*100);
+  const chg=(idx[MONTHS-1]-idx[MONTHS-13])/idx[MONTHS-13];
+  const movers=[...CARDS].sort((a,b)=>b.chg-a.chg);
+  const row=c=>`<tr class="row link" data-go="card-${c.id}"><td><div class="mini">${face(c)}<div><div class="who">${esc(c.player)}</div><div style="font-size:11px;color:var(--ink3)">${esc(c.year)} ${esc(c.set)}</div></div></div></td><td class="r mono">${money(c.p.psa9)}</td><td class="r mono ${c.chg>=0?"up":"down"}">${pct(c.chg)}</td></tr>`;
+  const top=[...CARDS].sort((a,b)=>b.p.psa10-a.p.psa10).slice(0,6);
+  return `<div class="view"><div class="wrap">
+    <section class="top" style="padding-bottom:24px">
+      <div class="eyebrow">Market</div><h2 class="title">The 90's Index</h2>
+      <p class="lede">An equal-weighted index of PSA 9 values across every card in the archive, rebased to 100 two years ago.</p>
+      <div class="kv" style="max-width:720px">
+        <div><div class="l">Index</div><div class="v">${idx[MONTHS-1].toFixed(1)}</div></div>
+        <div><div class="l">12 mo</div><div class="v ${chg>=0?"up":"down"}">${pct(chg)}</div></div>
+        <div><div class="l">Best</div><div class="v up">${pct(movers[0].chg)}</div></div>
+        <div><div class="l">Worst</div><div class="v down">${pct(movers[movers.length-1].chg)}</div></div>
+      </div>
+      <div class="chart" id="ichart"></div>
+    </section>
+    <div class="split" style="padding-bottom:40px">
+      <div class="sec" style="margin-top:24px"><h3><span>Gainers · 12 mo</span></h3><table><tbody>${movers.slice(0,6).map(row).join("")}</tbody></table></div>
+      <div class="sec" style="margin-top:24px"><h3><span>Decliners · 12 mo</span></h3><table><tbody>${movers.slice(-6).reverse().map(row).join("")}</tbody></table></div>
+    </div>
+    <div class="sec" style="margin-top:24px"><h3><span>Most valuable · PSA 10</span></h3><table><tbody>${top.map(c=>`<tr class="row link" data-go="card-${c.id}"><td><div class="mini">${face(c)}<div><div class="who">${esc(c.player)}</div><div style="font-size:11px;color:var(--ink3)">${esc(c.year)} ${esc(c.set)} · ${esc(c.variant)}</div></div></div></td><td class="r mono" style="color:var(--ink)">${moneyFull(c.p.psa10)}</td></tr>`).join("")}</tbody></table></div>
+  </div>${footer()}</div>`;
+}
+function bindMarket(){
+  const idx=[...Array(MONTHS)].map((_,i)=>Math.round(CARDS.reduce((a,c)=>a+c.hist.psa9[i]/c.hist.psa9[0],0)/CARDS.length*1000)/10);
+  const el=$("#ichart");lineChart(el,idx,[...Array(MONTHS)].map((_,i)=>monthLabel(i)),1240);
+  // index isn't dollars: relabel
+  el.querySelectorAll(".ax").forEach(t=>{if(t.textContent.startsWith("$"))t.textContent=t.textContent.slice(1)});
+  const svg=el.querySelector("svg"),v=el.querySelector(".tip .v");
+  svg.addEventListener("pointermove",()=>{v.textContent=v.textContent.replace("$","")});
+}
+
+const sstate={q:"",card:"All",status:"All"};
+function viewSerials(){
+  const serialCards=CARDS.filter(c=>c.serial);
+  return `<div class="view"><div class="wrap">
+    <section class="top" style="padding-bottom:24px">
+      <div class="eyebrow">Database</div><h2 class="title">Serial registry</h2>
+      <p class="lede">Every numbered copy we track, by serial number, with its most recent grade, sale and whereabouts. Unaccounted copies haven't surfaced publicly.</p>
+    </section>
+    <div class="controls">
+      <div class="chips">${["All","Sold","Listed","Unaccounted"].map(s=>`<button class="chip ${sstate.status===s?"on":""}" data-st="${s}">${s}</button>`).join("")}</div>
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+        <select class="search" id="scard" aria-label="Card"><option value="All">All numbered cards</option>${serialCards.map(c=>`<option value="${c.id}" ${sstate.card===c.id?"selected":""}>${esc(c.player)} · ${esc(c.variant)} /${c.serial}</option>`).join("")}</select>
+        <input class="search" id="sq" placeholder="Search serial or grade" value="${esc(sstate.q)}">
+      </div>
+    </div>
+    <div id="slist" style="padding:24px 0 80px"></div>
+  </div>${footer()}</div>`;
+}
+function renderSerials(){
+  const q=sstate.q.toLowerCase();
+  let rows=CARDS.filter(c=>c.copies&&(sstate.card==="All"||c.id===sstate.card)).flatMap(c=>c.copies.map(x=>({...x,card:c})));
+  rows=rows.filter(x=>(sstate.status==="All"||x.status===sstate.status)&&(!q||(x.sn+"/"+x.card.serial+" "+x.g+" "+x.card.player).toLowerCase().includes(q)));
+  $("#slist").innerHTML=rows.length?`<div class="eyebrow" style="margin-bottom:8px">${rows.length} copies</div>`+copiesTable(rows,null,true):`<div class="empty">No copies match.</div>`;
+  bindRowLinks($("#slist"));
+}
+function bindSerials(){
+  renderSerials();
+  document.querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{sstate.status=b.dataset.st;document.querySelectorAll("[data-st]").forEach(x=>x.classList.toggle("on",x===b));renderSerials()});
+  $("#scard").onchange=e=>{sstate.card=e.target.value;renderSerials()};
+  $("#sq").oninput=e=>{sstate.q=e.target.value;renderSerials()};
+}
+
+const gstate={sport:"All",grader:"psa",sort:"total"};
+function viewGraded(){
+  return `<div class="view"><div class="wrap">
+    <section class="top" style="padding-bottom:24px">
+      <div class="eyebrow">Database</div><h2 class="title">Graded population</h2>
+      <p class="lede">Population counts across PSA, BGS and SGC, with the gem rate: the share of graded copies earning the top grade. A low gem rate is what makes a ten expensive.</p>
+    </section>
+    <div class="controls">
+      <div class="chips">${["All","Basketball","Football","Baseball"].map(s=>`<button class="chip ${gstate.sport===s?"on":""}" data-gs="${s}">${s}</button>`).join("")}</div>
+      <div style="display:flex;gap:24px;align-items:center">
+        <div class="tabs">${["psa","bgs","sgc"].map(g=>`<button class="tab ${gstate.grader===g?"on":""}" data-gr="${g}">${g.toUpperCase()}</button>`).join("")}</div>
+        <select class="search" id="gsort" aria-label="Sort"><option value="total">Most graded</option><option value="gem">Lowest gem rate</option><option value="year">Year</option></select>
+      </div>
+    </div>
+    <div id="glist" style="padding:24px 0 80px"></div>
+  </div>${footer()}</div>`;
+}
+function renderGraded(){
+  const g=gstate.grader;
+  let list=CARDS.filter(c=>gstate.sport==="All"||c.sport===gstate.sport).map(c=>{const o=c.pop[g];const ks=o.map(x=>x[0]);const tot=o.reduce((a,x)=>a+x[1],0);return{c,o,ks,tot,gem:tot?o[0][1]/tot:0}});
+  if(gstate.sort==="total")list.sort((a,b)=>b.tot-a.tot);
+  if(gstate.sort==="gem")list.sort((a,b)=>a.gem-b.gem);
+  if(gstate.sort==="year")list.sort((a,b)=>a.c.year.localeCompare(b.c.year));
+  const ks=list[0]?list[0].ks:[];
+  const maxTot=Math.max(1,...list.map(x=>x.tot));
+  $("#glist").innerHTML=`<div class="tablewrap"><table><thead><tr><th>Card</th>${ks.map(k=>`<th class="r">${g.toUpperCase()} ${k}</th>`).join("")}<th class="r">Total</th><th style="width:140px"></th><th class="r">Gem rate</th></tr></thead><tbody>
+    ${list.map(x=>`<tr class="row link" data-go="card-${x.c.id}"><td><div class="mini">${face(x.c)}<div><div class="who">${esc(x.c.player)}</div><div style="font-size:11px;color:var(--ink3)">${esc(x.c.year)} ${esc(x.c.set)} · ${esc(x.c.variant)}</div></div></div></td>
+      ${x.o.map(([k,n])=>`<td class="r mono">${n.toLocaleString()}</td>`).join("")}<td class="r mono" style="color:var(--ink)">${x.tot.toLocaleString()}</td>
+      <td><div class="bar" style="margin-left:16px"><i style="width:${x.tot/maxTot*100}%"></i></div></td>
+      <td class="r mono">${(x.gem*100).toFixed(1)}%</td></tr>`).join("")}
+  </tbody></table></div>`;
+  bindRowLinks($("#glist"));
+}
+function bindGraded(){
+  renderGraded();
+  $("#gsort").value=gstate.sort;
+  document.querySelectorAll("[data-gs]").forEach(b=>b.onclick=()=>{gstate.sport=b.dataset.gs;document.querySelectorAll("[data-gs]").forEach(x=>x.classList.toggle("on",x===b));renderGraded()});
+  document.querySelectorAll("[data-gr]").forEach(b=>b.onclick=()=>{gstate.grader=b.dataset.gr;document.querySelectorAll("[data-gr]").forEach(x=>x.classList.toggle("on",x===b));renderGraded()});
+  $("#gsort").onchange=e=>{gstate.sort=e.target.value;renderGraded()};
+}
+function bindRowLinks(root){root.querySelectorAll("[data-go]").forEach(r=>r.onclick=()=>{location.hash=r.dataset.go})}
+function footer(){return `<div class="wrap"><div class="foot"><span>90scards.net — prototype</span><span>Prices, sales, population counts and serial records are illustrative sample data. Set and insert details come from public checklists.</span></div></div>`}
+
+
+/* ---------- sets ---------- */
+const SETS=SETS_RAW.map(st=>{
+  const rows=(st.rows.trim()?st.rows.trim().split("\n"):[]).map((l,i)=>{let [n,t,se,av,h,r,c,num,note]=l.split("|");
+    const N=x=>{if(!x)return null;if(/\/pack|covered/.test(x))return 1;if(/\/box/.test(x))return 24;const m=x.replace(/,/g,"").match(/1:(\d+)/);return m?+m[1]:null};
+    const odds=Math.max(N(h)||0,N(r)||0)||null;
+    if(!h&&!r&&av==="B")av="?";
+    return {i,n,t,se,av,h,r,c,num,note,odds}});
+  const ins=rows.filter(x=>x.t==="i"),par=rows.filter(x=>x.t==="p");
+  const top=rows.filter(x=>x.odds).sort((a,b)=>b.odds-a.odds)[0];
+  const hasH=rows.some(x=>x.av==="H"),hasR=rows.some(x=>x.av==="R");
+  return {...st,rows,nIns:ins.length,nPar:par.length,nAuto:rows.filter(x=>x.t==="a").length,top,hasH,hasR,verified:rows.length?rows.filter(x=>x.h||x.r||x.num).length/rows.length:0};
+});
+const setById=id=>SETS.find(s=>s.id===id);
+const TYPE={i:"Insert",p:"Parallel",a:"Autograph",x:"Redemption"};
+const SPORTS=["Basketball","Football","Baseball"];
+const sx={year:null,sport:null,q:""};
+function avTags(av){return `<span class="av">${av==="B"?`<span class="h">Hobby</span><span class="r">Retail</span>`:av==="H"?`<span class="h">Hobby only</span>`:av==="R"?`<span class="r">Retail only</span>`:`<span class="u">Unstated</span>`}</span>`}
+function oddsCell(x){
+  if(!x.h&&!x.r)return x.num?`<span class="odds" style="color:var(--ink3)">Serial /${esc(x.num)}</span>`:`<span class="odds" style="color:var(--ink3)">—</span>`;
+  if(x.h&&x.r&&x.h!==x.r)return `<span class="odds">${esc(x.h)}<em>hobby</em></span><br><span class="odds">${esc(x.r)}<em>retail</em></span>`;
+  return `<span class="odds">${esc(x.h||x.r)}</span>`;
+}
+const rarW=o=>o?Math.min(100,Math.log10(o)/Math.log10(3000)*100):0;
+const seriesLbl=se=>se==="1"?"Series 1":se==="2"?"Series 2":se==="B"?"Both":"—";
+
+const TL_YEARS=[1992,1993,1994,1995,1996,1997,1998,1999,2000];
+function viewSets(){
+  const cnt=y=>SETS.filter(s=>s.year===y).length;
+  const chosen=sx.year!=null;
+  return `<div class="view"><div class="wrap">
+    <section class="top ${chosen?"tl-chosen":"tl-landing"}" style="padding-bottom:0">
+      <div class="eyebrow">Database · Sets & inserts</div>
+      <h2 class="title">${chosen?"":"Choose a year"}${chosen?`<span class="tl-yr">${sx.year}</span>`:""}</h2>
+      ${chosen?"":`<p class="lede">Scroll through the decade and pick a year to see its Fleer and SkyBox releases, inserts and pack odds.</p>`}
+    </section>
+  </div>
+  <div class="tl-shell ${chosen?"compact":""}">
+    <button class="tl-nav prev" aria-label="Earlier years">←</button>
+    <div class="tl" id="tl"><div class="tl-track">
+      <div class="tl-line"></div>
+      ${TL_YEARS.map((y,i)=>{const n=cnt(y);return `<a class="tl-item ${sx.year===y?"on":""} ${n?"":"empty"}" href="#sets-${y}" data-ty="${y}" style="animation-delay:${200+i*70}ms">
+        <span class="tl-dot"></span><span class="tl-num">${y}</span><span class="tl-meta">${n?n+" sets":"Coming soon"}</span></a>`}).join("")}
+    </div></div>
+    <button class="tl-nav next" aria-label="Later years">→</button>
+  </div>
+  <div class="wrap">
+    ${chosen?`<div class="tl-reveal">
+      <div class="controls">
+        <div class="chips">${SPORTS.map(s=>`<button class="chip ${sx.sport===s?"on":""}" data-sp="${s}">${s}</button>`).join("")}</div>
+        <input class="search" id="sxq" placeholder="Search ${sx.sport?esc(sx.sport.toLowerCase())+" ":""}inserts…" value="${esc(sx.q)}" style="width:260px;${sx.sport?"":"visibility:hidden"}">
+      </div>
+      <div id="slist2" style="padding-bottom:100px"></div>
+    </div>`:`<div style="height:120px"></div>`}
+  </div>${footer()}</div>`;
+}
+function boxArt(st){
+  if(st.box)return `<img src="${esc(st.box)}" alt="${esc(st.season+" "+st.name)} box" loading="lazy" decoding="async">`;
+  const nm=esc(st.name), sub=esc(st.mfr+" · "+st.season), sp=esc(st.sport);
+  const fs=st.name.length>22?10.5:st.name.length>13?14:17;
+  return `<svg viewBox="0 0 260 200" aria-label="${nm} box (image coming soon)">
+    <defs><linearGradient id="bf-${st.id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1a1e"/><stop offset="1" stop-color="#0d0d0f"/></linearGradient></defs>
+    <polygon class="bx-top" points="40,62 84,32 238,32 194,62"/>
+    <polygon class="bx-side" points="194,62 238,32 238,142 194,172"/>
+    <rect class="bx-front" x="40" y="62" width="154" height="110" fill="url(#bf-${st.id})"/>
+    <line class="bx-flap" x1="62" y1="47" x2="216" y2="47"/>
+    <text x="54" y="84" class="bx-sub">${sub}</text>
+    <text x="54" y="${144}" class="bx-name" style="font-size:${fs}px">${nm}</text>
+    <text x="54" y="160" class="bx-sub">${sp}</text>
+  </svg>`;
+}
+function setCard(st,i){
+  return `<a class="bcard" href="#set-${st.id}" style="animation-delay:${Math.min(i,10)*60}ms">
+    <div class="bstage">${boxArt(st)}</div>
+    <div class="bmeta"><div class="bname">${esc(st.name)}</div><div class="bsub">${esc(st.mfr)} · ${esc(st.season)}</div></div>
+  </a>`;
+}
+function renderSets(){
+  const el=$("#slist2"),q=sx.q.trim().toLowerCase();
+  const sq=$("#sxq");if(sq){sq.style.visibility=sx.sport?"visible":"hidden";sq.placeholder="Search "+(sx.sport?sx.sport.toLowerCase()+" ":"")+"inserts…"}
+  if(!sx.sport){el.innerHTML=`<div class="empty" style="padding:90px 0;animation:viewIn .8s var(--ease) both">Choose a sport to see ${sx.year}'s sets.</div>`;return}
+  if(q){
+    const hits=SETS.filter(s=>s.sport===sx.sport).flatMap(s=>s.rows.filter(x=>(x.n+" "+(x.note||"")).toLowerCase().includes(q)).map(x=>({...x,st:s})));
+    el.innerHTML=hits.length?`<div class="eyebrow" style="margin:28px 0 8px">${hits.length} matches across all years</div><div class="tablewrap"><table><thead><tr><th>Insert</th><th>Set</th><th>Series</th><th>Found in</th><th class="r">Odds</th></tr></thead><tbody>
+      ${hits.map(x=>`<tr class="row link" data-go="set-${x.st.id}"><td><span class="who">${esc(x.n)}</span><span class="nt">${TYPE[x.t]}${x.num?" · /"+esc(x.num):""}</span></td><td>${esc(x.st.season)} ${esc(x.st.name)}<span class="nt">${esc(x.st.sport)}</span></td><td>${seriesLbl(x.se)}</td><td>${avTags(x.av)}</td><td class="r">${oddsCell(x)}</td></tr>`).join("")}
+    </tbody></table></div>`:`<div class="empty">No inserts match “${esc(sx.q)}”.</div>`;
+    bindRowLinks(el);return;
+  }
+  const sports=[sx.sport];let k=0;
+  el.innerHTML=sports.map(sp=>{const list=SETS.filter(s=>s.year===sx.year&&s.sport===sp);
+    if(!list.length)return "";
+    const lbl=sp==="Basketball"?`${sx.year}-${String(sx.year+1).slice(2)} season`:`${sx.year} season`;
+    return `<div class="sgroup"><h3><span>${sp}</span><span style="color:var(--ink3)">${lbl} · ${list.length} sets</span></h3><div class="bgrid">${list.map(st=>setCard(st,k++)).join("")}</div></div>`}).join("")||(SETS.some(s=>s.year===sx.year)?`<div class="empty">No ${esc(sx.sport.toLowerCase())} sets for ${sx.year} yet.</div>`:`<div class="empty" style="padding:100px 0">${sx.year} sets are coming soon.<br><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase">Fleer / SkyBox releases from 1996–1999 are live now</span></div>`);
+}
+function bindSets(){
+  const tl=$("#tl");
+  const on=tl.querySelector(".tl-item.on")||tl.querySelector('[data-ty="1996"]');
+  requestAnimationFrame(()=>{tl.scrollLeft=on.offsetLeft-tl.clientWidth/2+on.offsetWidth/2});
+  tl.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;const max=tl.scrollWidth-tl.clientWidth;if((e.deltaY<0&&tl.scrollLeft<=0)||(e.deltaY>0&&tl.scrollLeft>=max-1))return;tl.scrollLeft+=e.deltaY;e.preventDefault()},{passive:false});
+  const step=()=>tl.querySelector(".tl-item").offsetWidth*2;
+  $(".tl-nav.prev").onclick=()=>tl.scrollBy({left:-step(),behavior:"smooth"});
+  $(".tl-nav.next").onclick=()=>tl.scrollBy({left:step(),behavior:"smooth"});
+  const edges=()=>{$(".tl-nav.prev").classList.toggle("off",tl.scrollLeft<4);$(".tl-nav.next").classList.toggle("off",tl.scrollLeft>tl.scrollWidth-tl.clientWidth-4)};
+  tl.addEventListener("scroll",edges);setTimeout(edges,50);
+  // drag to scroll
+  let down=false,sx0=0,sl0=0,moved=false;
+  tl.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;down=true;moved=false;sx0=e.clientX;sl0=tl.scrollLeft});
+  addEventListener("pointermove",e=>{if(!down)return;const d=e.clientX-sx0;if(Math.abs(d)>4){moved=true;tl.classList.add("drag")}tl.scrollLeft=sl0-d});
+  addEventListener("pointerup",()=>{down=false;tl.classList.remove("drag")});
+  tl.querySelectorAll(".tl-item").forEach(a=>a.addEventListener("click",e=>{if(moved){e.preventDefault();moved=false}}));
+  if(sx.year==null)return;
+  renderSets();
+  document.querySelectorAll("[data-sp]").forEach(b=>b.onclick=()=>{sx.sport=b.dataset.sp;document.querySelectorAll("[data-sp]").forEach(x=>x.classList.toggle("on",x===b));renderSets()});
+  $("#sxq").oninput=e=>{sx.q=e.target.value;renderSets()};
+}
+
+const sd={type:"All",series:"All",av:"All",sort:"list"};
+function viewSet(st){
+  sd.type="All";sd.series="All";sd.av="All";sd.sort="list";
+  const siblings=SETS.filter(s=>s.year===st.year&&s.sport===st.sport&&s.id!==st.id);
+  const host=(()=>{try{return new URL(st.src).hostname.replace("www.","")}catch(e){return "source"}})();
+  return `<div class="view"><div class="wrap">
+    <a class="back" href="#sets-${st.year}">← ${st.year} · ${esc(st.sport)} sets</a>
+    <section style="padding:36px 0 8px">
+      <div class="eyebrow">${esc(st.sport)} · ${esc(st.season)} · ${esc(st.mfr)}</div>
+      <h2 class="title">${esc(st.name)}</h2>
+      ${st.cfg?`<div class="cfg">${esc(st.cfg)}</div>`:""}
+      <div class="kv">
+        <div><div class="l">Series</div><div class="v">${st.series===2?"1 & 2":"Single"}</div></div>
+        <div><div class="l">Inserts</div><div class="v">${st.nIns}</div></div>
+        <div><div class="l">Parallels · Autos</div><div class="v">${st.nPar} · ${st.nAuto}</div></div>
+        <div><div class="l">Toughest pull</div><div class="v mono" style="font-size:18px">${st.top?"1:"+st.top.odds.toLocaleString():"—"}</div><div style="font-size:11px;color:var(--ink3);margin-top:4px">${st.top?esc(st.top.n):""}</div></div>
+      </div>
+      ${st.note?`<p class="prose">${esc(st.note)}</p>`:""}
+    </section>
+    <div class="filters">
+      <div class="fg"><span class="lab">Type</span>${["All","Insert","Parallel","Autograph"].map(v=>`<button class="tab ${v==="All"?"on":""}" data-ft="${v}">${v}</button>`).join("")}</div>
+      ${st.series===2?`<div class="fg"><span class="lab">Series</span>${["All","1","2"].map(v=>`<button class="tab ${v==="All"?"on":""}" data-fs="${v}">${v==="All"?"All":"Series "+v}</button>`).join("")}</div>`:""}
+      <div class="fg"><span class="lab">Found in</span>${["All","Hobby","Retail"].map(v=>`<button class="tab ${v==="All"?"on":""}" data-fa="${v}">${v}</button>`).join("")}</div>
+      <div class="fg" style="margin-left:auto"><span class="lab">Sort</span>${[["list","Checklist"],["rare","Rarest"],["common","Easiest"]].map(([v,l])=>`<button class="tab ${v==="list"?"on":""}" data-fo="${v}">${l}</button>`).join("")}</div>
+    </div>
+    <div id="srows"></div>
+    <div class="legend"><span>Odds are per pack (1:36 means one in every 36 packs). Where hobby and retail rates differ, both are shown.</span><span>“—” means no published odds were found.</span></div>
+    ${st.src?`<div class="src">Source: <a href="${esc(st.src)}">${esc(host)}</a>. Insert names, odds and numbering are from public checklists. Verify against the pack wrapper before relying on them.</div>`:""}
+    ${siblings.length?`<div class="sec"><h3><span>Other ${st.year} ${esc(st.sport.toLowerCase())} sets</span></h3><div class="strip">${siblings.map(s=>`<a class="chip" href="#set-${s.id}">${esc(s.name)}</a>`).join("")}</div></div>`:""}
+  </div>${footer()}</div>`;
+}
+function renderSetRows(st){
+  let rows=st.rows.filter(x=>(sd.type==="All"||TYPE[x.t]===sd.type||(sd.type==="Insert"&&x.t==="x"))
+    &&(sd.series==="All"||x.se===sd.series||x.se==="B")
+    &&(sd.av==="All"||(sd.av==="Hobby"&&(x.av==="B"||x.av==="H"))||(sd.av==="Retail"&&(x.av==="B"||x.av==="R"))));
+  if(sd.sort==="rare")rows=[...rows].sort((a,b)=>(b.odds||0)-(a.odds||0));
+  if(sd.sort==="common")rows=[...rows].sort((a,b)=>(a.odds||1e9)-(b.odds||1e9));
+  if(!st.rows.length){$("#srows").innerHTML=`<div class="empty">Checklist coming soon.</div>`;return}
+  $("#srows").innerHTML=rows.length?`<div class="tablewrap"><table><thead><tr><th>Name</th><th>Type</th>${st.series===2?"<th>Series</th>":""}<th>Found in</th><th class="r">Pack odds</th><th class="r">Numbered</th><th class="r">Cards</th><th style="width:110px;padding-left:20px">Rarity</th></tr></thead><tbody>
+    ${rows.map(x=>`<tr class="row"><td><span class="who">${esc(x.n)}</span>${x.note?`<span class="nt">${esc(x.note)}</span>`:""}</td>
+      <td><span class="typ">${TYPE[x.t]}</span></td>${st.series===2?`<td>${seriesLbl(x.se)}</td>`:""}
+      <td>${avTags(x.av)}</td><td class="r">${oddsCell(x)}</td>
+      <td class="r mono">${x.num?(/^\d/.test(x.num)?"/"+esc(x.num):esc(x.num)):"—"}</td><td class="r mono">${x.c||"—"}</td>
+      <td style="padding-left:20px"><div class="rare" title="${x.odds?"1:"+x.odds:"no odds"}"><i style="width:${rarW(x.odds)}%"></i></div></td></tr>`).join("")}
+  </tbody></table></div>`:`<div class="empty">Nothing matches these filters.</div>`;
+}
+function bindSet(st){
+  renderSetRows(st);
+  const grp=(attr,key)=>document.querySelectorAll(`[${attr}]`).forEach(b=>b.onclick=()=>{sd[key]=b.getAttribute(attr);document.querySelectorAll(`[${attr}]`).forEach(x=>x.classList.toggle("on",x===b));renderSetRows(st)});
+  grp("data-ft","type");grp("data-fs","series");grp("data-fa","av");grp("data-fo","sort");
+  sx.year=st.year;sx.sport=st.sport;
+}
+
+
+/* ---------- gallery ---------- */
+let GAL=null;
+const cardName=(pl,it,side)=>`${GAL.prefix}-${pl.key}-${it.k}-${side}`;
+const hasImg=(pl,it,side)=>GAL.allImgs||(GAL.imgs||[]).includes(cardName(pl,it,side));
+const cardImg=(pl,it,side)=>cardSrc(cardName(pl,it,side));
+function artBox(st,it,pl,side="f"){
+  const land=side==="f"?it.land:(it.land||it.backLand);
+  if(!pl.nums[it.k])return `<div class="art empty"><span class="ph1">Not in this insert</span><span class="ph2">${esc(pl.short)} doesn't appear in ${esc(it.t)}</span></div>`;
+  if(!hasImg(pl,it,side))return `<div class="art empty"><span class="ph1">${side==="f"?"Awaiting scan":"Awaiting back scan"}</span><span class="ph2">${esc(pl.short)} · ${esc(it.t)}</span></div>`;
+  return `<div class="art ${land?"land":""}"><img src="${cardImg(pl,it,side)}" alt="${esc(pl.name+" "+it.t+(side==="b"?" (back)":""))}" draggable="false"></div>`;
+}
+const itT=(it,pl)=>(pl.over&&pl.over[it.k]&&pl.over[it.k].t)||it.t;
+const itO=(it,pl)=>(pl.over&&pl.over[it.k]&&pl.over[it.k].odds)||it.odds;
+const itM=(it,pl)=>(pl.over&&pl.over[it.k]&&pl.over[it.k].meta)||it.meta;
+const byLine=(pl,it)=>pl.nums[it.k]?`${pl.name} · ${pl.nums[it.k]}`:`${pl.name} · not in this insert`;
+function viewGallerySet(st){
+  GAL=st.gallery;
+  const g=st.gallery, pl=g.players[gx.p], host=(()=>{try{return new URL(st.src).hostname.replace("www.","")}catch(e){return "source"}})();
+  return `<div class="view"><div class="wrap">
+    <a class="back" href="#sets-${st.year}">← ${st.year} · ${esc(st.sport)} sets</a>
+    <section class="ghero">
+      <div class="boxshot">${st.box?`<img src="${esc(st.box)}" alt="${esc(st.season+" "+st.name)} box">`:boxArt(st)}</div>
+      <div>
+        <div class="eyebrow">${esc(st.sport)} · ${esc(st.season)} · ${esc(st.mfr)}</div>
+        <h2 class="title">${esc(st.name)}</h2>
+        ${st.cfg?`<div class="cfg">${esc(st.cfg)}</div>`:""}
+        ${st.note?`<p class="prose" style="margin-top:22px">${esc(st.note)}</p>`:""}
+      </div>
+    </section>
+    <section class="wall">
+      <div class="wall-head"><div><div class="eyebrow">The gallery</div><h3><span id="gname" class="gswap">${esc(pl.name)}</span>, ${esc(g.heading||"in every insert")}</h3></div>
+        <div class="gtoggle" role="tablist" aria-label="Player">${g.players.map((p,i)=>`<button role="tab" class="gt ${i===gx.p?"on":""}" data-gp="${i}" aria-selected="${i===gx.p}">${esc(p.short)}<i class="gbar"></i></button>`).join("")}</div></div>
+      <div class="exhibits" id="exhibits">${g.items.map((it,i)=>`<div class="exhibit ${pl.nums[it.k]?"":"gone"}" tabindex="0" data-ex="${i}" style="animation-delay:${150+i*110}ms">
+        <div class="spot"><div class="frame ${it.land?"land":""}"><div class="mat">${artBox(st,it,pl)}</div></div></div>
+        <div class="placard"><div class="no">No. ${String(g.items.slice(0,i+1).filter(x=>pl.nums[x.k]).length).padStart(2,"0")}</div><div class="tt gswap">${esc(itT(it,pl))}</div>
+          <div class="by gswap">${esc(byLine(pl,it))}</div><div class="od gswap">${esc(itO(it,pl))}</div></div>
+      </div>`).join("")}</div>
+      <div class="absent">${g.absent?esc(g.absent)+" ":""}Click any card to see its back.</div>
+    </section>
+    <section class="fullcl"><h3>Full checklist &amp; odds</h3>
+      <div class="filters">
+        <div class="fg"><span class="lab">Type</span>${["All","Insert","Parallel","Autograph"].map(v=>`<button class="tab ${v==="All"?"on":""}" data-ft="${v}">${v}</button>`).join("")}</div>
+        <div class="fg"><span class="lab">Found in</span>${["All","Hobby","Retail"].map(v=>`<button class="tab ${v==="All"?"on":""}" data-fa="${v}">${v}</button>`).join("")}</div>
+        <div class="fg" style="margin-left:auto"><span class="lab">Sort</span>${[["list","Checklist"],["rare","Rarest"],["common","Easiest"]].map(([v,l])=>`<button class="tab ${v==="list"?"on":""}" data-fo="${v}">${l}</button>`).join("")}</div>
+      </div>
+      <div id="srows"></div>
+      <div class="src">Source: <a href="${esc(st.src)}">${esc(host)}</a>.${g.allImgs||(g.imgs||[]).length?" Card images supplied by the site owner.":""}</div>
+    </section>
+  </div>
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Gallery viewer">
+    <button class="lb-x" aria-label="Close">✕</button><button class="lb-nav p" aria-label="Previous">←</button><button class="lb-nav n" aria-label="Next">→</button>
+    <div class="lb-in" id="lbin"></div><div class="lb-count" id="lbc"></div>
+  </div>${footer()}</div>`;
+}
+const gx={p:0,timer:null,t0:0,paused:false,lbOpen:false};
+function bindGallerySet(st){
+  GAL=st.gallery;
+  sd.type="All";sd.series="All";sd.av="All";sd.sort="list";
+  bindSet(st);
+  const g=st.gallery;
+  // preload every image
+  g.players.forEach(pl=>g.items.forEach(it=>["f","b"].forEach(sd2=>{if(pl.nums[it.k]&&hasImg(pl,it,sd2)){const im=new Image();im.src=cardImg(pl,it,sd2)}})));
+  document.querySelectorAll("body > .lb").forEach(x=>x.remove());const lb=$("#lb");document.body.appendChild(lb);
+
+  /* --- player cycling --- */
+  const wall=$("#exhibits");
+  const setBars=()=>document.querySelectorAll(".gt").forEach((b,i)=>{b.classList.toggle("on",i===gx.p);b.setAttribute("aria-selected",i===gx.p);
+    const bar=b.querySelector(".gbar");bar.style.transition="none";bar.style.transform="scaleX(0)";
+    if(i===gx.p&&!gx.paused){void bar.offsetWidth;bar.style.transition=`transform ${g.interval}ms linear`;bar.style.transform="scaleX(1)"}});
+  const swapTo=(pi)=>{
+    if(pi===gx.p)return;gx.p=pi;const pl=g.players[pi];
+    const nm=$("#gname");nm.classList.add("out");setTimeout(()=>{nm.textContent=pl.name;nm.classList.remove("out")},380);
+    const renum=()=>{let n=0;wall.querySelectorAll(".exhibit").forEach(ex=>{if(!ex.classList.contains("gone"))ex.querySelector(".no").textContent="No. "+String(++n).padStart(2,"0")})};
+    wall.querySelectorAll(".exhibit").forEach((ex,i)=>{const it=g.items[i];
+      if(!pl.nums[it.k]){ex.classList.add("leaving");setTimeout(()=>{ex.classList.add("gone");ex.classList.remove("leaving");renum()},450);return}
+      if(ex.classList.contains("gone")){ex.classList.remove("gone");ex.classList.add("arriving");renum();setTimeout(()=>ex.classList.remove("arriving"),40)}
+      setTimeout(()=>{const art=ex.querySelector(".art"),by=ex.querySelector(".by");
+        art.classList.add("out");by.classList.add("out");ex.querySelector(".tt").classList.add("out");ex.querySelector(".od").classList.add("out");
+        setTimeout(()=>{const mat=ex.querySelector(".mat");mat.innerHTML=artBox(st,it,pl,"f");by.textContent=byLine(pl,it);ex.querySelector(".tt").textContent=itT(it,pl);ex.querySelector(".od").textContent=itO(it,pl);
+          const na=mat.querySelector(".art"),ni=na.querySelector("img");na.classList.add("out");void na.offsetWidth;
+          const done=()=>{na.classList.remove("out");by.classList.remove("out");ex.querySelector(".tt").classList.remove("out");ex.querySelector(".od").classList.remove("out")};(!ni||ni.complete)?requestAnimationFrame(done):ni.onload=done},420)},i*90)});
+    restart();
+  };
+  const tick=()=>{if(!gx.paused&&!gx.lbOpen&&!document.hidden)swapTo((gx.p+1)%g.players.length)};
+  const restart=()=>{clearInterval(gx.timer);gx.timer=setInterval(tick,g.interval);setBars()};
+  const pause=v=>{gx.paused=v;if(v){document.querySelectorAll(".gbar").forEach(b=>{const m=getComputedStyle(b).transform;b.style.transition="none";b.style.transform=m})}else restart()};
+  document.querySelectorAll(".gt").forEach(b=>b.onclick=()=>{const i=+b.dataset.gp;if(i===gx.p)restart();else swapTo(i)});
+  wall.addEventListener("mouseenter",()=>pause(true));wall.addEventListener("mouseleave",()=>pause(false));
+  restart();
+
+  /* --- lightbox with flip --- */
+  let cur=0,side="f",lp=gx.p;
+  const render=()=>{const it=g.items[cur],pl=g.players[lp];
+    $("#lbin").innerHTML=`<div class="exhibit-big"><div class="frame flipper ${(side==="f"?it.land:(it.land||it.backLand))?"land":""}" id="lbf" title="Click to flip"><div class="mat">${artBox(st,it,pl,side)}</div></div>
+      <button class="flipbtn" id="flipbtn">↻ ${side==="f"?"See the back":"See the front"}</button></div>
+      <div class="lb-pl"><div class="no">No. ${String(cur+1).padStart(2,"0")} · ${esc(st.season)} ${esc(st.name)}</div><h4>${esc(itT(it,pl))}</h4>
+      <div class="by">${esc(byLine(pl,it))}</div>
+      <div class="lbp">${g.players.map((p,i)=>`<button class="tab ${i===lp?"on":""}" data-lp="${i}">${esc(p.short)}</button>`).join("")}</div>
+      <div class="rule"></div>
+      <dl><dt>Rarity</dt><dd>${esc(itO(it,pl))}</dd><dt>Details</dt><dd>${esc(itM(it,pl))}</dd>${pl.serial[it.k]?`<dt>This copy</dt><dd class="mono">${esc(pl.serial[it.k])}</dd>`:""}<dt>Showing</dt><dd>${side==="f"?"Front":"Back"}</dd></dl></div>`;
+    $("#lbc").textContent=`${cur+1} / ${g.items.length}`;
+    $("#lbf").onclick=flip;$("#flipbtn").onclick=flip;
+    document.querySelectorAll("[data-lp]").forEach(b=>b.onclick=()=>{lp=+b.dataset.lp;show(cur,1)});
+  };
+  let flipping=false;
+  const flip=()=>{if(flipping)return;flipping=true;const f=$("#lbf");f.classList.add("turn");
+    setTimeout(()=>{side=side==="f"?"b":"f";render();const n=$("#lbf");n.classList.add("turn","instant");void n.offsetWidth;n.classList.remove("instant");requestAnimationFrame(()=>{n.classList.remove("turn");setTimeout(()=>flipping=false,320)})},300)};
+  const show=(i,dir=1)=>{const n=g.items.length;for(let k=0;k<n;k++){const j=((i+k*dir)%n+n)%n;if(g.players[lp].nums[g.items[j].k]){cur=j;break}}side="f";render()};
+  const open=i=>{lp=gx.p;gx.lbOpen=true;show(i);lb.classList.add("on");document.body.style.overflow="hidden"};
+  const close=()=>{lb.classList.remove("on");document.body.style.overflow="";gx.lbOpen=false};
+  document.querySelectorAll("[data-ex]").forEach(e=>{e.onclick=()=>open(+e.dataset.ex);e.onkeydown=k=>{if(k.key==="Enter"||k.key===" "){k.preventDefault();open(+e.dataset.ex)}}});
+  $(".lb-x").onclick=close;$(".lb-nav.p").onclick=()=>show(cur-1,-1);$(".lb-nav.n").onclick=()=>show(cur+1,1);
+  lb.onclick=e=>{if(e.target===lb)close()};
+  const key=e=>{if(!lb.classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")show(cur-1,-1);if(e.key==="ArrowRight")show(cur+1,1);if(e.key==="f"||e.key==="F")flip()};
+  removeEventListener("keydown",window.__gkey||(()=>{}));window.__gkey=key;addEventListener("keydown",key);
+}
+
+/* ---------- showcase (row → version → card) ---------- */
+const fsx={row:null,ver:null,p:0,timer:null,side:"f"};
+const scImg=(name,sc)=>{const n=sc.prev[name]||name;return sc.imgs.includes(n)?cardSrc(n):null};
+const scLand=(name,sc)=>sc.land.includes(sc.prev[name]||name);
+function phArt(src,l1,l2,land){
+  return src?`<div class="art ${land?"land":""}"><img src="${src}" alt="${esc(l2)}" draggable="false"></div>`
+    :`<div class="art empty"><span class="ph1">${esc(l1)}</span><span class="ph2">${esc(l2)}</span></div>`;
+}
+function viewShowcase(st){
+  const host=(()=>{try{return new URL(st.src).hostname.replace("www.","")}catch(e){return "source"}})();
+  return `<div class="view"><div class="wrap">
+    <a class="back" href="#sets-${st.year}">← ${st.year} · ${esc(st.sport)} sets</a>
+    <section class="ghero">
+      <div class="boxshot">${st.box?`<img src="${esc(st.box)}" alt="${esc(st.season+" "+st.name)} box">`:boxArt(st)}</div>
+      <div><div class="eyebrow">${esc(st.sport)} · ${esc(st.season)} · ${esc(st.mfr)}</div>
+        <h2 class="title">${esc(st.name)}</h2>${st.cfg?`<div class="cfg">${esc(st.cfg)}</div>`:""}
+        ${st.note?`<p class="prose" style="margin-top:22px">${esc(st.note)}</p>`:""}</div>
+    </section>
+    <section class="wall" id="scwall"></section>
+    <section class="fullcl"><h3>Full checklist &amp; odds</h3>
+      <div class="filters">
+        <div class="fg"><span class="lab">Type</span>${["All","Insert","Parallel","Autograph"].map(v=>`<button class="tab ${v==="All"?"on":""}" data-ft="${v}">${v}</button>`).join("")}</div>
+        <div class="fg" style="margin-left:auto"><span class="lab">Sort</span>${[["list","Checklist"],["rare","Rarest"],["common","Easiest"]].map(([v,l])=>`<button class="tab ${v==="list"?"on":""}" data-fo="${v}">${l}</button>`).join("")}</div>
+      </div>
+      <div id="srows"></div>
+      <div class="src">Source: <a href="${esc(st.src)}">${esc(host)}</a>.</div>
+    </section>
+  </div>${footer()}</div>`;
+}
+function renderShowcase(st){
+  const sc=st.showcase,w=$("#scwall");clearInterval(fsx.timer);
+  const rowsOrdered=[0,1,2,3].map(r=>sc.rows.find(x=>x.r===r));
+  const crumbs=()=>`<div class="steps"><button data-go-step="rows" class="${fsx.row==null?"cur":""}">Choose a row</button>
+    ${fsx.row!=null?`<span class="sep">/</span><button data-go-step="vers" class="${fsx.ver==null?"cur":""}">Row ${fsx.row}</button>`:""}
+    ${fsx.ver?`<span class="sep">/</span><span class="cur">${esc(sc.versions.find(v=>v.k===fsx.ver).t)}</span>`:""}</div>`;
+  if(fsx.row==null){
+    w.innerHTML=`<div class="stage-in">${crumbs()}<div class="wall-head" style="margin-bottom:48px"><div><div class="eyebrow">Step 1 of 2</div><h3>Choose a row</h3></div>
+      <div class="eyebrow">Every player appears in all four rows</div></div>
+      <div class="choices c4">${rowsOrdered.map((row,i)=>`<button class="choice" data-row="${row.r}" style="animation-delay:${120+i*100}ms">
+        <div class="spot"><div class="frame ${scLand(`fs97-row${row.r}`,sc)?"land":""}"><div class="mat">${phArt(scImg(`fs97-row${row.r}`,sc),"Preview",`Row ${row.r}`,scLand(`fs97-row${row.r}`,sc))}</div></div></div>
+        <div class="cl"><div class="big">Row ${row.r}</div><div class="sm">${esc(row.sub)}</div></div></button>`).join("")}</div></div>`;
+  } else if(!fsx.ver){
+    const row=sc.rows.find(x=>x.r===fsx.row);
+    w.innerHTML=`<div class="stage-in">${crumbs()}<div class="wall-head" style="margin-bottom:48px"><div><div class="eyebrow">Step 2 of 2 · Row ${row.r}</div><h3>Choose a version</h3></div>
+      <div class="eyebrow" style="max-width:420px;text-align:right;line-height:1.7">${esc(row.desc)}</div></div>
+      <div class="choices c3">${sc.versions.map((v,i)=>{const num=v.k==="base"?(row.baseNum||"Not numbered"):v.num;return `<button class="choice" data-ver="${v.k}" style="animation-delay:${120+i*100}ms">
+        <div class="spot"><div class="frame ${scLand(`fs97-r${row.r}-${v.k}`,sc)?"land":""}"><div class="mat">${phArt(scImg(`fs97-r${row.r}-${v.k}`,sc),"Preview",v.t,scLand(`fs97-r${row.r}-${v.k}`,sc))}</div></div></div>
+        <div class="cl"><div class="big">${esc(v.t)}</div><div class="sm">${esc(v.sub)}</div><div class="num">${esc(num)}</div></div></button>`}).join("")}</div></div>`;
+  } else {
+    const row=sc.rows.find(x=>x.r===fsx.row),v=sc.versions.find(x=>x.k===fsx.ver);
+    const has=p=>sc.imgs.includes(`fs97-${p.key}-r${row.r}-${v.k}-f`);
+    let plist=sc.players.filter(p=>has(p));if(!plist.length)plist=sc.players.filter(p=>!p.fallback);
+    if(!plist.some(p=>!p.fallback)){} if(fsx.p>=plist.length)fsx.p=0;const pl=plist[fsx.p];
+    const num=v.k==="base"?(row.baseNum||"Not serial numbered"):v.num;
+    const cardName=(p,side)=>`fs97-${p.key}-r${row.r}-${v.k}-${side}`;
+    const art=(p,side)=>phArt(scImg(cardName(p,side),sc),side==="f"?"Awaiting scan":"Awaiting back scan",`${p.short} · Row ${row.r} ${v.t}`,scLand(cardName(p,side),sc));
+    w.innerHTML=`<div class="stage-in">${crumbs()}
+      <div class="feature">
+        <div class="spot"><div class="frame flipper ${scLand(cardName(pl,fsx.side),sc)?"land":""}" id="ff" title="Click to flip"><div class="mat" id="fmat">${art(pl,fsx.side)}</div></div></div>
+        <div class="feat-pl"><div class="no">Row ${row.r} · ${esc(st.season)} ${esc(st.name)}</div><h4>${esc(v.t)}</h4>
+          <div class="by" id="fby">${esc(pl.name)} · ${esc(pl.num)}</div>
+          ${plist.length>1?"":`<div class="by" style="font-size:12px;color:var(--ink3);margin-top:10px">${pl.fallback?"Jordan and Bryant scans not available for this card, shown with O'Neal":"Only one player scanned for this card so far"}</div>`}<div class="gtoggle" role="tablist" style="${plist.length>1?"":"display:none"}">${plist.map((p,i)=>`<button class="gt ${i===fsx.p?"on":""}" data-fp="${i}">${esc(p.short)}<i class="gbar"></i></button>`).join("")}</div>
+          <dl><dt>Numbering</dt><dd class="mono">${esc(num)}</dd><dt>Row</dt><dd>${esc(row.sub)}</dd><dt>Showing</dt><dd id="fside">${fsx.side==="f"?"Front":"Back"} · click the card to flip</dd></dl>
+          <div class="alts">${sc.versions.map(o=>`<button class="tab ${o.k===v.k?"on":""}" data-alt="${o.k}">${esc(o.t)}</button>`).join("")}</div>
+          <div class="alts" style="margin-top:8px">${[0,1,2,3].map(r=>`<button class="tab ${r===row.r?"on":""}" data-altr="${r}">Row ${r}</button>`).join("")}</div>
+        </div></div></div>`;
+    const setBars=()=>w.querySelectorAll(".gt").forEach((b,i)=>{b.classList.toggle("on",i===fsx.p);const bar=b.querySelector(".gbar");bar.style.transition="none";bar.style.transform="scaleX(0)";
+      if(i===fsx.p){void bar.offsetWidth;bar.style.transition=`transform ${sc.interval}ms linear`;bar.style.transform="scaleX(1)"}});
+    const swap=pi=>{if(pi===fsx.p)return;fsx.p=pi;const p=plist[pi];const m=$("#fmat"),by=$("#fby");
+      m.querySelector(".art").classList.add("out");by.classList.add("out");
+      setTimeout(()=>{m.innerHTML=art(p,fsx.side);$("#ff").classList.toggle("land",scLand(cardName(p,fsx.side),sc));by.textContent=p.name+" · "+p.num;by.classList.remove("out")},420);restart()};
+    const restart=()=>{clearInterval(fsx.timer);if(plist.length<2)return;fsx.timer=setInterval(()=>{if(!document.hidden&&!fsx.hover)swap((fsx.p+1)%plist.length)},sc.interval);setBars()};
+    w.querySelectorAll("[data-fp]").forEach(b=>b.onclick=()=>{const i=+b.dataset.fp;i===fsx.p?restart():swap(i)});
+    const ff=$("#ff");ff.onmouseenter=()=>{fsx.hover=true};ff.onmouseleave=()=>{fsx.hover=false};
+    ff.onclick=()=>{ff.classList.add("turn");setTimeout(()=>{fsx.side=fsx.side==="f"?"b":"f";$("#fmat").innerHTML=art(plist[fsx.p],fsx.side);ff.classList.toggle("land",scLand(cardName(plist[fsx.p],fsx.side),sc));
+      $("#fside").textContent=(fsx.side==="f"?"Front":"Back")+" · click the card to flip";ff.classList.add("instant");void ff.offsetWidth;ff.classList.remove("instant");requestAnimationFrame(()=>ff.classList.remove("turn"))},300)};
+    w.querySelectorAll("[data-alt]").forEach(b=>b.onclick=()=>{fsx.ver=b.dataset.alt;fsx.side="f";renderShowcase(st)});
+    w.querySelectorAll("[data-altr]").forEach(b=>b.onclick=()=>{fsx.row=+b.dataset.altr;fsx.side="f";renderShowcase(st)});
+    restart();
+  }
+  w.querySelectorAll("[data-row]").forEach(b=>b.onclick=()=>{fsx.row=+b.dataset.row;fsx.ver=null;renderShowcase(st);w.scrollIntoView({behavior:"smooth",block:"start"})});
+  w.querySelectorAll("[data-ver]").forEach(b=>b.onclick=()=>{fsx.ver=b.dataset.ver;fsx.side="f";renderShowcase(st);w.scrollIntoView({behavior:"smooth",block:"start"})});
+  w.querySelectorAll("[data-go-step]").forEach(b=>b.onclick=()=>{if(b.dataset.goStep==="rows"){fsx.row=null;fsx.ver=null}else{fsx.ver=null}renderShowcase(st)});
+}
+function bindShowcase(st){
+  fsx.row=null;fsx.ver=null;fsx.p=0;fsx.side="f";fsx.hover=false;
+  sd.type="All";sd.series="All";sd.av="All";sd.sort="list";bindSet(st);renderShowcase(st);
+}
+
+
+/* ---------- tiers picker (insert → version → card) ---------- */
+const tx={g:null,v:null,p:0,side:"f",timer:null,hover:false};
+function viewTiers(st){
+  const host=(()=>{try{return new URL(st.src).hostname.replace("www.","")}catch(e){return "source"}})();
+  return `<div class="view"><div class="wrap">
+    <a class="back" href="#sets-${st.year}">← ${st.year} · ${esc(st.sport)} sets</a>
+    <section class="ghero">
+      <div class="boxshot">${st.box?`<img src="${esc(st.box)}" alt="${esc(st.season+" "+st.name)} box">`:boxArt(st)}</div>
+      <div><div class="eyebrow">${esc(st.sport)} · ${esc(st.season)} · ${esc(st.mfr)}</div>
+        <h2 class="title">${esc(st.name)}</h2>${st.cfg?`<div class="cfg">${esc(st.cfg)}</div>`:""}
+        ${st.note?`<p class="prose" style="margin-top:22px">${esc(st.note)}</p>`:""}</div>
+    </section>
+    <section class="wall" id="scwall"></section>
+    <section class="fullcl"><h3>Full checklist &amp; odds</h3>
+      <div class="filters">
+        <div class="fg"><span class="lab">Type</span>${["All","Insert","Parallel","Autograph"].map(v=>`<button class="tab ${v==="All"?"on":""}" data-ft="${v}">${v}</button>`).join("")}</div>
+        <div class="fg"><span class="lab">Series</span>${["All","1","2"].map(v=>`<button class="tab ${v==="All"?"on":""}" data-fs="${v}">${v==="All"?"All":"Series "+v}</button>`).join("")}</div>
+        <div class="fg" style="margin-left:auto"><span class="lab">Sort</span>${[["list","Checklist"],["rare","Rarest"],["common","Easiest"]].map(([v,l])=>`<button class="tab ${v==="list"?"on":""}" data-fo="${v}">${l}</button>`).join("")}</div>
+      </div>
+      <div id="srows"></div>
+      <div class="src">Source: <a href="${esc(st.src)}">${esc(host)}</a>.${st.tiers.imgs.length?" Card images supplied by the site owner.":""}</div>
+    </section>
+  </div>${footer()}</div>`;
+}
+function renderTiers(st){
+  const T=st.tiers,w=$("#scwall");clearInterval(tx.timer);
+  const nm=(pk,g,v,side)=>`${T.prefix}-${pk}-${g}-${v}-${side}`;
+  const src=n=>T.imgs.includes(n)?cardSrc(n):null;
+  const prevOf=(g,v)=>{for(const p of T.players){const n=nm(p.key,g.k,v.k,"f");if(src(n))return src(n)}return null};
+  const G=tx.g&&T.groups.find(x=>x.k===tx.g), V=G&&tx.v&&G.versions.find(x=>x.k===tx.v);
+  const crumbs=`<div class="steps"><button data-tstep="g" class="${!G?"cur":""}">${esc(T.step1||"Choose an insert")}</button>
+    ${G&&G.versions.length>1?`<span class="sep">/</span><button data-tstep="v" class="${!V?"cur":""}">${esc(G.t)}</button>`:""}
+    ${V?`<span class="sep">/</span><span class="cur">${esc(V.t)}</span>`:""}</div>`;
+  const tile=(attr,val,i,img,ph,big,sm,num)=>`<button class="choice" ${attr}="${val}" style="animation-delay:${120+i*90}ms">
+    <div class="spot"><div class="frame"><div class="mat">${phArt(img,"Preview",ph)}</div></div></div>
+    <div class="cl"><div class="big" style="font-size:clamp(20px,2vw,28px)">${esc(big)}</div><div class="sm">${esc(sm)}</div>${num?`<div class="num">${esc(num)}</div>`:""}</div></button>`;
+  if(!G){
+    w.innerHTML=`<div class="stage-in">${crumbs}<div class="wall-head" style="margin-bottom:48px"><div><div class="eyebrow">Step 1</div><h3>${esc(T.step1||"Choose an insert")}</h3></div>
+      <div class="eyebrow">${esc(T.intro||"Jordan & Bryant in each")}</div></div>
+      <div class="choices" style="grid-template-columns:repeat(${Math.min(T.groups.length,5)},1fr)">${T.groups.map((g,i)=>tile("data-tg",g.k,i,prevOf(g,g.versions[0]),g.t,g.t,g.sub,"")).join("")}</div></div>`;
+  } else if(!V){
+    w.innerHTML=`<div class="stage-in">${crumbs}<div class="wall-head" style="margin-bottom:48px"><div><div class="eyebrow">Step 2 · ${esc(G.t)}</div><h3>Choose a version</h3></div>
+      <div class="eyebrow" style="max-width:420px;text-align:right;line-height:1.7">${esc(G.desc)}</div></div>
+      <div class="choices c3" style="grid-template-columns:repeat(${G.versions.length},1fr);max-width:${G.versions.length*350}px">${G.versions.map((v,i)=>tile("data-tv",v.k,i,prevOf(G,v),v.t,v.t,v.sub,v.odds)).join("")}</div></div>`;
+  } else {
+    const plist=T.players.filter(p=>!V.nums||V.nums[p.key]!==null&&V.nums[p.key]!==undefined);if(tx.p>=plist.length)tx.p=0;const pl=plist[tx.p];
+    const isLand=(p,side)=>(T.land||[]).includes(nm(p.key,G.k,V.k,side));
+    const art=(p,side)=>phArt(src(nm(p.key,G.k,V.k,side)),side==="f"?"Awaiting scan":"Awaiting back scan",`${p.short} · ${V.t}`,isLand(p,side));
+    w.innerHTML=`<div class="stage-in">${crumbs}
+      <div class="feature">
+        <div class="spot"><div class="frame flipper ${isLand(pl,tx.side)?"land":""}" id="ff" title="Click to flip"><div class="mat" id="fmat">${art(pl,tx.side)}</div></div></div>
+        <div class="feat-pl"><div class="no">${esc(G.t)} · ${esc(st.season)} ${esc(st.name)}</div><h4>${esc(V.t)}</h4>
+          <div class="by" id="fby">${esc(pl.name)} · ${esc(V.nums[pl.key])}</div>
+          ${plist.length>1?"":`<div class="by" style="font-size:12px;color:var(--ink3);margin-top:10px">Only ${esc(pl.short)} for this version</div>`}<div class="gtoggle" role="tablist" style="${plist.length>1?"":"display:none"}">${plist.map((p,i)=>`<button class="gt ${i===tx.p?"on":""}" data-tp="${i}">${esc(p.short)}<i class="gbar"></i></button>`).join("")}</div>
+          <dl><dt>Odds</dt><dd class="mono">${esc(V.odds)}</dd>${V.serial&&V.serial[pl.key]?`<dt>This copy</dt><dd class="mono" id="fser">${esc(V.serial[pl.key])}</dd>`:""}${V.sub?`<dt>Version</dt><dd>${esc(V.sub)}</dd>`:""}<dt>Showing</dt><dd id="fside">${tx.side==="f"?"Front":"Back"} · click the card to flip</dd>${V.backNote?`<dt>Note</dt><dd style="color:var(--ink2)">${esc(V.backNote)}</dd>`:""}</dl>
+          ${G.versions.length>1?`<div class="alts">${G.versions.map(o=>`<button class="tab ${o.k===V.k?"on":""}" data-talt="${o.k}">${esc(o.t)}</button>`).join("")}</div>`:""}
+          <div class="alts" style="margin-top:${G.versions.length>1?8:32}px">${T.groups.map(o=>`<button class="tab ${o.k===G.k?"on":""}" data-taltg="${o.k}">${esc(o.t)}</button>`).join("")}</div>
+        </div></div></div>`;
+    const setBars=()=>w.querySelectorAll(".gt").forEach((b,i)=>{b.classList.toggle("on",i===tx.p);const bar=b.querySelector(".gbar");bar.style.transition="none";bar.style.transform="scaleX(0)";
+      if(i===tx.p){void bar.offsetWidth;bar.style.transition=`transform ${T.interval}ms linear`;bar.style.transform="scaleX(1)"}});
+    const swap=pi=>{if(pi===tx.p)return;tx.p=pi;const p=plist[pi];const m=$("#fmat"),by=$("#fby");
+      m.querySelector(".art").classList.add("out");by.classList.add("out");
+      setTimeout(()=>{m.innerHTML=art(p,tx.side);$("#ff").classList.toggle("land",isLand(p,tx.side));by.textContent=p.name+" · "+V.nums[p.key];const fs=$("#fser");if(fs&&V.serial)fs.textContent=V.serial[p.key]||"—";by.classList.remove("out")},420);restart()};
+    const restart=()=>{clearInterval(tx.timer);if(plist.length<2)return;tx.timer=setInterval(()=>{if(!document.hidden&&!tx.hover)swap((tx.p+1)%plist.length)},T.interval);setBars()};
+    w.querySelectorAll("[data-tp]").forEach(b=>b.onclick=()=>{const i=+b.dataset.tp;i===tx.p?restart():swap(i)});
+    const ff=$("#ff");ff.onmouseenter=()=>{tx.hover=true};ff.onmouseleave=()=>{tx.hover=false};
+    ff.onclick=()=>{ff.classList.add("turn");setTimeout(()=>{tx.side=tx.side==="f"?"b":"f";$("#fmat").innerHTML=art(plist[tx.p],tx.side);ff.classList.toggle("land",isLand(plist[tx.p],tx.side));
+      $("#fside").textContent=(tx.side==="f"?"Front":"Back")+" · click the card to flip";ff.classList.add("instant");void ff.offsetWidth;ff.classList.remove("instant");requestAnimationFrame(()=>ff.classList.remove("turn"))},300)};
+    w.querySelectorAll("[data-talt]").forEach(b=>b.onclick=()=>{tx.v=b.dataset.talt;tx.side="f";renderTiers(st)});
+    w.querySelectorAll("[data-taltg]").forEach(b=>b.onclick=()=>{const g=T.groups.find(x=>x.k===b.dataset.taltg);tx.g=g.k;tx.v=g.versions[0].k;tx.side="f";renderTiers(st)});
+    restart();
+  }
+  const go=()=>w.scrollIntoView({behavior:"smooth",block:"start"});
+  w.querySelectorAll("[data-tg]").forEach(b=>b.onclick=()=>{const g=T.groups.find(x=>x.k===b.dataset.tg);tx.g=g.k;tx.v=g.versions.length===1?g.versions[0].k:null;tx.side="f";renderTiers(st);go()});
+  w.querySelectorAll("[data-tv]").forEach(b=>b.onclick=()=>{tx.v=b.dataset.tv;tx.side="f";renderTiers(st);go()});
+  w.querySelectorAll("[data-tstep]").forEach(b=>b.onclick=()=>{if(b.dataset.tstep==="g"){tx.g=null;tx.v=null}else tx.v=null;renderTiers(st)});
+}
+function bindTiers(st){tx.g=null;tx.v=null;tx.p=0;tx.side="f";tx.hover=false;sd.type="All";sd.series="All";sd.av="All";sd.sort="list";bindSet(st);renderTiers(st)}
+
+/* ---------- router ---------- */
+/* ---------- card image packs: one file per set ---------- */
+const PACK={},PACKS={},PACK_OK={};
+window.PACK_ADD=o=>Object.assign(PACK,o);
+const cardSrc=n=>PACK[n]||`img/cards/${n}.webp`;
+const packOf=st=>null; /* hosted build: images load as individual files */
+function loadPack(p){return PACKS[p]||(PACKS[p]=new Promise(r=>{const s=document.createElement("script");s.src=`img/packs/${p}.js`;s.onload=s.onerror=()=>{PACK_OK[p]=1;r()};document.head.appendChild(s)}))}
+
+function route(){
+  if(typeof gx!=="undefined"){clearInterval(gx.timer);gx.lbOpen=false}if(typeof fsx!=="undefined")clearInterval(fsx.timer);if(typeof tx!=="undefined")clearInterval(tx.timer);
+  document.querySelectorAll("body > .lb").forEach(x=>x.remove());document.body.style.overflow="";
+  const h=location.hash.slice(1)||"gallery"; const app=$("#app");
+  let nav=h;
+  if(h.startsWith("card-")&&byId(h.slice(5))){const c=byId(h.slice(5));app.innerHTML=viewCard(c);bindCard(c);nav="gallery"}
+  else if(h==="market"){app.innerHTML=viewMarket();bindMarket();bindRowLinks(app)}
+  else if(h==="serials"){app.innerHTML=viewSerials();bindSerials()}
+  else if(h==="graded"){app.innerHTML=viewGraded();bindGraded()}
+  else if(h==="sets"){sx.year=null;sx.sport=null;sx.q="";app.innerHTML=viewSets();bindSets();nav="sets"}
+  else if(/^sets-\d{4}$/.test(h)&&TL_YEARS.includes(+h.slice(5))){const y=+h.slice(5);if(sx.year!==y)sx.q="";sx.year=y;app.innerHTML=viewSets();bindSets();nav="sets"}
+  else if(h.startsWith("set-")&&setById(h.slice(4))){const st=setById(h.slice(4));document.body.style.overflow="";const pk=packOf(st);if(pk&&!PACK_OK[pk]){app.innerHTML=`<div class="view"><div class="wrap" style="padding:160px 0;text-align:center"><div class="eyebrow">Loading cards…</div></div></div>`;loadPack(pk).then(()=>{if((location.hash.slice(1)||"gallery")===h)route()});return}if(st.gallery){app.innerHTML=viewGallerySet(st);bindGallerySet(st)}else if(st.showcase){app.innerHTML=viewShowcase(st);bindShowcase(st)}else if(st.tiers){app.innerHTML=viewTiers(st);bindTiers(st)}else{app.innerHTML=viewSet(st);bindSet(st)}nav="sets"}
+  else {app.innerHTML=viewGallery();bindGallery();nav="gallery"}
+  document.querySelectorAll("[data-nav]").forEach(a=>a.classList.toggle("on",a.dataset.nav===nav));
+  window.scrollTo({top:0,behavior:"instant"});
+}
+addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
