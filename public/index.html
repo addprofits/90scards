@@ -570,6 +570,17 @@ Pro Files|i|B|B|||20||
 Hobby Masters|i|B|H|||20||28-pt foil stock
 Finest Reprints|i|2|B|||25||Refractor version also exists`},
 
+{id:"bk96-topps-chrome",box:"img/boxes/bk96-topps-chrome.webp",tiers:{interval:9000,prefix:"tc96",intro:"Jordan #139 · Bryant #138 rookie",imgs:["tc96-kb-base-ref-b", "tc96-kb-base-ref-f", "tc96-kb-base-reg-b", "tc96-kb-base-reg-f", "tc96-mj-base-ref-b", "tc96-mj-base-ref-f", "tc96-mj-base-reg-b", "tc96-mj-base-reg-f", "tc96-mj-sb-ef-b", "tc96-mj-sb-ef-f", "tc96-mj-sb-sf-b", "tc96-mj-sb-sf-f"],land:["tc96-mj-base-reg-b", "tc96-mj-base-ref-b", "tc96-kb-base-reg-b", "tc96-kb-base-ref-b", "tc96-mj-sb-ef-b", "tc96-mj-sb-sf-b"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "base", "t": "Base", "sub": "Chrome · Refractor", "desc": "Chromium version of the Topps base set. Jordan #139, Bryant #138 rookie, the most famous Kobe rookie card. Refractor backs carry an \"R\" after the card number.", "versions": [{"k": "reg", "t": "Chrome", "sub": "Chromium finish", "odds": "—", "nums": {"mj": "#139", "kb": "#138 Rookie"}}, {"k": "ref", "t": "Refractor", "sub": "Rainbow refractor finish", "odds": "1:12", "nums": {"mj": "#139R", "kb": "#138R Rookie"}}]}, {"k": "sb", "t": "Season's Best", "sub": "Chromium insert", "desc": "Chromium versions of Topps' Season's Best. Jordan has two: En Fuego (scoring) and Sticky Fingers (steals). No refractor parallels this year.", "versions": [{"k": "ef", "t": "En Fuego", "sub": "Scoring leader", "odds": "1:6", "nums": {"mj": "#1", "kb": null}}, {"k": "sf", "t": "Sticky Fingers", "sub": "Steals leader", "odds": "1:6", "nums": {"mj": "#18", "kb": null}}]}]},
+  sport:"Basketball",year:1996,season:"1996-97",mfr:"Topps",name:"Topps Chrome",series:1,
+ cfg:"220 cards · 20 packs of 4",note:"Topps Chrome's basketball debut, and home to the most popular Kobe Bryant rookie card. Refractors fall one per 12 packs.",
+ src:"https://www.cardboardconnection.com/1996-97-topps-chrome-basketball-cards",rows:`
+Refractors|p|-|B|1:12||220||"R" after the card number on back
+Season's Best|i|-|B|1:6||25||No refractor parallel
+Youthquake|i|-|B|1:12||15||
+Pro Files|i|-|B|||20||`},
+
 {id:"bk97-fleer",box:"img/boxes/bk97-fleer.webp",gallery:{interval:9000,prefix:"fl97",imgs:["fl97-kb-hf-b", "fl97-kb-hf-f", "fl97-kb-ss-b", "fl97-kb-ss-f", "fl97-kb-ts-b", "fl97-kb-ts-f", "fl97-mj-gb-b", "fl97-mj-gb-f", "fl97-mj-hf-b", "fl97-mj-hf-f", "fl97-mj-ss-b", "fl97-mj-ss-f", "fl97-mj-ts-b", "fl97-mj-ts-f"],absent:"",heading:"across the chase inserts",
   players:[
    {key:"mj",name:"Michael Jordan",short:"Jordan",nums:{ss:"#9 SS",hf:"#9 HFSS",gb:"#1 (with Dennis Rodman)",ts:"#7 TS"},serial:{}},
@@ -2280,7 +2291,7 @@ function renderTiers(st){
     w.innerHTML=`<div class="stage-in">${crumbs}<div class="wall-head" style="margin-bottom:48px"><div><div class="eyebrow">Step 1</div><h3>${esc(T.step1||"Choose an insert")}</h3></div>
       <div class="eyebrow">${esc(T.intro||"Jordan & Bryant in each")}</div></div>
       ${(()=>{const tiles=T.groups.map((g,i)=>tile("data-tg",g.k,i,prevOf(g,g.versions[0]),g.t,g.t,g.sub,""));
-        if(!T.layout)return `<div class="choices" style="grid-template-columns:repeat(${Math.min(T.groups.length,5)},1fr)">${tiles.join("")}</div>`;
+        if(!T.layout)return `<div class="choices" style="grid-template-columns:repeat(${Math.min(T.groups.length,5)},1fr);${T.groups.length<4?`max-width:${T.groups.length*350}px;margin:0 auto`:""}">${tiles.join("")}</div>`;
         const mx=Math.max(...T.layout);let k=0,out=[];
         T.layout.forEach(n=>{for(let j=0;j<n;j++,k++){const col=1+(mx-n)+j*2;out.push(tiles[k].replace('style="animation-delay',`style="grid-column:${col} / span 2;animation-delay`))}});
         return `<div class="choices lay" style="grid-template-columns:repeat(${mx*2},1fr)">${out.join("")}</div>`})()}</div>`;
