@@ -1470,7 +1470,10 @@ Masterpiece|p|-|H|||160|1|1 of 1`}
 </script>
 <script>
 /* ---------- sample data ---------- */
-const CARDS = [
+/* Sports shown on the site. Add "Football" / "Baseball" here to switch them back on. */
+const LIVE_SPORTS=["Basketball"];
+const isLive=x=>LIVE_SPORTS.includes(x.sport);
+const CARDS_ALL = [
  // Basketball
  {id:"kobe-topps-chrome",sport:"Basketball",year:"1996-97",set:"Topps Chrome",player:"Kobe Bryant",num:"#138",variant:"Rookie",f:"chrome",p:{raw:420,psa9:1150,psa10:6400},
   note:"The defining modern-era Kobe rookie. Chrome stock made centering and surface condition hard to keep perfect, which is why gem-mint copies carry such a premium over nines."},
@@ -1519,6 +1522,7 @@ const CARDS = [
  {id:"chipper-bowman",sport:"Baseball",year:"1991",set:"Bowman",player:"Chipper Jones",num:"#569",variant:"Rookie",f:"base",p:{raw:8,psa9:30,psa10:180},
   note:"An affordable entry to '90s rookies, for a lifelong one-franchise Hall of Famer."}
 ];
+const CARDS=CARDS_ALL.filter(isLive);
 
 /* ---------- deterministic generators ---------- */
 function rng(seed){let h=2166136261;for(const c of seed)h=Math.imul(h^c.charCodeAt(0),16777619);return()=>{h^=h<<13;h^=h>>>17;h^=h<<5;return((h>>>0)%100000)/100000}}
@@ -1632,7 +1636,7 @@ function viewGallery(){
   const totalPop=CARDS.reduce((a,c)=>a+c.popTotal,0), serials=CARDS.filter(c=>c.serial).length;
   return `<div class="view"><div class="wrap">
     <section class="top">
-      <div class="eyebrow">Basketball · Football · Baseball — 1990–1999</div>
+      <div class="eyebrow">${LIVE_SPORTS.join(" · ")} — 1990–1999</div>
       <h1 class="hero"><span>Cards</span> <span style="animation-delay:.08s">of</span> <span style="animation-delay:.16s">the</span> <span style="animation-delay:.24s;color:var(--ink2)">90's</span></h1>
       <div class="rule"></div>
       <p class="lede" style="margin-top:28px">A quiet archive of the decade that gave us refractors, foil, and the first serial numbers. Each card has its own page, its own price history, and its own population report.</p>
@@ -1644,7 +1648,7 @@ function viewGallery(){
       </div>
     </section>
     <div class="controls">
-      <div class="chips">${["All","Basketball","Football","Baseball"].map(s=>`<button class="chip ${state.sport===s?"on":""}" data-sport="${s}">${s}</button>`).join("")}</div>
+      <div class="chips">${LIVE_SPORTS.length>1?["All",...LIVE_SPORTS].map(s=>`<button class="chip ${state.sport===s?"on":""}" data-sport="${s}">${s}</button>`).join(""):""}</div>
       <div style="display:flex;gap:24px;align-items:center">
         <select class="search" id="sort" aria-label="Sort">
           ${[["featured","Featured"],["year","Year"],["value","Value (PSA 9)"],["chg","12-mo change"]].map(([v,l])=>`<option value="${v}" ${state.sort===v?"selected":""}>${l}</option>`).join("")}
@@ -1802,7 +1806,7 @@ function viewGraded(){
       <p class="lede">Population counts across PSA, BGS and SGC, with the gem rate: the share of graded copies earning the top grade. A low gem rate is what makes a ten expensive.</p>
     </section>
     <div class="controls">
-      <div class="chips">${["All","Basketball","Football","Baseball"].map(s=>`<button class="chip ${gstate.sport===s?"on":""}" data-gs="${s}">${s}</button>`).join("")}</div>
+      <div class="chips">${LIVE_SPORTS.length>1?["All",...LIVE_SPORTS].map(s=>`<button class="chip ${gstate.sport===s?"on":""}" data-gs="${s}">${s}</button>`).join(""):""}</div>
       <div style="display:flex;gap:24px;align-items:center">
         <div class="tabs">${["psa","bgs","sgc"].map(g=>`<button class="tab ${gstate.grader===g?"on":""}" data-gr="${g}">${g.toUpperCase()}</button>`).join("")}</div>
         <select class="search" id="gsort" aria-label="Sort"><option value="total">Most graded</option><option value="gem">Lowest gem rate</option><option value="year">Year</option></select>
@@ -1839,7 +1843,7 @@ function footer(){return `<div class="wrap"><div class="foot"><span>90scards.net
 
 
 /* ---------- sets ---------- */
-const SETS=SETS_RAW.map(st=>{
+const SETS=SETS_RAW.filter(isLive).map(st=>{
   const rows=(st.rows.trim()?st.rows.trim().split("\n"):[]).map((l,i)=>{let [n,t,se,av,h,r,c,num,note]=l.split("|");
     const N=x=>{if(!x)return null;if(/\/pack|covered/.test(x))return 1;if(/\/box/.test(x))return 24;const m=x.replace(/,/g,"").match(/1:(\d+)/);return m?+m[1]:null};
     const odds=Math.max(N(h)||0,N(r)||0)||null;
@@ -1852,8 +1856,9 @@ const SETS=SETS_RAW.map(st=>{
 });
 const setById=id=>SETS.find(s=>s.id===id);
 const TYPE={i:"Insert",p:"Parallel",a:"Autograph",x:"Redemption"};
-const SPORTS=["Basketball","Football","Baseball"];
-const sx={year:null,sport:null,q:""};
+const SPORTS=LIVE_SPORTS;
+const ONE_SPORT=SPORTS.length===1?SPORTS[0]:null;
+const sx={year:null,sport:ONE_SPORT,q:""};
 function avTags(av){return `<span class="av">${av==="B"?`<span class="h">Hobby</span><span class="r">Retail</span>`:av==="H"?`<span class="h">Hobby only</span>`:av==="R"?`<span class="r">Retail only</span>`:`<span class="u">Unstated</span>`}</span>`}
 function oddsCell(x){
   if(!x.h&&!x.r)return x.num?`<span class="odds" style="color:var(--ink3)">Serial /${esc(x.num)}</span>`:`<span class="odds" style="color:var(--ink3)">—</span>`;
@@ -1879,14 +1884,14 @@ function viewSets(){
     <div class="tl" id="tl"><div class="tl-track">
       <div class="tl-line"></div>
       ${TL_YEARS.map((y,i)=>{const n=cnt(y);return `<a class="tl-item ${sx.year===y?"on":""} ${n?"":"empty"}" href="#sets-${y}" data-ty="${y}" style="animation-delay:${200+i*70}ms">
-        <span class="tl-dot"></span><span class="tl-num">${y}</span><span class="tl-meta">${n?n+" sets":"Coming soon"}</span></a>`}).join("")}
+        <span class="tl-dot"></span><span class="tl-num">${y}</span><span class="tl-meta">${n?n+(n===1?" set":" sets")":"Coming soon"}</span></a>`}).join("")}
     </div></div>
     <button class="tl-nav next" aria-label="Later years">→</button>
   </div>
   <div class="wrap">
     ${chosen?`<div class="tl-reveal">
       <div class="controls">
-        <div class="chips">${SPORTS.map(s=>`<button class="chip ${sx.sport===s?"on":""}" data-sp="${s}">${s}</button>`).join("")}</div>
+        <div class="chips">${ONE_SPORT?"":SPORTS.map(s=>`<button class="chip ${sx.sport===s?"on":""}" data-sp="${s}">${s}</button>`).join("")}</div>
         <input class="search" id="sxq" placeholder="Search ${sx.sport?esc(sx.sport.toLowerCase())+" ":""}inserts…" value="${esc(sx.q)}" style="width:260px;${sx.sport?"":"visibility:hidden"}">
       </div>
       <div id="slist2" style="padding-bottom:100px"></div>
@@ -1929,7 +1934,7 @@ function renderSets(){
   el.innerHTML=sports.map(sp=>{const list=SETS.filter(s=>s.year===sx.year&&s.sport===sp);
     if(!list.length)return "";
     const lbl=sp==="Basketball"?`${sx.year}-${String(sx.year+1).slice(2)} season`:`${sx.year} season`;
-    return `<div class="sgroup"><h3><span>${sp}</span><span style="color:var(--ink3)">${lbl} · ${list.length} sets</span></h3><div class="bgrid">${list.map(st=>setCard(st,k++)).join("")}</div></div>`}).join("")||(SETS.some(s=>s.year===sx.year)?`<div class="empty">No ${esc(sx.sport.toLowerCase())} sets for ${sx.year} yet.</div>`:`<div class="empty" style="padding:100px 0">${sx.year} sets are coming soon.<br><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase">Fleer / SkyBox releases from 1996–1999 are live now</span></div>`);
+    return `<div class="sgroup"><h3><span>${sp}</span><span style="color:var(--ink3)">${lbl} · ${list.length} ${list.length===1?"set":"sets"}</span></h3><div class="bgrid">${list.map(st=>setCard(st,k++)).join("")}</div></div>`}).join("")||(SETS.some(s=>s.year===sx.year)?`<div class="empty">No ${esc(sx.sport.toLowerCase())} sets for ${sx.year} yet.</div>`:`<div class="empty" style="padding:100px 0">${sx.year} sets are coming soon.<br><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase">Fleer / SkyBox releases from 1996–1999 are live now</span></div>`);
 }
 function bindSets(){
   const tl=$("#tl");
@@ -2314,7 +2319,7 @@ function route(){
   else if(h==="market"){app.innerHTML=viewMarket();bindMarket();bindRowLinks(app)}
   else if(h==="serials"){app.innerHTML=viewSerials();bindSerials()}
   else if(h==="graded"){app.innerHTML=viewGraded();bindGraded()}
-  else if(h==="sets"){sx.year=null;sx.sport=null;sx.q="";app.innerHTML=viewSets();bindSets();nav="sets"}
+  else if(h==="sets"){sx.year=null;sx.sport=ONE_SPORT;sx.q="";app.innerHTML=viewSets();bindSets();nav="sets"}
   else if(/^sets-\d{4}$/.test(h)&&TL_YEARS.includes(+h.slice(5))){const y=+h.slice(5);if(sx.year!==y)sx.q="";sx.year=y;app.innerHTML=viewSets();bindSets();nav="sets"}
   else if(h.startsWith("set-")&&setById(h.slice(4))){const st=setById(h.slice(4));document.body.style.overflow="";const pk=packOf(st);if(pk&&!PACK_OK[pk]){app.innerHTML=`<div class="view"><div class="wrap" style="padding:160px 0;text-align:center"><div class="eyebrow">Loading cards…</div></div></div>`;loadPack(pk).then(()=>{if((location.hash.slice(1)||"gallery")===h)route()});return}if(st.gallery){app.innerHTML=viewGallerySet(st);bindGallerySet(st)}else if(st.showcase){app.innerHTML=viewShowcase(st);bindShowcase(st)}else if(st.tiers){app.innerHTML=viewTiers(st);bindTiers(st)}else{app.innerHTML=viewSet(st);bindSet(st)}nav="sets"}
   else {app.innerHTML=viewGallery();bindGallery();nav="gallery"}
