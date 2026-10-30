@@ -1884,7 +1884,7 @@ function viewSets(){
     <div class="tl" id="tl"><div class="tl-track">
       <div class="tl-line"></div>
       ${TL_YEARS.map((y,i)=>{const n=cnt(y);return `<a class="tl-item ${sx.year===y?"on":""} ${n?"":"empty"}" href="#sets-${y}" data-ty="${y}" style="animation-delay:${200+i*70}ms">
-        <span class="tl-dot"></span><span class="tl-num">${y}</span><span class="tl-meta">${n?n+(n===1?" set":" sets")":"Coming soon"}</span></a>`}).join("")}
+        <span class="tl-dot"></span><span class="tl-num">${y}</span><span class="tl-meta">${n?n+(n===1?" set":" sets"):"Coming soon"}</span></a>`}).join("")}
     </div></div>
     <button class="tl-nav next" aria-label="Later years">→</button>
   </div>
