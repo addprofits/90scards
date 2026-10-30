@@ -356,7 +356,7 @@ td .nt{display:block;font-size:11px;color:var(--ink3);margin-top:3px}
 .steps button:hover{color:var(--ink)}
 .steps .cur{color:var(--ink)}
 .steps .sep{opacity:.5}
-.choices{display:grid;gap:48px 40px;align-items:start}
+.choices{display:grid;gap:48px 40px;align-items:start!important}
 .choices.c4{grid-template-columns:repeat(4,1fr)}
 .choices.c3{grid-template-columns:repeat(3,1fr);max-width:1040px;margin:0 auto}
 #scwall{scroll-margin-top:72px}
@@ -635,7 +635,7 @@ Diamond Ink (1, 5, 10, 25 pt)|x|B|B|||||500 points of one player = signed mini b
 Traditions Crystal|p|B|H|1:2||||Silver foil, glossy UV coating
 Traditions Tiffany|p|B|B|1:20||||Blue holofoil, glossy UV coating`},
 
-{id:"bk97-ultra",box:"img/boxes/bk97-ultra.webp",tiers:{interval:9000,prefix:"ul97",imgs:["ul97-kb-cm-base-b", "ul97-kb-cm-base-f", "ul97-kb-md-gold-b", "ul97-kb-md-gold-f", "ul97-kb-md-platinum-b", "ul97-kb-md-platinum-f", "ul97-kb-sp-base-b", "ul97-kb-sp-base-f", "ul97-kb-sp-plus-b", "ul97-kb-sp-plus-f", "ul97-kb-sp-supreme-b", "ul97-kb-sp-supreme-f", "ul97-kb-ub-allstar-b", "ul97-kb-ub-allstar-f", "ul97-kb-ub-starter-b", "ul97-kb-ub-starter-f", "ul97-kb-ub-superstar-b", "ul97-kb-ub-superstar-f", "ul97-kb-us-gold-b", "ul97-kb-us-gold-f", "ul97-kb-us-silver-b", "ul97-kb-us-silver-f", "ul97-mj-cm-base-b", "ul97-mj-cm-base-f", "ul97-mj-md-gold-b", "ul97-mj-md-gold-f", "ul97-mj-md-masterpiece-b", "ul97-mj-md-masterpiece-f", "ul97-mj-md-platinum-b", "ul97-mj-md-platinum-f", "ul97-mj-sp-base-b", "ul97-mj-sp-base-f", "ul97-mj-sp-plus-b", "ul97-mj-sp-plus-f", "ul97-mj-sp-supreme-b", "ul97-mj-sp-supreme-f", "ul97-mj-ub-allstar-b", "ul97-mj-ub-allstar-f", "ul97-mj-ub-starter-b", "ul97-mj-ub-starter-f", "ul97-mj-ub-superstar-b", "ul97-mj-ub-superstar-f", "ul97-mj-us-gold-b", "ul97-mj-us-gold-f", "ul97-mj-us-silver-b", "ul97-mj-us-silver-f"],
+{id:"bk97-ultra",box:"img/boxes/bk97-ultra.webp",tiers:{interval:9000,prefix:"ul97",imgs:["ul97-mj-g98-base-f","ul97-mj-g98-base-b","ul97-mj-g98-gold-f","ul97-mj-g98-gold-b","ul97-mj-g98-platinum-f","ul97-mj-g98-platinum-b","ul97-kb-g98-base-f","ul97-kb-g98-base-b","ul97-kb-g98-gold-f","ul97-kb-g98-gold-b","ul97-kb-g98-platinum-f","ul97-kb-g98-platinum-b","ul97-kb-cm-base-b", "ul97-kb-cm-base-f", "ul97-kb-md-gold-b", "ul97-kb-md-gold-f", "ul97-kb-md-platinum-b", "ul97-kb-md-platinum-f", "ul97-kb-sp-base-b", "ul97-kb-sp-base-f", "ul97-kb-sp-plus-b", "ul97-kb-sp-plus-f", "ul97-kb-sp-supreme-b", "ul97-kb-sp-supreme-f", "ul97-kb-ub-allstar-b", "ul97-kb-ub-allstar-f", "ul97-kb-ub-starter-b", "ul97-kb-ub-starter-f", "ul97-kb-ub-superstar-b", "ul97-kb-ub-superstar-f", "ul97-kb-us-gold-b", "ul97-kb-us-gold-f", "ul97-kb-us-silver-b", "ul97-kb-us-silver-f", "ul97-mj-cm-base-b", "ul97-mj-cm-base-f", "ul97-mj-md-gold-b", "ul97-mj-md-gold-f", "ul97-mj-md-masterpiece-b", "ul97-mj-md-masterpiece-f", "ul97-mj-md-platinum-b", "ul97-mj-md-platinum-f", "ul97-mj-sp-base-b", "ul97-mj-sp-base-f", "ul97-mj-sp-plus-b", "ul97-mj-sp-plus-f", "ul97-mj-sp-supreme-b", "ul97-mj-sp-supreme-f", "ul97-mj-ub-allstar-b", "ul97-mj-ub-allstar-f", "ul97-mj-ub-starter-b", "ul97-mj-ub-starter-f", "ul97-mj-ub-superstar-b", "ul97-mj-ub-superstar-f", "ul97-mj-us-gold-b", "ul97-mj-us-gold-f", "ul97-mj-us-silver-b", "ul97-mj-us-silver-f"],
   players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
   groups:[
    {k:"sp",t:"Star Power",sub:"Three tiers",desc:"Click the base version to reveal its Plus and Supreme upgrades.",versions:[
@@ -654,7 +654,11 @@ Traditions Tiffany|p|B|B|1:20||||Blue holofoil, glossy UV coating`},
    {k:"md",t:"Medallion",sub:"Base-set parallels",desc:"Hobby-only parallels of the base card: Jordan #23, Bryant #1.",versions:[
      {k:"gold",t:"Gold Medallion",sub:"One per hobby pack",odds:"1 per hobby pack",nums:{mj:"#23G",kb:"#1G"}},
      {k:"platinum",t:"Platinum Medallion",sub:"Serial numbered to 100",odds:"Serial /100",nums:{mj:"#23P",kb:"#1P"}},
-     {k:"masterpiece",t:"Masterpiece",sub:"One of one",odds:"Serial 1/1",nums:{mj:"#23P",kb:"#1P"}}]}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"Fleer",name:"Ultra",series:2,
+     {k:"masterpiece",t:"Masterpiece",sub:"One of one",odds:"Serial 1/1",nums:{mj:"#23P",kb:"#1P"}}]},
+   {k:"g98",t:"'98 Greats",sub:"Series 2 subset · with Medallions",desc:"Series 2 subset (#251-275), with its own Gold and Platinum Medallion parallels.",versions:[
+     {k:"base",t:"'98 Greats",sub:"Series 2 subset",odds:"Base subset",nums:{mj:"#259",kb:"#252"}},
+     {k:"gold",t:"'98 Greats Gold Medallion",sub:"\"Gold Medallion Edition\" on back",odds:"Hobby",nums:{mj:"#259G",kb:"#252G"}},
+     {k:"platinum",t:"'98 Greats Platinum Medallion",sub:"Serial numbered to 100",odds:"Serial /100",nums:{mj:"#259P",kb:"#252P"},serial:{mj:"069/100",kb:"051/100"}}]}]},sport:"Basketball",year:1997,season:"1997-98",mfr:"Fleer",name:"Ultra",series:2,
  cfg:"275 cards · Series 1 #1-150 · Series 2 #151-275",note:"Rookies (#124-148) fall 1:4 Series 1 packs; '98 Greats (#249-273) 1:4 Series 2 packs. Star Power and Ultrabilities each come in three tiers.",
  src:TCDB+"Inserts.cfm/sid/2715/1997-98-Ultra",rows:`
 Big Shots|i|1|B|1:4||15||
