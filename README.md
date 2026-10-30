@@ -2,8 +2,8 @@
 
 Static site for 90scards.net: 1990s basketball, football and baseball card sets, inserts, odds and scans.
 
-- `index.html`: the whole site (HTML, CSS and JS in one file)
-- `img/boxes/`: box photos
-- `img/cards/`: card scans, named `{set}-{player}-{insert}-{version}-{f|b}.webp`
+- `public/index.html`: the whole site (HTML, CSS and JS in one file)
+- `public/img/boxes/`: box photos
+- `public/img/cards/`: card scans, named `{set}-{player}-{insert}-{version}-{f|b}.webp`
 
-No build step. Serve the folder as-is (Cloudflare Pages: framework preset "None", build command empty, output directory `/`).
+No build step. Deployed as a Cloudflare Worker with static assets (`wrangler.jsonc` serves `public/`).
