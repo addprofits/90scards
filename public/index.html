@@ -378,7 +378,7 @@ td .nt{display:block;font-size:11px;color:var(--ink3);margin-top:3px}
 .feature .spot{aspect-ratio:4/5}
 .feature .frame{width:88%}
 .feature .frame.land{width:100%}
-.art img[src*="fi97-"][src*="-emb-"],.art img[src*="ho97-"][src*="-hs-"],.art img[src*="ho97-"][src*="-ff"],.art img[src*="ex97-"][src*="-sd-"],.art img[src*="ex97-"][src*="-jb-"],.art img[src*="ex97-"][src*="-gd-"],.art img[src*="sp97-"][src*="-ca-"],.art img[src*="sp97-"][src*="-gt-"],.art img[src*="-superstar-"],.art img[src*="-sp-plus-"],.art img[src*="-sp-supreme-"]{object-fit:contain}
+.art img[src*="fi97-"][src*="-emb-"],.art img[src*="ho97-"][src*="-hs-"],.art img[src*="ho97-"][src*="-ff"],.art img[src*="ex97-"][src*="-sd-"],.art img[src*="ex97-"][src*="-jb-"],.art img[src*="ex97-"][src*="-gd-"],.art img[src*="sp97-"][src*="-ca-"],.art img[src*="sp97-"][src*="-gt-"],.art img[src*="-superstar-"],.art img[src*="-sp-plus-"],.art img[src*="-sp-supreme-"],.art img[src*="sp98-mj-ms-reg-f"]{object-fit:contain}.art:has(img[src*="sp98-mj-ms-reg-f"]){background:transparent}
 .choice .frame.land{width:100%}
 .feature .frame.flipper{cursor:pointer}
 .feat-pl .no{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.14em}
@@ -2318,7 +2318,10 @@ function renderTiers(st){
     w.innerHTML=`<div class="stage-in">${crumbs}<div class="wall-head" style="margin-bottom:48px"><div><div class="eyebrow">Step 1</div><h3>${esc(T.step1||"Choose an insert")}</h3></div>
       <div class="eyebrow">${esc(T.intro||"Jordan & Bryant in each")}</div></div>
       ${T.sections?T.sections.map(sec=>{const gs=T.groups.filter(g=>sec.keys.includes(g.k));const n=Math.min(gs.length,4);
-          return `<div class="tsec">${esc(sec.t)}</div><div class="choices" style="grid-template-columns:repeat(${n},1fr);max-width:${n*330}px;margin-left:auto;margin-right:auto">${gs.map((g,i)=>tile("data-tg",g.k,T.groups.indexOf(g),prevOf(g,g.versions[0]),g.t,g.t,g.sub,"")).join("")}</div>`}).join(""):(()=>{const tiles=T.groups.map((g,i)=>tile("data-tg",g.k,i,prevOf(g,g.versions[0]),g.t,g.t,g.sub,""));
+          const tl=gs.map(g=>tile("data-tg",g.k,T.groups.indexOf(g),prevOf(g,g.versions[0]),g.t,g.t,g.sub,""));
+          const rows=[];for(let k=0;k<gs.length;k+=n)rows.push(Math.min(n,gs.length-k));let k=0;const out=[];
+          rows.forEach(r=>{for(let j=0;j<r;j++,k++)out.push(tl[k].replace('style="animation-delay',`style="grid-column:${1+(n-r)+j*2} / span 2;animation-delay`))});
+          return `<div class="tsec">${esc(sec.t)}</div><div class="choices lay" style="grid-template-columns:repeat(${n*2},1fr);max-width:${n*330}px;margin-left:auto;margin-right:auto">${out.join("")}</div>`}).join(""):(()=>{const tiles=T.groups.map((g,i)=>tile("data-tg",g.k,i,prevOf(g,g.versions[0]),g.t,g.t,g.sub,""));
         if(!T.layout)return `<div class="choices" style="grid-template-columns:repeat(${Math.min(T.groups.length,5)},1fr);${T.groups.length<4?`max-width:${T.groups.length*350}px;margin:0 auto`:""}">${tiles.join("")}</div>`;
         const mx=Math.max(...T.layout);let k=0,out=[];
         T.layout.forEach(n=>{for(let j=0;j<n;j++,k++){const col=1+(mx-n)+j*2;out.push(tiles[k].replace('style="animation-delay',`style="grid-column:${col} / span 2;animation-delay`))}});
