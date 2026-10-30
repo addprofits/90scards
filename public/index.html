@@ -356,7 +356,7 @@ td .nt{display:block;font-size:11px;color:var(--ink3);margin-top:3px}
 .steps button:hover{color:var(--ink)}
 .steps .cur{color:var(--ink)}
 .steps .sep{opacity:.5}
-.choices{display:grid;gap:48px 40px}
+.choices{display:grid;gap:48px 40px;align-items:start}
 .choices.c4{grid-template-columns:repeat(4,1fr)}
 .choices.c3{grid-template-columns:repeat(3,1fr);max-width:1040px;margin:0 auto}
 #scwall{scroll-margin-top:72px}
@@ -984,8 +984,11 @@ Precious Metal Gems|p|-|H|||125|50|Gold holo-foil
 Gem Masters|p|-|H|||125|1|One of one
 Autographics|a|-|?|||||Shared checklist`},
 
-{id:"bk98-ex-century",sport:"Basketball",year:1998,season:"1998-99",mfr:"SkyBox",name:"E-X Century",series:1,
- cfg:"Hobby: 18 packs × 3 cards",note:"Insert names verified; pack odds not yet sourced.",
+{id:"bk98-ex-century",box:"img/boxes/bk98-ex-century.webp",tiers:{interval:9000,prefix:"ec98",intro:"Bryant #10",sections:[{t:"Base & parallels",keys:["base","ecf","ecn"]},{t:"Inserts",keys:["dg","gx"]}],imgs:["ec98-kb-base-reg-b", "ec98-kb-base-reg-f", "ec98-kb-dg-reg-b", "ec98-kb-dg-reg-f", "ec98-kb-ecf-reg-b", "ec98-kb-ecf-reg-f", "ec98-kb-ecn-reg-b", "ec98-kb-ecn-reg-f", "ec98-kb-gx-reg-b", "ec98-kb-gx-reg-f", "ec98-mj-dg-reg-b", "ec98-mj-dg-reg-f"],
+  players:[{key:"mj",name:"Michael Jordan",short:"Jordan"},{key:"kb",name:"Kobe Bryant",short:"Bryant"}],
+  groups:[{"k": "base", "t": "Base", "sub": "Die-cut silhouette on acetate", "desc": "", "versions": [{"k": "reg", "t": "Base", "sub": "Die-cut silhouette on acetate", "odds": "—", "nums": {"mj": null, "kb": "#10"}}]}, {"k": "ecf", "t": "Essential Credentials Future", "sub": "Gold foil · serial-numbered", "desc": "", "versions": [{"k": "reg", "t": "Essential Credentials Future", "sub": "Gold foil · serial-numbered", "odds": "#'d to the player's card number from the end", "nums": {"mj": null, "kb": "#10"}, "serial": {"mj": null, "kb": "56/81"}, "backNote": "Future print runs count up from the card number: Bryant #10 is numbered to 81."}]}, {"k": "ecn", "t": "Essential Credentials Now", "sub": "Silver foil · serial-numbered", "desc": "", "versions": [{"k": "reg", "t": "Essential Credentials Now", "sub": "Silver foil · serial-numbered", "odds": "#'d to the card number", "nums": {"mj": null, "kb": "#10"}, "serial": {"mj": null, "kb": "03/10"}, "backNote": "Now print runs match the card number: Bryant #10 is numbered to 10."}]}, {"k": "dg", "t": "Dunk'N Go-Nuts", "sub": "Hobby insert", "desc": "", "versions": [{"k": "reg", "t": "Dunk'N Go-Nuts", "sub": "Hobby insert", "odds": "—", "nums": {"mj": "#15 of 20", "kb": "#6 of 20"}}]}, {"k": "gx", "t": "Generation E-X", "sub": "Die-cut window", "desc": "", "versions": [{"k": "reg", "t": "Generation E-X", "sub": "Die-cut window", "odds": "—", "nums": {"mj": null, "kb": "#12 of 15"}}]}]},
+  sport:"Basketball",year:1998,season:"1998-99",mfr:"SkyBox",name:"E-X Century",series:1,
+ cfg:"Hobby: 18 packs × 3 cards",note:"Acetate die-cut base cards. Essential Credentials Now are numbered to each player's card number; Future are numbered in reverse, so low card numbers get the larger run.",
  src:TCDB+"ViewSet.cfm/sid/2775/1998-99-SkyBox-E-X-Century",rows:`
 Generation E-X|i|-|?|||||
 Dunk'N Go-Nuts|i|-|?|||||
