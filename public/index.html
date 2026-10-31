@@ -412,6 +412,32 @@ a[data-nav="jordan23"]{white-space:nowrap}
 .j23t:hover img,.j23t:focus img{transform:translateY(-8px) scale(1.04);filter:drop-shadow(0 26px 30px rgba(0,0,0,.7))}
 .j23t:hover .cap,.j23t:focus .cap{opacity:1;transform:translate(-50%,0)}
 .j23t:hover .rk,.j23t:focus .rk{color:var(--ink)}
+
+.j23board[hidden],.j23cd[hidden]{display:none!important}
+.j23mode{display:flex;gap:8px;margin:-20px 0 40px}
+.j23cd{min-height:720px;margin-bottom:120px;border:1px solid var(--line);padding:56px 64px 40px;position:relative}
+.j23cd .cdin{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:72px;align-items:center}
+.j23cd .rank{font-weight:200;font-size:clamp(90px,13vw,190px);letter-spacing:-.06em;line-height:.8;color:var(--ink);opacity:.9}
+.j23cd .rank small{font-size:.22em;letter-spacing:.2em;color:var(--ink3);margin-left:10px;vertical-align:top}
+.j23cd h4{font-weight:200;font-size:clamp(34px,4vw,56px);letter-spacing:-.03em;line-height:1;margin:22px 0 10px}
+.j23cd .st{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2)}
+.j23cd p{color:var(--ink2);line-height:1.9;font-size:15px;margin:28px 0;max-width:560px}
+.j23cd dl{display:grid;grid-template-columns:110px 1fr;gap:10px 18px;margin:0;font-size:13px;border-top:1px solid var(--line);padding-top:22px;max-width:560px}
+.j23cd dt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);padding-top:2px}
+.j23cd dd{margin:0}
+.j23cd .cardf{aspect-ratio:5/7;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.j23cd .cardf img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.7));transition:transform .3s var(--ease)}
+.j23cd .cardf.turn img{transform:rotateY(90deg)}
+.j23cd .fade{transition:opacity .35s var(--ease),transform .5s var(--ease)}.j23cd .fade.out{opacity:0;transform:translateY(10px)}
+.j23cd .vt{display:flex;gap:8px;margin-top:22px}
+.j23cd .ctl{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:48px;border-top:1px solid var(--line);padding-top:26px}
+.j23cd .ctl button.nb{background:none;border:1px solid var(--line2);color:var(--ink2);padding:11px 18px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:color .3s,border-color .3s}
+.j23cd .ctl button.nb:hover{color:var(--ink);border-color:var(--ink2)}
+.j23cd .ctl button.nb:disabled{opacity:.25;cursor:default}
+.j23cd .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.j23cd .dots i{width:16px;height:2px;background:var(--line2);cursor:pointer;transition:background .3s,width .3s}
+.j23cd .dots i.on{background:var(--ink);width:28px}
+@media(max-width:760px){.j23cd{padding:30px 22px}.j23cd .cdin{grid-template-columns:1fr;gap:28px}.j23cd .cardf{max-height:52vh}.j23cd .dots{display:none}}
 .j23x{position:fixed;inset:0;z-index:60;background:rgba(5,5,6,.95);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
 .j23x.on{opacity:1;pointer-events:auto}
 .j23x .in{display:grid;grid-template-columns:minmax(260px,420px) minmax(260px,440px);gap:80px;align-items:center;padding:40px}
@@ -2569,6 +2595,8 @@ function viewJ23(){
   return `<div class="view"><div class="wrap">
     <section class="j23head"><div><div class="eyebrow">Michael Jordan · inserts · 1995–1999</div><h2>The Jordan <b>23</b></h2></div>
       <p>Twenty-three of the best Michael Jordan inserts of the 1990s, hung like a collection on one wall. Hover a card for its name and set; click it for the story, the odds and the back.</p></section>
+    <div class="j23mode" role="tablist"><button class="tab on" data-jm="wall">Wall</button><button class="tab" data-jm="count">Countdown</button></div>
+    <section class="j23cd" id="j23cd" hidden></section>
     <section class="j23board">${J23.map((c,i)=>`<div class="j23t${c.alt?" stk":""}" tabindex="0" data-j="${i}" style="animation-delay:${120+i*45}ms">
       <span class="rk">${String(c.n).padStart(2,"0")}</span>
       ${c.alt?`<div class="slot"><img class="rare" data-v="1" src="${cardSrc(c.alt.img+"-f")}" alt="${esc(c.alt.t)}" loading="lazy"><img class="base" data-v="0" src="${j23img(c.n,"f")}" alt="${esc(c.t)} · ${esc(c.set)}" loading="lazy"></div>
@@ -2599,7 +2627,28 @@ function bindJ23(){
     open(+t.dataset.j)};t.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(+t.dataset.j)}}});
   x.querySelector(".xb").onclick=close;x.querySelector(".p").onclick=()=>go(-1);x.querySelector(".n").onclick=()=>go(1);
   x.onclick=e=>{if(e.target===x)close()};
-  document.onkeydown=e=>{if(!x.classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
+
+  /* countdown */
+  const cd=$("#j23cd"),board=document.querySelector(".j23board");let ci=0,cside="f",cver=0;const ORD=[...J23].sort((a,b)=>b.n-a.n);
+  const CV=c=>cver&&c.alt?{t:c.alt.t,num:c.alt.num,odds:c.alt.odds,meta:c.alt.meta,blurb:c.alt.blurb,src:sd=>cardSrc(c.alt.img+"-"+sd)}:{t:c.t,num:c.num,odds:c.odds,meta:c.meta,blurb:c.blurb,src:sd=>j23img(c.n,sd)};
+  const cdraw=()=>{const c=ORD[ci],v=CV(c);cd.innerHTML=`<div class="cdin">
+      <div class="cardf fade" id="cdcard" title="Click to flip"><img src="${v.src(cside)}" alt="${esc(v.t)}"></div>
+      <div class="fade"><div class="rank">#${c.n}<small>of 23</small></div><h4>${esc(v.t)}</h4><div class="st">${esc(c.set)}</div>
+        ${c.alt?`<div class="vt">${[c.t,c.alt.t].map((t,k)=>`<button class="tab ${k===cver?"on":""}" data-cv="${k}">${esc(t)}</button>`).join("")}</div>`:""}
+        <p>${esc(v.blurb)}</p>
+        <dl><dt>Pack odds</dt><dd class="mono">${esc(v.odds)}</dd><dt>Card</dt><dd class="mono">${esc(v.num)}</dd><dt>Insert</dt><dd>${esc(v.meta)}</dd><dt>Showing</dt><dd id="cdside">${cside==="f"?"Front":"Back"} · click the card to flip</dd></dl></div></div>
+    <div class="ctl"><button class="nb" id="cdp" ${ci===0?"disabled":""}>${ci>0?"← #"+ORD[ci-1].n:"←"}</button>
+      <div class="dots">${ORD.map((o,k)=>`<i class="${k===ci?"on":""}" data-cd="${k}" title="#${o.n} ${esc(o.t)}"></i>`).join("")}</div>
+      <button class="nb" id="cdn" ${ci===ORD.length-1?"disabled":""}>${ci<ORD.length-1?"#"+ORD[ci+1].n+" →":"#1"}</button></div>`;
+    const cf=$("#cdcard");cf.onclick=()=>{cf.classList.add("turn");setTimeout(()=>{cside=cside==="f"?"b":"f";cf.querySelector("img").src=v.src(cside);$("#cdside").textContent=(cside==="f"?"Front":"Back")+" · click the card to flip";cf.classList.remove("turn")},300)};
+    cd.querySelectorAll("[data-cv]").forEach(b=>b.onclick=()=>{cver=+b.dataset.cv;cside="f";cdraw()});
+    $("#cdp").onclick=()=>cgo(ci-1);$("#cdn").onclick=()=>cgo(ci+1);
+    cd.querySelectorAll("[data-cd]").forEach(d=>d.onclick=()=>cgo(+d.dataset.cd))};
+  const cgo=k=>{if(k<0||k>=ORD.length||k===ci)return;cd.querySelectorAll(".fade").forEach(e=>e.classList.add("out"));setTimeout(()=>{ci=k;cside="f";cver=0;cdraw()},320)};
+  let mode="wall";
+  document.querySelectorAll("[data-jm]").forEach(b=>b.onclick=()=>{mode=b.dataset.jm;document.querySelectorAll("[data-jm]").forEach(x=>x.classList.toggle("on",x===b));
+    board.hidden=mode!=="wall";cd.hidden=mode!=="count";if(mode==="count"&&!cd.innerHTML)cdraw()});
+  document.onkeydown=e=>{if(!x.classList.contains("on")){if(mode==="count"&&!cd.hidden){if(e.key==="ArrowRight")cgo(ci+1);if(e.key==="ArrowLeft")cgo(ci-1)}return}if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
 }
 
 /* ---------- card image packs: one file per set ---------- */
