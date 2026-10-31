@@ -457,6 +457,55 @@ a[data-nav="jordan23"]{white-space:nowrap}
 .j23x .nv:hover,.j23x .xb:hover{color:var(--ink);border-color:var(--ink2)}
 
 .j23t:hover,.j23t.open{z-index:5}
+/* ---------- make your own jordan 23 ---------- */
+.j23cta{display:inline-flex;align-items:center;gap:10px;margin-top:24px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--ink);padding:13px 20px;border-radius:99px;transition:opacity .3s,transform .3s var(--ease)}
+.j23cta:hover{opacity:.88;transform:translateY(-1px)}
+.mkhead{padding-bottom:40px}
+.mkbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:28px}
+.mkbar input{flex:1 1 220px;max-width:320px;background:transparent;border:1px solid var(--line2);border-radius:99px;color:var(--ink);font:inherit;font-size:14px;padding:11px 18px;outline:none;transition:border-color .3s}
+.mkbar input:focus{border-color:var(--ink2)}
+.mkbar .mkct{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.1em;margin-right:auto}
+.mkb{background:none;border:1px solid var(--line2);color:var(--ink2);padding:11px 18px;border-radius:99px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.mkb:hover{color:var(--ink);border-color:var(--ink2)}
+.mkb.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mkb.pri:hover{opacity:.88}
+.mkb:disabled{opacity:.4;cursor:default}
+.mkboard{margin-bottom:40px;user-select:none;-webkit-user-select:none}
+.mks{width:calc((100% - (var(--c) - 1)*var(--g))/var(--c));position:relative}
+.mks .rk{position:absolute;top:-18px;left:0;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em}
+.mks .slot{aspect-ratio:5/7;display:flex;align-items:center;justify-content:center;position:relative;border:1px dashed var(--line2);border-radius:8px;transition:border-color .25s,background .25s;cursor:pointer}
+.mks .slot .ph{font-weight:200;font-size:clamp(22px,3vw,42px);letter-spacing:-.04em;color:var(--ink3);opacity:.45}
+.mks.full .slot{border-color:transparent}
+.mks.over .slot,.mks.sel .slot{border-color:var(--ink2);background:rgba(255,255,255,.05)}
+.mkboard.picking .mks:not(.full) .slot{border-color:rgba(255,255,255,.3)}
+.mks img{max-width:100%;max-height:100%;object-fit:contain;display:block;filter:drop-shadow(0 14px 22px rgba(0,0,0,.55));cursor:grab;touch-action:pan-y;-webkit-user-drag:none}
+.mks.lift img{opacity:.25}
+.mks .nm{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);text-align:center;margin-top:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:12px}
+.mks .rm{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;border:1px solid var(--line2);background:var(--bg2);color:var(--ink2);font-size:13px;line-height:1;cursor:pointer;opacity:0;transition:opacity .25s;z-index:2}
+.mks.full:hover .rm,.mks.sel .rm{opacity:1}
+@media(hover:none){.mks.full .rm{opacity:.85}}
+.mkpool{position:sticky;bottom:0;z-index:20;margin:0 -24px 60px;padding:0 24px;background:rgba(9,9,10,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line2);box-shadow:0 -24px 40px rgba(0,0,0,.45);display:flex;flex-direction:column;max-height:40vh}
+.mkpool .mkgrid{overflow-y:auto;overscroll-behavior:contain;padding:22px 4px 26px;flex:1}
+.mkph{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.mkf{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mkf input{background:transparent;border:1px solid var(--line);border-radius:99px;color:var(--ink);font:inherit;font-size:12px;padding:8px 14px;outline:none;width:170px}
+.mkf input:focus{border-color:var(--line2)}
+.mkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:24px 18px}
+.mkc{cursor:grab;outline:none;text-align:center;touch-action:pan-y;-webkit-touch-callout:none}
+.mkc .im{aspect-ratio:5/7;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:background .25s}
+.mkc img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(0,0,0,.5));transition:transform .4s var(--ease);-webkit-user-drag:none;pointer-events:none}
+.mkc:hover img,.mkc:focus img{transform:translateY(-5px) scale(1.03)}
+.mkc.sel .im{background:rgba(255,255,255,.08);outline:1px solid var(--ink2);outline-offset:4px}
+.mkc.lift{opacity:.25}
+.mkc b{display:block;font-weight:400;font-size:12px;color:var(--ink);margin-top:10px;line-height:1.3}
+.mkc i{display:block;font-style:normal;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-top:4px;line-height:1.5}
+.mkempty{grid-column:1/-1;color:var(--ink3);font-size:13px;padding:30px 0;text-align:center}
+.mkghost{position:fixed;left:0;top:0;width:118px;pointer-events:none;z-index:90;transform:translate(-50%,-50%) rotate(-4deg) scale(1.05);filter:drop-shadow(0 26px 30px rgba(0,0,0,.75));transition:none}
+.mkghost img{width:100%;display:block}
+.mktoast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--bg2);border:1px solid var(--line2);color:var(--ink);font-size:13px;padding:12px 20px;border-radius:99px;opacity:0;transition:all .4s var(--ease);z-index:95;pointer-events:none}
+.mktoast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.j23board.mkboard{--c:4;--g:10px;padding:30px 14px;row-gap:30px}.mks .nm{display:none}.mkgrid{grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:18px 10px}.mkpool{max-height:44vh;margin:0 -16px 40px;padding:0 16px}.mkf{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:none;padding-bottom:2px}.mkf::-webkit-scrollbar{display:none}.mkf .chip{padding:6px 10px;font-size:10px;flex:none}.mkf input{width:110px;flex:none}.mkph{padding:10px 0 8px;gap:8px}.mkpool{max-height:38vh}.mkpool .mkgrid{padding:16px 2px 20px}.mkhead{padding:56px 0 24px}.mkhead p{font-size:13px;line-height:1.7}.mkc i{display:none}.mkc b{font-size:11px}}
+@media(max-width:480px){.j23board.mkboard{--c:4}}
 .j23t.stk .slot img{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;transition:transform .7s var(--ease),filter .5s var(--ease),opacity .5s}
 .j23t.stk .slot .rare{transform:translate(9%,-3%) rotate(6deg) scale(.9);z-index:0;filter:drop-shadow(0 10px 18px rgba(0,0,0,.6)) brightness(.8)}
 .j23t.stk .slot .base{z-index:1;transform:translate(-5%,2%) scale(.92)}
@@ -2594,7 +2643,7 @@ const j23img=(n,s)=>cardSrc(`j23-${String(n).padStart(2,"0")}-${s}`);
 function viewJ23(){
   return `<div class="view"><div class="wrap">
     <section class="j23head"><div><div class="eyebrow">Michael Jordan · inserts · 1995–1999</div><h2>The Jordan <b>23</b></h2></div>
-      <p>Twenty-three of the best Michael Jordan inserts of the 1990s, hung like a collection on one wall. Hover a card for its name and set; click it for the story, the odds and the back.</p></section>
+      <p>Twenty-three of the best Michael Jordan inserts of the 1990s, hung like a collection on one wall. Hover a card for its name and set; click it for the story, the odds and the back.<br><a class="j23cta" href="#jordan23/build">Make your own Jordan 23 <span aria-hidden="true">→</span></a></p></section>
     <div class="j23mode" role="tablist"><button class="tab on" data-jm="wall">Wall</button><button class="tab" data-jm="count">Countdown</button></div>
     <section class="j23cd" id="j23cd" hidden></section>
     <section class="j23board">${J23.map((c,i)=>`<div class="j23t${c.alt?" stk":""}" tabindex="0" data-j="${i}" style="animation-delay:${120+i*45}ms">
@@ -2658,9 +2707,170 @@ const cardSrc=n=>PACK[n]||`img/cards/${n}.webp`;
 const packOf=st=>null; /* hosted build: images load as individual files */
 function loadPack(p){return PACKS[p]||(PACKS[p]=new Promise(r=>{const s=document.createElement("script");s.src=`img/packs/${p}.js`;s.onload=s.onerror=()=>{PACK_OK[p]=1;r()};document.head.appendChild(s)}))}
 
+/* ---------- make your own jordan 23 ---------- */
+const MKX=[
+ {t:"Beam Team",set:"1992-93 Stadium Club",img:"x-sc92bt"},
+ {t:"Scoring Kings",set:"1993-94 Ultra",img:"x-ul93sk"},
+ {t:"N-Tense",set:"1994-95 SkyBox Emotion",img:"x-em94nt"},
+ {t:"Hot Numbers",set:"1995-96 Flair",img:"x-fl95hn"},
+ {t:"New Heights",set:"1995-96 Flair",img:"x-fl95nh"},
+ {t:"Natural Born Thrillers",set:"1995-96 SkyBox E-XL",img:"x-xl95nbt"},
+ {t:"SkyView",set:"1995-96 Hoops",img:"x-ho95sv"},
+ {t:"Thrill Seekers",set:"1996-97 Fleer",img:"x-fl96ts"},
+ {t:"Golden Touch",set:"1996-97 SkyBox Premium",img:"sp96-mj-gt-reg"},
+ {t:"Full Court Trap",set:"1996-97 Ultra",img:"ul96-mj-fct-reg"},
+ {t:"Scoring Kings",set:"1996-97 Ultra",img:"ul96-mj-sk-reg"},
+ {t:"Board Game",set:"1996-97 Ultra",img:"ul96-mj-bg-reg"},
+ {t:"Net Assets",set:"1996-97 E-X2000",img:"ex96-mj-net-reg"},
+ {t:"Net-Rageous",set:"1996-97 Metal",img:"me96-mj-nr-reg"},
+ {t:"Thrill Seekers",set:"1997-98 Fleer",img:"fl97-mj-ts"},
+ {t:"Titanium",set:"1997-98 Metal Universe",img:"mu97-mj-ti-reg"},
+ {t:"Planet Metal",set:"1997-98 Metal Universe",img:"mu97-mj-pm-reg"},
+ {t:"Championship Galaxy",set:"1997-98 Metal Universe Championship",img:"mc97-mj-cg-reg"},
+ {t:"Silky Smooth",set:"1997-98 SkyBox Premium",img:"sp97-mj-ss"},
+ {t:"Competitive Advantage",set:"1997-98 SkyBox Premium",img:"sp97-mj-ca"},
+ {t:"Court Masters",set:"1997-98 Ultra",img:"ul97-mj-cm-base"},
+ {t:"Ultrabilities Superstar",set:"1997-98 Ultra",img:"ul97-mj-ub-superstar"},
+ {t:"Big Men on Court",set:"1997-98 SkyBox Z-Force",img:"zf97-mj-bmoc"},
+ {t:"Slam Cam",set:"1997-98 SkyBox Z-Force",img:"zf97-mj-sc"},
+ {t:"Quick Strike",set:"1997-98 SkyBox Z-Force",img:"zf97-mj-x1"},
+ {t:"Electrifying",set:"1998-99 Fleer Tradition",img:"ft98-mj-el-reg"},
+ {t:"Classic '61",set:"1998-99 Fleer Tradition",img:"ft98-mj-c61-reg"},
+ {t:"Linchpins",set:"1998-99 Metal Universe",img:"mu98-mj-lp-reg"},
+ {t:"Intimidation Nation",set:"1998-99 SkyBox Premium",img:"sp98-mj-in-reg"},
+ {t:"Soul of the Game",set:"1998-99 SkyBox Premium",img:"sp98-mj-sg-reg"}
+];
+const mkSlug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const MKP=[...J23.map(c=>({t:c.t,set:c.set,src:j23img(c.n,"f")})),...MKX.map(c=>({t:c.t,set:c.set,src:cardSrc(c.img+"-f")}))]
+  .map(c=>({...c,id:mkSlug(c.set+" "+c.t),yr:c.set.slice(0,7)}))
+  .sort((a,b)=>a.set.localeCompare(b.set)||a.t.localeCompare(b.t));
+const MKBY=Object.fromEntries(MKP.map(c=>[c.id,c]));
+const mk={picks:Array(23).fill(null),name:"",sel:null,yr:"all",q:""};
+try{const s=JSON.parse(localStorage.getItem("mk23")||"null");if(s&&Array.isArray(s.picks)){mk.picks=Array.from({length:23},(_,i)=>MKBY[s.picks[i]]?s.picks[i]:null);mk.name=String(s.name||"").slice(0,28)}}catch(e){}
+const mkStore=()=>{try{localStorage.setItem("mk23",JSON.stringify({picks:mk.picks,name:mk.name}))}catch(e){}};
+const mkTitle=n=>{n=n.trim();return n?`${n}'s Jordan`:"My Jordan"};
+function viewMk(){
+  const yrs=[...new Set(MKP.map(c=>c.yr))];
+  return `<div class="view"><div class="wrap">
+    <section class="j23head mkhead"><div><div class="eyebrow"><a href="#jordan23" style="color:inherit">The Jordan 23</a> · build your own</div><h2><span id="mkttl">${esc(mkTitle(mk.name))}</span> <b>23</b></h2></div>
+      <p>Drag any of the ${MKP.length} inserts from the pile below into slots 1 through 23. Drag a placed card onto another slot to swap them, or off the wall to put it back. On a phone, tap a card and then tap a slot.</p></section>
+    <div class="mkbar"><input id="mkname" type="text" placeholder="Your name" maxlength="28" autocomplete="off" value="${esc(mk.name)}"><span class="mkct" id="mkct"></span>
+      <button class="mkb" id="mkclr">Clear wall</button><button class="mkb pri" id="mksave">Save image</button></div>
+    <section class="j23board mkboard" id="mkboard"></section>
+    <section class="mkpool" id="mkpool"><div class="mkph"><div class="eyebrow">The pile · <span id="mkleft"></span></div>
+      <div class="mkf">${["all",...yrs].map(y=>`<button class="chip${mk.yr===y?" on":""}" data-yr="${y}">${y==="all"?"All":y}</button>`).join("")}<input id="mkq" type="search" placeholder="Search" value="${esc(mk.q)}"></div></div>
+      <div class="mkgrid" id="mkgrid"></div></section>
+  </div></div>`;
+}
+function bindMk(){
+  const board=$("#mkboard"),grid=$("#mkgrid");
+  const toast=t=>{let e=document.querySelector(".mktoast");if(!e){e=document.createElement("div");e.className="mktoast";document.body.appendChild(e)}e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("on"),2200)};
+  const drawBoard=()=>{board.innerHTML=mk.picks.map((id,i)=>{const c=id&&MKBY[id],s=mk.sel;const sel=s&&s.from==="slot"&&s.i===i;
+      return `<div class="mks${c?" full":""}${sel?" sel":""}" data-s="${i}"><span class="rk">${String(i+1).padStart(2,"0")}</span>
+      <div class="slot">${c?`<img src="${c.src}" alt="${esc(c.t)} · ${esc(c.set)}" draggable="false">`:`<span class="ph">${i+1}</span>`}</div>
+      ${c?`<button class="rm" data-rm="${i}" aria-label="Remove">×</button>`:""}<div class="nm" title="${c?esc(c.t+" · "+c.set):""}">${c?esc(c.t):""}</div></div>`}).join("");
+    board.classList.toggle("picking",!!mk.sel);
+    const n=mk.picks.filter(Boolean).length;$("#mkct").textContent=`${n} / 23 placed`};
+  const drawPool=()=>{const used=new Set(mk.picks.filter(Boolean)),q=mk.q.trim().toLowerCase();
+    const list=MKP.filter(c=>!used.has(c.id)&&(mk.yr==="all"||c.yr===mk.yr)&&(!q||(c.t+" "+c.set).toLowerCase().includes(q)));
+    $("#mkleft").textContent=`${MKP.length-used.size} cards left`;
+    grid.innerHTML=list.length?list.map(c=>`<div class="mkc${mk.sel&&mk.sel.id===c.id&&mk.sel.from==="pool"?" sel":""}" tabindex="0" data-id="${c.id}"><div class="im"><img src="${c.src}" alt="" loading="lazy" draggable="false"></div><b>${esc(c.t)}</b><i>${esc(c.set)}</i></div>`).join("")
+      :`<div class="mkempty">${used.size===MKP.length?"Every card is on the wall.":"No cards match."}</div>`};
+  const draw=()=>{drawBoard();drawPool();mkStore()};
+  const drop=(src,j)=>{ // j: slot index or -1 for the pile
+    if(src.from==="pool"){if(j<0)return;mk.picks[j]=src.id}
+    else{if(j<0)mk.picks[src.i]=null;else if(j!==src.i)[mk.picks[src.i],mk.picks[j]]=[mk.picks[j],mk.picks[src.i]]}
+    mk.sel=null;draw()};
+  /* pointer drag (mouse: move 5px; touch: press and hold) */
+  let pd=null,drag=null,ghost=null,overEl=null;
+  const slotAt=(x,y)=>{const e=document.elementFromPoint(x,y);return e&&e.closest?e.closest(".mks"):null};
+  const startDrag=()=>{drag=pd;ghost=document.createElement("div");ghost.className="mkghost";ghost.innerHTML=`<img src="${MKBY[drag.src.id||mk.picks[drag.src.i]].src}" alt="">`;document.body.appendChild(ghost);drag.el.classList.add("lift");moveGhost(pd.x,pd.y);if(navigator.vibrate&&pd.touch)try{navigator.vibrate(12)}catch(e){}};
+  const moveGhost=(x,y)=>{ghost.style.left=x+"px";ghost.style.top=y+"px";const s=slotAt(x,y);if(s!==overEl){overEl&&overEl.classList.remove("over");overEl=s;s&&s.classList.add("over")}
+    const m=70,tt=$("#mkpool").getBoundingClientRect().top;if(y<m+64)scrollBy(0,-16);else if(y>tt-m&&y<tt)scrollBy(0,16)};
+  const endDrag=(x,y,cancel)=>{const d=drag;ghost&&ghost.remove();ghost=null;overEl&&overEl.classList.remove("over");overEl=null;drag=null;pd=null;
+    if(!d||cancel){draw();return}const s=slotAt(x,y);d.el.classList.remove("lift");drop(d.src,s?+s.dataset.s:-1)};
+  const down=e=>{if(e.button>0)return;const card=e.target.closest(".mkc"),slot=e.target.closest(".mks.full img")&&e.target.closest(".mks");if(!card&&!slot)return;
+    const src=card?{from:"pool",id:card.dataset.id}:{from:"slot",i:+slot.dataset.s};
+    pd={src,el:card||slot,x:e.clientX,y:e.clientY,x0:e.clientX,y0:e.clientY,touch:e.pointerType!=="mouse"};
+    if(pd.touch){const p=pd;p.timer=setTimeout(()=>{if(pd===p&&!drag)startDrag()},280)}else e.preventDefault()};
+  const move=e=>{if(!pd)return;pd.x=e.clientX;pd.y=e.clientY;
+    if(drag){moveGhost(e.clientX,e.clientY);return}
+    const dist=Math.hypot(e.clientX-pd.x0,e.clientY-pd.y0);
+    if(pd.touch){if(dist>10){clearTimeout(pd.timer);pd=null}}else if(dist>5)startDrag()};
+  const up=e=>{if(!pd)return;clearTimeout(pd.timer);if(drag){endDrag(e.clientX,e.clientY,e.type==="pointercancel");suppress=true;setTimeout(()=>suppress=false,0)}else pd=null};
+  let suppress=false;
+  const tm=e=>{if(drag)e.preventDefault()};
+  board.addEventListener("pointerdown",down);grid.addEventListener("pointerdown",down);
+  addEventListener("pointermove",move);addEventListener("pointerup",up);addEventListener("pointercancel",up);
+  document.addEventListener("touchmove",tm,{passive:false});
+  document.addEventListener("contextmenu",e=>{if(drag||(pd&&pd.touch))e.preventDefault()});
+  const cleanup=()=>{removeEventListener("pointermove",move);removeEventListener("pointerup",up);removeEventListener("pointercancel",up);document.removeEventListener("touchmove",tm);removeEventListener("hashchange",cleanup);document.querySelector(".mktoast")?.remove()};
+  addEventListener("hashchange",cleanup);
+  /* tap to pick, tap to place */
+  grid.addEventListener("click",e=>{if(suppress)return;const c=e.target.closest(".mkc");if(!c)return;const id=c.dataset.id;
+    if(mk.sel&&mk.sel.from==="pool"&&mk.sel.id===id){mk.sel=null}else{
+      if(mk.sel&&mk.sel.from==="slot"){drop(mk.sel,-1);return}
+      const j=mk.picks.indexOf(null);mk.sel={from:"pool",id};if(j<0)toast("The wall is full. Tap a slot to swap this card in.")}
+    drawBoard();drawPool()});
+  grid.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.target.closest(".mkc")?.click()}});
+  board.addEventListener("click",e=>{if(suppress)return;const rm=e.target.closest("[data-rm]");if(rm){mk.picks[+rm.dataset.rm]=null;mk.sel=null;draw();return}
+    const s=e.target.closest(".mks");if(!s)return;const i=+s.dataset.s;
+    if(mk.sel){if(mk.sel.from==="slot"&&mk.sel.i===i){mk.sel=null;drawBoard();return}drop(mk.sel,i);return}
+    if(mk.picks[i]){mk.sel={from:"slot",i};drawBoard()}else toast("Pick a card from the pile first.")});
+  $("#mkpool").addEventListener("click",e=>{if(e.target.closest(".mkc,.mkf"))return;if(mk.sel&&mk.sel.from==="slot")drop(mk.sel,-1)});
+  $("#mkname").addEventListener("input",e=>{mk.name=e.target.value.slice(0,28);$("#mkttl").textContent=mkTitle(mk.name);mkStore()});
+  document.querySelectorAll("[data-yr]").forEach(b=>b.addEventListener("click",()=>{mk.yr=b.dataset.yr;document.querySelectorAll("[data-yr]").forEach(x=>x.classList.toggle("on",x===b));drawPool()}));
+  $("#mkq").addEventListener("input",e=>{mk.q=e.target.value;drawPool()});
+  $("#mkclr").addEventListener("click",()=>{if(!mk.picks.some(Boolean))return;if(!confirmClear())return;mk.picks=Array(23).fill(null);mk.sel=null;draw()});
+  let armed=0;const confirmClear=()=>{const b=$("#mkclr");if(armed){armed=0;b.textContent="Clear wall";return true}armed=1;b.textContent="Tap again to clear";setTimeout(()=>{armed=0;b.textContent="Clear wall"},2500);return false};
+  $("#mksave").addEventListener("click",async()=>{const b=$("#mksave");if(!mk.picks.some(Boolean)){toast("Put at least one card on the wall first.");return}
+    b.disabled=true;b.textContent="Rendering…";
+    try{const blob=await mkRender();const fn=`${mkSlug(mkTitle(mk.name))}-23.png`;
+      const file=window.File?new File([blob],fn,{type:"image/png"}):null;
+      if(file&&navigator.canShare&&matchMedia("(pointer:coarse)").matches&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:mkTitle(mk.name)+" 23"})}catch(e){}}
+      else{const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);toast("Image saved.")}}
+    catch(e){console.error(e);toast("Couldn't make the image. Try again.")}
+    b.disabled=false;b.textContent="Save image"});
+  draw();
+}
+async function mkRender(){
+  const W=1840,CW=240,CH=336,GX=40,ROWH=CH+104,TOP=360,rows=[6,6,6,5];
+  const H=TOP+rows.length*ROWH+130,cv=document.createElement("canvas");cv.width=W;cv.height=H;const x=cv.getContext("2d");
+  try{await Promise.all(["200 96px Inter","500 96px Inter","400 16px Inter","400 16px 'JetBrains Mono'"].map(f=>document.fonts.load(f)))}catch(e){}
+  const load=s=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=s});
+  const imgs=await Promise.all(mk.picks.map(id=>id?load(MKBY[id].src):null));
+  x.fillStyle="#09090a";x.fillRect(0,0,W,H);
+  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,"rgba(255,255,255,.035)");g.addColorStop(1,"rgba(255,255,255,0)");x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.strokeStyle="rgba(255,255,255,.09)";x.lineWidth=2;x.strokeRect(40,40,W-80,H-80);x.strokeStyle="rgba(255,255,255,.05)";x.strokeRect(56,56,W-112,H-112);
+  x.textBaseline="alphabetic";x.fillStyle="#5f5f66";x.font="400 17px 'JetBrains Mono', monospace";
+  const sp=(t,px,py,ls)=>{let cx=px;for(const ch of t){x.fillText(ch,cx,py);cx+=x.measureText(ch).width+ls}return cx-px};
+  const wid=(t,ls)=>[...t].reduce((a,ch)=>a+x.measureText(ch).width+ls,0)-ls;
+  x.font="400 16px Inter";const eb="MICHAEL JORDAN · INSERTS OF THE 1990S";sp(eb,(W-wid(eb,5))/2,148,5);
+  const t1=mkTitle(mk.name)+" ",t2="23";let fs=104;
+  const fit=()=>{x.font=`200 ${fs}px Inter`;const a=x.measureText(t1).width;x.font=`500 ${fs}px Inter`;return a+x.measureText(t2).width};
+  while(fit()>W-260&&fs>40)fs-=4;const tw=fit();x.font=`200 ${fs}px Inter`;const a=x.measureText(t1).width;
+  x.fillStyle="#ededee";x.fillText(t1,(W-tw)/2,262);x.font=`500 ${fs}px Inter`;x.fillText(t2,(W-tw)/2+a,262);
+  let k=0;
+  rows.forEach((n,r)=>{const rw=n*CW+(n-1)*GX,x0=(W-rw)/2,y0=TOP+r*ROWH;
+    for(let c=0;c<n;c++,k++){const cx=x0+c*(CW+GX),id=mk.picks[k],im=imgs[k];
+      x.fillStyle="#5f5f66";x.font="400 15px 'JetBrains Mono', monospace";x.textAlign="left";x.fillText(String(k+1).padStart(2,"0"),cx,y0-14);
+      if(im){const s=Math.min(CW/im.width,CH/im.height),w=im.width*s,h=im.height*s;
+        x.save();x.shadowColor="rgba(0,0,0,.6)";x.shadowBlur=34;x.shadowOffsetY=16;x.drawImage(im,cx+(CW-w)/2,y0+(CH-h)/2,w,h);x.restore();
+        const c0=MKBY[id];x.textAlign="center";x.fillStyle="#ededee";x.font="400 17px Inter";
+        let t=c0.t;while(x.measureText(t).width>CW+30&&t.length>4)t=t.slice(0,-2)+"…";x.fillText(t,cx+CW/2,y0+CH+34);
+        x.fillStyle="#7a7a82";x.font="400 12px Inter";let st=c0.set.toUpperCase();while(wid(st,1.5)>CW+30&&st.length>4)st=st.slice(0,-2)+"…";
+        x.textAlign="left";sp(st,cx+CW/2-wid(st,1.5)/2,y0+CH+58,1.5)}
+      else{x.save();x.setLineDash([6,6]);x.strokeStyle="rgba(255,255,255,.14)";x.lineWidth=1.5;x.beginPath();x.roundRect?x.roundRect(cx+.5,y0+.5,CW-1,CH-1,10):x.rect(cx+.5,y0+.5,CW-1,CH-1);x.stroke();x.restore();
+        x.fillStyle="rgba(95,95,102,.5)";x.font="200 64px Inter";x.textAlign="center";x.fillText(String(k+1),cx+CW/2,y0+CH/2+22)}
+      x.textAlign="left"}});
+  x.fillStyle="#5f5f66";x.font="400 15px Inter";const ft="MADE AT 90SCARDS.NET";sp(ft,(W-wid(ft,5))/2,H-86,5);
+  return new Promise((res,rej)=>cv.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png"));
+}
+
+
 function route(){
   if(typeof gx!=="undefined"){clearInterval(gx.timer);gx.lbOpen=false}if(typeof fsx!=="undefined")clearInterval(fsx.timer);if(typeof tx!=="undefined")clearInterval(tx.timer);
-  document.querySelectorAll("body > .lb, body > .j23x").forEach(x=>x.remove());document.body.style.overflow="";
+  document.querySelectorAll("body > .lb, body > .j23x, body > .mkghost").forEach(x=>x.remove());document.body.style.overflow="";
   const h=location.hash.slice(1)||"gallery"; const app=$("#app");
   let nav=h;
   if(h.startsWith("card-")&&byId(h.slice(5))){const c=byId(h.slice(5));app.innerHTML=viewCard(c);bindCard(c);nav="gallery"}
@@ -2668,6 +2878,7 @@ function route(){
   else if(h==="serials"){app.innerHTML=viewSerials();bindSerials()}
   else if(h==="graded"){app.innerHTML=viewGraded();bindGraded()}
   else if(h==="jordan23"){app.innerHTML=viewJ23();bindJ23();nav="jordan23"}
+  else if(h==="jordan23/build"){app.innerHTML=viewMk();bindMk();nav="jordan23"}
   else if(h==="sets"){sx.year=null;sx.sport=ONE_SPORT;sx.q="";app.innerHTML=viewSets();bindSets();nav="sets"}
   else if(/^sets-\d{4}$/.test(h)&&TL_YEARS.includes(+h.slice(5))){const y=+h.slice(5);if(sx.year!==y)sx.q="";sx.year=y;app.innerHTML=viewSets();bindSets();nav="sets"}
   else if(h.startsWith("set-")&&setById(h.slice(4))){const st=setById(h.slice(4));document.body.style.overflow="";const pk=packOf(st);if(pk&&!PACK_OK[pk]){app.innerHTML=`<div class="view"><div class="wrap" style="padding:160px 0;text-align:center"><div class="eyebrow">Loading cards…</div></div></div>`;loadPack(pk).then(()=>{if((location.hash.slice(1)||"gallery")===h)route()});return}if(st.gallery){app.innerHTML=viewGallerySet(st);bindGallerySet(st)}else if(st.showcase){app.innerHTML=viewShowcase(st);bindShowcase(st)}else if(st.tiers){app.innerHTML=viewTiers(st);bindTiers(st)}else{app.innerHTML=viewSet(st);bindSet(st)}nav="sets"}
