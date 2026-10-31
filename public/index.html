@@ -395,6 +395,44 @@ td .nt{display:block;font-size:11px;color:var(--ink3);margin-top:3px}
 .fullcl{margin-top:96px}
 .fullcl>h3{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--ink2);padding-bottom:14px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.tile{opacity:1;transform:none}}
+a[data-nav="jordan23"]{white-space:nowrap}
+.j23head{padding:120px 0 56px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.j23head h2{font-weight:200;font-size:clamp(48px,7vw,104px);letter-spacing:-.04em;line-height:.9;margin:14px 0 0}
+.j23head h2 b{font-weight:500}
+.j23head p{max-width:420px;color:var(--ink2);line-height:1.8;font-size:14px;margin:0}
+.j23board{display:grid;grid-template-columns:repeat(6,1fr);gap:40px 26px;padding:48px 44px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);position:relative;margin-bottom:120px}
+.j23board:before{content:"";position:absolute;inset:12px;border:1px solid var(--line);pointer-events:none;opacity:.5}
+.j23t{position:relative;cursor:pointer;outline:none;opacity:0;animation:tileIn .9s var(--ease) forwards}
+.j23t .slot{aspect-ratio:5/7;display:flex;align-items:center;justify-content:center;position:relative}
+.j23t img{max-width:100%;max-height:100%;object-fit:contain;display:block;filter:drop-shadow(0 14px 22px rgba(0,0,0,.55));transition:transform .5s var(--ease),filter .5s var(--ease)}
+.j23t .rk{position:absolute;top:-18px;left:0;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em;transition:color .4s}
+.j23t .cap{position:absolute;left:50%;bottom:-14px;transform:translate(-50%,8px);width:max-content;max-width:220px;text-align:center;background:rgba(8,8,9,.92);border:1px solid var(--line2);padding:9px 14px;opacity:0;pointer-events:none;transition:opacity .35s var(--ease),transform .35s var(--ease);z-index:3}
+.j23t .cap b{display:block;font-weight:400;font-size:13px;color:var(--ink)}
+.j23t .cap i{display:block;font-style:normal;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+.j23t:hover img,.j23t:focus img{transform:translateY(-8px) scale(1.04);filter:drop-shadow(0 26px 30px rgba(0,0,0,.7))}
+.j23t:hover .cap,.j23t:focus .cap{opacity:1;transform:translate(-50%,0)}
+.j23t:hover .rk,.j23t:focus .rk{color:var(--ink)}
+.j23x{position:fixed;inset:0;z-index:60;background:rgba(5,5,6,.95);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+.j23x.on{opacity:1;pointer-events:auto}
+.j23x .in{display:grid;grid-template-columns:minmax(260px,420px) minmax(260px,440px);gap:80px;align-items:center;padding:40px}
+.j23x .cardf{aspect-ratio:5/7;display:flex;align-items:center;justify-content:center;cursor:pointer;perspective:1400px}
+.j23x .cardf img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.7));transition:transform .3s var(--ease)}
+.j23x .cardf.turn img{transform:rotateY(90deg)}
+.j23x .no{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.14em}
+.j23x h4{font-weight:200;font-size:clamp(34px,4vw,54px);letter-spacing:-.03em;line-height:1;margin:16px 0 10px}
+.j23x .st{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2)}
+.j23x p{color:var(--ink2);line-height:1.85;font-size:14px;margin:28px 0}
+.j23x dl{display:grid;grid-template-columns:110px 1fr;gap:10px 18px;margin:0;font-size:13px;border-top:1px solid var(--line);padding-top:22px}
+.j23x dt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);padding-top:2px}
+.j23x dd{margin:0}
+.j23x .xb{position:absolute;top:28px;right:34px;background:none;border:0;color:var(--ink2);font-size:20px;cursor:pointer}
+.j23x .nv{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid var(--line2);color:var(--ink2);width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:16px}
+.j23x .nv.p{left:28px}.j23x .nv.n{right:28px}
+.j23x .nv:hover,.j23x .xb:hover{color:var(--ink);border-color:var(--ink2)}
+.j23x .fade{transition:opacity .3s var(--ease)}.j23x .fade.out{opacity:0}
+@media(max-width:1100px){.j23board{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:760px){.j23board{grid-template-columns:repeat(3,1fr);padding:30px 22px;gap:34px 14px}.j23x .in{grid-template-columns:1fr;gap:28px;max-height:100vh;overflow:auto;padding:70px 26px 90px}.j23x .cardf{max-height:46vh}.j23x .nv{top:auto;bottom:18px;transform:none}}
+@media(max-width:480px){.j23board{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -414,6 +452,7 @@ td .nt{display:block;font-size:11px;color:var(--ink3);margin-top:3px}
     <a href="#market" data-nav="market">Market</a>
     <a href="#serials" data-nav="serials">Serials</a>
     <a href="#graded" data-nav="graded">Graded</a>
+    <a href="#jordan23" data-nav="jordan23">The Jordan 23</a>
   </nav>
 </div></header>
 <main id="app"></main>
@@ -2275,7 +2314,7 @@ function bindGallerySet(st){
   const g=st.gallery;
   // preload every image
   g.players.forEach(pl=>g.items.forEach(it=>["f","b"].forEach(sd2=>{if(pl.nums[it.k]&&hasImg(pl,it,sd2)){const im=new Image();im.src=cardImg(pl,it,sd2)}})));
-  document.querySelectorAll("body > .lb").forEach(x=>x.remove());const lb=$("#lb");document.body.appendChild(lb);
+  document.querySelectorAll("body > .lb, body > .j23x").forEach(x=>x.remove());const lb=$("#lb");document.body.appendChild(lb);
 
   /* --- player cycling --- */
   const wall=$("#exhibits");
@@ -2508,6 +2547,38 @@ function renderTiers(st){
 function bindTiers(st){tx.g=null;tx.v=null;tx.p=0;tx.side="f";tx.hover=false;sd.type="All";sd.series="All";sd.av="All";sd.sort="list";bindSet(st);renderTiers(st)}
 
 /* ---------- router ---------- */
+
+const J23=[{"n": 1, "t": "3D", "set": "1998-99 SkyBox Premium", "num": "#4 of 15 DDD", "odds": "1:96 Series 1", "meta": "15-card insert", "blurb": "Crystalline foil collage with Jordan's season in words and numbers: \"dominate,\" \"determination,\" 28.7 points a game. One of the boldest designs of the lockout year."}, {"n": 2, "t": "A Cut Above", "set": "1996-97 E-X2000", "num": "#5 of 10", "odds": "1:288", "meta": "10-card die-cut insert", "blurb": "The buzz-saw die-cut. Only ten players, roughly one per dozen boxes, and the pinstripe photo makes Jordan's the signature card of the set."}, {"n": 3, "t": "Bams", "set": "1998-99 Hoops", "num": "#1 of 10", "odds": "Serial /250", "meta": "10-card insert · this copy 166/250", "blurb": "Numbered to 250 in a product built for the dollar bin. Jordan leads off the ten-card checklist, framed by giant \"BAMS\" type and a triple portrait."}, {"n": 4, "t": "Beam Team", "set": "1995-96 Stadium Club", "num": "#B14", "odds": "—", "meta": "Series insert", "blurb": "Neon light beams and a laser-etched portrait on the back, from the season Jordan came back. One of the defining comeback-era inserts."}, {"n": 5, "t": "Big Men on Court", "set": "1996-97 SkyBox Z-Force", "num": "#4 of 10", "odds": "1:240 Series 2", "meta": "10-card die-cut insert", "blurb": "Bubble-letter die-cut in loud red and blue. Widely called one of the wildest insert designs of the decade, and only ten players made it."}, {"n": 6, "t": "Supernatural Fusion", "set": "1998-99 SkyBox Molten Metal", "num": "#41F", "odds": "Serial /250", "meta": "Printed on metal · this copy 179/250", "blurb": "Real metal stock, a dot-matrix Jordan portrait and a print run of 250. Card 41F, issued in Jordan's final Bulls season."}, {"n": 7, "t": "Dunk'N Go-Nuts", "set": "1998-99 SkyBox E-X Century", "num": "#15 of 20 DG", "odds": "Hobby", "meta": "20-card insert", "blurb": "Jordan hanging on the rim over oversized neon lettering, on clear acetate that shows the silhouette on the back."}, {"n": 8, "t": "Golden Touch", "set": "1997-98 SkyBox Premium", "num": "#1 of 15 GT", "odds": "1:360 Series 2", "meta": "15-card die-cut insert", "blurb": "Etched gold die-cut and among the toughest pulls of 1997-98. Jordan is card #1."}, {"n": 9, "t": "Hardware", "set": "1997-98 Metal Universe Championship", "num": "#5 of 15 H", "odds": "1:360 · about 1 per 15 boxes", "meta": "15-card insert", "blurb": "A bronze-toned celebration of trophies and titles, falling about once every fifteen boxes."}, {"n": 10, "t": "Hot Shots", "set": "1996-97 Flair Showcase", "num": "#1 of 20", "odds": "1:90", "meta": "20-card die-cut insert", "blurb": "The flaming-basketball die-cut. A fan favorite, with Jordan in the #1 slot."}, {"n": 11, "t": "High Voltage · 500 Volts", "set": "1997-98 Hoops", "num": "#14 of 20 HV", "odds": "Serial /500 · Series 2 hobby", "meta": "Numbered High Voltage · this copy 271/500", "blurb": "The numbered version of High Voltage: concentric foil rings and a run of 500, a rare chase in an otherwise affordable product."}, {"n": 12, "t": "Jambalaya", "set": "1997-98 SkyBox E-X2001", "num": "#6 of 15 JB", "odds": "1:720", "meta": "15-card die-cut insert", "blurb": "Die-cut oval with prismatic red and green foil. Its long odds and unmistakable shape make it one of the defining inserts of the late '90s."}, {"n": 13, "t": "Noyz Boyz", "set": "1998-99 SkyBox Thunder", "num": "#9 of 15 NB", "odds": "1:300", "meta": "15-card die-cut insert", "blurb": "Found in a budget product but famously tough: 1:300 packs, die-cut lettering and copper foil. One of the most chased late-'90s inserts."}, {"n": 14, "t": "Planet Metal", "set": "1998-99 Metal Universe", "num": "#1 of 15 PM", "odds": "—", "meta": "15-card die-cut insert", "blurb": "Half-globe die-cut in molten bronze, with Jordan rising toward the rim."}, {"n": 15, "t": "Platinum Portraits", "set": "1997-98 Metal Universe", "num": "#1 of 15 PP", "odds": "1:288 hobby · 1:460 retail", "meta": "15-card insert", "blurb": "A perforated, laser-cut portrait: no action photo at all, just Jordan's face punched into platinum stock."}, {"n": 16, "t": "Playmakers Theatre", "set": "1998-99 Fleer Tradition", "num": "#9 of 15 PT", "odds": "Serial /100", "meta": "15-card insert · this copy 079/100", "blurb": "Ornate theatre-frame design on wood grain, numbered to only 100."}, {"n": 17, "t": "Premium Player", "set": "1997-98 SkyBox Premium", "num": "#1 of 15 PP", "odds": "1:192 Series 1", "meta": "15-card insert", "blurb": "Gold-foil split-photo design with Jordan in white, #1 on the checklist."}, {"n": 18, "t": "Rave Review", "set": "1997-98 SkyBox Z-Force", "num": "#6 of 12", "odds": "—", "meta": "Jordan's card in the Rave Reviews insert", "blurb": "Prismatic geometric foil with Jordan driving in white. His card in Rave Reviews; Kobe's equivalent is Total Impact."}, {"n": 19, "t": "Slam Cam", "set": "1996-97 SkyBox Z-Force", "num": "#SC5", "odds": "1:240 Series 1", "meta": "9-card insert", "blurb": "A nine-card insert at 1:240, with a mid-dunk photo and a horizontal back."}, {"n": 20, "t": "Star Power Supreme", "set": "1997-98 Ultra", "num": "#1 of 20 SPS", "odds": "1:288 Series 2", "meta": "Top tier of Star Power · die-cut", "blurb": "The top tier of Star Power: die-cut acetate with atomic-orbit graphics, far scarcer than the base tier."}, {"n": 21, "t": "takeit2.net", "set": "1998-99 Flair Showcase", "num": "#13 of 15 TN", "odds": "Serial /1,000", "meta": "15-card insert · this copy 0100/1000", "blurb": "Circuit-board foil and an \"e-mail\" from fans on the back, saying goodbye after his last title. A time capsule of the dot-com era."}, {"n": 22, "t": "Thunder & Lightning", "set": "1997-98 SkyBox Premium", "num": "#5 of 15 TL", "odds": "1:192 Series 2", "meta": "15-card insert", "blurb": "Jordan in white against a storm, outlined in lightning, with a matching bolt on the back."}, {"n": 23, "t": "Ultra Stars", "set": "1997-98 Ultra", "num": "#1 of 20 US", "odds": "1:144 Series 1", "meta": "20-card insert", "blurb": "Embossed chrome star behind a finger-roll. A Gold version shares the same pack slot at about one in ten."}];
+/* ---------- The Jordan 23 ---------- */
+const j23img=(n,s)=>cardSrc(`j23-${String(n).padStart(2,"0")}-${s}`);
+function viewJ23(){
+  return `<div class="view"><div class="wrap">
+    <section class="j23head"><div><div class="eyebrow">Michael Jordan · inserts · 1995–1999</div><h2>The Jordan <b>23</b></h2></div>
+      <p>Twenty-three of the best Michael Jordan inserts of the 1990s, hung like a collection on one wall. Hover a card for its name and set; click it for the story, the odds and the back.</p></section>
+    <section class="j23board">${J23.map((c,i)=>`<div class="j23t" tabindex="0" data-j="${i}" style="animation-delay:${120+i*45}ms">
+      <span class="rk">${String(c.n).padStart(2,"0")}</span>
+      <div class="slot"><img src="${j23img(c.n,"f")}" alt="${esc(c.t)} · ${esc(c.set)}" loading="lazy"></div>
+      <div class="cap"><b>${esc(c.t)}</b><i>${esc(c.set)}</i></div></div>`).join("")}</section>
+  </div>${footer()}</div>
+  <div class="j23x" id="j23x" role="dialog" aria-modal="true" aria-label="Card details"><button class="xb" aria-label="Close">✕</button><button class="nv p" aria-label="Previous">←</button><button class="nv n" aria-label="Next">→</button><div class="in" id="j23in"></div></div>`;
+}
+function bindJ23(){
+  const x=$("#j23x");document.body.appendChild(x);let cur=0,side="f";
+  const fill=()=>{const c=J23[cur];$("#j23in").innerHTML=`
+    <div class="cardf fade" id="j23card" title="Click to flip"><img src="${j23img(c.n,side)}" alt="${esc(c.t)}"></div>
+    <div class="fade"><div class="no">No. ${String(c.n).padStart(2,"0")} / 23</div><h4>${esc(c.t)}</h4><div class="st">${esc(c.set)}</div>
+      <p>${esc(c.blurb)}</p>
+      <dl><dt>Card</dt><dd class="mono">${esc(c.num)}</dd><dt>Odds</dt><dd class="mono">${esc(c.odds)}</dd><dt>Insert</dt><dd>${esc(c.meta)}</dd><dt>Showing</dt><dd id="j23side">${side==="f"?"Front":"Back"} · click the card to flip</dd></dl></div>`;
+    const cf=$("#j23card");cf.onclick=()=>{cf.classList.add("turn");setTimeout(()=>{side=side==="f"?"b":"f";cf.querySelector("img").src=j23img(c.n,side);$("#j23side").textContent=(side==="f"?"Front":"Back")+" · click the card to flip";cf.classList.remove("turn")},300)}};
+  const open=i=>{cur=i;side="f";fill();x.classList.add("on");document.body.style.overflow="hidden"};
+  const close=()=>{x.classList.remove("on");document.body.style.overflow=""};
+  const go=d=>{x.querySelectorAll(".fade").forEach(e=>e.classList.add("out"));setTimeout(()=>{cur=(cur+d+J23.length)%J23.length;side="f";fill()},280)};
+  document.querySelectorAll(".j23t").forEach(t=>{t.onclick=()=>open(+t.dataset.j);t.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(+t.dataset.j)}}});
+  x.querySelector(".xb").onclick=close;x.querySelector(".p").onclick=()=>go(-1);x.querySelector(".n").onclick=()=>go(1);
+  x.onclick=e=>{if(e.target===x)close()};
+  document.onkeydown=e=>{if(!x.classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
+}
+
 /* ---------- card image packs: one file per set ---------- */
 const PACK={},PACKS={},PACK_OK={};
 window.PACK_ADD=o=>Object.assign(PACK,o);
@@ -2517,13 +2588,14 @@ function loadPack(p){return PACKS[p]||(PACKS[p]=new Promise(r=>{const s=document
 
 function route(){
   if(typeof gx!=="undefined"){clearInterval(gx.timer);gx.lbOpen=false}if(typeof fsx!=="undefined")clearInterval(fsx.timer);if(typeof tx!=="undefined")clearInterval(tx.timer);
-  document.querySelectorAll("body > .lb").forEach(x=>x.remove());document.body.style.overflow="";
+  document.querySelectorAll("body > .lb, body > .j23x").forEach(x=>x.remove());document.body.style.overflow="";
   const h=location.hash.slice(1)||"gallery"; const app=$("#app");
   let nav=h;
   if(h.startsWith("card-")&&byId(h.slice(5))){const c=byId(h.slice(5));app.innerHTML=viewCard(c);bindCard(c);nav="gallery"}
   else if(h==="market"){app.innerHTML=viewMarket();bindMarket();bindRowLinks(app)}
   else if(h==="serials"){app.innerHTML=viewSerials();bindSerials()}
   else if(h==="graded"){app.innerHTML=viewGraded();bindGraded()}
+  else if(h==="jordan23"){app.innerHTML=viewJ23();bindJ23();nav="jordan23"}
   else if(h==="sets"){sx.year=null;sx.sport=ONE_SPORT;sx.q="";app.innerHTML=viewSets();bindSets();nav="sets"}
   else if(/^sets-\d{4}$/.test(h)&&TL_YEARS.includes(+h.slice(5))){const y=+h.slice(5);if(sx.year!==y)sx.q="";sx.year=y;app.innerHTML=viewSets();bindSets();nav="sets"}
   else if(h.startsWith("set-")&&setById(h.slice(4))){const st=setById(h.slice(4));document.body.style.overflow="";const pk=packOf(st);if(pk&&!PACK_OK[pk]){app.innerHTML=`<div class="view"><div class="wrap" style="padding:160px 0;text-align:center"><div class="eyebrow">Loading cards…</div></div></div>`;loadPack(pk).then(()=>{if((location.hash.slice(1)||"gallery")===h)route()});return}if(st.gallery){app.innerHTML=viewGallerySet(st);bindGallerySet(st)}else if(st.showcase){app.innerHTML=viewShowcase(st);bindShowcase(st)}else if(st.tiers){app.innerHTML=viewTiers(st);bindTiers(st)}else{app.innerHTML=viewSet(st);bindSet(st)}nav="sets"}
