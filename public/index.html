@@ -508,9 +508,17 @@ a[data-nav="jordan23"]{white-space:nowrap}
 .shelf .nav button:hover{color:var(--ink);border-color:var(--ink2)}
 .shelf .nav a{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin-left:8px}
 .shelf .nav a:hover{color:var(--ink)}
-.hstrip{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x proximity;padding:14px 4px 24px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent;-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
+.hstrip{display:flex;gap:24px;overflow:hidden;padding:14px 4px 24px;min-height:300px}
+.hstrip .acard{transition:opacity .5s var(--ease) var(--d,0ms),transform .6s var(--ease) var(--d,0ms)}
+.hstrip .acard.out{opacity:0;transform:translateY(-14px)}
+.hstrip .acard.in{animation:shIn .7s var(--ease) both;animation-delay:var(--d,0ms)}
+@keyframes shIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.shelf .tick{height:1px;background:var(--line);margin-top:22px;width:120px;overflow:hidden}
+.shelf .tick i{display:block;height:100%;background:var(--ink2);transform-origin:left;animation:tick 10s linear infinite}
+.shelf.hold .tick i,body.axv-on .shelf .tick i{animation-play-state:paused}
+@keyframes tick{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .hstrip .acard{flex:none;width:138px;scroll-snap-align:start}
-.hstrip .acard .cap i{display:none}
+
 .arch{margin-top:120px}
 .afl{position:sticky;top:64px;z-index:15;background:rgba(9,9,10,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
 .afl .grp{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
@@ -3008,12 +3016,12 @@ function viewHome(){
   const mkPick=(()=>{try{const s=JSON.parse(localStorage.getItem("mk23")||"null");return (s&&s.picks||[]).map(id=>MKBY[id]).filter(Boolean)}catch(e){return []}})();
   const mini=[...Array(9)].map((_,i)=>{const c=mkPick[i]||(saved?null:[MKBY[MKP[5]&&MKP[5].id],null,MKBY[MKP[20]&&MKP[20].id],null,null,MKBY[MKP[40]&&MKP[40].id],null,null,null][i]);return c?`<span class="f"><img src="${c.src}" alt="" loading="lazy"></span>`:`<span>${i+1}</span>`}).join("");
   const early=seasons.filter(s=>+s.slice(0,4)<1996),groups=[...(early.length>1?[early]:early.map(s=>[s])),...seasons.filter(s=>+s.slice(0,4)>=1996).map(s=>[s])];
-  const shelf=ss=>{const s=ss[0],cs=ARCH.filter(c=>ss.includes(c.season)),top=[...cs].sort((a,b)=>b.rank-a.rank||a.k-b.k).slice(0,24);
+  const shelf=ss=>{const s=ss[0],cs=ARCH.filter(c=>ss.includes(c.season));
     const boxes=[...new Map(cs.filter(c=>c.box).map(c=>[c.sid,c.box])).values()].slice(0,5);const nset=new Set(cs.map(c=>c.sid||c.set)).size;
-    return `<div class="shelf" data-season="${s}"><div><div class="yr">${ss.length>1?`'${s.slice(2,4)}–${ss[ss.length-1].slice(5,7)}`:`'${s.slice(2,4)}–${s.slice(5,7)}`}<small>${ss.length>1?"The early years · ":""}${cs.length} card${cs.length>1?"s":""} · ${nset} set${nset>1?"s":""}</small></div>
+    return `<div class="shelf" data-ss="${ss.join(",")}"><div><div class="yr">${ss.length>1?`'${s.slice(2,4)}–${ss[ss.length-1].slice(5,7)}`:`'${s.slice(2,4)}–${s.slice(5,7)}`}<small>${ss.length>1?"The early years · ":""}${cs.length} card${cs.length>1?"s":""} · ${nset} set${nset>1?"s":""}</small></div>
       ${boxes.length?`<a class="boxes" href="#sets-${s.slice(0,4)}" title="${s} sets">${boxes.map((b,i)=>`<img src="${esc(b)}" alt="" loading="lazy" style="left:${i*30}px;z-index:${10-i};transform:rotate(${(i-(boxes.length-1)/2)*4}deg)">`).join("")}</a>`:""}
-      <div class="nav"><button data-sl="-1" aria-label="Scroll left">←</button><button data-sl="1" aria-label="Scroll right">→</button>${cs.length>top.length&&ss.length===1?`<a href="#" data-allyr="${s}">All ${cs.length} →</a>`:""}</div></div>
-      <div class="hstrip">${top.map(c=>acard(c,c.k,"all")).join("")}</div></div>`};
+      <div class="nav"><button data-sl="-1" aria-label="Previous cards">←</button><button data-sl="1" aria-label="Next cards">→</button>${ss.length===1?`<a href="#" data-allyr="${s}">All ${cs.length} →</a>`:""}</div><div class="tick"><i></i></div></div>
+      <div class="hstrip"></div></div>`};
   return `<div class="view"><div class="wrap">
     <section class="top hm-top">
       <div class="eyebrow">Basketball · 1992–2000 · scanned front &amp; back</div>
@@ -3070,7 +3078,30 @@ function bindHome(){
   document.querySelectorAll("[data-allyr]").forEach(a=>a.onclick=e=>{e.preventDefault();ax.yr=a.dataset.allyr;ax.p="all";ax.ty="all";ax.q="";$("#ayr").value=ax.yr;$("#aq").value="";
     document.querySelectorAll("[data-ap]").forEach(x=>x.classList.toggle("on",x.dataset.ap==="all"));document.querySelectorAll("[data-at]").forEach(x=>x.classList.toggle("on",x.dataset.at==="all"));draw();
     $("#archive").scrollIntoView({behavior:"smooth"})});
-  document.querySelectorAll(".shelf").forEach(sh=>{const st=sh.querySelector(".hstrip");requestAnimationFrame(()=>{if(st.scrollWidth<=st.clientWidth+4)sh.querySelectorAll("[data-sl]").forEach(b=>b.style.display="none")});sh.querySelectorAll("[data-sl]").forEach(b=>b.onclick=()=>st.scrollBy({left:+b.dataset.sl*st.clientWidth*.8,behavior:"smooth"}))});
+  /* shelves: a varied pool per season, cycling every 10 seconds */
+  const famOf=c=>(c.sid||c.set)+"|"+(/legacy/i.test(c.t)?"legacy":/^row \d/i.test(c.t)?"rows":/precious metal|pmg/i.test(c.t)?"pmg":/medallion|masterpiece/i.test(c.t)?"medal":/^(base|refractor|atomic|gold|silver|bronze)/i.test(c.t)&&c.type!=="Insert"?"base":c.t.split(" · ")[0].toLowerCase());
+  const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+  const poolOf=cs=>{const fam=new Map();cs.forEach(c=>{const f=famOf(c);if(!fam.has(f))fam.set(f,[]);fam.get(f).push(c)});
+    const bySet=new Map();[...fam.entries()].forEach(([f,l])=>{const st=f.split("|")[0];if(!bySet.has(st))bySet.set(st,[]);
+      bySet.get(st).push(shuffle(l).sort((a,b)=>(b.rank>0)-(a.rank>0)))});
+    const sets=shuffle([...bySet.values()].map(shuffle)),order=[];let more=true;for(let r=0;more;r++){more=false;sets.forEach(fl=>{if(fl[r]){order.push(fl[r]);more=true}})}
+    const out=[];let mx=Math.max(...order.map(l=>l.length));for(let r=0;r<mx;r++)order.forEach(l=>{if(l[r])out.push(l[r])});
+    // avoid the same player three times running
+    for(let i=2;i<out.length;i++)if(out[i].p===out[i-1].p&&out[i].p===out[i-2].p){const k=out.findIndex((c,j)=>j>i&&c.p!==out[i].p);if(k>0)[out[i],out[k]]=[out[k],out[i]]}
+    return out};
+  const shelves=[...document.querySelectorAll(".shelf")].map(sh=>{const ss=sh.dataset.ss.split(",");return {sh,st:sh.querySelector(".hstrip"),pool:poolOf(ARCH.filter(c=>ss.includes(c.season))),at:0,hover:false}});
+  const per=o=>{const w=o.st.clientWidth,cw=innerWidth<600?110:138,g=24;return Math.max(1,Math.min(o.pool.length,Math.floor((w+g)/(cw+g))))};
+  const paint=(o,anim)=>{const n=per(o),cards=[...Array(n)].map((_,i)=>o.pool[(o.at+i)%o.pool.length]);
+    const put=()=>{o.st.innerHTML=cards.map((c,i)=>acard(c,c.k,"all",false).replace('class="acard','style="--d:'+i*70+'ms" class="acard'+(anim?" in":""))).join("");o.shown=cards};
+    if(!anim){put();return}
+    o.st.querySelectorAll(".acard").forEach((e,i)=>{e.style.setProperty("--d",i*55+"ms");e.classList.add("out")});setTimeout(put,520)};
+  const step=(o,d)=>{const n=per(o);if(o.pool.length<=n)return;o.at=((o.at+d*n)%o.pool.length+o.pool.length)%o.pool.length;paint(o,true);restartTick(o)};
+  const restartTick=o=>{const t=o.sh.querySelector(".tick i");if(!t||o.auto)return;t.style.animation="none";void t.offsetWidth;t.style.animation=""};
+  shelves.forEach(o=>{paint(o,false);if(o.pool.length<=per(o))o.sh.querySelectorAll("[data-sl],.tick").forEach(b=>b.style.display="none");
+    o.sh.addEventListener("pointerenter",()=>{o.hover=true;o.sh.classList.add("hold")});o.sh.addEventListener("pointerleave",()=>{o.hover=false;o.sh.classList.remove("hold")});
+    o.sh.querySelectorAll("[data-sl]").forEach(b=>b.onclick=()=>step(o,+b.dataset.sl))});
+  shelves.forEach(o=>{const t=o.sh.querySelector(".tick i");if(t)t.addEventListener("animationiteration",()=>{o.auto=true;step(o,1);o.auto=false})});
+  let rw;const onR=()=>{clearTimeout(rw);rw=setTimeout(()=>shelves.forEach(o=>paint(o,false)),200)};addEventListener("resize",onR);
   /* light + tilt */
   const app=$("#app");
   const pm=e=>{const c=e.target.closest&&e.target.closest(".acard");if(!c)return;const im=c.querySelector(".im"),r=im.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
@@ -3087,8 +3118,8 @@ function bindHome(){
     const cf=$("#axcard");if(c.b)cf.onclick=()=>{cf.classList.add("turn");setTimeout(()=>{side=side==="f"?"b":"f";cf.querySelector("img").src=side==="f"?c.f:c.b;$("#axside").textContent=(side==="f"?"Front":"Back")+" · click the card to flip";cf.classList.remove("turn")},300)};
     if(c.b){const im=new Image();im.src=c.b}
     v.querySelectorAll(".nv").forEach(b=>b.style.display=vl.length>1?"":"none")};
-  const open=(l,i)=>{vl=l;vi=i;fill();v.classList.add("on");document.body.style.overflow="hidden"};
-  const close=()=>{v.classList.remove("on");document.body.style.overflow=""};
+  const open=(l,i)=>{vl=l;vi=i;fill();v.classList.add("on");document.body.style.overflow="hidden";document.body.classList.add("axv-on")};
+  const close=()=>{v.classList.remove("on");document.body.style.overflow="";document.body.classList.remove("axv-on")};
   const go=d=>{v.querySelectorAll(".fade").forEach(e=>e.classList.add("out"));setTimeout(()=>{vi=(vi+d+vl.length)%vl.length;fill()},260)};
   v.querySelector(".xb").onclick=close;v.querySelector(".p").onclick=()=>go(-1);v.querySelector(".n").onclick=()=>go(1);v.onclick=e=>{if(e.target===v)close()};
   const key=e=>{if(!v.classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
@@ -3099,7 +3130,7 @@ function bindHome(){
   app.addEventListener("click",e=>{const a=e.target.closest(".acard");if(a){openFrom(a);return}
     const m=e.target.closest("[data-mq]");if(m){const ks=[...new Set([...m.parentNode.querySelectorAll("[data-mq]")].map(x=>+x.dataset.mq))];open(ks.map(k=>ARCH[k]),ks.indexOf(+m.dataset.mq))}});
   app.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList&&e.target.classList.contains("acard")){e.preventDefault();openFrom(e.target)}});
-  const cleanup=()=>{app.removeEventListener("pointermove",pm);removeEventListener("hashchange",cleanup)};addEventListener("hashchange",cleanup);
+  const cleanup=()=>{app.removeEventListener("pointermove",pm);removeEventListener("resize",onR);document.body.classList.remove("axv-on");removeEventListener("hashchange",cleanup)};addEventListener("hashchange",cleanup);
   const hh=()=>document.documentElement.style.setProperty("--hh",document.querySelector("header").getBoundingClientRect().height+"px");hh();addEventListener("resize",hh);
   draw(true);
 }
