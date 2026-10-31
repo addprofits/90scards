@@ -457,6 +457,121 @@ a[data-nav="jordan23"]{white-space:nowrap}
 .j23x .nv:hover,.j23x .xb:hover{color:var(--ink);border-color:var(--ink2)}
 
 .j23t:hover,.j23t.open{z-index:5}
+/* ---------- set history ---------- */
+a[data-nav="history"]{white-space:nowrap}
+.hxpick{padding:120px 0 140px}
+.hxpick h2{font-weight:200;font-size:clamp(48px,7vw,104px);letter-spacing:-.04em;line-height:.9;margin:14px 0 18px}
+.hxpick h2 b{font-weight:500}
+.hxpick>p{color:var(--ink2);max-width:520px;line-height:1.8;font-size:14px;margin:0 0 64px}
+.hxgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.hxset{position:relative;border:1px solid var(--line);padding:30px 28px 26px;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;color:inherit;overflow:hidden;background:linear-gradient(170deg,rgba(255,255,255,.03),transparent 55%);transition:border-color .5s var(--ease),transform .5s var(--ease)}
+.hxset img{position:absolute;top:26px;left:50%;height:190px;width:auto;max-width:80%;object-fit:contain;transform:translateX(-50%);filter:drop-shadow(0 20px 26px rgba(0,0,0,.65));transition:transform .7s var(--ease)}
+.hxset:hover{border-color:var(--line2);transform:translateY(-3px)}
+.hxset:hover img{transform:translateX(-50%) translateY(-8px) rotate(-2deg)}
+.hxset .yr{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3)}
+.hxset h3{font-weight:300;font-size:26px;letter-spacing:-.02em;margin:8px 0 6px}
+.hxset .st{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.hxset.soon{pointer-events:none;opacity:.42}
+.hxset.soon .st{color:var(--ink3)}
+.hx{--blue:#5fb4ff;--gold:#e7c77a}
+.hxbar{position:fixed;top:0;left:0;height:2px;background:var(--ink);transform-origin:left;transform:scaleX(0);z-index:30;pointer-events:none}
+.hxhero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:60px;position:relative}
+.hxhero .box{display:flex;justify-content:center;perspective:1200px}
+.hxhero .box img{width:min(380px,90%);filter:drop-shadow(0 40px 60px rgba(0,0,0,.7));animation:hxFloat 7s ease-in-out infinite}
+@keyframes hxFloat{0%,100%{transform:rotateY(-14deg) rotateX(4deg) translateY(0)}50%{transform:rotateY(-8deg) rotateX(2deg) translateY(-14px)}}
+.hxhero h1{font-weight:200;font-size:clamp(56px,8.5vw,132px);letter-spacing:-.05em;line-height:.86;margin:16px 0 26px}
+.hxhero h1 b{font-weight:500;display:block}
+.hxhero p{color:var(--ink2);font-size:16px;line-height:1.8;max-width:480px;margin:0}
+.hxhero .cue{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink3);display:flex;flex-direction:column;align-items:center;gap:12px}
+.hxhero .cue i{width:1px;height:46px;background:linear-gradient(var(--ink2),transparent);animation:hxCue 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes hxCue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.hxfacts{display:flex;gap:44px;margin-top:40px;flex-wrap:wrap}
+.hxfacts div b{display:block;font-weight:200;font-size:40px;letter-spacing:-.04em;line-height:1}
+.hxfacts div span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.hxch{padding:150px 0 40px;max-width:760px}
+.hxch .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.14em}
+.hxch h2{font-weight:200;font-size:clamp(40px,5.5vw,80px);letter-spacing:-.045em;line-height:.95;margin:14px 0 22px}
+.hxch h2 b{font-weight:500}
+.hxch p{color:var(--ink2);font-size:16px;line-height:1.85;margin:0 0 16px}
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.ticket{display:grid;grid-template-columns:repeat(3,1fr);max-width:560px;margin:46px 0 10px;border:1px solid var(--line2);border-radius:10px;overflow:hidden;position:relative}
+.ticket:before,.ticket:after{content:"";position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:var(--bg);border:1px solid var(--line2);transform:translateY(-50%)}
+.ticket:before{left:-12px}.ticket:after{right:-12px}
+.ticket div{padding:24px 26px;border-right:1px dashed var(--line2)}
+.ticket div:last-child{border-right:0}
+.ticket span{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3)}
+.ticket b{display:block;font-weight:200;font-size:54px;letter-spacing:-.04em;line-height:1;margin-top:8px}
+.ticket small{display:block;font-size:12px;color:var(--ink2);margin-top:6px}
+.scrolly{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,440px);gap:80px;align-items:start}
+.scrolly .hsteps{padding:10vh 0 30vh}
+.scrolly .hstep{min-height:78vh;display:flex;flex-direction:column;justify-content:center;opacity:.25;transition:opacity .6s var(--ease)}
+.scrolly .hstep.on{opacity:1}
+.scrolly .hstep .tag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3)}
+.scrolly .hstep h3{font-weight:200;font-size:clamp(36px,4.5vw,64px);letter-spacing:-.04em;line-height:1;margin:12px 0 18px}
+.scrolly .hstep h3 em{font-style:normal;color:var(--ink3)}
+.scrolly .hstep p{color:var(--ink2);line-height:1.85;font-size:15px;max-width:480px;margin:0 0 14px}
+.scrolly .hstep dl{display:grid;grid-template-columns:120px 1fr;gap:10px 18px;margin:18px 0 0;font-size:13px;max-width:480px;border-top:1px solid var(--line);padding-top:18px}
+.scrolly .hstep dt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);padding-top:2px}
+.scrolly .hstep dd{margin:0}
+.meter{display:flex;gap:4px;margin-top:22px}
+.meter i{height:4px;flex:1;background:var(--line2);border-radius:2px;transition:background .5s}
+.meter i.f{background:var(--ink)}
+.stage{position:sticky;top:calc(64px + 7vh);height:78vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.stage .frame{position:relative;width:100%;aspect-ratio:5/7;max-height:62vh;perspective:1400px}
+.stage .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 34px 44px rgba(0,0,0,.7));opacity:0;transform:translateY(24px) scale(.96);transition:opacity .7s var(--ease),transform .9s var(--ease)}
+.stage .frame img.on{opacity:1;transform:none}
+.stage .frame img.flip{transform:rotateY(180deg) scale(.96);opacity:0}
+.stage .cap{margin-top:22px;text-align:center;min-height:44px}
+.stage .cap b{display:block;font-weight:400;font-size:14px}
+.stage .cap span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.stage .pt{display:flex;gap:6px;margin-top:16px}
+.stage .pt button,.stage .sd button{font:inherit;font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--ink3);cursor:pointer;transition:all .3s}
+.stage .pt button.on,.stage .sd button.on{color:var(--bg);background:var(--ink);border-color:var(--ink)}
+.stage .sd{display:flex;gap:6px;margin-top:8px}
+.tiers{margin:40px 0 0;border-top:1px solid var(--line)}
+.tiers .tr{display:grid;grid-template-columns:150px 1fr 90px;gap:20px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.tiers .tr span{font-size:12px;color:var(--ink2)}
+.tiers .tr .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.tiers .tr .bar i{display:block;height:100%;background:var(--ink);transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease)}
+.tiers.in .tr .bar i{transform:scaleX(var(--w))}
+.tiers .tr b{font-family:"JetBrains Mono",monospace;font-weight:400;font-size:13px;text-align:right}
+.legacy{margin:160px calc(50% - 50vw) 0;padding:140px max(40px,calc(50vw - 660px)) 150px;background:radial-gradient(1200px 600px at 70% 20%,rgba(60,140,255,.16),transparent 60%),linear-gradient(180deg,#07101c,#09090a);border-top:1px solid rgba(95,180,255,.18);border-bottom:1px solid rgba(95,180,255,.12)}
+.legacy .hxch .n{color:var(--blue)}
+.legacy .hxch h2 b{color:var(--blue)}
+.fan3{display:flex;justify-content:center;align-items:flex-end;gap:0;margin:70px 0 30px;height:min(48vw,470px)}
+.fan3 .lc{position:relative;width:min(25vw,300px);aspect-ratio:5/7;cursor:pointer;perspective:1400px;transition:transform .8s var(--ease),z-index 0s}
+.fan3 .lc:nth-child(1){transform:rotate(-9deg) translate(40px,14px)}
+.fan3 .lc:nth-child(2){z-index:2;transform:translateY(-18px)}
+.fan3 .lc:nth-child(3){transform:rotate(9deg) translate(-40px,14px)}
+.fan3:hover .lc:nth-child(1){transform:rotate(-12deg) translate(-10px,14px)}
+.fan3:hover .lc:nth-child(3){transform:rotate(12deg) translate(10px,14px)}
+.fan3 .lc .in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .9s var(--ease)}
+.fan3 .lc.turn .in{transform:rotateY(180deg)}
+.fan3 .lc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backface-visibility:hidden;filter:drop-shadow(0 30px 40px rgba(0,0,0,.75))}
+.fan3 .lc img.bk{transform:rotateY(180deg)}
+.fan3 .lc .sn{position:absolute;left:50%;bottom:-38px;transform:translateX(-50%);font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--blue);letter-spacing:.1em;white-space:nowrap}
+.lgfacts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:90px}
+.lgfacts div{border-top:1px solid rgba(95,180,255,.25);padding-top:18px}
+.lgfacts b{display:block;font-weight:200;font-size:44px;letter-spacing:-.04em;line-height:1}
+.lgfacts span{display:block;font-size:12px;color:var(--ink2);margin-top:10px;line-height:1.6}
+.hxins{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px}
+.hxin{border:1px solid var(--line);padding:40px;display:grid;grid-template-columns:150px 1fr;gap:30px;align-items:center;background:linear-gradient(160deg,rgba(255,255,255,.025),transparent 60%)}
+.hxin img{width:100%;filter:drop-shadow(0 20px 26px rgba(0,0,0,.6));transition:transform .6s var(--ease)}
+.hxin:hover img{transform:rotate(-3deg) scale(1.04)}
+.hxin h4{font-weight:300;font-size:30px;letter-spacing:-.02em;margin:8px 0 10px}
+.hxin p{color:var(--ink2);font-size:14px;line-height:1.75;margin:0 0 14px}
+.hxin .k{font-family:"JetBrains Mono",monospace;font-size:12px}
+.hxsum{margin:150px 0 40px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.hxsum div{padding:30px 24px 30px 0}
+.hxsum b{display:block;font-weight:200;font-size:56px;letter-spacing:-.05em;line-height:1}
+.hxsum span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);margin-top:12px}
+.hxend{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:40px 0 140px;border-top:1px solid var(--line)}
+.hxend p{color:var(--ink3);font-size:12px;margin:0}
+@media(max-width:900px){.hxhero{grid-template-columns:1fr;padding:60px 0 120px;gap:30px}.hxhero .box{order:-1}.hxhero .box img{width:220px}
+.scrolly{grid-template-columns:1fr;gap:0}.stage{position:sticky;top:var(--hh,64px);height:auto;padding:12px 0 14px;background:var(--bg);box-shadow:0 18px 24px var(--bg);z-index:5;order:-1}.stage .frame{max-height:30vh;width:auto;height:30vh}.stage .pt,.stage .sd{margin-top:8px}.stage .cap{margin-top:8px;min-height:0}.scrolly .hsteps{padding:0}.scrolly .hstep{min-height:70vh}
+.lgfacts,.hxsum{grid-template-columns:1fr 1fr}.hxins{grid-template-columns:1fr}.hxin{grid-template-columns:110px 1fr;padding:26px}.fan3 .lc{width:30vw}.ticket b{font-size:38px}.ticket div{padding:18px}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.hxhero .box img{animation:none}}
 /* ---------- home: the archive ---------- */
 .hm-top{padding-bottom:20px}
 .mq{position:relative;overflow:hidden;padding:36px 0 56px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
@@ -632,6 +747,7 @@ a[data-nav="jordan23"]{white-space:nowrap}
     <a href="#market" data-nav="market">Market</a>
     <a href="#serials" data-nav="serials">Serials</a>
     <a href="#graded" data-nav="graded">Graded</a>
+    <a href="#history" data-nav="history">Set History</a>
     <a href="#jordan23" data-nav="jordan23">The Jordan 23</a>
   </nav>
 </div></header>
@@ -3136,6 +3252,103 @@ function bindHome(){
 }
 
 
+/* ---------- set history ---------- */
+const HX_SETS=[
+ {id:"bk96-flair-showcase",yr:"1996-97",t:"Flair Showcase",box:"img/boxes/bk96-flair-showcase.webp",ok:1},
+ {id:"bk97-flair-showcase",yr:"1997-98",t:"Flair Showcase",box:"img/boxes/bk97-flair-showcase.webp"},
+ {id:"bk98-flair-showcase",yr:"1998-99",t:"Flair Showcase",box:"img/boxes/bk98-flair-showcase.webp"},
+ {id:"bk99-flair-showcase",yr:"1999-00",t:"Flair Showcase",box:"img/boxes/bk99-flair-showcase.webp"}];
+function viewHistory(){
+  return `<div class="view"><div class="wrap"><section class="hxpick">
+    <div class="eyebrow">Set history</div><h2>The story of <b>a set</b></h2>
+    <p>Visual guides to the products that defined the decade: how each set was built, what was in the packs, and what made the chase cards rare. Scroll through a set the way you'd flip through a box.</p>
+    <div class="hxgrid">${HX_SETS.map((s,i)=>`<a class="hxset${s.ok?"":" soon"} rv" style="transition-delay:${i*90}ms" href="${s.ok?"#history-"+s.id:"#"}"><img src="${s.box}" alt="" loading="lazy">
+      <div class="yr">${s.yr}</div><h3>${s.t}</h3><div class="st">${s.ok?"Read the story →":"Coming soon"}</div></a>`).join("")}</div>
+  </section></div>${footer()}</div>`;
+}
+const fsImg=(p,r,v,s)=>cardSrc(`fs96-${p}-${r}-${v}-${s}`);
+const HX96=[
+ {k:"r2",tag:"Row 2 · Style",h:"Row 2 <em>· Style</em>",p:["The back of the house, and the easiest seat to get: a big close-up portrait beside the action shot, with the player's name in gold-foil script.","Every one of the 90 players has a Row 2 card. For most of the checklist this was the card you pulled almost every pack."],
+  dl:[["Jordan","#23 · Showtime · 1:1"],["Bryant","#31 · Showpiece · 1:2"],["Back","Row 2 · Seat = card number"]],m:1},
+ {k:"r1",tag:"Row 1 · Grace",h:"Row 1 <em>· Grace</em>",p:["Same 90 players, one row back, with a fresh pairing of portrait and action photos.","Here the tiers start to bite. Fleer sorted players into Showtime, Showpiece and Show Stopper groups, and the group set the odds, so Jordan's Row 1 is scarcer than Kobe's."],
+  dl:[["Jordan","#23 · Show Stopper · 1:2.5"],["Bryant","#31 · Showtime · 1:2"],["Back","Row 1 · Section 1"]],m:2},
+ {k:"r0",tag:"Row 0 · Showcase",h:"Row 0 <em>· Showcase</em>",p:["The seat everyone wanted. Row 0 cards trade the clean background for an all-over sparkle foil, and they're the scarcest of the three rows for the stars.","Fleer split the 90 players into three groups of 30, and each group fell at different odds."],
+  dl:[["Jordan","#23 · Showpiece · 1:24"],["Bryant","#31 · Show Stopper · 1:10"],["Finish","Full-bleed glitter foil"]],m:3,tiers:1},
+];
+function viewHist96(){
+  const st=setById("bk96-flair-showcase");
+  return `<div class="view hx"><i class="hxbar" id="hxbar"></i><div class="wrap">
+  <a class="back" href="#history" style="display:inline-block;margin-top:28px">← Set history</a>
+  <section class="hxhero">
+    <div class="rv"><div class="eyebrow">Fleer · 1996-97 · Basketball</div><h1>Flair <b>Showcase</b></h1>
+      <p>Fleer built its first Flair Showcase like an arena. Every player got three cards, one for each row, and the closer to the floor you sat, the harder the ticket was to find.</p>
+      <div class="hxfacts"><div><b>90</b><span>Players</span></div><div><b>3</b><span>Rows each</span></div><div><b>270</b><span>Base cards</span></div><div><b>5</b><span>Cards a pack</span></div></div></div>
+    <div class="box rv"><img src="${esc(st&&st.box||"img/boxes/bk96-flair-showcase.webp")}" alt="1996-97 Flair Showcase box"></div>
+    <div class="cue">Scroll<i></i></div>
+  </section>
+
+  <section class="hxch rv"><div class="n">01 · The idea</div><h2>Every card is a <b>seat</b></h2>
+    <p>Turn any card over and you'll find a stadium ticket printed on the back: a Section, a Row and a Seat. The seat is the player's card number, and the row tells you which of the three versions you're holding.</p>
+    <p>So a set wasn't 90 cards. It was 90 seats in three rows, and collectors chased the whole column for their favorite player.</p>
+    <div class="ticket"><div><span>Section</span><b>1</b><small>The 1996-97 set</small></div><div><span>Row</span><b id="tkrow">2</b><small id="tkrowl">Style</small></div><div><span>Seat</span><b>23</b><small>Michael Jordan</small></div></div>
+  </section>
+
+  <section class="hxch rv" style="padding-bottom:0"><div class="n">02 · The rows</div><h2>Three rows, <b>one player</b></h2>
+    <p>Scroll to move from Row 2 down to the floor. Switch players to see how the same row could be common for one and scarce for another.</p></section>
+  <section class="scrolly" id="hxs">
+    <div class="hsteps">${HX96.map((s,i)=>`<div class="hstep" data-i="${i}"><div class="tag">${s.tag}</div><h3>${s.h}</h3>${s.p.map(x=>`<p>${x}</p>`).join("")}
+      <dl>${s.dl.map(([a,b])=>`<dt>${a}</dt><dd class="mono">${b}</dd>`).join("")}</dl>
+      <div class="meter">${[1,2,3].map(n=>`<i class="${n<=s.m?"f":""}"></i>`).join("")}</div>
+      ${s.tiers?`<div class="tiers" id="hxtiers">${[["#1–30","1:24",1],["#31–60","1:10",.42],["#61–90","1:5",.21]].map(([a,o,w])=>`<div class="tr"><span>Players ${a}</span><div class="bar"><i style="--w:${w}"></i></div><b>${o}</b></div>`).join("")}</div>`:""}
+    </div>`).join("")}</div>
+    <div class="stage"><div class="frame" id="hxframe"></div><div class="cap" id="hxcap"></div>
+      <div class="pt"><button class="on" data-hp="mj">Jordan</button><button data-hp="kb">Bryant</button></div>
+      <div class="sd"><button class="on" data-hs="f">Front</button><button data-hs="b">Back</button></div></div>
+  </section>
+  </div>
+
+  <section class="legacy"><div class="hxch rv"><div class="n">03 · The parallel</div><h2>The <b>Legacy</b> Collection</h2>
+    <p>Hidden about one in every 30 packs was a different kind of ticket. Legacy Collection cards reprint all 270 seats with a cool blue foil front, a black-and-white photo on the back, and a serial number stamped on every one.</p>
+    <p>Only 150 of each were made, in every row. Click a card to turn it over.</p></div>
+    <div class="fan3 rv">${[["r2","059/150","Row 2"],["r0","026/150","Row 0"],["r1","025/150","Row 1"]].map(([r,sn,l])=>`<div class="lc" data-r="${r}"><div class="in"><img src="${fsImg("mj",r,"lc","f")}" alt="Jordan ${l} Legacy Collection" loading="lazy"><img class="bk" src="${fsImg("mj",r,"lc","b")}" alt="" loading="lazy"></div><div class="sn">${l} · ${sn}</div></div>`).join("")}</div>
+    <div class="lgfacts rv"><div><b>/150</b><span>Serial numbered on the back, for every player in every row.</span></div><div><b>1:30</b><span>Pack odds for a Legacy card from any row.</span></div><div><b>270</b><span>Different Legacy cards: every player, in every row.</span></div><div><b>40,500</b><span>Total Legacy cards printed across the set (270 × 150).</span></div></div>
+  </section>
+
+  <div class="wrap">
+  <section class="hxch rv"><div class="n">04 · The inserts</div><h2>Outside the <b>stadium</b></h2>
+    <p>Two insert sets rode along with the rows. One was a die-cut chase; the other welcomed the 1996 rookie class.</p></section>
+  <div class="hxins">
+    <div class="hxin rv"><img src="${fsImg("mj","hs","reg","f")}" alt="Jordan Hot Shots" loading="lazy"><div><div class="eyebrow">Die-cut insert</div><h4>Hot Shots</h4><p>A flaming basketball cut right out of the card. Twenty of the league's best, with Jordan leading the checklist.</p><div class="k">20 cards · 1:90 packs · Jordan #1</div></div></div>
+    <div class="hxin rv"><img src="${fsImg("kb","c96","reg","f")}" alt="Bryant Class of 96" loading="lazy"><div><div class="eyebrow">Rookie insert</div><h4>Class of '96</h4><p>The 1996 draft class on cream stock with gold script, one of the first insert sets to feature a teenage Kobe Bryant.</p><div class="k">20 cards · 1:5 packs · Bryant #4</div></div></div>
+  </div>
+
+  <section class="hxsum rv"><div><b>270</b><span>Base cards (3 rows × 90)</span></div><div><b>540</b><span>Versions, counting Legacy</span></div><div><b>1:24</b><span>Toughest Row 0 tier</span></div><div><b>150</b><span>Copies of each Legacy</span></div></section>
+  <div class="hxend"><p>Checklist and odds from TCDb. Card images are the site owner's scans.</p><a class="j23cta" href="#set-bk96-flair-showcase">Open the full checklist <span aria-hidden="true">→</span></a></div>
+  </div>${footer()}</div>`;
+}
+function bindHist(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.18});
+  document.querySelectorAll(".rv,.tiers").forEach(e=>io.observe(e));
+  const fr=$("#hxframe");if(!fr)return;
+  const st={i:0,p:"mj",s:"f"};const names={mj:"Michael Jordan #23",kb:"Kobe Bryant #31 · Rookie"};
+  const draw=()=>{const s=HX96[st.i];const src=fsImg(st.p,s.k,"base",st.s);const old=fr.querySelector("img.on");
+    const im=new Image();im.src=src;im.alt=`${names[st.p]} ${s.tag}`;fr.appendChild(im);requestAnimationFrame(()=>requestAnimationFrame(()=>{im.classList.add("on");if(old){old.classList.remove("on");setTimeout(()=>old.remove(),900)}}));
+    $("#hxcap").innerHTML=`<b>${names[st.p]}</b><span>${s.tag} · ${st.s==="f"?"Front":"Back"}</span>`;
+    const r=s.k.slice(1);$("#tkrow").textContent=r;$("#tkrowl").textContent=["Showcase","Grace","Style"][+r]};
+  // preload
+  ["mj","kb"].forEach(p=>HX96.forEach(s=>["f","b"].forEach(d=>{const i=new Image();i.src=fsImg(p,s.k,"base",d)})));
+  const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll(".scrolly .hstep").forEach(x=>x.classList.toggle("on",x===e.target));const i=+e.target.dataset.i;if(i!==st.i){st.i=i;draw()}const t=e.target.querySelector(".tiers");if(t)t.classList.add("in")}}),{rootMargin:"-45% 0px -45% 0px"});
+  document.querySelectorAll(".scrolly .hstep").forEach(e=>so.observe(e));document.querySelector(".scrolly .hstep").classList.add("on");
+  document.querySelectorAll("[data-hp]").forEach(b=>b.onclick=()=>{st.p=b.dataset.hp;document.querySelectorAll("[data-hp]").forEach(x=>x.classList.toggle("on",x===b));draw()});
+  document.querySelectorAll("[data-hs]").forEach(b=>b.onclick=()=>{st.s=b.dataset.hs;document.querySelectorAll("[data-hs]").forEach(x=>x.classList.toggle("on",x===b));draw()});
+  document.querySelectorAll(".fan3 .lc").forEach(c=>c.onclick=()=>c.classList.toggle("turn"));
+  const bar=$("#hxbar");document.body.appendChild(bar);const sc=()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?scrollY/h:0})`};addEventListener("scroll",sc,{passive:true});
+  const clean=()=>{removeEventListener("scroll",sc);bar.remove();so.disconnect();removeEventListener("hashchange",clean)};addEventListener("hashchange",clean);
+  const hh=()=>document.documentElement.style.setProperty('--hh',document.querySelector('header').getBoundingClientRect().height+'px');hh();
+  draw();
+}
+
+
 function route(){
   if(typeof gx!=="undefined"){clearInterval(gx.timer);gx.lbOpen=false}if(typeof fsx!=="undefined")clearInterval(fsx.timer);if(typeof tx!=="undefined")clearInterval(tx.timer);
   document.querySelectorAll("body > .lb, body > .j23x, body > .mkghost").forEach(x=>x.remove());document.body.style.overflow="";
@@ -3146,6 +3359,8 @@ function route(){
   else if(h==="serials"){app.innerHTML=viewSerials();bindSerials()}
   else if(h==="graded"){app.innerHTML=viewGraded();bindGraded()}
   else if(h==="jordan23"){app.innerHTML=viewJ23();bindJ23();nav="jordan23"}
+  else if(h==="history"){app.innerHTML=viewHistory();bindHist();nav="history"}
+  else if(h==="history-bk96-flair-showcase"){app.innerHTML=viewHist96();bindHist();nav="history"}
   else if(h==="jordan23/build"){app.innerHTML=viewMk();bindMk();nav="jordan23"}
   else if(h==="sets"){sx.year=null;sx.sport=ONE_SPORT;sx.q="";app.innerHTML=viewSets();bindSets();nav="sets"}
   else if(/^sets-\d{4}$/.test(h)&&TL_YEARS.includes(+h.slice(5))){const y=+h.slice(5);if(sx.year!==y)sx.q="";sx.year=y;app.innerHTML=viewSets();bindSets();nav="sets"}
