@@ -395,7 +395,7 @@ td .nt{display:block;font-size:11px;color:var(--ink3);margin-top:3px}
 .fullcl{margin-top:96px}
 .fullcl>h3{font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--ink2);padding-bottom:14px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.tile{opacity:1;transform:none}}
-a[data-nav="jordan23"]{white-space:nowrap}
+a[data-nav="jordan23"],a[data-nav="mamba24"]{white-space:nowrap}
 .j23head{padding:120px 0 56px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
 .j23head h2{font-weight:200;font-size:clamp(48px,7vw,104px);letter-spacing:-.04em;line-height:.9;margin:14px 0 0}
 .j23head h2 b{font-weight:500}
@@ -749,6 +749,7 @@ a[data-nav="history"]{white-space:nowrap}
     <a href="#graded" data-nav="graded">Graded</a>
     <a href="#history" data-nav="history">Set History</a>
     <a href="#jordan23" data-nav="jordan23">The Jordan 23</a>
+    <a href="#mamba24" data-nav="mamba24">The Mamba 24</a>
   </nav>
 </div></header>
 <main id="app"></main>
@@ -3089,6 +3090,200 @@ async function mkRender(){
 }
 
 
+const K24=[{"n": 1, "t": "Jambalaya", "set": "1997-98 SkyBox E-X2001", "img": "ex97-kb-jb", "num": "#12 JB", "odds": "1:720", "meta": "15-card die-cut insert", "blurb": "The same prismatic red-and-green die-cut oval as Jordan's #1, and at 1:720 packs just as hard to find. The defining Kobe insert of 1997-98."}, {"n": 2, "t": "Supernatural Fusion", "set": "1998-99 SkyBox Molten Metal", "img": "mm98-kb-fus-reg", "num": "#33F", "odds": "Serial /250", "meta": "Printed on metal", "blurb": "Real metal stock and a run of only 250, from Kobe's third season.", "alt": {"t": "Fusion Titanium", "img": "mm98-kb-tfus-reg", "num": "#33F", "odds": "Serial /40", "meta": "Gold metal · numbered to 40", "blurb": "The gold Titanium version, numbered to just 40. One of the scarcest Kobe cards of the decade."}}, {"n": 3, "t": "Playmakers Theatre", "set": "1998-99 Fleer Tradition", "img": "ft98-kb-pt-reg", "num": "#3 of 15 PT", "odds": "Serial /100", "meta": "15-card insert", "blurb": "Ornate theatre frame on wood grain, numbered to 100."}, {"n": 4, "t": "Slam Funk", "set": "1998-99 SkyBox Premium", "img": "sp98-kb-sf-reg", "num": "#1 of 10", "odds": "1:360 Series 2", "meta": "10-card insert", "blurb": "Kobe leads off a ten-card checklist at 1:360 packs. A Kobe-only chase: Jordan has no Slam Funk card."}, {"n": 5, "t": "Thunder & Lightning", "set": "1997-98 SkyBox Premium", "img": "sp97-kb-tl", "num": "#7 of 15 TL", "odds": "1:192 Series 2", "meta": "15-card insert", "blurb": "Storm clouds and a lightning outline, the same design as Jordan's #4."}, {"n": 6, "t": "Dunk'N Go-Nuts", "set": "1998-99 SkyBox E-X Century", "img": "ec98-kb-dg-reg", "num": "#6 of 20", "odds": "Hobby", "meta": "20-card insert", "blurb": "Kobe on the rim over oversized neon lettering, printed on clear acetate."}, {"n": 7, "t": "Noyz Boyz", "set": "1998-99 SkyBox Thunder", "img": "th98-kb-nb-reg", "num": "#3 of 15 NB", "odds": "1:300", "meta": "15-card die-cut insert", "blurb": "Die-cut lettering and copper foil at 1:300 packs, a famously tough pull from a budget product."}, {"n": 8, "t": "High Voltage · 500 Volts", "set": "1997-98 Hoops", "img": "ho97-kb-hv5", "num": "#1 HV", "odds": "Serial /500 · Series 2 hobby", "meta": "Numbered High Voltage", "blurb": "The numbered version of High Voltage, limited to 500, with Kobe as card #1."}, {"n": 9, "t": "Rising Stars", "set": "1996-97 Ultra", "img": "ul96-kb-rs-reg", "num": "#2 of 10", "odds": "1:180 Series 1 hobby", "meta": "10-card insert", "blurb": "A rookie-year hobby insert at 1:180 packs. Kobe-only: Jordan isn't on the checklist."}, {"n": 10, "t": "3D", "set": "1998-99 SkyBox Premium", "img": "sp98-kb-3d-reg", "num": "#1 of 15", "odds": "1:96 Series 1", "meta": "15-card insert", "blurb": "Crystalline foil collage, with Kobe as card #1."}, {"n": 11, "t": "Big Men on Court", "set": "1997-98 SkyBox Z-Force", "img": "zf97-kb-bmoc", "num": "#2 BMOC", "odds": "1:288 Series 2", "meta": "15-card die-cut insert", "blurb": "The bubble-letter die-cut returned in 1997-98 at 1:288 packs, with Kobe on the checklist."}, {"n": 12, "t": "Shining Stars Pulsars", "set": "1998-99 Fleer Brilliants", "img": "fb98-kb-pul-reg", "num": "#14 of 15", "odds": "1:400", "meta": "15-card insert", "blurb": "The top version of Shining Stars at 1:400. Kobe-only: Jordan didn't appear in Brilliants."}, {"n": 13, "t": "takeit2.net", "set": "1998-99 Flair Showcase", "img": "fs98-kb-tn-reg", "num": "#5 of 15 TN", "odds": "Serial /1,000", "meta": "15-card insert", "blurb": "Circuit-board foil and a fan \"e-mail\" on the back, numbered to 1,000."}, {"n": 14, "t": "Bams", "set": "1998-99 Hoops", "img": "ho98-kb-bams-reg", "num": "#2 of 10", "odds": "Serial /250", "meta": "10-card insert", "blurb": "Numbered to 250, with giant BAMS type and a triple portrait.", "alt": {"t": "Slam Bams", "img": "ho98-kb-bams-slam", "num": "#2 of 10", "odds": "Serial /100 · hobby only", "meta": "Hobby-exclusive gold Bams", "blurb": "The hobby-only gold version, numbered to just 100."}}, {"n": 15, "t": "Platinum Portraits", "set": "1997-98 Metal Universe", "img": "mu97-kb-pp-reg", "num": "#3 PP", "odds": "1:288 hobby · 1:460 retail", "meta": "15-card insert", "blurb": "A perforated, laser-cut portrait punched into platinum stock."}, {"n": 16, "t": "Total Impact", "set": "1997-98 SkyBox Z-Force", "img": "zf97-kb-x2", "num": "#1 TI", "odds": "—", "meta": "Kobe's card in the Rave Reviews / Total Impact insert", "blurb": "Kobe's version of the insert Jordan appears in as Rave Reviews, with Kobe as card #1."}, {"n": 17, "t": "Golden Touch", "set": "1997-98 SkyBox Premium", "img": "sp97-kb-gt", "num": "#3 GT", "odds": "1:360 Series 2", "meta": "15-card die-cut insert", "blurb": "Etched gold die-cut and one of the toughest pulls of 1997-98."}, {"n": 18, "t": "Hardware", "set": "1997-98 Metal Universe Championship", "img": "mc97-kb-hw-reg", "num": "#7 H", "odds": "1:360 · about 1 per 15 boxes", "meta": "15-card insert", "blurb": "Bronze-toned trophies and titles, about one every fifteen boxes."}, {"n": 19, "t": "Ultra Stars", "set": "1997-98 Ultra", "img": "ul97-kb-us-silver", "num": "#3 US", "odds": "1:144 Series 1", "meta": "20-card insert", "blurb": "Embossed chrome star; a Gold version shares the same pack slot.", "alt": {"t": "Ultra Stars Gold", "img": "ul97-kb-us-gold", "num": "#3 US", "odds": "1:144 Series 1 (shared slot)", "meta": "Gold foil version of Ultra Stars", "blurb": "Gold foil in place of chrome, roughly a tenth of the run."}}, {"n": 20, "t": "Fresh Faces", "set": "1996-97 Ultra", "img": "ul96-kb-ff-reg", "num": "#3", "odds": "1:72 Series 1", "meta": "Rookie insert", "blurb": "Kobe's rookie-year Ultra insert at 1:72 packs."}, {"n": 21, "t": "Planet Metal", "set": "1998-99 Metal Universe", "img": "mu98-kb-pm-reg", "num": "#6 of 15", "odds": "—", "meta": "15-card die-cut insert", "blurb": "Half-globe die-cut in molten bronze."}, {"n": 22, "t": "Slam Cam", "set": "1997-98 SkyBox Z-Force", "img": "zf97-kb-sc", "num": "#1 SC", "odds": "1:36 Series 2", "meta": "Insert", "blurb": "A mid-dunk Slam Cam card with Kobe as #1."}, {"n": 23, "t": "Star Power Supreme", "set": "1997-98 Ultra", "img": "ul97-kb-sp-supreme", "num": "#3 SPS", "odds": "1:288 Series 2", "meta": "Top tier of Star Power · die-cut", "blurb": "Die-cut acetate with atomic-orbit graphics, the scarcest tier of Star Power."}, {"n": 24, "t": "Premium Player", "set": "1997-98 SkyBox Premium", "img": "sp97-kb-pp", "num": "#3 PP", "odds": "1:192 Series 1", "meta": "15-card insert", "blurb": "Gold-foil split-photo design."}];
+/* ---------- The Jordan 23 ---------- */
+const k24img=(c,s)=>cardSrc(c.img+"-"+s);
+function viewK24(){
+  return `<div class="view"><div class="wrap">
+    <section class="j23head"><div><div class="eyebrow">Kobe Bryant · inserts · 1996–2000</div><h2>The Mamba <b>24</b></h2></div>
+      <p>Twenty-four of the best Kobe Bryant inserts of the 1990s, from his rookie year to his first title, hung on one wall. Hover a card for its name and set; click it for the story, the odds and the back.<br><a class="j23cta" href="#mamba24/build">Make your own Mamba 24 <span aria-hidden="true">→</span></a></p></section>
+    <div class="j23mode" role="tablist"><button class="tab on" data-jm="wall">Wall</button><button class="tab" data-jm="count">Countdown</button></div>
+    <section class="j23cd" id="j23cd" hidden></section>
+    <section class="j23board">${K24.map((c,i)=>`<div class="j23t${c.alt?" stk":""}" tabindex="0" data-j="${i}" style="animation-delay:${120+i*45}ms">
+      <span class="rk">${String(c.n).padStart(2,"0")}</span>
+      ${c.alt?`<div class="slot"><img class="rare" data-v="1" src="${cardSrc(c.alt.img+"-f")}" alt="${esc(c.alt.t)}" loading="lazy"><img class="base" data-v="0" src="${k24img(c,"f")}" alt="${esc(c.t)} · ${esc(c.set)}" loading="lazy"></div>
+      <div class="cap"><b>${esc(c.t)} · ${esc(c.alt.t)}</b><i>${esc(c.set)}</i><span class="pick"><span>← ${esc(c.t)}</span><span>${esc(c.alt.t)} →</span></span></div>`
+      :`<div class="slot"><img src="${k24img(c,"f")}" alt="${esc(c.t)} · ${esc(c.set)}" loading="lazy"></div>
+      <div class="cap"><b>${esc(c.t)}</b><i>${esc(c.set)}</i></div>`}</div>`).join("")}</section>
+  </div>${footer()}</div>
+  <div class="j23x" id="j23x" role="dialog" aria-modal="true" aria-label="Card details"><button class="xb" aria-label="Close">✕</button><button class="nv p" aria-label="Previous">←</button><button class="nv n" aria-label="Next">→</button><div class="in" id="j23in"></div></div>`;
+}
+function bindK24(){
+  const x=$("#j23x");document.body.appendChild(x);let cur=0,side="f",ver=0;
+  const V=c=>ver&&c.alt?{t:c.alt.t,num:c.alt.num,odds:c.alt.odds,meta:c.alt.meta,blurb:c.alt.blurb,src:sd=>cardSrc(c.alt.img+"-"+sd)}:{t:c.t,num:c.num,odds:c.odds,meta:c.meta,blurb:c.blurb,src:sd=>k24img(c,sd)};
+  const fill=()=>{const c=K24[cur],v=V(c);$("#j23in").innerHTML=`
+    <div class="cardf fade" id="j23card" title="Click to flip"><img src="${v.src(side)}" alt="${esc(v.t)}"></div>
+    <div class="fade"><div class="no">No. ${String(c.n).padStart(2,"0")} / 24</div><h4>${esc(v.t)}</h4><div class="st">${esc(c.set)}</div>
+      ${c.alt?`<div class="vt">${[c.t,c.alt.t].map((t,k)=>`<button class="tab ${k===ver?"on":""}" data-jv="${k}">${esc(t)}</button>`).join("")}</div>`:""}
+      <p>${esc(v.blurb)}</p>
+      <dl><dt>Card</dt><dd class="mono">${esc(v.num)}</dd><dt>Odds</dt><dd class="mono">${esc(v.odds)}</dd><dt>Insert</dt><dd>${esc(v.meta)}</dd><dt>Showing</dt><dd id="j23side">${side==="f"?"Front":"Back"} · click the card to flip</dd></dl></div>`;
+    const cf=$("#j23card");cf.onclick=()=>{cf.classList.add("turn");setTimeout(()=>{side=side==="f"?"b":"f";cf.querySelector("img").src=v.src(side);$("#j23side").textContent=(side==="f"?"Front":"Back")+" · click the card to flip";cf.classList.remove("turn")},300)};
+    x.querySelectorAll("[data-jv]").forEach(b=>b.onclick=()=>{ver=+b.dataset.jv;side="f";fill()})};
+  const open=(i,vv=0)=>{cur=i;side="f";ver=vv;fill();x.classList.add("on");document.body.style.overflow="hidden"};
+  const close=()=>{x.classList.remove("on");document.body.style.overflow=""};
+  const go=d=>{x.querySelectorAll(".fade").forEach(e=>e.classList.add("out"));setTimeout(()=>{cur=(cur+d+K24.length)%K24.length;side="f";ver=0;fill()},280)};
+  const touch=matchMedia("(hover: none)").matches;
+  document.querySelectorAll(".j23t").forEach(t=>{t.onclick=e=>{const v=e.target.closest("[data-v]");
+    if(t.classList.contains("stk")){if(touch&&!t.classList.contains("open")){document.querySelectorAll(".j23t.open").forEach(o=>o.classList.remove("open"));t.classList.add("open");return}
+      open(+t.dataset.j,v?+v.dataset.v:0);t.classList.remove("open");return}
+    open(+t.dataset.j)};t.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(+t.dataset.j)}}});
+  x.querySelector(".xb").onclick=close;x.querySelector(".p").onclick=()=>go(-1);x.querySelector(".n").onclick=()=>go(1);
+  x.onclick=e=>{if(e.target===x)close()};
+
+  /* countdown */
+  const cd=$("#j23cd"),board=document.querySelector(".j23board");let ci=0,cside="f",cver=0;const ORD=[...K24].sort((a,b)=>b.n-a.n);
+  const CV=c=>cver&&c.alt?{t:c.alt.t,num:c.alt.num,odds:c.alt.odds,meta:c.alt.meta,blurb:c.alt.blurb,src:sd=>cardSrc(c.alt.img+"-"+sd)}:{t:c.t,num:c.num,odds:c.odds,meta:c.meta,blurb:c.blurb,src:sd=>k24img(c,sd)};
+  const cdraw=()=>{const c=ORD[ci],v=CV(c);cd.innerHTML=`<div class="cdin">
+      <div class="cardf fade" id="cdcard" title="Click to flip"><img src="${v.src(cside)}" alt="${esc(v.t)}"></div>
+      <div class="fade"><div class="rank">#${c.n}<small>of 24</small></div><h4>${esc(v.t)}</h4><div class="st">${esc(c.set)}</div>
+        ${c.alt?`<div class="vt">${[c.t,c.alt.t].map((t,k)=>`<button class="tab ${k===cver?"on":""}" data-cv="${k}">${esc(t)}</button>`).join("")}</div>`:""}
+        <p>${esc(v.blurb)}</p>
+        <dl><dt>Pack odds</dt><dd class="mono">${esc(v.odds)}</dd><dt>Card</dt><dd class="mono">${esc(v.num)}</dd><dt>Insert</dt><dd>${esc(v.meta)}</dd><dt>Showing</dt><dd id="cdside">${cside==="f"?"Front":"Back"} · click the card to flip</dd></dl></div></div>
+    <div class="ctl"><button class="nb" id="cdp" ${ci===0?"disabled":""}>${ci>0?"← #"+ORD[ci-1].n:"←"}</button>
+      <div class="dots">${ORD.map((o,k)=>`<i class="${k===ci?"on":""}" data-cd="${k}" title="#${o.n} ${esc(o.t)}"></i>`).join("")}</div>
+      <button class="nb" id="cdn" ${ci===ORD.length-1?"disabled":""}>${ci<ORD.length-1?"#"+ORD[ci+1].n+" →":"#1"}</button></div>`;
+    const cf=$("#cdcard");cf.onclick=()=>{cf.classList.add("turn");setTimeout(()=>{cside=cside==="f"?"b":"f";cf.querySelector("img").src=v.src(cside);$("#cdside").textContent=(cside==="f"?"Front":"Back")+" · click the card to flip";cf.classList.remove("turn")},300)};
+    cd.querySelectorAll("[data-cv]").forEach(b=>b.onclick=()=>{cver=+b.dataset.cv;cside="f";cdraw()});
+    $("#cdp").onclick=()=>cgo(ci-1);$("#cdn").onclick=()=>cgo(ci+1);
+    cd.querySelectorAll("[data-cd]").forEach(d=>d.onclick=()=>cgo(+d.dataset.cd))};
+  const cgo=k=>{if(k<0||k>=ORD.length||k===ci)return;cd.querySelectorAll(".fade").forEach(e=>e.classList.add("out"));setTimeout(()=>{ci=k;cside="f";cver=0;cdraw()},320)};
+  let mode="wall";
+  document.querySelectorAll("[data-jm]").forEach(b=>b.onclick=()=>{mode=b.dataset.jm;document.querySelectorAll("[data-jm]").forEach(x=>x.classList.toggle("on",x===b));
+    board.hidden=mode!=="wall";cd.hidden=mode!=="count";if(mode==="count"&&!cd.innerHTML)cdraw()});
+  document.onkeydown=e=>{if(!x.classList.contains("on")){if(mode==="count"&&!cd.hidden){if(e.key==="ArrowRight")cgo(ci+1);if(e.key==="ArrowLeft")cgo(ci-1)}return}if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
+}
+
+
+/* ---------- make your own jordan 23 ---------- */
+const MKX24=[{"t": "Best Picks", "set": "1996-97 Bowman's Best", "img": "bb96-kb-picks-reg"}, {"t": "Best Picks · Refractor", "set": "1996-97 Bowman's Best", "img": "bb96-kb-picks-ref"}, {"t": "Best Picks · Atomic Refractor", "set": "1996-97 Bowman's Best", "img": "bb96-kb-picks-atom"}, {"t": "Star Date 2000", "set": "1996-97 E-X2000", "img": "ex96-kb-sd-reg"}, {"t": "Class of '96", "set": "1996-97 Flair Showcase", "img": "fs96-kb-c96-reg"}, {"t": "Cyber-Metal", "set": "1996-97 Metal", "img": "me96-kb-cm-reg"}, {"t": "Metal Edge", "set": "1996-97 Metal", "img": "me96-kb-me-reg"}, {"t": "New Editions", "set": "1996-97 SkyBox Premium", "img": "sp96-kb-ne-reg"}, {"t": "Youthquake", "set": "1996-97 Topps", "img": "tp96-kb-yq-reg"}, {"t": "All-Rookie", "set": "1996-97 Ultra", "img": "ul96-kb-ar-reg"}, {"t": "Zebut", "set": "1996-97 Z-Force", "img": "zf96-kb-zb-reg"}, {"t": "Z-Peat Zebut", "set": "1996-97 Z-Force", "img": "zf96-kb-zb-zp"}, {"t": "Techniques · Refractor", "set": "1997-98 Bowman's Best", "img": "bb97-kb-tech-ref"}, {"t": "Techniques · Atomic Refractor", "set": "1997-98 Bowman's Best", "img": "bb97-kb-tech-atom"}, {"t": "Star Date 2001", "set": "1997-98 E-X2001", "img": "ex97-kb-sd"}, {"t": "Gravity Denied", "set": "1997-98 E-X2001", "img": "ex97-kb-gd"}, {"t": "Essential Credentials Future", "set": "1997-98 E-X2001", "img": "ex97-kb-ecf"}, {"t": "Essential Credentials Now", "set": "1997-98 E-X2001", "img": "ex97-kb-ecn"}, {"t": "Soaring Stars", "set": "1997-98 Fleer", "img": "fl97-kb-ss"}, {"t": "High Flying Soaring Stars", "set": "1997-98 Fleer", "img": "fl97-kb-hf"}, {"t": "Thrill Seekers", "set": "1997-98 Fleer", "img": "fl97-kb-ts"}, {"t": "Frequent Flyer Club", "set": "1997-98 Hoops", "img": "ho97-kb-ff"}, {"t": "High Voltage", "set": "1997-98 Hoops", "img": "ho97-kb-hv"}, {"t": "Frequent Flyer Club · First Class Upgrade", "set": "1997-98 Hoops", "img": "ho97-kb-ffu"}, {"t": "Planet Metal", "set": "1997-98 Metal Universe", "img": "mu97-kb-pm-reg"}, {"t": "Titanium", "set": "1997-98 Metal Universe", "img": "mu97-kb-ti-reg"}, {"t": "Championship Galaxy", "set": "1997-98 Metal Universe Championship", "img": "mc97-kb-cg-reg"}, {"t": "Competitive Advantage", "set": "1997-98 SkyBox Premium", "img": "sp97-kb-ca"}, {"t": "Silky Smooth", "set": "1997-98 SkyBox Premium", "img": "sp97-kb-ss"}, {"t": "Hoop Screams", "set": "1997-98 Stadium Club", "img": "sc97-kb-hs-reg"}, {"t": "Royal Court", "set": "1997-98 Stadium Club", "img": "sc97-kb-rc-reg"}, {"t": "Star Power", "set": "1997-98 Ultra", "img": "ul97-kb-sp-base"}, {"t": "Star Power Plus", "set": "1997-98 Ultra", "img": "ul97-kb-sp-plus"}, {"t": "Court Masters", "set": "1997-98 Ultra", "img": "ul97-kb-cm-base"}, {"t": "Ultrabilities Starter", "set": "1997-98 Ultra", "img": "ul97-kb-ub-starter"}, {"t": "Ultrabilities All-Star", "set": "1997-98 Ultra", "img": "ul97-kb-ub-allstar"}, {"t": "Ultrabilities Superstar", "set": "1997-98 Ultra", "img": "ul97-kb-ub-superstar"}, {"t": "Boss", "set": "1997-98 Z-Force", "img": "zf97-kb-boss"}, {"t": "Super Boss", "set": "1997-98 Z-Force", "img": "zf97-kb-sboss"}, {"t": "Star Gazing", "set": "1997-98 Z-Force", "img": "zf97-kb-x1"}, {"t": "Mirror Image Fusion", "set": "1998-99 Bowman's Best", "img": "bb98-kb-mi-reg"}, {"t": "Mirror Image Fusion Refractor", "set": "1998-99 Bowman's Best", "img": "bb98-kb-mi-ref"}, {"t": "Mirror Image Fusion Atomic Refractor", "set": "1998-99 Bowman's Best", "img": "bb98-kb-mi-atom"}, {"t": "Autographs", "set": "1998-99 Bowman's Best", "img": "bb98-kb-au-reg"}, {"t": "Autographs Refractor", "set": "1998-99 Bowman's Best", "img": "bb98-kb-au-ref"}, {"t": "Autographs Atomic Refractor", "set": "1998-99 Bowman's Best", "img": "bb98-kb-au-atom"}, {"t": "Generation E-X", "set": "1998-99 E-X Century", "img": "ec98-kb-gx-reg"}, {"t": "Shining Stars", "set": "1998-99 Fleer Brilliants", "img": "fb98-kb-ss-reg"}, {"t": "Electrifying", "set": "1998-99 Fleer Tradition", "img": "ft98-kb-el-reg"}, {"t": "Great Expectations", "set": "1998-99 Fleer Tradition", "img": "ft98-kb-ge-reg"}, {"t": "Pump Up the Jam", "set": "1998-99 Hoops", "img": "ho98-kb-pj-reg"}, {"t": "Shout Outs", "set": "1998-99 Hoops", "img": "ho98-kb-so-reg"}, {"t": "Linchpins", "set": "1998-99 Metal Universe", "img": "mu98-kb-lp-reg"}, {"t": "Two 4 Me / Zero 4 You", "set": "1998-99 Metal Universe", "img": "mu98-kb-tz-reg"}, {"t": "Intimidation Nation", "set": "1998-99 SkyBox Premium", "img": "sp98-kb-in-reg"}, {"t": "Mod Squad", "set": "1998-99 SkyBox Premium", "img": "sp98-kb-ms-reg"}, {"t": "Soul of the Game", "set": "1998-99 SkyBox Premium", "img": "sp98-kb-sg-reg"}, {"t": "That's Jam", "set": "1998-99 SkyBox Premium", "img": "sp98-kb-tj-reg"}, {"t": "Flight School", "set": "1998-99 Thunder", "img": "th98-kb-fs-reg"}, {"t": "Lift Off", "set": "1998-99 Thunder", "img": "th98-kb-lo-reg"}, {"t": "Apparitions", "set": "1998-99 Topps", "img": "tp98-kb-app-reg"}, {"t": "Cornerstones", "set": "1998-99 Topps", "img": "tp98-kb-cs-reg"}, {"t": "Roundball Royalty Refractor", "set": "1998-99 Topps", "img": "tp98-kb-rr-ref"}, {"t": "Kick Start", "set": "1998-99 Topps", "img": "tp98-kb-ks-reg"}, {"t": "Coast to Coast", "set": "1998-99 Topps", "img": "tp98-kb-cc-reg"}, {"t": "East/West", "set": "1998-99 Topps", "img": "tp98-kb-ew-reg"}, {"t": "East/West Refractor", "set": "1998-99 Topps", "img": "tp98-kb-ew-ref"}, {"t": "Gold Label", "set": "1998-99 Topps", "img": "tp98-kb-gl-reg"}, {"t": "Black Label", "set": "1998-99 Topps", "img": "tp98-kb-glb-reg"}, {"t": "Red Label", "set": "1998-99 Topps", "img": "tp98-kb-glr-reg"}, {"t": "Apparitions", "set": "1998-99 Topps Chrome", "img": "tc98-kb-app-reg"}, {"t": "Apparitions Refractor", "set": "1998-99 Topps Chrome", "img": "tc98-kb-app-ref"}, {"t": "Coast to Coast", "set": "1998-99 Topps Chrome", "img": "tc98-kb-cc-reg"}, {"t": "Coast to Coast Refractor", "set": "1998-99 Topps Chrome", "img": "tc98-kb-cc-ref"}, {"t": "Exclamation Points", "set": "1998-99 Ultra", "img": "ul98-kb-ep-reg"}, {"t": "Guaranteed Fresh", "set": "1999-00 Flair Showcase", "img": "fs99-kb-gf-reg"}, {"t": "Elevators", "set": "1999-00 Flair Showcase", "img": "fs99-kb-el-reg"}, {"t": "License to Skill", "set": "1999-00 Flair Showcase", "img": "fs99-kb-ls-reg"}];
+const mkSlug24=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const MKP24=[...K24.map(c=>({t:c.t,set:c.set,src:k24img(c,"f")})),...MKX24.map(c=>({t:c.t,set:c.set,src:cardSrc(c.img+"-f")}))]
+  .map(c=>({...c,id:mkSlug24(c.set+" "+c.t),yr:c.set.slice(0,7)}))
+  .sort((a,b)=>a.set.localeCompare(b.set)||a.t.localeCompare(b.t));
+const MKBY24=Object.fromEntries(MKP24.map(c=>[c.id,c]));
+const mk24={picks:Array(24).fill(null),name:"",sel:null,yr:"all",q:""};
+try{const s=JSON.parse(localStorage.getItem("mk24")||"null");if(s&&Array.isArray(s.picks)){mk24.picks=Array.from({length:24},(_,i)=>MKBY24[s.picks[i]]?s.picks[i]:null);mk24.name=String(s.name||"").slice(0,28)}}catch(e){}
+const mkStore24=()=>{try{localStorage.setItem("mk24",JSON.stringify({picks:mk24.picks,name:mk24.name}))}catch(e){}};
+const mkTitle24=n=>{n=n.trim();return n?`${n}'s Mamba`:"My Mamba"};
+function viewMk24(){
+  const yrs=[...new Set(MKP24.map(c=>c.yr))];
+  return `<div class="view"><div class="wrap">
+    <section class="j23head mkhead"><div><div class="eyebrow"><a href="#mamba24" style="color:inherit">The Mamba 24</a> · build your own</div><h2><span id="mkttl">${esc(mkTitle24(mk24.name))}</span> <b>23</b></h2></div>
+      <p>Drag any of the ${MKP24.length} inserts from the pile below into slots 1 through 24. Drag a placed card onto another slot to swap them, or off the wall to put it back. On a phone, tap a card and then tap a slot.</p></section>
+    <div class="mkbar"><input id="mkname" type="text" placeholder="Your name" maxlength="28" autocomplete="off" value="${esc(mk24.name)}"><span class="mkct" id="mkct"></span>
+      <button class="mkb" id="mkclr">Clear wall</button><button class="mkb pri" id="mksave">Save image</button></div>
+    <section class="j23board mkboard" id="mkboard"></section>
+    <section class="mkpool" id="mkpool"><div class="mkph"><div class="eyebrow">The pile · <span id="mkleft"></span></div>
+      <div class="mkf">${["all",...yrs].map(y=>`<button class="chip${mk24.yr===y?" on":""}" data-yr="${y}">${y==="all"?"All":y}</button>`).join("")}<input id="mkq" type="search" placeholder="Search" value="${esc(mk24.q)}"></div></div>
+      <div class="mkgrid" id="mkgrid"></div></section>
+  </div></div>`;
+}
+function bindMk24(){
+  const board=$("#mkboard"),grid=$("#mkgrid");
+  const toast=t=>{let e=document.querySelector(".mktoast");if(!e){e=document.createElement("div");e.className="mktoast";document.body.appendChild(e)}e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("on"),2200)};
+  const drawBoard=()=>{board.innerHTML=mk24.picks.map((id,i)=>{const c=id&&MKBY24[id],s=mk24.sel;const sel=s&&s.from==="slot"&&s.i===i;
+      return `<div class="mks${c?" full":""}${sel?" sel":""}" data-s="${i}"><span class="rk">${String(i+1).padStart(2,"0")}</span>
+      <div class="slot">${c?`<img src="${c.src}" alt="${esc(c.t)} · ${esc(c.set)}" draggable="false">`:`<span class="ph">${i+1}</span>`}</div>
+      ${c?`<button class="rm" data-rm="${i}" aria-label="Remove">×</button>`:""}<div class="nm" title="${c?esc(c.t+" · "+c.set):""}">${c?esc(c.t):""}</div></div>`}).join("");
+    board.classList.toggle("picking",!!mk24.sel);
+    const n=mk24.picks.filter(Boolean).length;$("#mkct").textContent=`${n} / 24 placed`};
+  const drawPool=()=>{const used=new Set(mk24.picks.filter(Boolean)),q=mk24.q.trim().toLowerCase();
+    const list=MKP24.filter(c=>!used.has(c.id)&&(mk24.yr==="all"||c.yr===mk24.yr)&&(!q||(c.t+" "+c.set).toLowerCase().includes(q)));
+    $("#mkleft").textContent=`${MKP24.length-used.size} cards left`;
+    grid.innerHTML=list.length?list.map(c=>`<div class="mkc${mk24.sel&&mk24.sel.id===c.id&&mk24.sel.from==="pool"?" sel":""}" tabindex="0" data-id="${c.id}"><div class="im"><img src="${c.src}" alt="" loading="lazy" draggable="false"></div><b>${esc(c.t)}</b><i>${esc(c.set)}</i></div>`).join("")
+      :`<div class="mkempty">${used.size===MKP24.length?"Every card is on the wall.":"No cards match."}</div>`};
+  const draw=()=>{drawBoard();drawPool();mkStore24()};
+  const drop=(src,j)=>{ // j: slot index or -1 for the pile
+    if(src.from==="pool"){if(j<0)return;mk24.picks[j]=src.id}
+    else{if(j<0)mk24.picks[src.i]=null;else if(j!==src.i)[mk24.picks[src.i],mk24.picks[j]]=[mk24.picks[j],mk24.picks[src.i]]}
+    mk24.sel=null;draw()};
+  /* pointer drag (mouse: move 5px; touch: press and hold) */
+  let pd=null,drag=null,ghost=null,overEl=null;
+  const slotAt=(x,y)=>{const e=document.elementFromPoint(x,y);return e&&e.closest?e.closest(".mks"):null};
+  const startDrag=()=>{drag=pd;ghost=document.createElement("div");ghost.className="mkghost";ghost.innerHTML=`<img src="${MKBY24[drag.src.id||mk24.picks[drag.src.i]].src}" alt="">`;document.body.appendChild(ghost);drag.el.classList.add("lift");moveGhost(pd.x,pd.y);if(navigator.vibrate&&pd.touch)try{navigator.vibrate(12)}catch(e){}};
+  const moveGhost=(x,y)=>{ghost.style.left=x+"px";ghost.style.top=y+"px";const s=slotAt(x,y);if(s!==overEl){overEl&&overEl.classList.remove("over");overEl=s;s&&s.classList.add("over")}
+    const m=70,tt=$("#mkpool").getBoundingClientRect().top;if(y<m+64)scrollBy(0,-16);else if(y>tt-m&&y<tt)scrollBy(0,16)};
+  const endDrag=(x,y,cancel)=>{const d=drag;ghost&&ghost.remove();ghost=null;overEl&&overEl.classList.remove("over");overEl=null;drag=null;pd=null;
+    if(!d||cancel){draw();return}const s=slotAt(x,y);d.el.classList.remove("lift");drop(d.src,s?+s.dataset.s:-1)};
+  const down=e=>{if(e.button>0)return;const card=e.target.closest(".mkc"),slot=e.target.closest(".mks.full img")&&e.target.closest(".mks");if(!card&&!slot)return;
+    const src=card?{from:"pool",id:card.dataset.id}:{from:"slot",i:+slot.dataset.s};
+    pd={src,el:card||slot,x:e.clientX,y:e.clientY,x0:e.clientX,y0:e.clientY,touch:e.pointerType!=="mouse"};
+    if(pd.touch){const p=pd;p.timer=setTimeout(()=>{if(pd===p&&!drag)startDrag()},280)}else e.preventDefault()};
+  const move=e=>{if(!pd)return;pd.x=e.clientX;pd.y=e.clientY;
+    if(drag){moveGhost(e.clientX,e.clientY);return}
+    const dist=Math.hypot(e.clientX-pd.x0,e.clientY-pd.y0);
+    if(pd.touch){if(dist>10){clearTimeout(pd.timer);pd=null}}else if(dist>5)startDrag()};
+  const up=e=>{if(!pd)return;clearTimeout(pd.timer);if(drag){endDrag(e.clientX,e.clientY,e.type==="pointercancel");suppress=true;setTimeout(()=>suppress=false,0)}else pd=null};
+  let suppress=false;
+  const tm=e=>{if(drag)e.preventDefault()};
+  board.addEventListener("pointerdown",down);grid.addEventListener("pointerdown",down);
+  addEventListener("pointermove",move);addEventListener("pointerup",up);addEventListener("pointercancel",up);
+  document.addEventListener("touchmove",tm,{passive:false});
+  document.addEventListener("contextmenu",e=>{if(drag||(pd&&pd.touch))e.preventDefault()});
+  const cleanup=()=>{removeEventListener("pointermove",move);removeEventListener("pointerup",up);removeEventListener("pointercancel",up);document.removeEventListener("touchmove",tm);removeEventListener("hashchange",cleanup);document.querySelector(".mktoast")?.remove()};
+  addEventListener("hashchange",cleanup);
+  /* tap to pick, tap to place */
+  grid.addEventListener("click",e=>{if(suppress)return;const c=e.target.closest(".mkc");if(!c)return;const id=c.dataset.id;
+    if(mk24.sel&&mk24.sel.from==="pool"&&mk24.sel.id===id){mk24.sel=null}else{
+      if(mk24.sel&&mk24.sel.from==="slot"){drop(mk24.sel,-1);return}
+      const j=mk24.picks.indexOf(null);mk24.sel={from:"pool",id};if(j<0)toast("The wall is full. Tap a slot to swap this card in.")}
+    drawBoard();drawPool()});
+  grid.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.target.closest(".mkc")?.click()}});
+  board.addEventListener("click",e=>{if(suppress)return;const rm=e.target.closest("[data-rm]");if(rm){mk24.picks[+rm.dataset.rm]=null;mk24.sel=null;draw();return}
+    const s=e.target.closest(".mks");if(!s)return;const i=+s.dataset.s;
+    if(mk24.sel){if(mk24.sel.from==="slot"&&mk24.sel.i===i){mk24.sel=null;drawBoard();return}drop(mk24.sel,i);return}
+    if(mk24.picks[i]){mk24.sel={from:"slot",i};drawBoard()}else toast("Pick a card from the pile first.")});
+  $("#mkpool").addEventListener("click",e=>{if(e.target.closest(".mkc,.mkf"))return;if(mk24.sel&&mk24.sel.from==="slot")drop(mk24.sel,-1)});
+  $("#mkname").addEventListener("input",e=>{mk24.name=e.target.value.slice(0,28);$("#mkttl").textContent=mkTitle24(mk24.name);mkStore24()});
+  document.querySelectorAll("[data-yr]").forEach(b=>b.addEventListener("click",()=>{mk24.yr=b.dataset.yr;document.querySelectorAll("[data-yr]").forEach(x=>x.classList.toggle("on",x===b));drawPool()}));
+  $("#mkq").addEventListener("input",e=>{mk24.q=e.target.value;drawPool()});
+  $("#mkclr").addEventListener("click",()=>{if(!mk24.picks.some(Boolean))return;if(!confirmClear())return;mk24.picks=Array(24).fill(null);mk24.sel=null;draw()});
+  let armed=0;const confirmClear=()=>{const b=$("#mkclr");if(armed){armed=0;b.textContent="Clear wall";return true}armed=1;b.textContent="Tap again to clear";setTimeout(()=>{armed=0;b.textContent="Clear wall"},2500);return false};
+  $("#mksave").addEventListener("click",async()=>{const b=$("#mksave");if(!mk24.picks.some(Boolean)){toast("Put at least one card on the wall first.");return}
+    b.disabled=true;b.textContent="Rendering…";
+    try{const blob=await mkRender24();const fn=`${mkSlug24(mkTitle24(mk24.name))}-24.png`;
+      const file=window.File?new File([blob],fn,{type:"image/png"}):null;
+      if(file&&navigator.canShare&&matchMedia("(pointer:coarse)").matches&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:mkTitle24(mk24.name)+" 24"})}catch(e){}}
+      else{const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);toast("Image saved.")}}
+    catch(e){console.error(e);toast("Couldn't make the image. Try again.")}
+    b.disabled=false;b.textContent="Save image"});
+  draw();
+}
+async function mkRender24(){
+  const W=1840,CW=240,CH=336,GX=40,ROWH=CH+104,TOP=360,rows=[6,6,6,6];
+  const H=TOP+rows.length*ROWH+130,cv=document.createElement("canvas");cv.width=W;cv.height=H;const x=cv.getContext("2d");
+  try{await Promise.all(["200 96px Inter","500 96px Inter","400 16px Inter","400 16px 'JetBrains Mono'"].map(f=>document.fonts.load(f)))}catch(e){}
+  const load=s=>new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=s});
+  const imgs=await Promise.all(mk24.picks.map(id=>id?load(MKBY24[id].src):null));
+  x.fillStyle="#09090a";x.fillRect(0,0,W,H);
+  const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,"rgba(255,255,255,.035)");g.addColorStop(1,"rgba(255,255,255,0)");x.fillStyle=g;x.fillRect(0,0,W,H);
+  x.strokeStyle="rgba(255,255,255,.09)";x.lineWidth=2;x.strokeRect(40,40,W-80,H-80);x.strokeStyle="rgba(255,255,255,.05)";x.strokeRect(56,56,W-112,H-112);
+  x.textBaseline="alphabetic";x.fillStyle="#5f5f66";x.font="400 17px 'JetBrains Mono', monospace";
+  const sp=(t,px,py,ls)=>{let cx=px;for(const ch of t){x.fillText(ch,cx,py);cx+=x.measureText(ch).width+ls}return cx-px};
+  const wid=(t,ls)=>[...t].reduce((a,ch)=>a+x.measureText(ch).width+ls,0)-ls;
+  x.font="400 16px Inter";const eb="KOBE BRYANT · INSERTS OF THE 1990S";sp(eb,(W-wid(eb,5))/2,148,5);
+  const t1=mkTitle24(mk24.name)+" ",t2="24";let fs=104;
+  const fit=()=>{x.font=`200 ${fs}px Inter`;const a=x.measureText(t1).width;x.font=`500 ${fs}px Inter`;return a+x.measureText(t2).width};
+  while(fit()>W-260&&fs>40)fs-=4;const tw=fit();x.font=`200 ${fs}px Inter`;const a=x.measureText(t1).width;
+  x.fillStyle="#ededee";x.fillText(t1,(W-tw)/2,262);x.font=`500 ${fs}px Inter`;x.fillText(t2,(W-tw)/2+a,262);
+  let k=0;
+  rows.forEach((n,r)=>{const rw=n*CW+(n-1)*GX,x0=(W-rw)/2,y0=TOP+r*ROWH;
+    for(let c=0;c<n;c++,k++){const cx=x0+c*(CW+GX),id=mk24.picks[k],im=imgs[k];
+      x.fillStyle="#5f5f66";x.font="400 15px 'JetBrains Mono', monospace";x.textAlign="left";x.fillText(String(k+1).padStart(2,"0"),cx,y0-14);
+      if(im){const s=Math.min(CW/im.width,CH/im.height),w=im.width*s,h=im.height*s;
+        x.save();x.shadowColor="rgba(0,0,0,.6)";x.shadowBlur=34;x.shadowOffsetY=16;x.drawImage(im,cx+(CW-w)/2,y0+(CH-h)/2,w,h);x.restore();
+        const c0=MKBY24[id];x.textAlign="center";x.fillStyle="#ededee";x.font="400 17px Inter";
+        let t=c0.t;while(x.measureText(t).width>CW+30&&t.length>4)t=t.slice(0,-2)+"…";x.fillText(t,cx+CW/2,y0+CH+34);
+        x.fillStyle="#7a7a82";x.font="400 12px Inter";let st=c0.set.toUpperCase();while(wid(st,1.5)>CW+30&&st.length>4)st=st.slice(0,-2)+"…";
+        x.textAlign="left";sp(st,cx+CW/2-wid(st,1.5)/2,y0+CH+58,1.5)}
+      else{x.save();x.setLineDash([6,6]);x.strokeStyle="rgba(255,255,255,.14)";x.lineWidth=1.5;x.beginPath();x.roundRect?x.roundRect(cx+.5,y0+.5,CW-1,CH-1,10):x.rect(cx+.5,y0+.5,CW-1,CH-1);x.stroke();x.restore();
+        x.fillStyle="rgba(95,95,102,.5)";x.font="200 64px Inter";x.textAlign="center";x.fillText(String(k+1),cx+CW/2,y0+CH/2+22)}
+      x.textAlign="left"}});
+  x.fillStyle="#5f5f66";x.font="400 15px Inter";const ft="MADE AT 90SCARDS.NET";sp(ft,(W-wid(ft,5))/2,H-86,5);
+  return new Promise((res,rej)=>cv.toBlob(b=>b?res(b):rej(new Error("toBlob")),"image/png"));
+}
+
+
 /* ---------- home: the archive ---------- */
 const ARCH=(()=>{
   const PN={mj:"Michael Jordan",kb:"Kobe Bryant"},out=[],seen=new Set();
@@ -3361,6 +3556,8 @@ function route(){
   else if(h==="jordan23"){app.innerHTML=viewJ23();bindJ23();nav="jordan23"}
   else if(h==="history"){app.innerHTML=viewHistory();bindHist();nav="history"}
   else if(h==="history-bk96-flair-showcase"){app.innerHTML=viewHist96();bindHist();nav="history"}
+  else if(h==="mamba24"){app.innerHTML=viewK24();bindK24();nav="mamba24"}
+  else if(h==="mamba24/build"){app.innerHTML=viewMk24();bindMk24();nav="mamba24"}
   else if(h==="jordan23/build"){app.innerHTML=viewMk();bindMk();nav="jordan23"}
   else if(h==="sets"){sx.year=null;sx.sport=ONE_SPORT;sx.q="";app.innerHTML=viewSets();bindSets();nav="sets"}
   else if(/^sets-\d{4}$/.test(h)&&TL_YEARS.includes(+h.slice(5))){const y=+h.slice(5);if(sx.year!==y)sx.q="";sx.year=y;app.innerHTML=viewSets();bindSets();nav="sets"}
