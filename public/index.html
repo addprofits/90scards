@@ -639,6 +639,7 @@ a[data-nav="history"]{white-space:nowrap}
 .lgfacts,.hxsum{grid-template-columns:1fr 1fr}.hxins{grid-template-columns:1fr}.hxin{grid-template-columns:110px 1fr;padding:26px}.fan3 .lc{width:30vw}.ticket b{font-size:38px}.ticket div{padding:18px}}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.hxhero .box img{animation:none}}
 /* ---------- home: the archive ---------- */
+.acard .sh{display:none!important}
 .hm-top{padding-bottom:20px}
 .mq{position:relative;overflow:hidden;padding:36px 0 56px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 .mq .row{display:flex;gap:28px;width:max-content;animation:mqL 180s linear infinite;padding:10px 0}
@@ -3257,7 +3258,7 @@ const mkTitle24=n=>{n=n.trim();return n?`${n}'s Mamba`:"My Mamba"};
 function viewMk24(){
   const yrs=[...new Set(MKP24.map(c=>c.yr))];
   return `<div class="view"><div class="wrap">
-    <section class="j23head mkhead"><div><div class="eyebrow"><a href="#mamba24" style="color:inherit">The Mamba 24</a> · build your own</div><h2><span id="mkttl">${esc(mkTitle24(mk24.name))}</span> <b>23</b></h2></div>
+    <section class="j23head mkhead"><div><div class="eyebrow"><a href="#mamba24" style="color:inherit">The Mamba 24</a> · build your own</div><h2><span id="mkttl">${esc(mkTitle24(mk24.name))}</span> <b>24</b></h2></div>
       <p>Drag any of the ${MKP24.length} inserts from the pile below into slots 1 through 24. Drag a placed card onto another slot to swap them, or off the wall to put it back. On a phone, tap a card and then tap a slot.</p></section>
     <div class="mkbar"><input id="mkname" type="text" placeholder="Your name" maxlength="28" autocomplete="off" value="${esc(mk24.name)}"><span class="mkct" id="mkct"></span>
       <button class="mkb" id="mkclr">Clear wall</button><button class="mkb pri" id="mksave">Save image</button></div>
@@ -3527,10 +3528,11 @@ function bindHome(){
   const openFrom=el=>{const ctx=el.dataset.ctx,i=+el.dataset.i;
     if(ctx==="grid")open(list,i);
     else{const sh=el.closest(".shelf");if(sh){const ks=[...sh.querySelectorAll(".acard")].map(x=>+x.dataset.i);open(ks.map(k=>ARCH[k]),ks.indexOf(i))}else open(ARCH,i)}};
-  app.addEventListener("click",e=>{const a=e.target.closest(".acard");if(a){openFrom(a);return}
-    const m=e.target.closest("[data-mq]");if(m){const ks=[...new Set([...m.parentNode.querySelectorAll("[data-mq]")].map(x=>+x.dataset.mq))];open(ks.map(k=>ARCH[k]),ks.indexOf(+m.dataset.mq))}});
-  app.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList&&e.target.classList.contains("acard")){e.preventDefault();openFrom(e.target)}});
-  const cleanup=()=>{app.removeEventListener("pointermove",pm);removeEventListener("resize",onR);document.body.classList.remove("axv-on");removeEventListener("hashchange",cleanup)};addEventListener("hashchange",cleanup);
+  const hc=e=>{const a=e.target.closest(".acard");if(a){openFrom(a);return}
+    const m=e.target.closest("[data-mq]");if(m){const ks=[...new Set([...m.parentNode.querySelectorAll("[data-mq]")].map(x=>+x.dataset.mq))];open(ks.map(k=>ARCH[k]),ks.indexOf(+m.dataset.mq))}};
+  const hk=e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList&&e.target.classList.contains("acard")){e.preventDefault();openFrom(e.target)}};
+  app.addEventListener("click",hc);app.addEventListener("keydown",hk);
+  const cleanup=()=>{app.removeEventListener("pointermove",pm);app.removeEventListener("click",hc);app.removeEventListener("keydown",hk);removeEventListener("resize",onR);document.body.classList.remove("axv-on");removeEventListener("hashchange",cleanup)};addEventListener("hashchange",cleanup);
   const hh=()=>document.documentElement.style.setProperty("--hh",document.querySelector("header").getBoundingClientRect().height+"px");hh();addEventListener("resize",hh);
   draw(true);
 }
@@ -3702,17 +3704,19 @@ function bindPlayer(k){
       ${c.sub&&c.sub!==c.t?`<p>${esc(c.sub)}</p>`:`<div style="height:28px"></div>`}
       <dl>${c.num?`<dt>Card</dt><dd class="mono">${esc(c.num)}</dd>`:""}${c.odds?`<dt>Odds</dt><dd class="mono">${esc(c.odds)}</dd>`:""}<dt>Type</dt><dd>${c.type}${c.ser?` · numbered /${c.ser}`:""}</dd><dt>Showing</dt><dd id="axside">Front${c.b?" · click the card to flip":""}</dd></dl>
       ${c.sid?`<a class="ax-link" href="#set-${c.sid}">Open the set →</a>`:""}</div>`;
-    const cf=$("#axcard");if(c.b)cf.onclick=()=>{cf.classList.add("turn");setTimeout(()=>{side=side==="f"?"b":"f";cf.querySelector("img").src=side==="f"?c.f:c.b;$("#axside").textContent=(side==="f"?"Front":"Back")+" · click the card to flip";cf.classList.remove("turn")},300)};
     v.querySelectorAll(".nv").forEach(b=>b.style.display=vl.length>1?"":"none")};
+  v.addEventListener("click",e=>{const cf=e.target.closest("#axcard");if(!cf)return;e.stopPropagation();const c=vl[vi];if(!c||!c.b||cf.classList.contains("turn"))return;
+    cf.classList.add("turn");setTimeout(()=>{side=side==="f"?"b":"f";cf.querySelector("img").src=side==="f"?c.f:c.b;const sd=$("#axside");if(sd)sd.textContent=(side==="f"?"Front":"Back")+" · click the card to flip";cf.classList.remove("turn")},300)});
   const open=(l,i)=>{vl=l;vi=Math.max(0,i);fill();v.classList.add("on");document.body.style.overflow="hidden"};
   const close=()=>{v.classList.remove("on");document.body.style.overflow=""};
   const go=d=>{v.querySelectorAll(".fade").forEach(e=>e.classList.add("out"));setTimeout(()=>{vi=(vi+d+vl.length)%vl.length;fill()},260)};
   v.querySelector(".xb").onclick=close;v.querySelector(".p").onclick=()=>go(-1);v.querySelector(".n").onclick=()=>go(1);v.onclick=e=>{if(e.target===v)close()};
   document.onkeydown=e=>{if(!v.classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
   const openFrom=el=>{const i=+el.dataset.i;if(el.dataset.ctx==="pl")open(list,i);else{const t=plTop(k).slice(0,6);open(t,t.findIndex(c=>c.k===i))}};
-  app.addEventListener("click",e=>{const a=e.target.closest(".acard");if(a)openFrom(a)});
-  app.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList&&e.target.classList.contains("acard")){e.preventDefault();openFrom(e.target)}});
-  const clean=()=>{app.removeEventListener("pointermove",pm);removeEventListener("hashchange",clean)};addEventListener("hashchange",clean);
+  const pc=e=>{const a=e.target.closest(".acard");if(a)openFrom(a)};
+  const pk=e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList&&e.target.classList.contains("acard")){e.preventDefault();openFrom(e.target)}};
+  app.addEventListener("click",pc);app.addEventListener("keydown",pk);
+  const clean=()=>{app.removeEventListener("pointermove",pm);app.removeEventListener("click",pc);app.removeEventListener("keydown",pk);removeEventListener("hashchange",clean)};addEventListener("hashchange",clean);
   draw();
 }
 
