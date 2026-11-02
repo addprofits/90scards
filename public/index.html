@@ -457,6 +457,72 @@ a[data-nav="jordan23"],a[data-nav="mamba24"]{white-space:nowrap}
 .j23x .nv:hover,.j23x .xb:hover{color:var(--ink);border-color:var(--ink2)}
 
 .j23t:hover,.j23t.open{z-index:5}
+/* ---------- players ---------- */
+.plpick{padding:120px 0 140px}
+.plpick h2{font-weight:200;font-size:clamp(48px,7vw,104px);letter-spacing:-.04em;line-height:.9;margin:14px 0 18px}
+.plpick h2 b{font-weight:500}
+.plpick>p{color:var(--ink2);max-width:520px;line-height:1.8;font-size:14px;margin:0 0 64px}
+.plgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:28px}
+.plc{position:relative;border:1px solid var(--line);min-height:440px;padding:40px;display:flex;flex-direction:column;justify-content:flex-end;color:inherit;overflow:hidden;background:linear-gradient(160deg,rgba(255,255,255,.03),transparent 60%);transition:border-color .5s var(--ease)}
+.plc:hover{border-color:var(--line2)}
+.plc .fan{position:absolute;top:44px;right:64px;left:auto;width:150px;height:210px;transform:none}
+.plc .fan img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 22px 28px rgba(0,0,0,.65));transition:transform .8s var(--ease)}
+.plc .fan img:nth-child(1){transform:translateX(-60%) rotate(-13deg) scale(.88)}
+.plc .fan img:nth-child(2){transform:translateX(60%) rotate(13deg) scale(.88)}
+.plc .fan img:nth-child(3){transform:translateY(-6%)}
+.plc:hover .fan img:nth-child(1){transform:translateX(-84%) rotate(-19deg) scale(.88)}
+.plc:hover .fan img:nth-child(2){transform:translateX(84%) rotate(19deg) scale(.88)}
+.plc:hover .fan img:nth-child(3){transform:translateY(-12%) scale(1.04)}
+.plc .no{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3);letter-spacing:.14em}
+.plc h3{font-weight:200;font-size:clamp(40px,4vw,58px);letter-spacing:-.04em;line-height:.95;margin:12px 0 18px}
+.plc h3 b{font-weight:500;display:block}
+.plc .mini{display:flex;gap:28px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.plc .mini b{display:block;font-size:26px;font-weight:200;letter-spacing:-.03em;color:var(--ink);text-transform:none;margin-bottom:4px}
+.plhero{display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;min-height:calc(88vh - 64px);padding:40px 0 60px}
+.plhero .big{position:relative;height:min(62vh,560px)}
+.plhero .big img{position:absolute;top:50%;left:50%;height:78%;width:auto;max-width:58%;object-fit:contain;filter:drop-shadow(0 36px 50px rgba(0,0,0,.72));transition:transform 1s var(--ease);opacity:0;animation:plIn 1.1s var(--ease) forwards}
+.plhero .big img:nth-child(1){transform:translate(-112%,-46%) rotate(-11deg) scale(.86);animation-delay:.15s}
+.plhero .big img:nth-child(2){transform:translate(12%,-46%) rotate(11deg) scale(.86);animation-delay:.3s}
+.plhero .big img:nth-child(3){transform:translate(-50%,-54%);z-index:2;animation-delay:.45s}
+.plhero .big:hover img:nth-child(1){transform:translate(-128%,-46%) rotate(-15deg) scale(.86)}
+.plhero .big:hover img:nth-child(2){transform:translate(28%,-46%) rotate(15deg) scale(.86)}
+@keyframes plIn{to{opacity:1}}
+.plhero .num{font-weight:200;font-size:clamp(120px,16vw,240px);letter-spacing:-.07em;line-height:.8;color:transparent;-webkit-text-stroke:1px var(--line2);position:absolute;right:-10px;bottom:-30px;z-index:-1;user-select:none}
+.plhero h1{font-weight:200;font-size:clamp(60px,8vw,128px);letter-spacing:-.05em;line-height:.86;margin:16px 0 22px}
+.plhero h1 b{font-weight:500;display:block}
+.plhero p{color:var(--ink2);font-size:15px;line-height:1.8;max-width:480px;margin:0}
+.plstats{display:flex;gap:40px;flex-wrap:wrap;margin-top:38px}
+.plstats div b{display:block;font-weight:200;font-size:40px;letter-spacing:-.04em;line-height:1}
+.plstats div span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.pllinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.plsec{padding:90px 0 20px}
+.plsec h2{font-weight:200;font-size:clamp(36px,4.6vw,64px);letter-spacing:-.045em;line-height:.95;margin:12px 0 0}
+.plsec h2 b{font-weight:500}
+.plsig{display:grid;grid-template-columns:repeat(6,1fr);gap:26px;margin-top:40px}
+.plsig .acard .rk{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink3);letter-spacing:.12em;margin-bottom:10px;display:block}
+.pltime{display:flex;align-items:flex-end;gap:14px;height:170px;margin-top:44px;border-bottom:1px solid var(--line)}
+.pltime button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:10px;background:none;border:0;cursor:pointer;color:var(--ink3);font:inherit;padding:0 0 12px}
+.pltime button i{display:block;width:100%;max-width:120px;background:linear-gradient(180deg,var(--ink2),rgba(255,255,255,.12));border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0);transition:transform 1.1s var(--ease),background .3s}
+.pltime.in button i{transform:scaleY(1)}
+.pltime button b{font-weight:300;font-size:13px;color:var(--ink)}
+.pltime button span{font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.pltime button:hover i{background:linear-gradient(180deg,var(--ink),rgba(255,255,255,.2))}
+.plfl{position:sticky;top:var(--hh,64px);z-index:15;background:rgba(9,9,10,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);margin-top:70px}
+.plfl .ct{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink3)}
+.plyr{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;padding:60px 0 20px;border-bottom:1px solid var(--line)}
+.plyr .yh{position:sticky;top:calc(var(--hh,64px) + 80px);align-self:start}
+.plyr .yh b{display:block;font-weight:200;font-size:64px;letter-spacing:-.05em;line-height:.9}
+.plyr .yh span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-top:14px;line-height:1.8}
+.plset{margin-bottom:46px}
+.plset .sh{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.plset .sh img{height:44px;width:auto;max-width:64px;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(0,0,0,.5))}
+.plset .sh h4{font-weight:300;font-size:22px;letter-spacing:-.02em;margin:0}
+.plset .sh a{margin-left:auto;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3)}
+.plset .sh a:hover{color:var(--ink)}
+.plset .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:34px 22px}
+.acard .ty{display:inline-block;margin-top:6px;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);border:1px solid var(--line);border-radius:99px;padding:2px 7px}
+.plempty{color:var(--ink3);padding:80px 0;text-align:center}
+@media(max-width:900px){.plhero{grid-template-columns:1fr;gap:10px;min-height:0;padding:20px 0 40px}.plhero .big{height:44vh;order:-1}.plsig{grid-template-columns:repeat(3,1fr);gap:18px}.plyr{grid-template-columns:1fr;gap:10px;padding:40px 0 10px}.plyr .yh{position:static;display:flex;align-items:baseline;gap:16px}.plyr .yh b{font-size:44px}.plyr .yh span{margin:0}.plgrid{grid-template-columns:1fr}.plc{min-height:380px;padding:28px}.plc .fan{right:40px;width:110px;height:154px}.plset .g{grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:24px 14px}.pltime{height:130px;gap:6px}}
 /* ---------- set history ---------- */
 a[data-nav="history"]{white-space:nowrap}
 .hxpick{padding:120px 0 140px}
@@ -744,9 +810,7 @@ a[data-nav="history"]{white-space:nowrap}
   <nav>
     <a href="#gallery" data-nav="gallery">Gallery</a>
     <a href="#sets" data-nav="sets">Sets</a>
-    <a href="#market" data-nav="market">Market</a>
-    <a href="#serials" data-nav="serials">Serials</a>
-    <a href="#graded" data-nav="graded">Graded</a>
+    <a href="#players" data-nav="players">Players</a>
     <a href="#history" data-nav="history">Set History</a>
     <a href="#jordan23" data-nav="jordan23">The Jordan 23</a>
     <a href="#mamba24" data-nav="mamba24">The Mamba 24</a>
@@ -2401,7 +2465,7 @@ function bindGraded(){
   $("#gsort").onchange=e=>{gstate.sort=e.target.value;renderGraded()};
 }
 function bindRowLinks(root){root.querySelectorAll("[data-go]").forEach(r=>r.onclick=()=>{location.hash=r.dataset.go})}
-function footer(){return `<div class="wrap"><div class="foot"><span>90scards.net — prototype</span><span>Prices, sales, population counts and serial records are illustrative sample data. Set and insert details come from public checklists.</span></div></div>`}
+function footer(){return `<div class="wrap"><div class="foot"><span>90scards.net</span><span>Card images are the site owner's scans. Set, insert and odds details come from public checklists such as TCDb.</span></div></div>`}
 
 
 /* ---------- sets ---------- */
@@ -3569,15 +3633,99 @@ function bindHist(){
 }
 
 
+/* ---------- players ---------- */
+const PL={
+ mj:{name:"Michael Jordan",first:"Michael",last:"Jordan",num:"23",team:"Chicago Bulls",wall:["#jordan23","The Jordan 23"],build:"#jordan23/build",
+  blurb:"Three titles in the second three-peat, the comeback, the last shot. Jordan's cards here run from 1992-93 to his last Bulls season in 1998-99, the peak of the insert era, when every product wanted him on card #1."},
+ kb:{name:"Kobe Bryant",first:"Kobe",last:"Bryant",num:"8",team:"Los Angeles Lakers",wall:["#mamba24","The Mamba 24"],build:"#mamba24/build",
+  blurb:"From a 17-year-old draft pick to an NBA champion in four seasons. Kobe's cards run from his 1996-97 rookie inserts through the first Lakers title in 1999-00."}};
+const plCards=k=>ARCH.filter(c=>c.p===k);
+const plTop=k=>[...plCards(k)].filter(c=>c.type!=="Base").sort((a,b)=>b.rank-a.rank||a.k-b.k);
+function viewPlayers(){
+  return `<div class="view"><div class="wrap"><section class="plpick">
+    <div class="eyebrow">Players</div><h2>Every card, <b>by player</b></h2>
+    <p>Each player's full run on the site in one place: every base card, parallel and insert, season by season, with his rarest cards up front.</p>
+    <div class="plgrid">${Object.entries(PL).map(([k,p],i)=>{const cs=plCards(k),t=plTop(k);const sets=new Set(cs.map(c=>c.sid||c.set)).size;
+      return `<a class="plc rv" style="transition-delay:${i*120}ms" href="#player-${k}"><div class="fan">${[t[2],t[1],t[0]].filter(Boolean).map(c=>`<img src="${c.f}" alt="" loading="lazy">`).join("")}</div>
+      <div class="no">#${p.num} · ${esc(p.team)}</div><h3>${p.first} <b>${p.last}</b></h3>
+      <div class="mini"><div><b>${cs.length}</b>Cards</div><div><b>${sets}</b>Sets</div><div><b>${cs.filter(c=>c.ser).length}</b>Numbered</div></div></a>`}).join("")}</div>
+  </section></div>${footer()}</div>`;
+}
+const plx={ty:"all"};
+function viewPlayer(k){
+  const p=PL[k],cs=plCards(k),top=plTop(k),seasons=[...new Set(cs.map(c=>c.season))].sort();
+  const sets=new Set(cs.map(c=>c.sid||c.set)).size,num=cs.filter(c=>c.ser),low=num.length?Math.min(...num.map(c=>c.ser)):0;
+  const per=seasons.map(s=>cs.filter(c=>c.season===s).length),mx=Math.max(...per);
+  return `<div class="view"><div class="wrap">
+  <a class="back" href="#players" style="display:inline-block;margin-top:28px">← Players</a>
+  <section class="plhero">
+    <div class="rv"><div class="eyebrow">#${p.num} · ${esc(p.team)} · ${seasons[0].slice(0,4)}–${seasons[seasons.length-1].slice(0,2)}${seasons[seasons.length-1].slice(5,7)}</div>
+      <h1>${p.first} <b>${p.last}</b></h1><p>${esc(p.blurb)}</p>
+      <div class="plstats"><div><b>${cs.length}</b><span>Cards</span></div><div><b>${sets}</b><span>Sets</span></div><div><b>${seasons.length}</b><span>Seasons</span></div><div><b>${num.length}</b><span>Numbered</span></div>${low?`<div><b>/${low}</b><span>Lowest run</span></div>`:""}</div>
+      <div class="pllinks"><a class="j23cta" href="${p.wall[0]}">${esc(p.wall[1])} <span aria-hidden="true">→</span></a><a class="mkb" href="${p.build}">Build your own</a></div></div>
+    <div class="big">${[top[1],top[2],top[0]].filter(Boolean).map(c=>`<img src="${c.f}" alt="${esc(c.t)}">`).join("")}<div class="num">${p.num}</div></div>
+  </section>
+  <section class="plsec rv"><div class="eyebrow">The rarest</div><h2>Signature <b>cards</b></h2>
+    <div class="plsig">${top.slice(0,6).map((c,i)=>`<div><span class="rk">No. ${i+1}</span>${acard(c,c.k,"sig")}</div>`).join("")}</div></section>
+  <section class="plsec rv"><div class="eyebrow">Season by season</div><h2>The <b>run</b></h2>
+    <div class="pltime" id="pltime">${seasons.map((s,i)=>`<button data-go="${s}"><b>${per[i]}</b><i style="height:${Math.max(6,per[i]/mx*100)}%;transition-delay:${i*90}ms"></i><span>'${s.slice(2,4)}–${s.slice(5,7)}</span></button>`).join("")}</div></section>
+  <div class="plfl" id="plfl"><div class="grp"><span class="lab" style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);margin-right:4px">Show</span>${[["all","Everything"],["Base","Base"],["Parallel","Parallels"],["Insert","Inserts"],["num","Numbered"]].map(([v,l])=>`<button class="chip${plx.ty===v?" on":""}" data-pt="${v}">${l}</button>`).join("")}</div><span class="ct" id="plct"></span></div>
+  <div id="plruns"></div>
+  </div>${footer()}
+  <div class="j23x" id="axv" role="dialog" aria-modal="true" aria-label="Card"><button class="xb" aria-label="Close">✕</button><button class="nv p" aria-label="Previous">←</button><button class="nv n" aria-label="Next">→</button><div class="in" id="axin"></div></div></div>`;
+}
+function bindPlayer(k){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll(".rv,.pltime").forEach(e=>io.observe(e));
+  const hh=()=>document.documentElement.style.setProperty("--hh",document.querySelector("header").getBoundingClientRect().height+"px");hh();
+  if(!k)return;
+  let list=[];
+  const draw=()=>{const cs=plCards(k).filter(c=>plx.ty==="all"||(plx.ty==="num"?c.ser>0:c.type===plx.ty));list=cs;
+    const seasons=[...new Set(cs.map(c=>c.season))].sort();
+    $("#plct").textContent=`${cs.length} card${cs.length===1?"":"s"}`;
+    $("#plruns").innerHTML=seasons.length?seasons.map(s=>{const sc=cs.filter(c=>c.season===s);const groups=[...new Map(sc.map(c=>[c.sid||c.set,c])).values()];
+      return `<section class="plyr" id="yr-${s}"><div class="yh"><b>'${s.slice(2,4)}–${s.slice(5,7)}</b><span>${sc.length} card${sc.length>1?"s":""} · ${groups.length} set${groups.length>1?"s":""}</span></div><div>${groups.map(g=>{const gc=sc.filter(c=>(c.sid||c.set)===(g.sid||g.set));
+        return `<div class="plset"><div class="sh">${g.box?`<img src="${esc(g.box)}" alt="" loading="lazy">`:""}<h4>${esc(g.set)}</h4>${g.sid?`<a href="#set-${g.sid}">Open set →</a>`:""}</div>
+        <div class="g">${gc.map(c=>acard(c,list.indexOf(c),"pl").replace('</i></div>\n  <div class="cap">',`</i></div>\n  <div class="cap">`).replace(/<\/i><\/div>\s*<\/div>$/,`</i><span class="ty">${c.ser?"/"+c.ser:c.type}</span></div></div>`)).join("")}</div></div>`}).join("")}</div></section>`}).join(""):`<div class="plempty">No cards match.</div>`};
+  document.querySelectorAll("[data-pt]").forEach(b=>b.onclick=()=>{plx.ty=b.dataset.pt;document.querySelectorAll("[data-pt]").forEach(x=>x.classList.toggle("on",x===b));draw()});
+  document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{let el=document.getElementById("yr-"+b.dataset.go);if(!el){plx.ty="all";document.querySelectorAll("[data-pt]").forEach(x=>x.classList.toggle("on",x.dataset.pt==="all"));draw();el=document.getElementById("yr-"+b.dataset.go)}
+    const y=el.getBoundingClientRect().top+scrollY-(parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hh"))||64)-60;scrollTo({top:y,behavior:"smooth"})});
+  /* light + tilt */
+  const app=$("#app");const pm=e=>{const c=e.target.closest&&e.target.closest(".acard");if(!c)return;const im=c.querySelector(".im"),r=im.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    im.style.setProperty("--mx",(x*100).toFixed(1)+"%");im.style.setProperty("--my",(y*100).toFixed(1)+"%");im.style.setProperty("--rx",((x-.5)*14).toFixed(2)+"deg");im.style.setProperty("--ry",((.5-y)*12).toFixed(2)+"deg")};
+  app.addEventListener("pointermove",pm);
+  /* viewer */
+  const v=$("#axv");document.body.appendChild(v);let vl=[],vi=0,side="f";
+  const fill=()=>{const c=vl[vi];side="f";
+    $("#axin").innerHTML=`<div class="cardf fade" id="axcard" title="${c.b?"Click to flip":""}"><img src="${c.f}" alt="${esc(c.pn+" · "+c.t)}"></div>
+      <div class="fade"><div class="ax-p">${esc(c.pn)}</div><h4>${esc(c.t)}</h4><div class="st">${esc(c.season+" "+c.set)}</div>
+      ${c.sub&&c.sub!==c.t?`<p>${esc(c.sub)}</p>`:`<div style="height:28px"></div>`}
+      <dl>${c.num?`<dt>Card</dt><dd class="mono">${esc(c.num)}</dd>`:""}${c.odds?`<dt>Odds</dt><dd class="mono">${esc(c.odds)}</dd>`:""}<dt>Type</dt><dd>${c.type}${c.ser?` · numbered /${c.ser}`:""}</dd><dt>Showing</dt><dd id="axside">Front${c.b?" · click the card to flip":""}</dd></dl>
+      ${c.sid?`<a class="ax-link" href="#set-${c.sid}">Open the set →</a>`:""}</div>`;
+    const cf=$("#axcard");if(c.b)cf.onclick=()=>{cf.classList.add("turn");setTimeout(()=>{side=side==="f"?"b":"f";cf.querySelector("img").src=side==="f"?c.f:c.b;$("#axside").textContent=(side==="f"?"Front":"Back")+" · click the card to flip";cf.classList.remove("turn")},300)};
+    v.querySelectorAll(".nv").forEach(b=>b.style.display=vl.length>1?"":"none")};
+  const open=(l,i)=>{vl=l;vi=Math.max(0,i);fill();v.classList.add("on");document.body.style.overflow="hidden"};
+  const close=()=>{v.classList.remove("on");document.body.style.overflow=""};
+  const go=d=>{v.querySelectorAll(".fade").forEach(e=>e.classList.add("out"));setTimeout(()=>{vi=(vi+d+vl.length)%vl.length;fill()},260)};
+  v.querySelector(".xb").onclick=close;v.querySelector(".p").onclick=()=>go(-1);v.querySelector(".n").onclick=()=>go(1);v.onclick=e=>{if(e.target===v)close()};
+  document.onkeydown=e=>{if(!v.classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
+  const openFrom=el=>{const i=+el.dataset.i;if(el.dataset.ctx==="pl")open(list,i);else{const t=plTop(k).slice(0,6);open(t,t.findIndex(c=>c.k===i))}};
+  app.addEventListener("click",e=>{const a=e.target.closest(".acard");if(a)openFrom(a)});
+  app.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList&&e.target.classList.contains("acard")){e.preventDefault();openFrom(e.target)}});
+  const clean=()=>{app.removeEventListener("pointermove",pm);removeEventListener("hashchange",clean)};addEventListener("hashchange",clean);
+  draw();
+}
+
+
 function route(){
   if(typeof gx!=="undefined"){clearInterval(gx.timer);gx.lbOpen=false}if(typeof fsx!=="undefined")clearInterval(fsx.timer);if(typeof tx!=="undefined")clearInterval(tx.timer);
   document.querySelectorAll("body > .lb, body > .j23x, body > .mkghost").forEach(x=>x.remove());document.body.style.overflow="";
   const h=location.hash.slice(1)||"gallery"; const app=$("#app");
   let nav=h;
-  if(h.startsWith("card-")&&byId(h.slice(5))){const c=byId(h.slice(5));app.innerHTML=viewCard(c);bindCard(c);nav="gallery"}
-  else if(h==="market"){app.innerHTML=viewMarket();bindMarket();bindRowLinks(app)}
-  else if(h==="serials"){app.innerHTML=viewSerials();bindSerials()}
-  else if(h==="graded"){app.innerHTML=viewGraded();bindGraded()}
+  /* Market, Serials, Graded and sample card pages are hidden until they have real data */
+  if(h.startsWith("card-")||h==="market"||h==="serials"||h==="graded"){location.replace("#gallery");return}
+  else if(h==="players"){app.innerHTML=viewPlayers();bindPlayer();nav="players"}
+  else if(h.startsWith("player-")&&PL[h.slice(7)]){const k=h.slice(7);app.innerHTML=viewPlayer(k);bindPlayer(k);nav="players"}
   else if(h==="jordan23"){app.innerHTML=viewJ23();bindJ23();nav="jordan23"}
   else if(h==="history"){app.innerHTML=viewHistory();bindHist();nav="history"}
   else if(h==="history-bk96-flair-showcase"){app.innerHTML=viewHist96();bindHist();nav="history"}
