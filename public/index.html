@@ -776,6 +776,33 @@ a[data-nav="history"]{white-space:nowrap}
 .cmdk .none{padding:30px;text-align:center;color:var(--ink3);font-size:13px}
 @media(max-width:900px){.g2hero{grid-template-columns:1fr;gap:24px;padding-top:50px}.g2two{grid-template-columns:1fr}.cotd{grid-template-columns:1fr;gap:26px}.cotd .cv{max-width:240px;margin:0 auto}.bento{grid-template-columns:1fr 1fr;grid-auto-rows:190px}.bn.w2{grid-column:span 2}.bn.h2{grid-row:span 1}.g2rib .rc{height:170px}.g2rib .r2 .rc{height:140px}.g2pan{padding:26px}.g2tick{gap:18px}}
 @media(max-width:560px){.bento{grid-template-columns:1fr}.bn.w2{grid-column:span 1}.bn.h2{grid-row:span 1}.pull{width:84px}.pull .lab{max-width:92px;font-size:9.5px}.pack{width:160px;height:250px}.rip .stage{height:320px}.ripctl{margin-top:44px}}
+.cotdb{color:var(--ink2);font-size:13.5px;line-height:1.75;margin:16px 0 0}
+.h2h{display:flex;flex-direction:column}
+.h2st{display:grid;grid-template-columns:minmax(180px,260px) 1fr;gap:34px;align-items:center}
+.h2fr{position:relative;aspect-ratio:5/7;cursor:ew-resize;touch-action:none;user-select:none;outline:none}
+.h2fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 26px 34px rgba(0,0,0,.65));pointer-events:none;-webkit-user-drag:none}
+.h2fr .hj{z-index:2}
+.h2bar{position:absolute;top:-10px;bottom:-10px;width:2px;background:var(--ink);z-index:3;transform:translateX(-1px);pointer-events:none}
+.h2bar i{position:absolute;top:50%;left:50%;width:34px;height:34px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%);box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.h2bar i:before{content:"‹ ›";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--bg);font-size:14px;letter-spacing:2px}
+.h2lab{position:absolute;bottom:-28px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
+.h2lab.l{left:0}.h2lab.r{right:0}
+.h2info h3{font-weight:200;font-size:clamp(28px,2.6vw,38px);letter-spacing:-.03em;line-height:1;margin:0 0 8px}
+.h2info .st{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink2)}
+.h2info dl{display:grid;grid-template-columns:70px 1fr;gap:9px 14px;margin:20px 0 0;font-size:12.5px;border-top:1px solid var(--line);padding-top:16px}
+.h2info dt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);padding-top:2px}
+.h2info dd{margin:0}.h2info dd small{display:block;font-size:10.5px;color:var(--ink3);margin-top:3px}
+.h2info .hint{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin:18px 0 0}
+.h2chips{display:flex;gap:6px;overflow-x:auto;margin-top:46px;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+.h2chips .chip{flex:none;font-size:10px;padding:7px 12px}
+.bn.hist .vis img.bxi{height:auto;width:68%;left:50%;right:auto;top:76px;transform:translateX(-50%) rotate(-3deg)}
+.bn.hist:hover .vis img.bxi{transform:translateX(-50%) rotate(0deg) translateY(-6px)}
+.bn.mk .vis img{height:42%;top:74px;right:auto;transform:none}
+.bn.mk .vis img:nth-child(1){left:14%;transform:rotate(-8deg)}
+.bn.mk .vis img:nth-child(2){left:44%;transform:rotate(7deg)}
+.bn.mk:hover .vis img:nth-child(1){transform:rotate(-12deg) translateX(-6px)}
+.bn.mk:hover .vis img:nth-child(2){transform:rotate(11deg) translateX(6px)}
+@media(max-width:900px){.h2st{grid-template-columns:1fr;gap:40px}.h2fr{max-width:240px;margin:0 auto;width:100%}}
 /* ---------- home: the archive ---------- */
 .acard .sh{display:none!important}
 .hm-top{padding-bottom:20px}
@@ -3870,12 +3897,14 @@ function viewHome(){
   const pick=[...ARCH].filter(c=>c.type!=="Base").sort((a,b)=>(b.rank+(b.foil?400:0))-(a.rank+(a.foil?400:0))).slice(0,60);
   const r1=pick.filter((_,i)=>i%2===0),r2=pick.filter((_,i)=>i%2===1);
   const row=(r,cls)=>`<div class="row ${cls}">${[...r,...r].map(c=>`<div class="rc" data-mq="${c.k}"><img src="${c.f}" alt="${esc(c.pn+" · "+c.t)}" loading="lazy" draggable="false"></div>`).join("")}</div>`;
-  const c=cotdPick();
+  const jj=J23.find(x=>x.t==="Jambalaya")||J23[0];const c={pn:"Michael Jordan",t:jj.t,season:jj.set.slice(0,7),set:jj.set.slice(8),num:jj.num,odds:jj.odds,meta:jj.meta,blurb:jj.blurb,f:j23img(jj.n,"f"),b:j23img(jj.n,"b")};
+  const H2H=K24.map(k=>{const j=J23.find(x=>x.t===k.t||(k.t==="Supernatural Fusion"&&x.t==="Supernatural Fusion"));return j?{t:k.t,set:k.set,j,k}:null}).filter(Boolean);
   const j3=[...J23].sort((a,b)=>a.n-b.n).slice(0,3),k3=[...K24].sort((a,b)=>a.n-b.n).slice(0,3);
   const pt=k=>ARCH.filter(c=>c.p===k&&c.type!=="Base").sort((a,b)=>b.rank-a.rank)[0];
   const seasons=[...new Set(ARCH.map(c=>c.season))].sort().filter(s=>+s.slice(0,4)>=1995);
   const newSets=G2NEW.map(id=>setById(id)).filter(Boolean);
   const findBtn=`<button class="g2find" data-cmdk><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search ${ARCH.length} cards<kbd>/</kbd></button>`;
+  window.__H2H=H2H;
   return `<div class="view"><div class="wrap">
     <section class="g2hero">
       <div><div class="eyebrow">Basketball · 1992–2000 · real scans, front &amp; back</div>
@@ -3890,18 +3919,21 @@ function viewHome(){
       <div class="g2pan"><div class="g2h"><div><div class="eyebrow">Card of the day</div><h2>Today's <b>pull</b></h2></div></div>
         <div class="cotd" id="cotd"><div class="cv" title="Click to flip"><div class="in"><img src="${c.f}" alt="${esc(c.pn+" · "+c.t)}"><img class="bk" src="${c.b}" alt=""></div></div>
           <div><div class="eyebrow">${esc(c.pn)}</div><h3>${esc(c.t)}</h3><div class="st">${esc(c.season+" "+c.set)}</div>
-            <dl>${c.num?`<dt>Card</dt><dd class="mono">${esc(c.num)}</dd>`:""}${c.odds?`<dt>Odds</dt><dd class="mono">${esc(c.odds)}</dd>`:""}<dt>Type</dt><dd>${c.type}${c.ser?` · /${c.ser}`:""}</dd></dl>
-            <div class="clock">Next card in <b id="cdh">00</b><b id="cdm">00</b><b id="cds">00</b></div></div></div></div>
-      <div class="g2pan rip"><div class="eyebrow">Open a pack</div><div class="stage" id="ripst">
-        <div class="pack" id="pack" title="Click to rip"><div class="tp"></div><div class="bd"><span>Premium edition</span><b>90s<i>cards</i></b><span>3 cards · click to rip</span></div></div></div>
-        <div class="ripctl" id="ripctl"><span>Real scans, real odds tiers. Rare pulls glow.</span></div></div>
+            <p class="cotdb">${esc(c.blurb)}</p>
+            <dl><dt>Card</dt><dd class="mono">${esc(c.num)}</dd><dt>Odds</dt><dd class="mono">${esc(c.odds)}</dd><dt>Insert</dt><dd>${esc(c.meta)}</dd></dl>
+            <div class="clock">Click the card to turn it over</div></div></div></div>
+      <div class="g2pan h2h"><div class="g2h"><div><div class="eyebrow">Head to head</div><h2>Jordan <b>vs</b> Kobe</h2></div></div>
+        <div class="h2st" id="h2st"><div class="h2fr"><img class="hk" id="h2k" alt=""><img class="hj" id="h2j" alt=""><div class="h2bar" id="h2bar"><i></i></div>
+          <span class="h2lab l">Jordan</span><span class="h2lab r">Kobe</span></div>
+          <div class="h2info" id="h2info"></div></div>
+        <div class="h2chips" id="h2chips">${H2H.map((h,i)=>`<button class="chip${i===0?" on":""}" data-h2="${i}">${esc(h.t)}</button>`).join("")}</div></div>
     </section>
     <section class="bento">
       <a class="bn wall w2" href="#jordan23"><div class="vis">${j3.map(x=>`<img src="${j23img(x.n,"f")}" alt="" loading="lazy">`).join("")}</div><span class="arw">→</span><div class="k">Ranked wall</div><h3>The Jordan <b>23</b></h3><p>Twenty-three Jordan inserts, counted down from #23 to #1.</p></a>
       <a class="bn wall w2" href="#mamba24"><div class="vis">${k3.map(x=>`<img src="${k24img(x,"f")}" alt="" loading="lazy">`).join("")}</div><span class="arw">→</span><div class="k">Ranked wall</div><h3>The Mamba <b>24</b></h3><p>Twenty-four Kobe inserts, from the rookie year to the first title.</p></a>
       <a class="bn big w2 h2" href="#players"><div class="vis">${[pt("mj"),pt("kb"),ARCH.filter(c=>c.p==="mj"&&c.type!=="Base").sort((a,b)=>b.rank-a.rank)[1]].filter(Boolean).map(x=>`<img src="${x.f}" alt="" loading="lazy">`).join("")}</div><span class="arw">→</span><div class="k">Players</div><h3>Every card, <b>by player</b></h3><p>Each player's full run in one place, season by season, with his rarest cards up front.</p></a>
-      <a class="bn hist h2" href="#history"><div class="vis"><img src="img/boxes/bk96-flair-showcase.webp" alt="" loading="lazy"></div><span class="arw">→</span><div class="k">Set history</div><h3>The story of <b>a set</b></h3><p>Scroll through 1996-97 Flair Showcase, row by row.</p></a>
-      <a class="bn hist h2" href="#mamba24/build"><div class="vis"><img src="${k24img(K24[3],"f")}" alt="" loading="lazy" style="height:56%;right:8%;top:8%;transform:rotate(-6deg)"></div><span class="arw">→</span><div class="k">Build your own</div><h3>Make your <b>wall</b></h3><p>Drag inserts into 23 or 24 slots and save it with your name.</p></a>
+      <a class="bn hist h2" href="#history"><div class="vis"><img class="bxi" src="img/boxes/bk96-flair-showcase.webp" alt="" loading="lazy"></div><span class="arw">→</span><div class="k">Set history</div><h3>The story of <b>a set</b></h3><p>Scroll through 1996-97 Flair Showcase, row by row.</p></a>
+      <a class="bn hist h2 mk" href="#mamba24/build"><div class="vis"><img src="${j23img(3,"f")}" alt="" loading="lazy"><img src="${k24img(K24[3],"f")}" alt="" loading="lazy"></div><span class="arw">→</span><div class="k">Build your own</div><h3>Make your <b>wall</b></h3><p>Drag inserts into 23 or 24 slots and save it with your name.</p></a>
     </section>
     <section class="g2yrs">${seasons.map(s=>{const cs=ARCH.filter(c=>c.season===s);const bx=[...new Map(cs.filter(c=>c.box).map(c=>[c.sid,c.box])).values()].slice(0,3);const isNew=newSets.some(n=>n.season===s);
       return `<a class="yr" href="#sets-${s.slice(0,4)}">${isNew?`<span class="new">New</span>`:""}<div class="bx">${bx.map((b,i)=>`<img src="${esc(b)}" alt="" loading="lazy" style="left:${i*26}px;z-index:${5-i};--r:${(i-1)*4}deg">`).join("")}</div><b>'${s.slice(2,4)}–${s.slice(5,7)}</b><span>${cs.length} cards · ${new Set(cs.map(c=>c.sid||c.set)).size} sets</span></a>`}).join("")}</section>
@@ -3933,32 +3965,18 @@ function bindHome(){
   app.addEventListener("click",hc);
   /* card of the day */
   const cv=document.querySelector("#cotd .cv");cv.onclick=()=>cv.classList.toggle("turn");
-  const tick=()=>{const n=new Date(),m=new Date(n);m.setHours(24,0,0,0);let s=Math.max(0,Math.floor((m-n)/1000));const h=Math.floor(s/3600);s%=3600;
-    const p=x=>String(x).padStart(2,"0");const a=$("#cdh");if(!a)return;a.textContent=p(h);$("#cdm").textContent=p(Math.floor(s/60));$("#cds").textContent=p(s%60)};
-  tick();const tk=setInterval(tick,1000);
-  /* pack rip */
-  let opened=0;try{opened=+localStorage.getItem("packs90")||0}catch(e){}
-  const tier=c=>c.ser&&c.ser<=100||c.rank>=300?3:(c.ser||c.rank>=60)?2:1;
-  const weight=c=>({1:14,2:4,3:1})[tier(c)];
-  const pool=ARCH.filter(c=>c.type!=="Base"||c.rank>0||true);
-  const draw3=()=>{const out=[];const tot=pool.reduce((a,c)=>a+weight(c),0);let guard=0;
-    while(out.length<3&&guard++<200){let r=Math.random()*tot;for(const c of pool){r-=weight(c);if(r<=0){if(!out.includes(c))out.push(c);break}}}
-    return out.sort((a,b)=>tier(a)-tier(b)||a.rank-b.rank)};
-  const st=$("#ripst"),ctl=$("#ripctl");
-  const ctlIdle=()=>{ctl.innerHTML=`<span>${opened?`${opened} pack${opened>1?"s":""} opened`:"Real scans, weighted by rarity. Rare pulls glow."}</span>`};
-  const rip=()=>{const pk=$("#pack");if(!pk||pk.classList.contains("open"))return;pk.classList.add("open","gone");opened++;try{localStorage.setItem("packs90",opened)}catch(e){}
-    const cs=draw3();const w=st.clientWidth,cw=innerWidth<560?84:150,gap=w<480?12:26,xs=[-1,0,1].map(i=>i*(cw+gap));
-    cs.forEach((c,i)=>{const el=document.createElement("div");el.className="pull"+(tier(c)===3?" hit":"");el.dataset.k=c.k;
-      el.innerHTML=`<div class="in"><img src="${c.f}" alt="${esc(c.pn+" · "+c.t)}"><div class="bk">90s</div></div><div class="lab"><b>${esc(c.t)}</b>${esc(c.season+" "+c.set)}${tier(c)===3?`<br><span class="tag">${c.ser?"Numbered /"+c.ser:"Rare pull"}</span>`:tier(c)===2?`<br><span class="tag" style="color:var(--ink2)">${c.ser?"/"+c.ser:"Short print"}</span>`:""}</div>`;
-      el.style.transform=`translate(0px,60px) scale(.8)`;st.appendChild(el);
-      setTimeout(()=>{el.classList.add("show");el.style.transform=`translate(${xs[i]}px,-36px) rotate(${(i-1)*5}deg)`},350+i*170);
-      setTimeout(()=>el.classList.add("flip"),1000+i*420)});
-    setTimeout(()=>{ctl.innerHTML=`<button class="mkb pri" id="ripagain">Rip another</button><span>${opened} pack${opened>1?"s":""} opened</span>`;$("#ripagain").onclick=reset},1000+3*420)};
-  const reset=()=>{st.querySelectorAll(".pull").forEach(p=>{p.style.opacity=0;p.style.transform+=" translateY(30px)";setTimeout(()=>p.remove(),500)});
-    setTimeout(()=>{st.insertAdjacentHTML("beforeend",`<div class="pack" id="pack" title="Click to rip" style="opacity:0;transform:translateY(20px)"><div class="tp"></div><div class="bd"><span>Premium edition</span><b>90s<i>cards</i></b><span>3 cards · click to rip</span></div></div>`);
-      const pk=$("#pack");requestAnimationFrame(()=>requestAnimationFrame(()=>{pk.style.opacity="";pk.style.transform=""}));pk.onclick=rip;ctlIdle()},450)};
-  $("#pack").onclick=rip;ctlIdle();
-  st.addEventListener("click",e=>{const p=e.target.closest(".pull.flip");if(p){const ks=[...st.querySelectorAll(".pull")].map(x=>+x.dataset.k);open(ks.map(k=>ARCH[k]),ks.indexOf(+p.dataset.k))}});
+  /* head to head */
+  const H=window.__H2H||[];let hi=0,pos=50;const fr=document.querySelector(".h2fr"),hj=$("#h2j"),hk=$("#h2k");
+  const setPos=x=>{pos=Math.max(0,Math.min(100,x));hj.style.clipPath=`inset(0 ${100-pos}% 0 0)`;$("#h2bar").style.left=pos+"%"};
+  const show=i=>{hi=i;const h=H[i];if(!h)return;hj.src=j23img(h.j.n,"f");hk.src=k24img(h.k,"f");hj.alt="Jordan "+h.t;hk.alt="Kobe "+h.t;
+    $("#h2info").innerHTML=`<h3>${esc(h.t)}</h3><div class="st">${esc(h.set)}</div><dl><dt>Jordan</dt><dd><span class="mono">${esc(h.j.num)}</span><small>#${h.j.n} in the Jordan 23</small></dd><dt>Kobe</dt><dd><span class="mono">${esc(h.k.num)}</span><small>#${h.k.n} in the Mamba 24</small></dd><dt>Odds</dt><dd class="mono">${esc(h.j.odds)}</dd></dl><p class="hint">Drag the line to compare</p>`;
+    document.querySelectorAll("[data-h2]").forEach(b=>b.classList.toggle("on",+b.dataset.h2===i))};
+  let drag=false;const mv=e=>{if(!drag)return;const r=fr.getBoundingClientRect();setPos((e.clientX-r.left)/r.width*100)};
+  fr.addEventListener("pointerdown",e=>{drag=true;fr.setPointerCapture(e.pointerId);mv(e)});fr.addEventListener("pointermove",mv);fr.addEventListener("pointerup",()=>drag=false);fr.addEventListener("pointercancel",()=>drag=false);
+  fr.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")setPos(pos-5);if(e.key==="ArrowRight")setPos(pos+5)});fr.tabIndex=0;
+  document.querySelectorAll("[data-h2]").forEach(b=>b.onclick=()=>show(+b.dataset.h2));
+  show(0);setPos(50);
+  let intro=0;const iv=setInterval(()=>{if(drag||intro>40){clearInterval(iv);return}intro++;setPos(50+Math.sin(intro/6)*22)},40);
   /* command palette */
   const ck=$("#cmdk");document.body.appendChild(ck);const q=$("#cmdq"),ul=$("#cmdl");let res=[],sel=0;
   const norm=s=>s.toLowerCase().replace(/[^a-z0-9 ]/g," ");
@@ -3976,7 +3994,7 @@ function bindHome(){
     if(v.classList.contains("on")){if(e.key==="Escape")close();if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1);return}
     if((e.key==="/"||(e.key.toLowerCase()==="k"&&(e.metaKey||e.ctrlKey)))&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();cOpen()}};
   addEventListener("keydown",key);
-  const cleanup=()=>{clearInterval(tk);app.removeEventListener("click",hc);removeEventListener("keydown",key);ck.remove();removeEventListener("hashchange",cleanup);document.body.style.overflow=""};
+  const cleanup=()=>{clearInterval(iv);app.removeEventListener("click",hc);removeEventListener("keydown",key);ck.remove();removeEventListener("hashchange",cleanup);document.body.style.overflow=""};
   addEventListener("hashchange",cleanup);
 }
 
