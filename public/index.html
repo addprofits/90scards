@@ -751,6 +751,18 @@ a[data-nav="history"]{white-space:nowrap}
 .fsc{--h:52vw}.fsgal .fsc{--h:42vw}.fsgal{gap:26px 18px}.fsch .tiers .tr{grid-template-columns:96px 1fr 60px;gap:12px}
 .hxset.wide{grid-column:auto}.fsboxes{grid-template-columns:repeat(2,1fr);row-gap:40px}.fsrail{margin-top:50px}}
 @media(prefers-reduced-motion:reduce){.fsboxes img,.fshd .bx img{animation:none}}
+/* skybox premium run */
+.spx .fshero h1 i{-webkit-text-stroke-color:#ff6b6b}
+.sprub{margin:120px calc(50% - 50vw) 0;padding:120px max(40px,calc(50vw - 660px)) 120px;background:radial-gradient(1100px 560px at 75% 15%,rgba(255,60,80,.18),transparent 60%),linear-gradient(180deg,#1a070b,#09090a);border-top:1px solid rgba(255,90,110,.2);border-bottom:1px solid rgba(255,90,110,.12)}
+.sprub .hxch{padding:0 0 10px}
+.sprub .hxch .n{color:#ff6b6b}.sprub .hxch h2 b{color:#ff6b6b}
+.sprl{--a:#ff6b6b;display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;align-items:end;gap:20px;margin:60px 0 0}
+.sprl .fsc{--h:clamp(170px,22vw,300px)}
+.sprl .fsc:nth-child(2){transform:translateY(-14px)}.sprl .fsc:nth-child(3){transform:translateY(-28px)}.sprl .fsc:nth-child(4){transform:translateY(-42px)}
+.sptr{margin-top:70px;--a:#ff6b6b}.sptr .tr{grid-template-columns:110px 1fr 280px}.sptr .tr .bar i{background:linear-gradient(90deg,#ff3b55,#ff9aa8)}.sptr .tr b{font-size:12px}
+.spg.fsl{flex-wrap:wrap;overflow:visible}
+.spg .fsc{--h:clamp(170px,17vw,250px)}
+@media(max-width:900px){.sprl{grid-template-columns:1fr 1fr;justify-items:center}.sprl .fsc{--h:56vw;transform:none!important}.sptr .tr{grid-template-columns:70px 1fr;gap:10px}.sptr .tr b{grid-column:1/-1;text-align:left;margin-top:-6px}.spg .fsc{--h:42vw}.spg.fsl{gap:26px 18px}}
 /* ---------- home v2 ---------- */
 .g2hero{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;padding:90px 0 10px}
 .g2hero h1{font-weight:200;font-size:clamp(64px,11vw,176px);letter-spacing:-.06em;line-height:.82;margin:18px 0 0}
@@ -3818,102 +3830,25 @@ function bindHomeOld(){
 
 /* ---------- set history ---------- */
 const HX_SETS=[
- {id:"flair-showcase",yr:"1996–2000",t:"Flair Showcase · The complete run",wide:1},
- {id:"bk96-flair-showcase",yr:"1996-97 · Deep dive",t:"Flair Showcase",box:"img/boxes/bk96-flair-showcase.webp"}];
+ {id:"flair-showcase",yr:"Fleer · 1996–2000",t:"Flair Showcase · The complete run",bx:"flair-showcase"},
+ {id:"skybox-premium",yr:"SkyBox · 1996–2000",t:"SkyBox Premium · The complete run",bx:"skybox-premium"}];
 function viewHistory(){
   return `<div class="view"><div class="wrap"><section class="hxpick">
     <div class="eyebrow">Set history</div><h2>The story of <b>a set</b></h2>
     <p>Visual guides to the products that defined the decade: how each set was built, what was in the packs, and what made the chase cards rare. Scroll through a set the way you'd flip through a box.</p>
-    <div class="hxgrid">${HX_SETS.map((s,i)=>`<a class="hxset${s.wide?" wide":""} rv" style="transition-delay:${i*90}ms" href="#history-${s.id}">${s.wide?`<div class="bxs">${["96","97","98","99"].map(y=>`<img src="img/boxes/bk${y}-flair-showcase.webp" alt="" loading="lazy">`).join("")}</div>`:`<img src="${s.box}" alt="" loading="lazy">`}
+    <div class="hxgrid">${HX_SETS.map((s,i)=>`<a class="hxset wide rv" style="transition-delay:${i*90}ms" href="#history-${s.id}"><div class="bxs">${["96","97","98","99"].map(y=>`<img src="img/boxes/bk${y}-${s.bx}.webp" alt="" loading="lazy">`).join("")}</div>
       <div class="yr">${s.yr}</div><h3>${s.t}</h3><div class="st">Read the story →</div></a>`).join("")}</div>
   </section></div>${footer()}</div>`;
 }
-const fsImg=(p,r,v,s)=>cardSrc(`fs96-${p}-${r}-${v}-${s}`);
-const HX96=[
- {k:"r2",tag:"Row 2 · Style",h:"Row 2 <em>· Style</em>",p:["The back of the house, and the easiest seat to get: a big close-up portrait beside the action shot, with the player's name in gold-foil script.","Every one of the 90 players has a Row 2 card. For most of the checklist this was the card you pulled almost every pack."],
-  dl:[["Jordan","#23 · Showtime · 1:1"],["Bryant","#31 · Showpiece · 1:2"],["Back","Row 2 · Seat = card number"]],m:1},
- {k:"r1",tag:"Row 1 · Grace",h:"Row 1 <em>· Grace</em>",p:["Same 90 players, one row back, with a fresh pairing of portrait and action photos.","Here the tiers start to bite. Fleer sorted players into Showtime, Showpiece and Show Stopper groups, and the group set the odds, so Jordan's Row 1 is scarcer than Kobe's."],
-  dl:[["Jordan","#23 · Show Stopper · 1:2.5"],["Bryant","#31 · Showtime · 1:2"],["Back","Row 1 · Section 1"]],m:2},
- {k:"r0",tag:"Row 0 · Showcase",h:"Row 0 <em>· Showcase</em>",p:["The seat everyone wanted. Row 0 cards trade the clean background for an all-over sparkle foil, and they're the scarcest of the three rows for the stars.","Fleer split the 90 players into three groups of 30, and each group fell at different odds."],
-  dl:[["Jordan","#23 · Showpiece · 1:24"],["Bryant","#31 · Show Stopper · 1:10"],["Finish","Full-bleed glitter foil"]],m:3,tiers:1},
-];
-function viewHist96(){
-  const st=setById("bk96-flair-showcase");
-  return `<div class="view hx"><i class="hxbar" id="hxbar"></i><div class="wrap">
-  <a class="back" href="#history" style="display:inline-block;margin-top:28px">← Set history</a>
-  <section class="hxhero">
-    <div class="rv"><div class="eyebrow">Fleer · 1996-97 · Basketball</div><h1>Flair <b>Showcase</b></h1>
-      <p>Fleer built its first Flair Showcase like an arena. Every player got three cards, one for each row, and the closer to the floor you sat, the harder the ticket was to find.</p>
-      <div class="hxfacts"><div><b>90</b><span>Players</span></div><div><b>3</b><span>Rows each</span></div><div><b>270</b><span>Base cards</span></div><div><b>5</b><span>Cards a pack</span></div></div></div>
-    <div class="box rv"><img src="${esc(st&&st.box||"img/boxes/bk96-flair-showcase.webp")}" alt="1996-97 Flair Showcase box"></div>
-    <div class="cue">Scroll<i></i></div>
-  </section>
-
-  <section class="hxch rv"><div class="n">01 · The idea</div><h2>Every card is a <b>seat</b></h2>
-    <p>Turn any card over and you'll find a stadium ticket printed on the back: a Section, a Row and a Seat. The seat is the player's card number, and the row tells you which of the three versions you're holding.</p>
-    <p>So a set wasn't 90 cards. It was 90 seats in three rows, and collectors chased the whole column for their favorite player.</p>
-    <div class="ticket"><div><span>Section</span><b>1</b><small>The 1996-97 set</small></div><div><span>Row</span><b id="tkrow">2</b><small id="tkrowl">Style</small></div><div><span>Seat</span><b>23</b><small>Michael Jordan</small></div></div>
-  </section>
-
-  <section class="hxch rv" style="padding-bottom:0"><div class="n">02 · The rows</div><h2>Three rows, <b>one player</b></h2>
-    <p>Scroll to move from Row 2 down to the floor. Switch players to see how the same row could be common for one and scarce for another.</p></section>
-  <section class="scrolly" id="hxs">
-    <div class="hsteps">${HX96.map((s,i)=>`<div class="hstep" data-i="${i}"><div class="tag">${s.tag}</div><h3>${s.h}</h3>${s.p.map(x=>`<p>${x}</p>`).join("")}
-      <dl>${s.dl.map(([a,b])=>`<dt>${a}</dt><dd class="mono">${b}</dd>`).join("")}</dl>
-      <div class="meter">${[1,2,3].map(n=>`<i class="${n<=s.m?"f":""}"></i>`).join("")}</div>
-      ${s.tiers?`<div class="tiers" id="hxtiers">${[["#1–30","1:24",1],["#31–60","1:10",.42],["#61–90","1:5",.21]].map(([a,o,w])=>`<div class="tr"><span>Players ${a}</span><div class="bar"><i style="--w:${w}"></i></div><b>${o}</b></div>`).join("")}</div>`:""}
-    </div>`).join("")}</div>
-    <div class="stage"><div class="frame" id="hxframe"></div><div class="cap" id="hxcap"></div>
-      <div class="pt"><button class="on" data-hp="mj">Jordan</button><button data-hp="kb">Bryant</button></div>
-      <div class="sd"><button class="on" data-hs="f">Front</button><button data-hs="b">Back</button></div></div>
-  </section>
-  </div>
-
-  <section class="legacy"><div class="hxch rv"><div class="n">03 · The parallel</div><h2>The <b>Legacy</b> Collection</h2>
-    <p>Hidden about one in every 30 packs was a different kind of ticket. Legacy Collection cards reprint all 270 seats with a cool blue foil front, a black-and-white photo on the back, and a serial number stamped on every one.</p>
-    <p>Only 150 of each were made, in every row. Click a card to turn it over.</p></div>
-    <div class="fan3 rv">${[["r2","059/150","Row 2"],["r0","026/150","Row 0"],["r1","025/150","Row 1"]].map(([r,sn,l])=>`<div class="lc" data-r="${r}"><div class="in"><img src="${fsImg("mj",r,"lc","f")}" alt="Jordan ${l} Legacy Collection" loading="lazy"><img class="bk" src="${fsImg("mj",r,"lc","b")}" alt="" loading="lazy"></div><div class="sn">${l} · ${sn}</div></div>`).join("")}</div>
-    <div class="lgfacts rv"><div><b>/150</b><span>Serial numbered on the back, for every player in every row.</span></div><div><b>1:30</b><span>Pack odds for a Legacy card from any row.</span></div><div><b>270</b><span>Different Legacy cards: every player, in every row.</span></div><div><b>40,500</b><span>Total Legacy cards printed across the set (270 × 150).</span></div></div>
-  </section>
-
-  <div class="wrap">
-  <section class="hxch rv"><div class="n">04 · The inserts</div><h2>Outside the <b>stadium</b></h2>
-    <p>Two insert sets rode along with the rows. One was a die-cut chase; the other welcomed the 1996 rookie class.</p></section>
-  <div class="hxins">
-    <div class="hxin rv"><img src="${fsImg("mj","hs","reg","f")}" alt="Jordan Hot Shots" loading="lazy"><div><div class="eyebrow">Die-cut insert</div><h4>Hot Shots</h4><p>A flaming basketball cut right out of the card. Twenty of the league's best, with Jordan leading the checklist.</p><div class="k">20 cards · 1:90 packs · Jordan #1</div></div></div>
-    <div class="hxin rv"><img src="${fsImg("kb","c96","reg","f")}" alt="Bryant Class of 96" loading="lazy"><div><div class="eyebrow">Rookie insert</div><h4>Class of '96</h4><p>The 1996 draft class on cream stock with gold script, one of the first insert sets to feature a teenage Kobe Bryant.</p><div class="k">20 cards · 1:5 packs · Bryant #4</div></div></div>
-  </div>
-
-  <section class="hxsum rv"><div><b>270</b><span>Base cards (3 rows × 90)</span></div><div><b>540</b><span>Versions, counting Legacy</span></div><div><b>1:24</b><span>Toughest Row 0 tier</span></div><div><b>150</b><span>Copies of each Legacy</span></div></section>
-  <div class="hxend"><p>Checklist and odds from TCDb. Card images are the site owner's scans.</p><a class="j23cta" href="#set-bk96-flair-showcase">Open the full checklist <span aria-hidden="true">→</span></a></div>
-  </div>${footer()}</div>`;
-}
 function bindHist(){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.18});
-  document.querySelectorAll(".rv,.tiers").forEach(e=>io.observe(e));
-  const fr=$("#hxframe");if(!fr)return;
-  const st={i:0,p:"mj",s:"f"};const names={mj:"Michael Jordan #23",kb:"Kobe Bryant #31 · Rookie"};
-  const draw=()=>{const s=HX96[st.i];const src=fsImg(st.p,s.k,"base",st.s);const old=fr.querySelector("img.on");
-    const im=new Image();im.src=src;im.alt=`${names[st.p]} ${s.tag}`;fr.appendChild(im);requestAnimationFrame(()=>requestAnimationFrame(()=>{im.classList.add("on");if(old){old.classList.remove("on");setTimeout(()=>old.remove(),900)}}));
-    $("#hxcap").innerHTML=`<b>${names[st.p]}</b><span>${s.tag} · ${st.s==="f"?"Front":"Back"}</span>`;
-    const r=s.k.slice(1);$("#tkrow").textContent=r;$("#tkrowl").textContent=["Showcase","Grace","Style"][+r]};
-  // preload
-  ["mj","kb"].forEach(p=>HX96.forEach(s=>["f","b"].forEach(d=>{const i=new Image();i.src=fsImg(p,s.k,"base",d)})));
-  const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll(".scrolly .hstep").forEach(x=>x.classList.toggle("on",x===e.target));const i=+e.target.dataset.i;if(i!==st.i){st.i=i;draw()}const t=e.target.querySelector(".tiers");if(t)t.classList.add("in")}}),{rootMargin:"-45% 0px -45% 0px"});
-  document.querySelectorAll(".scrolly .hstep").forEach(e=>so.observe(e));document.querySelector(".scrolly .hstep").classList.add("on");
-  document.querySelectorAll("[data-hp]").forEach(b=>b.onclick=()=>{st.p=b.dataset.hp;document.querySelectorAll("[data-hp]").forEach(x=>x.classList.toggle("on",x===b));draw()});
-  document.querySelectorAll("[data-hs]").forEach(b=>b.onclick=()=>{st.s=b.dataset.hs;document.querySelectorAll("[data-hs]").forEach(x=>x.classList.toggle("on",x===b));draw()});
-  document.querySelectorAll(".fan3 .lc").forEach(c=>c.onclick=()=>c.classList.toggle("turn"));
-  const bar=$("#hxbar");document.body.appendChild(bar);const sc=()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?scrollY/h:0})`};addEventListener("scroll",sc,{passive:true});
-  const clean=()=>{removeEventListener("scroll",sc);bar.remove();so.disconnect();removeEventListener("hashchange",clean)};addEventListener("hashchange",clean);
-  const hh=()=>document.documentElement.style.setProperty('--hh',document.querySelector('header').getBoundingClientRect().height+'px');hh();
-  draw();
+  document.querySelectorAll(".rv").forEach(e=>io.observe(e));
 }
 
 
 /* ---------- flair showcase: the full run ---------- */
 const fsk=(k,s)=>cardSrc(`${k}-${s}`);
-const fsLS=new Set(["fs97-mj-r0-base","fs97-kb-r0-base","fs97-mj-r0-lc","fs97-kb-r0-lc","fs97-kb-r0-mp","fs98-kb-r1-base","fs98-kb-r1-lc"]);
+const fsLS=new Set(["fs97-mj-r0-base","fs97-kb-r0-base","fs97-mj-r0-lc","fs97-kb-r0-lc","fs97-kb-r0-mp","fs98-kb-r1-base","fs98-kb-r1-lc","sp96-mj-ltl-reg","sp98-mj-ms-reg"]);
 function fsc(k,cap,sub,em,s){return `<figure class="fsc${fsLS.has(k)?" ls":""}"${s?` style="--s:${s}"`:""}><div class="in"><img src="${fsk(k,"f")}" alt="${esc(cap+" "+(sub||""))}" loading="lazy"><img class="bk" src="${fsk(k,"b")}" alt="" loading="lazy"></div><figcaption><b>${cap}</b>${sub?`<span>${sub}</span>`:""}${em?`<em>${em}</em>`:""}</figcaption></figure>`}
 function fsLadder(id,sets){const ps=Object.keys(sets);return `<div class="fsblk rv"><div class="top"><div><div class="k">The rows · common to rare</div><h3>${id}</h3><p class="hint">Click any card to turn it over.</p></div>${ps.length>1?`<div class="fstg">${ps.map((p,i)=>`<button class="${i?"":"on"}" data-fsp="${p}">${p==="mj"?"Jordan":"Bryant"}</button>`).join("")}</div>`:""}</div>
   ${ps.map((p,i)=>`<div class="fsl${i?"":" on"}" data-fsl="${p}">${sets[p].map((c,j,a)=>fsc(c[0],c[1],c[2],c[3],(.82+.18*j/Math.max(1,a.length-1)).toFixed(2))).join("")}</div>`).join("")}</div>`}
@@ -3949,7 +3884,7 @@ function viewHistFS(){
       <div class="fsgal">${fsc("fs96-mj-r0-lc","Legacy Collection","Jordan · Row 0","/150")}${fsc("fs96-kb-r0-lc","Legacy Collection","Bryant · Row 0 · Rookie","/150")}${fsc("fs96-mj-hs-reg","Hot Shots","Jordan · die-cut","1:90")}${fsc("fs96-kb-c96-reg","Class of '96","Bryant #4","1:5")}</div></div>
     <div class="fsnote rv"><div><h4>The first numbered NBA cards</h4><p>Every one of the 270 row cards came in a Legacy Collection version numbered to 150, with blue foil on the front and a black-and-white photo on the back. They're often cited as the first serial-numbered NBA cards.</p></div>
       <div><h4>A rookie class to match</h4><p>The checklist carried rookie-year cards of Kobe Bryant, Allen Iverson and Ray Allen, each in all three rows. Kobe's Row 0 is one of the defining cards of his rookie year.</p></div>
-      <div><h4>Read the long version</h4><p>The 1996-97 set has its own scroll-through page, row by row and tier by tier.</p><a class="j23cta fsdeep" href="#history-bk96-flair-showcase">1996-97 deep dive <span aria-hidden="true">→</span></a></div></div>
+      <div><h4>Seat numbers you can read</h4><p>The Seat on each 1996-97 back is the player's card number: Jordan sits in Seat 23 and Kobe in Seat 31, in all three rows.</p></div></div>
   </section>
 
   <section class="fsch" id="fsy-97" style="--a:#5fb4ff">
@@ -4050,6 +3985,145 @@ function bindHistFS(){
   const rail=[...document.querySelectorAll("#fsrail button")];
   const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id.slice(4);rail.forEach(b=>{const on=b.dataset.fsgo===id;b.classList.toggle("on",on);if(on&&b.parentNode.scrollWidth>b.parentNode.clientWidth)b.parentNode.scrollTo({left:b.offsetLeft-20,behavior:"smooth"})})}}),{rootMargin:"-40% 0px -55% 0px"});
   document.querySelectorAll(".fsch").forEach(s=>so.observe(s));
+  const bar=$("#hxbar");document.body.appendChild(bar);const sc=()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?scrollY/h:0})`};addEventListener("scroll",sc,{passive:true});sc();
+  const hh=()=>document.documentElement.style.setProperty("--hh",document.querySelector("header").getBoundingClientRect().height+"px");hh();addEventListener("resize",hh);
+  const clean=()=>{removeEventListener("scroll",sc);removeEventListener("resize",hh);bar.remove();so.disconnect();removeEventListener("hashchange",clean)};addEventListener("hashchange",clean);
+}
+
+
+/* ---------- skybox premium: the full run ---------- */
+const SPYRS=[
+ {id:"96",y:"1996-97",a:"#ff6b6b",t:"Rubies in the box"},
+ {id:"97",y:"1997-98",a:"#e7c77a",t:"A star is cut"},
+ {id:"98",y:"1998-99",a:"#ff6fae",t:"Fifty, then twenty-five"},
+ {id:"99",y:"1999-00",a:"#c9a2ff",t:"Forty-five"}];
+function spPair(sets){const ps=Object.keys(sets);return `${ps.length>1?`<div class="fstg">${ps.map((p,i)=>`<button class="${i?"":"on"}" data-fsp="${p}">${p==="mj"?"Jordan":"Bryant"}</button>`).join("")}</div>`:""}`}
+function spBlock(k,h,sets,hint){const ps=Object.keys(sets);return `<div class="fsblk rv"><div class="top"><div><div class="k">${k}</div><h3>${h}</h3>${hint?`<p class="hint">${hint}</p>`:""}</div>${spPair(sets)}</div>
+  ${ps.map((p,i)=>`<div class="fsl spg${i?"":" on"}" data-fsl="${p}">${sets[p].map(c=>fsc(c[0],c[1],c[2],c[3])).join("")}</div>`).join("")}</div>`}
+function viewHistSP(){
+  const box=y=>`img/boxes/bk${y}-skybox-premium.webp`;
+  return `<div class="view hx fsx spx"><i class="hxbar" id="hxbar"></i><div class="wrap">
+  <a class="back" href="#history" style="display:inline-block;margin-top:28px">← Set history</a>
+  <section class="fshero">
+    <div class="rv"><div class="eyebrow">SkyBox · Basketball · 1996–2000</div>
+    <h1>SkyBox <b>Premium</b><i>The complete run</i></h1>
+    <p class="lede">SkyBox's flagship, four seasons deep. It's the set with Kobe's red Rubies rookie, the first Star Rubies numbered to 50, the /25 rookie Rubies of Dirk and Pierce, and a 1999-00 Kobe that sold for $58,800 in grade 5.</p></div>
+    <div class="fsboxes rv">${SPYRS.map(s=>`<a href="#spy-${s.id}" data-spgo="${s.id}"><img src="${box(s.id)}" alt="${s.y} SkyBox Premium box"><span>${s.y}</span><b>${s.t}</b></a>`).join("")}</div>
+    <div class="fsfacts rv"><div><b>4</b><span>Seasons</span></div><div><b>1 → /45</b><span>Rubies per box to Star Rubies /45</span></div><div><b>/25</b><span>1998-99 rookie Star Rubies</span></div><div><b>1:72</b><span>Autographics debut odds, 1996-97</span></div></div>
+  </section>
+
+  <section class="sprub rv"><div class="hxch"><div class="n">The thread through every year</div><h2>The <b>Rubies</b> line</h2>
+    <p>Every SkyBox Premium set had a red version of the base card, and every year it got harder to find. Here's Kobe's, season by season. Click a card to turn it over.</p></div>
+    <div class="sprl">${[["sp96-kb-sr-reg","1996-97","Rubies · Rookie #55","~1 per box"],["sp97-kb-sr","1997-98","Star Rubies #23","/50"],["sp98-kb-base-sr","1998-99","Star Rubies #44","/50"],["sp99-kb-sr-reg","1999-00","Star Rubies #50","/45"]].map(c=>fsc(...c)).join("")}</div>
+    <div class="tiers sptr">${[["1996-97","Unnumbered · about one per hobby box",1],["1997-98","Serial numbered to 50",.5],["1998-99","50 for veterans, 25 for rookies",.5],["1999-00","Serial numbered to 45",.45]].map(([a,o,w])=>`<div class="tr"><span>${a}</span><div class="bar"><i style="--w:${w}"></i></div><b>${o}</b></div>`).join("")}</div>
+  </section>
+
+  <nav class="fsrail" id="sprail">${SPYRS.map((s,i)=>`<button class="${i?"":"on"}" data-spgo="${s.id}" style="--a:${s.a}"><b>${s.y}</b><span>${s.t}</span></button>`).join("")}</nav>
+
+  <section class="fsch spch" id="spy-96" style="--a:#ff6b6b">
+    <div class="fshd"><div class="rv"><div class="fsyr">96–97</div><div class="n">Chapter 01 · 1996-97</div><h2>Rubies <b>in the box</b></h2>
+      <p>SkyBox Premium came in two series, #1–131 and #132–281, with a gold-foil Premium logo on every base card. Kobe Bryant shows up twice as a rookie: #55 in the base set and #203 in the Series 2 rookie subset.</p>
+      <p>The hobby chase was Rubies, a parallel that swapped the gold foil for red and fell about once per hobby box. It wasn't numbered, but it was the start of everything SkyBox did with red foil for the next four years.</p>
+      <p>The set also launched Autographics, an on-card autograph program shared across E-X2000, Hoops, Premium and Z-Force, at about 1 in 72 packs.</p>
+      <div class="fsst"><div><b>281</b><span>Cards</span></div><div><b>2</b><span>Series</span></div><div><b>1:72</b><span>Autographics</span></div></div></div>
+      <div class="bx rv"><img src="${box("96")}" alt="1996-97 SkyBox Premium box" loading="lazy"></div></div>
+    ${spBlock("Base & Rubies","Gold foil, then red",{kb:[["sp96-kb-base-reg","Base","Bryant #55 · Rookie","Gold foil"],["sp96-kb-sr-reg","Rubies","Bryant #55 · Rookie","Hobby · ~1 per box"]],mj:[["sp96-mj-base-reg","Base","Jordan #16","Gold foil"],["sp96-mj-sr-reg","Rubies","Jordan #16","Hobby · ~1 per box"]]},"Click any card to turn it over.")}
+    ${spBlock("Inserts","Die-cuts, sleeves and short prints",{mj:[["sp96-mj-gt-reg","Golden Touch","Jordan #5 · die-cut","1:240"],["sp96-mj-tl-reg","Thunder & Lightning","Jordan #1 · sleeve + card","1:144"],["sp96-mj-tt-reg","Triple Threats","Jordan #TT11 · short print","1:240"],["sp96-mj-ns-reg","NetSets","Jordan #8","1:48 hobby"],["sp96-mj-ltl-reg","Larger Than Life","Jordan · horizontal","1:180 hobby"]],kb:[["sp96-kb-ne-reg","New Editions","Bryant #3 · die-cut rookie","1:36 retail"]]})}
+    <div class="fsnote rv"><div><h4>Kobe's grail rookie</h4><p>The Kobe Rubies #55 is notoriously condition sensitive. A PSA 10 sold for $27,000 at Fanatics Collect in October 2025.</p></div>
+      <div><h4>A card in a sleeve</h4><p>Thunder & Lightning paired a card with its own printed sleeve, one of the stranger insert formats of the year.</p></div>
+      <div><h4>Short prints inside an insert</h4><p>Triple Threats fell about one per pack, except #TT10–12, which were short-printed at 1:240. Jordan is #TT11.</p></div></div>
+  </section>
+
+  <section class="fsch spch" id="spy-97" style="--a:#e7c77a">
+    <div class="fshd"><div class="rv"><div class="fsyr">97–98</div><div class="n">Chapter 02 · 1997-98</div><h2>A star is <b>cut</b></h2>
+      <p>For year two SkyBox renamed the parallel Star Rubies and numbered every one to 50. They were hobby only and ran across nearly the whole 250-card checklist, including the Team SkyBox subset (#224–248).</p>
+      <p>That made Star Rubies one of the early serial-numbered parallels that pushed the idea into the mainstream, alongside Metal Universe's Precious Metal Gems the same season.</p>
+      <p>It was Tim Duncan's rookie year: his base rookie is #112 and his Team SkyBox card is #229. Autographics got a blue-ink upgrade, Century Marks, hand-numbered to 100.</p>
+      <div class="fsst"><div><b>250</b><span>Cards</span></div><div><b>/50</b><span>Star Rubies</span></div><div><b>/100</b><span>Century Marks</span></div></div></div>
+      <div class="bx rv"><img src="${box("97")}" alt="1997-98 SkyBox Premium box" loading="lazy"></div></div>
+    ${spBlock("Base & Star Rubies","Four versions of one player",{mj:[["sp97-mj-base","Base","Jordan #29","Series 1"],["sp97-mj-sr","Star Rubies","Jordan #29","/50"],["sp97-mj-ts","Team SkyBox","Jordan #235","Series 2 subset"],["sp97-mj-srts","Star Rubies · Team SkyBox","Jordan #235","/50"]],kb:[["sp97-kb-base","Base","Bryant #23","Series 1"],["sp97-kb-sr","Star Rubies","Bryant #23","/50"],["sp97-kb-ts","Team SkyBox","Bryant #226","Series 2 subset"],["sp97-kb-srts","Star Rubies · Team SkyBox","Bryant #226","/50"]]},"Click any card to turn it over.")}
+    ${spBlock("Inserts","The tough pulls",{mj:[["sp97-mj-gt","Golden Touch","Jordan #1","1:360"],["sp97-mj-ss","Silky Smooth","Jordan #1","1:360"],["sp97-mj-pp","Premium Players","Jordan #1","1:192"],["sp97-mj-tl","Thunder & Lightning","Jordan #5","1:192"],["sp97-mj-ca","Competitive Advantage","Jordan #3","1:96"]],kb:[["sp97-kb-gt","Golden Touch","Bryant #3","1:360"],["sp97-kb-ss","Silky Smooth","Bryant #3","1:360"],["sp97-kb-pp","Premium Players","Bryant #3","1:192"],["sp97-kb-tl","Thunder & Lightning","Bryant #7","1:192"],["sp97-kb-ca","Competitive Advantage","Bryant #2","1:96"]]})}
+    <div class="fsnote rv"><div><h4>Two missing numbers</h4><p>The Star Rubies parallel has 248 cards, not 250: #124 and #125 were never made in red.</p></div>
+      <div><h4>Duncan in red</h4><p>Duncan's Team SkyBox Star Ruby (#229) has sold for more than $11,000 in PSA 9.</p></div>
+      <div><h4>Eight cards a pack</h4><p>Hobby boxes held 24 packs of eight cards, and odds on the big inserts ran as long as 1 in 360 packs.</p></div></div>
+  </section>
+
+  <section class="fsch spch" id="spy-98" style="--a:#ff6fae">
+    <div class="fshd"><div class="rv"><div class="fsyr">98–99</div><div class="n">Chapter 03 · 1998-99</div><h2>Fifty, then <b>twenty-five</b></h2>
+      <p>Star Rubies came back with a louder design. Veterans (#1–225) were numbered to 50 and rookies (#226–265) to just 25, so the Star Ruby rookies of Dirk Nowitzki, Paul Pierce and Vince Carter are some of the scarcest rookie parallels of the decade.</p>
+      <p>The two series even look different: Series 1 Star Rubies shimmer vertically, Series 2 horizontally. Series 2 also added the Ninety Fine subset with its own Star Rubies.</p>
+      <p>This was the lockout year, and the inserts went big: Intimidation Nation at 1:360 (about 1 in 3,600 packs for a specific card), Slam Funk at 1:360 and That's Jam at 1:96.</p>
+      <div class="fsst"><div><b>265</b><span>Cards</span></div><div><b>/50</b><span>Veteran Rubies</span></div><div><b>/25</b><span>Rookie Rubies</span></div></div></div>
+      <div class="bx rv"><img src="${box("98")}" alt="1998-99 SkyBox Premium box" loading="lazy"></div></div>
+    ${spBlock("Base, Ninety Fine & Star Rubies","Red foil, numbered on the back",{kb:[["sp98-kb-base-reg","Base","Bryant #44","Series 1"],["sp98-kb-base-sr","Star Rubies","Bryant #44 · 11/50","/50"],["sp98-kb-nf-reg","Ninety Fine","Bryant #205","Series 2 subset"],["sp98-kb-nf-sr","Star Rubies · Ninety Fine","Bryant #205 · 14/50","/50"]],mj:[["sp98-mj-base-reg","Base","Jordan #23","Series 1"],["sp98-mj-base-sr","Star Rubies","Jordan #23 · 35/50","/50"]]},"Click any card to turn it over.")}
+    ${spBlock("Inserts","Intimidation Nation and friends",{kb:[["sp98-kb-in-reg","Intimidation Nation","Bryant #2","1:360"],["sp98-kb-sf-reg","Slam Funk","Bryant · etched foil","1:360"],["sp98-kb-tj-reg","That's Jam","Bryant #14","1:96"],["sp98-kb-3d-reg","3D","Bryant #1","1:96"],["sp98-kb-sg-reg","Soul of the Game","Bryant #8","1:18"],["sp98-kb-ms-reg","Mod Squad","Bryant #4","1:18"]],mj:[["sp98-mj-in-reg","Intimidation Nation","Jordan #8","1:360"],["sp98-mj-3d-reg","3D","Jordan #4","1:96"],["sp98-mj-sg-reg","Soul of the Game","Jordan #1","1:18"],["sp98-mj-ms-reg","Mod Squad","Jordan","1:18"]]})}
+    <div class="fsnote rv"><div><h4>The /25 rookies</h4><p>A Dirk Nowitzki Star Ruby /25 in BGS 8 sold for $16,800 in December 2025, and a PSA 10 Paul Pierce /25 for $19,500 that July.</p></div>
+      <div><h4>Hard to grade</h4><p>Full-bleed foil on the front and dark borders on the back mean high-grade 1998-99 Star Rubies are rare.</p></div>
+      <div><h4>Blue-ink autos</h4><p>Autographics returned with a blue-ink version, hand-numbered to 50.</p></div></div>
+  </section>
+
+  <section class="fsch spch" id="spy-99" style="--a:#c9a2ff">
+    <div class="fshd"><div class="rv"><div class="fsyr">99–00</div><div class="n">Chapter 04 · 1999-00</div><h2>Forty-five and a <b>field of stars</b></h2>
+      <p>The last Star Rubies on the site took the print run down to 45 and put a background of small stars behind the player. Kobe is #50, and Lamar Odom's rookie Star Ruby is numbered to 45 too.</p>
+      <p>Inserts leaned on die-cuts and short numbered runs: Club Vertical, a 10-card die-cut, and Good Stuff with its holofoil upgrade More Good Stuff numbered to 99.</p>
+      <p>Behind the scenes, Marvel sold Fleer/SkyBox in 1999 to a partnership led by Rite Aid founder Alex Grass, reportedly for about $26 million.</p>
+      <div class="fsst"><div><b>/45</b><span>Star Rubies</span></div><div><b>/99</b><span>More Good Stuff</span></div><div><b>#50</b><span>Kobe</span></div></div></div>
+      <div class="bx rv"><img src="${box("99")}" alt="1999-00 SkyBox Premium box" loading="lazy"></div></div>
+    ${spBlock("Base, parallel & inserts","Kobe in 1999-00",{kb:[["sp99-kb-base-reg","Base","Bryant #50","Silver-foil name"],["sp99-kb-sr-reg","Star Rubies","Bryant #50 · 20/45","/45"],["sp99-kb-cv-reg","Club Vertical","Bryant #5 · die-cut","Numbered"],["sp99-kb-gs-reg","Good Stuff","Bryant #1",""],["sp99-kb-gs-more","More Good Stuff","Bryant #1 · holofoil","/99"]]},"Click any card to turn it over.")}
+    <div class="fsnote rv"><div><h4>$58,800 in a PSA 5</h4><p>A Kobe Star Ruby numbered 45/45 sold for $58,800 at Fanatics Collect in May 2026, despite the low grade.</p></div>
+      <div><h4>Lakers champions</h4><p>The set covered the 1999-00 season, the first of the Lakers' three straight titles.</p></div>
+      <div><h4>Rubies never died</h4><p>Upper Deck, which bought the Fleer and SkyBox brands in 2005, later brought back Star Rubies /50 in hockey releases.</p></div></div>
+  </section>
+
+  <section class="fsk24 rv"><div class="n">05 · One player, four years</div><h2>Kobe, <b>base to base</b></h2>
+    <p>Kobe's regular base card from every SkyBox Premium set, from a 1996 rookie to the 1999-00 #50. Click any card to see the back.</p>
+    <div class="k4 spk4">${fsc("sp96-kb-base-reg","1996-97","#55 · Rookie","Gold foil")}${fsc("sp97-kb-base","1997-98","#23","Series 1")}${fsc("sp98-kb-base-reg","1998-99","#44","Series 1")}${fsc("sp99-kb-base-reg","1999-00","#50","Silver foil")}</div>
+  </section>
+
+  <section class="fstbl rv"><div class="n">06 · Side by side</div><h2>The run <b>at a glance</b></h2>
+    <div class="fstw"><table><thead><tr><th>Season</th><th>Checklist</th><th>Series</th><th>Red parallel</th><th>Autographs</th><th>Toughest insert</th><th>Key rookies</th></tr></thead><tbody>
+      <tr style="--a:#ff6b6b"><td><i></i>1996-97</td><td>281 cards</td><td>2</td><td>Rubies · ~1 per box</td><td>Autographics debut (1:72)</td><td>Golden Touch, Triple Threats SP (1:240)</td><td>Bryant, Iverson, Allen</td></tr>
+      <tr style="--a:#e7c77a"><td><i></i>1997-98</td><td>250 cards</td><td>2</td><td>Star Rubies /50</td><td>Century Marks /100</td><td>Golden Touch, Silky Smooth (1:360)</td><td>Duncan</td></tr>
+      <tr style="--a:#ff6fae"><td><i></i>1998-99</td><td>265 cards</td><td>2</td><td>Star Rubies /50, rookies /25</td><td>Blue ink /50</td><td>Intimidation Nation, Slam Funk (1:360)</td><td>Nowitzki, Pierce, Carter</td></tr>
+      <tr style="--a:#c9a2ff"><td><i></i>1999-00</td><td>Single series</td><td>1</td><td>Star Rubies /45</td><td>Autographics</td><td>More Good Stuff (/99)</td><td>Odom</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section class="fsperf rv"><div class="n">07 · On release, and since</div><h2>How it <b>landed</b></h2>
+    <p>SkyBox never published sales numbers. What stands out is how the set's one big idea, the red parallel, grew from a box hit into the card the whole set is remembered for.</p>
+    <div class="fspg">
+      <div><b>1995</b><h4>A company in flux</h4><p>Marvel owned Fleer and bought SkyBox in 1995, merging the two. Premium launched the next season as Marvel headed into bankruptcy, and by 1999 Fleer/SkyBox was sold for a fraction of what Marvel had paid.</p></div>
+      <div><b>/50</b><h4>Numbering caught on</h4><p>Turning Rubies into Star Rubies /50 in 1997-98 put SkyBox among the companies that made serial-numbered parallels a hobby standard, the same year as Precious Metal Gems.</p></div>
+      <div><b>$58.8k</b><h4>The cards that aged best</h4><p>Base cards from these sets are cheap. The red parallels are not: a 1999-00 Kobe Star Ruby sold for $58,800 in PSA 5, and a 1996-97 Kobe Rubies PSA 10 for $27,000.</p></div>
+      <div><b>Hundreds</b><h4>Sealed boxes</h4><p>Sealed 1997-98 and 1998-99 boxes, both with major rookie classes and Autographics, generally trade in the hundreds rather than the thousands.</p></div>
+    </div>
+  </section>
+
+  <section class="fsfun rv"><div class="n">08 · Odds and ends</div><h2>Things worth <b>knowing</b></h2>
+    <div class="fsfg">
+      <div><div class="i">01</div><h4>Two Kobe rookies, one set</h4><p>1996-97 Premium has Kobe at #55 in the base set and again at #203 in the rookie subset.</p></div>
+      <div><div class="i">02</div><h4>Named for a gem</h4><p>Star rubies are rubies with a star-shaped shimmer inside them, called asterism. The 1997-98 parallel borrowed the name.</p></div>
+      <div><div class="i">03</div><h4>Rookies got half</h4><p>In 1998-99, rookie Star Rubies were numbered to 25 while veterans got 50.</p></div>
+      <div><div class="i">04</div><h4>The shimmer changes by series</h4><p>1998-99 Series 1 Star Rubies shimmer up and down; Series 2 shimmer side to side.</p></div>
+      <div><div class="i">05</div><h4>One autograph, four products</h4><p>Autographics used one checklist across several Fleer/SkyBox products, so the same signed card could come from Premium, Hoops, E-X or Z-Force packs.</p></div>
+      <div><div class="i">06</div><h4>The run kept shrinking</h4><p>About one per box, then 50, then 50 and 25, then 45. Each year the red card got harder to pull.</p></div>
+    </div>
+  </section>
+
+  <div class="fsend"><p>Checklists and odds from TCDb. Sales figures from Fanatics Collect and public sales listings. Card images are the site owner's scans.</p>
+    ${SPYRS.map(s=>`<a href="#set-bk${s.id}-skybox-premium">${s.y} checklist →</a>`).join("")}</div>
+  </div>${footer()}</div>`;
+}
+function bindHistSP(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll(".spx .rv,.spx .tiers").forEach(e=>io.observe(e));
+  const v=document.querySelector(".spx");
+  v.addEventListener("click",e=>{const c=e.target.closest(".fsc");if(c){c.classList.toggle("turn");return}
+    const p=e.target.closest("[data-fsp]");if(p){const b=p.closest(".fsblk");b.querySelectorAll("[data-fsp]").forEach(x=>x.classList.toggle("on",x===p));b.querySelectorAll("[data-fsl]").forEach(x=>x.classList.toggle("on",x.dataset.fsl===p.dataset.fsp));return}
+    const g=e.target.closest("[data-spgo]");if(g){e.preventDefault();const t=$("#spy-"+g.dataset.spgo);if(t)t.scrollIntoView({behavior:"smooth",block:"start"})}});
+  const rail=[...document.querySelectorAll("#sprail button")];
+  const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id.slice(4);rail.forEach(b=>{const on=b.dataset.spgo===id;b.classList.toggle("on",on);if(on&&b.parentNode.scrollWidth>b.parentNode.clientWidth)b.parentNode.scrollTo({left:b.offsetLeft-20,behavior:"smooth"})})}}),{rootMargin:"-40% 0px -55% 0px"});
+  document.querySelectorAll(".spch").forEach(s=>so.observe(s));
   const bar=$("#hxbar");document.body.appendChild(bar);const sc=()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?scrollY/h:0})`};addEventListener("scroll",sc,{passive:true});sc();
   const hh=()=>document.documentElement.style.setProperty("--hh",document.querySelector("header").getBoundingClientRect().height+"px");hh();addEventListener("resize",hh);
   const clean=()=>{removeEventListener("scroll",sc);removeEventListener("resize",hh);bar.remove();so.disconnect();removeEventListener("hashchange",clean)};addEventListener("hashchange",clean);
@@ -4188,7 +4262,7 @@ function viewHome(){
       <a class="bn wall w2" href="#jordan23"><div class="vis">${j3.map(x=>`<img src="${j23img(x.n,"f")}" alt="" loading="lazy">`).join("")}</div><span class="arw">→</span><div class="k">Ranked wall</div><h3>The Jordan <b>23</b></h3><p>Twenty-three Jordan inserts, counted down from #23 to #1.</p></a>
       <a class="bn wall w2" href="#mamba24"><div class="vis">${k3.map(x=>`<img src="${k24img(x,"f")}" alt="" loading="lazy">`).join("")}</div><span class="arw">→</span><div class="k">Ranked wall</div><h3>The Mamba <b>24</b></h3><p>Twenty-four Kobe inserts, from the rookie year to the first title.</p></a>
       <a class="bn big w2 h2" href="#players"><div class="vis">${[pt("mj"),pt("kb"),ARCH.filter(c=>c.p==="mj"&&c.type!=="Base").sort((a,b)=>b.rank-a.rank)[1]].filter(Boolean).map(x=>`<img src="${x.f}" alt="" loading="lazy">`).join("")}</div><span class="arw">→</span><div class="k">Players</div><h3>Every card, <b>by player</b></h3><p>Each player's full run in one place, season by season, with his rarest cards up front.</p></a>
-      <a class="bn hist h2" href="#history"><div class="vis"><img class="bxi" src="img/boxes/bk96-flair-showcase.webp" alt="" loading="lazy"></div><span class="arw">→</span><div class="k">Set history</div><h3>The story of <b>a set</b></h3><p>Flair Showcase from 1996 to 2000, row by row and year by year.</p></a>
+      <a class="bn hist h2" href="#history"><div class="vis"><img class="bxi" src="img/boxes/bk96-flair-showcase.webp" alt="" loading="lazy"></div><span class="arw">→</span><div class="k">Set history</div><h3>The story of <b>a set</b></h3><p>Flair Showcase and SkyBox Premium, 1996 to 2000, year by year.</p></a>
       <a class="bn hist h2 mk" href="#mamba24/build"><div class="vis"><img src="${j23img(3,"f")}" alt="" loading="lazy"><img src="${k24img(K24[3],"f")}" alt="" loading="lazy"></div><span class="arw">→</span><div class="k">Build your own</div><h3>Make your <b>wall</b></h3><p>Drag inserts into 23 or 24 slots and save it with your name.</p></a>
     </section>
     <section class="g2yrs">${seasons.map(s=>{const cs=ARCH.filter(c=>c.season===s);const bx=[...new Map(cs.filter(c=>c.box).map(c=>[c.sid,c.box])).values()].slice(0,3);const isNew=newSets.some(n=>n.season===s);
@@ -4266,7 +4340,8 @@ function route(){
   else if(h.startsWith("player-")&&PL[h.slice(7)]){const k=h.slice(7);app.innerHTML=viewPlayer(k);bindPlayer(k);nav="players"}
   else if(h==="jordan23"){app.innerHTML=viewJ23();bindJ23();nav="jordan23"}
   else if(h==="history"){app.innerHTML=viewHistory();bindHist();nav="history"}
-  else if(h==="history-bk96-flair-showcase"){app.innerHTML=viewHist96();bindHist();nav="history"}
+  else if(h==="history-bk96-flair-showcase"){location.replace("#history-flair-showcase");return}
+  else if(h==="history-skybox-premium"){app.innerHTML=viewHistSP();bindHistSP();nav="history"}
   else if(h==="history-flair-showcase"){app.innerHTML=viewHistFS();bindHistFS();nav="history"}
   else if(h==="mamba24"){app.innerHTML=viewK24();bindK24();nav="mamba24"}
   else if(h==="mamba24/build"){app.innerHTML=viewMk24();bindMk24();nav="mamba24"}
