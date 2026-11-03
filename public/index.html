@@ -775,7 +775,7 @@ a[data-nav="history"]{white-space:nowrap}
 .cmdk .ft kbd{font-family:"JetBrains Mono",monospace;border:1px solid var(--line2);border-radius:4px;padding:1px 5px;margin-right:4px}
 .cmdk .none{padding:30px;text-align:center;color:var(--ink3);font-size:13px}
 @media(max-width:900px){.g2hero{grid-template-columns:1fr;gap:24px;padding-top:50px}.g2two{grid-template-columns:1fr}.cotd{grid-template-columns:1fr;gap:26px}.cotd .cv{max-width:240px;margin:0 auto}.bento{grid-template-columns:1fr 1fr;grid-auto-rows:190px}.bn.w2{grid-column:span 2}.bn.h2{grid-row:span 1}.g2rib .rc{height:170px}.g2rib .r2 .rc{height:140px}.g2pan{padding:26px}.g2tick{gap:18px}}
-@media(max-width:560px){.bento{grid-template-columns:1fr}.bn.w2{grid-column:span 1}.pull{width:110px}.pack{width:160px;height:250px}}
+@media(max-width:560px){.bento{grid-template-columns:1fr}.bn.w2{grid-column:span 1}.bn.h2{grid-row:span 1}.pull{width:84px}.pull .lab{max-width:92px;font-size:9.5px}.pack{width:160px;height:250px}.rip .stage{height:320px}.ripctl{margin-top:44px}}
 /* ---------- home: the archive ---------- */
 .acard .sh{display:none!important}
 .hm-top{padding-bottom:20px}
@@ -3947,7 +3947,7 @@ function bindHome(){
   const st=$("#ripst"),ctl=$("#ripctl");
   const ctlIdle=()=>{ctl.innerHTML=`<span>${opened?`${opened} pack${opened>1?"s":""} opened`:"Real scans, weighted by rarity. Rare pulls glow."}</span>`};
   const rip=()=>{const pk=$("#pack");if(!pk||pk.classList.contains("open"))return;pk.classList.add("open","gone");opened++;try{localStorage.setItem("packs90",opened)}catch(e){}
-    const cs=draw3();const w=st.clientWidth,cw=innerWidth<560?110:150,gap=w<480?8:26,xs=[-1,0,1].map(i=>i*(cw+gap));
+    const cs=draw3();const w=st.clientWidth,cw=innerWidth<560?84:150,gap=w<480?12:26,xs=[-1,0,1].map(i=>i*(cw+gap));
     cs.forEach((c,i)=>{const el=document.createElement("div");el.className="pull"+(tier(c)===3?" hit":"");el.dataset.k=c.k;
       el.innerHTML=`<div class="in"><img src="${c.f}" alt="${esc(c.pn+" · "+c.t)}"><div class="bk">90s</div></div><div class="lab"><b>${esc(c.t)}</b>${esc(c.season+" "+c.set)}${tier(c)===3?`<br><span class="tag">${c.ser?"Numbered /"+c.ser:"Rare pull"}</span>`:tier(c)===2?`<br><span class="tag" style="color:var(--ink2)">${c.ser?"/"+c.ser:"Short print"}</span>`:""}</div>`;
       el.style.transform=`translate(0px,60px) scale(.8)`;st.appendChild(el);
